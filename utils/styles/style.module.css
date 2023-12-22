@@ -1,0 +1,189 @@
+.AddProjectModalOuterDivMainSection {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: 111;
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: 0.3s all;
+}
+.AddProjectModalOuterDivMainSection .AddProjectModalInnerSection {
+  width: 100%;
+  height: 100%;
+  max-width: 830px;
+  max-height: 650px;
+  background-color: var(--sidebar-bg-color);
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 100px auto;
+  padding: 0 20px 20px 20px;
+  overflow-y: auto;
+  position: relative;
+}
+.AddProjectModalOuterDivMainSection .AddProjectModalInnerSection::-webkit-scrollbar-thumb, .AddProjectModalOuterDivMainSection .AddProjectModalInnerSection::-webkit-scrollbar, .AddProjectModalOuterDivMainSection .AddProjectModalInnerSection::-webkit-scrollbar-track {
+  width: 0;
+  height: 0;
+}
+.AddProjectModalOuterDivMainSection .AddProjectModalInnerSection .HeaderSection {
+  width: 100%;
+  padding: 20px 10px 10px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+.AddProjectModalOuterDivMainSection .AddProjectModalInnerSection .HeaderSection ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  text-decoration: none;
+}
+.AddProjectModalOuterDivMainSection .AddProjectModalInnerSection .HeaderSection ul li {
+  list-style: none;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+.AddProjectModalOuterDivMainSection .AddProjectModalInnerSection .HeaderSection ul button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  font-size: 30px;
+  color: var(--main-white-color);
+  border: 0;
+  outline: 0;
+}
+.AddProjectModalOuterDivMainSection .AddProjectModalInnerSection .AddInformationPart {
+  padding-top: 28px;
+}
+.AddProjectModalOuterDivMainSection .AddProjectModalInnerSection .AddInformationPart .FormSectionInputFlex {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 40px;
+}
+.AddProjectModalOuterDivMainSection .AddProjectModalInnerSection .AddInformationPart .FormSectionInputFlex .ImageInputSec {
+  width: 35%;
+  position: sticky;
+  top: 90px;
+}
+.AddProjectModalOuterDivMainSection .AddProjectModalInnerSection .AddInformationPart .FormSectionInputFlex .ImageInputSec .RowFlexSection {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 30px;
+}
+.AddProjectModalOuterDivMainSection .AddProjectModalInnerSection .AddInformationPart .FormSectionInputFlex .ImageInputSec .RowFlexSection .RowPartOne {
+  width: 100%;
+}
+.AddProjectModalOuterDivMainSection .AddProjectModalInnerSection .AddInformationPart .FormSectionInputFlex .ImageInputSec .RowFlexSection .RowPartOne h4 {
+  color: var(--main-white-color);
+  text-align: start;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  text-transform: capitalize;
+  padding-bottom: 10px;
+}
+.AddProjectModalOuterDivMainSection .AddProjectModalInnerSection .AddInformationPart .FormSectionInputFlex .ImageInputSec .RowFlexSection .RowPartOne label {
+  width: 100%;
+  border-radius: 20px;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  background-color: var(--secondry-bg-color);
+  padding: 20px 15px;
+}
+.AddProjectModalOuterDivMainSection .AddProjectModalInnerSection .AddInformationPart .FormSectionInputFlex .ImageInputSec .RowFlexSection .RowPartOne label .clickItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  flex-direction: column;
+  color: var(--main-white-color);
+}
+.AddProjectModalOuterDivMainSection .AddProjectModalInnerSection .AddInformationPart .FormSectionInputFlex .ImageInputSec .RowFlexSection .RowPartOne label .clickItem .svgs {
+  font-size: 50px;
+}
+.AddProjectModalOuterDivMainSection .AddProjectModalInnerSection .AddInformationPart .FormSectionInputFlex .ImageInputSec .RowFlexSection .RowPartOne label .clickItem span {
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  color: var(--button-main-color);
+}
+.AddProjectModalOuterDivMainSection .AddProjectModalInnerSection .AddInformationPart .FormSectionInputFlex .ImageInputSec .RowFlexSection .RowPartOne label .clickItem p {
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: center;
+}
+.AddProjectModalOuterDivMainSection .AddProjectModalInnerSection .AddInformationPart .FormSectionInputFlex .textInputSec {
+  width: 65%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 28px;
+}
+.AddProjectModalOuterDivMainSection .AddProjectModalInnerSection .AddInformationPart .FormSectionInputFlex .textInputSec .row {
+  padding: 0;
+}
+.AddProjectModalOuterDivMainSection .AddProjectModalInnerSection .AddInformationPart .FormSectionInputFlex .textInputSec .InputField {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 10px;
+}
+.AddProjectModalOuterDivMainSection .AddProjectModalInnerSection .AddInformationPart .FormSectionInputFlex .textInputSec .InputField label {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--main-white-color);
+  text-transform: capitalize;
+}
+.AddProjectModalOuterDivMainSection .AddProjectModalInnerSection .AddInformationPart .FormSectionInputFlex .textInputSec .InputField input {
+  height: 45px;
+}
+.AddProjectModalOuterDivMainSection .AddProjectModalInnerSection .AddInformationPart .FormSectionInputFlex .textInputSec .InputField input,
+.AddProjectModalOuterDivMainSection .AddProjectModalInnerSection .AddInformationPart .FormSectionInputFlex .textInputSec .InputField textarea {
+  width: 100%;
+  background-color: var(--secondry-bg-color);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  resize: none;
+  padding: 8px 14px;
+  color: var(--main-white-color);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+.AddProjectModalOuterDivMainSection .AddProjectModalInnerSection .AddInformationPart .FormSectionInputFlex .textInputSec .InputField input:focus,
+.AddProjectModalOuterDivMainSection .AddProjectModalInnerSection .AddInformationPart .FormSectionInputFlex .textInputSec .InputField textarea:focus {
+  border: 0;
+  outline: 1px solid var(--button-main-color);
+}
+.AddProjectModalOuterDivMainSection .AddProjectModalInnerSection .AddInformationPart .FormSectionInputFlex .textInputSec .ButtonsFlexSection {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+}
+.AddProjectModalOuterDivMainSection .AddProjectModalInnerSection .AddInformationPart .FormSectionInputFlex .textInputSec .ButtonsFlexSection button {
+  height: 50px !important;
+}/*# sourceMappingURL=style.module.css.map */

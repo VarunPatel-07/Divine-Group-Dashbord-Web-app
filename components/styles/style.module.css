@@ -1,0 +1,261 @@
+.username {
+  color: var(--main-white-color);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.userrole {
+  color: var(--main-white-color);
+  font-family: Inter;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  opacity: 0.6;
+}
+
+.navberMain {
+  width: calc(100% - 200px);
+  background-color: rgba(31, 24, 47, 0.4);
+  margin-left: auto;
+  height: 70px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 11;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.navberMain .nav {
+  width: 100%;
+  height: 100%;
+  padding: 10px 24px;
+}
+.navberMain .nav .NavbarProfileSection {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 40px;
+  height: 100%;
+  cursor: pointer;
+  position: relative;
+}
+.navberMain .nav .NavbarProfileSection::after {
+  position: absolute;
+  content: "";
+  width: 30px;
+  height: 100%;
+  right: 0;
+  top: 0;
+  background-image: url(../../images/Arrow\ -\ Down\ 6.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.navberMain .nav .NavbarProfileSection .profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.navberMain .nav .NavbarProfileSection .profile .image {
+  overflow: hidden;
+}
+
+.sidebarMainSec {
+  width: 100%;
+  max-width: 200px;
+  background-color: var(--sidebar-bg-color);
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  padding: 20px 16px 20px 0;
+}
+.sidebarMainSec .SidebarInner {
+  width: 100%;
+  height: 100%;
+}
+.sidebarMainSec .SidebarInner .FlexSectionMain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+}
+.sidebarMainSec .SidebarInner .FlexSectionMain .LogoSection {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+.sidebarMainSec .SidebarInner .FlexSectionMain .LogoSection img {
+  width: 100%;
+  height: 100%;
+  max-width: 140px;
+  margin: auto;
+}
+.sidebarMainSec .SidebarInner .FlexSectionMain .LinkSection {
+  width: 100%;
+}
+.sidebarMainSec .SidebarInner .FlexSectionMain .LinkSection .ul {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  text-decoration: none;
+  padding: 0;
+}
+.sidebarMainSec .SidebarInner .FlexSectionMain .LinkSection .ul li {
+  list-style: none;
+  text-decoration: none;
+  width: 100%;
+  padding: 14px 20px;
+}
+.sidebarMainSec .SidebarInner .FlexSectionMain .LinkSection .ul li:active {
+  scale: 0.9;
+}
+.sidebarMainSec .SidebarInner .FlexSectionMain .LinkSection .ul li a {
+  color: var(--main-white-color);
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+  text-decoration: none;
+  text-transform: capitalize;
+  width: 100%;
+}
+.sidebarMainSec .SidebarInner .FlexSectionMain .LinkSection .ul li a span {
+  padding-right: 10px;
+  font-size: 16px;
+}
+
+.ProjectsSkullMainDiv {
+  width: 100%;
+  height: 100%;
+}
+.ProjectsSkullMainDiv .ProjectsInnerDiv {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: var(--main-white-color);
+  gap: 25px;
+  margin: auto;
+  max-width: 305px;
+}
+.ProjectsSkullMainDiv .ProjectsInnerDiv .HeaderImage {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--secondry-bg-color);
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+}
+.ProjectsSkullMainDiv .ProjectsInnerDiv .HeaderImage svg {
+  width: 60px;
+  height: 60px;
+}
+.ProjectsSkullMainDiv .ProjectsInnerDiv .ContextText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.ProjectsSkullMainDiv .ProjectsInnerDiv .ContextText h3 {
+  text-align: center;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: capitalize;
+}
+.ProjectsSkullMainDiv .ProjectsInnerDiv .ContextText p {
+  text-transform: capitalize;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+}
+.ProjectsSkullMainDiv .ProjectsInnerDiv .ContextText button {
+  width: 100%;
+  height: 48px;
+  font-size: 16px;
+}
+
+.ProjectsSkullCardOuterMainSection {
+  width: 100%;
+  background-color: var(--sidebar-bg-color);
+  border-radius: 30px;
+  box-shadow: 0px 2px 50px -43px rgb(255, 255, 255);
+}
+.ProjectsSkullCardOuterMainSection .ProjectContentSkullInnerSectio {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 20px 20px;
+  gap: 20px;
+}
+.ProjectsSkullCardOuterMainSection .ProjectContentSkullInnerSectio .ProjectsSkullImageSection {
+  width: 40%;
+}
+.ProjectsSkullCardOuterMainSection .ProjectContentSkullInnerSectio .ProjectsSkullImageSection img {
+  width: 100%;
+  height: 100%;
+  max-height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 20px;
+}
+.ProjectsSkullCardOuterMainSection .ProjectContentSkullInnerSectio .ProjectContentTextSection {
+  width: 60%;
+}
+.ProjectsSkullCardOuterMainSection .ProjectContentSkullInnerSectio .ProjectContentTextSection .FlexSection {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 30px;
+  color: var(--main-white-color);
+}
+.ProjectsSkullCardOuterMainSection .ProjectContentSkullInnerSectio .ProjectContentTextSection .FlexSection h2 {
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.ProjectsSkullCardOuterMainSection .ProjectContentSkullInnerSectio .ProjectContentTextSection .FlexSection h6 {
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.ProjectsSkullCardOuterMainSection .ProjectContentSkullInnerSectio .ProjectContentTextSection .FlexSection p {
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--non-hilighted-text);
+}/*# sourceMappingURL=style.module.css.map */

@@ -1,107 +1,144 @@
-:root {
-  --max-width: 1100px;
-  --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
-
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-
-  --primary-glow: conic-gradient(
-    from 180deg at 50% 50%,
-    #16abff33 0deg,
-    #0885ff33 55deg,
-    #54d6ff33 120deg,
-    #0071ff33 160deg,
-    transparent 360deg
-  );
-  --secondary-glow: radial-gradient(
-    rgba(255, 255, 255, 1),
-    rgba(255, 255, 255, 0)
-  );
-
-  --tile-start-rgb: 239, 245, 249;
-  --tile-end-rgb: 228, 232, 233;
-  --tile-border: conic-gradient(
-    #00000080,
-    #00000040,
-    #00000030,
-    #00000020,
-    #00000010,
-    #00000010,
-    #00000080
-  );
-
-  --callout-rgb: 238, 240, 241;
-  --callout-border-rgb: 172, 175, 176;
-  --card-rgb: 180, 185, 188;
-  --card-border-rgb: 131, 134, 135;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-
-    --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
-    --secondary-glow: linear-gradient(
-      to bottom right,
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0.3)
-    );
-
-    --tile-start-rgb: 2, 13, 46;
-    --tile-end-rgb: 2, 5, 19;
-    --tile-border: conic-gradient(
-      #ffffff80,
-      #ffffff40,
-      #ffffff30,
-      #ffffff20,
-      #ffffff10,
-      #ffffff10,
-      #ffffff80
-    );
-
-    --callout-rgb: 20, 20, 20;
-    --callout-border-rgb: 108, 108, 108;
-    --card-rgb: 100, 100, 100;
-    --card-border-rgb: 200, 200, 200;
-  }
-}
-
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
 * {
-  box-sizing: border-box;
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+button {
+  cursor: pointer;
+  &:active {
+    scale: 0.9;
   }
+}
+
+:root {
+  --main-white-color: #f5f3f4;
+  --main-black-color: #0c0a0a;
+  --main-bg-color: #1f1830;
+  --sidebar-bg-color: #1a142a;
+  --button-main-color: rgba(244, 24, 132, 1);
+  --secondry-bg-color: #2c2341;
+  --non-hilighted-text: rgb(255, 255, 255, 0.6);
+}
+body {
+  background-color: var(--main-bg-color) !important;
+  font-family: "Inter", sans-serif;
+
+  ul {
+    padding: 0;
+    margin: 0;
+    li {
+      padding: 0;
+      margin: 0;
+    }
+  }
+  h1,h2,h3,h4,h5,h6,p{
+    margin: 0;
+    padding: 0;
+
+  }
+}
+.active {
+  background-color: var(--button-main-color) !important;
+  width: 100% !important;
+  border-radius: 0 20px 20px 0;
+}
+.login-sign-up-page {
+  background-color: var(--main-bg-color) !important;
+  width: 100%;
+  height: 100vh;
+}
+.container-main-sec {
+  width: calc(100% - 200px);
+  margin-left: auto;
+  height: 100vh;
+  background-color: var(--main-bg-color);
+  padding: 65px 0 0 0;
+  overflow-y: auto;
+}
+.active-li-btn {
+  button {
+    position: relative;
+    &::after {
+      position: absolute;
+      content: "";
+      background-color: var(--button-main-color);
+      width: 100%;
+      height: 1px;
+      bottom: 0;
+      left: 0;
+      border-radius: 10px;
+    }
+  }
+}
+.h100 {
+  height: 100vh;
+  width: 100%;
+  background-color: var(--main-bg-color);
+}
+.button-main-class {
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--main-white-color);
+  background-color: var(--button-main-color);
+  border: 0;
+  outline: 0;
+  padding: 4px 32px;
+  border-radius: 24px;
+}
+.row {
+  padding-top: 40px;
+  .col-md-6 {
+    padding: 15px 7.5px;
+  }
+}
+.Main-header-web {
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--main-white-color);
+}
+.transperent-btn {
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  outline: 0;
+  color: var(--main-white-color);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  background-color: transparent;
+  padding: 4px 32px;
+}
+.filled-btn {
+  border-radius: 24px;
+  background-color: var(--button-main-color);
+  border: 0;
+  outline: 0;
+  color: var(--main-white-color);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  padding: 4px 32px;
+  text-transform: capitalize;
+}
+.hiddenModal {
+  scale: 0;
+}
+.visibalModal {
+  scale: 1;
+}
+.notVisibles {
+  scale: 0;
+}
+.height-48{
+  height: 48px;
 }

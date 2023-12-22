@@ -1,0 +1,268 @@
+.username {
+  color: var(--main-white-color);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.userrole {
+  color: var(--main-white-color);
+  font-family: Inter;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  opacity: 0.6;
+}
+
+//?------------------------------ NAVBAR SECTION ------------------------------------
+.navberMain {
+  width: calc(100% - 200px);
+  background-color: rgba(31, 24, 47, 0.4);
+  margin-left: auto;
+  height: 70px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 11;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  .nav {
+    width: 100%;
+    height: 100%;
+    padding: 10px 24px;
+    .NavbarProfileSection {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 40px;
+      height: 100%;
+      cursor: pointer;
+      position: relative;
+      &::after {
+        position: absolute;
+        content: "";
+        width: 30px;
+        height: 100%;
+        right: 0;
+        top: 0;
+        background-image: url(../../images/Arrow\ -\ Down\ 6.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .profile {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        .image {
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}
+// ? ---------------------------- SIDEBAR SECTION ----------------------------------
+.sidebarMainSec {
+  width: 100%;
+  max-width: 200px;
+  background-color: var(--sidebar-bg-color);
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  padding: 20px 16px 20px 0;
+  .SidebarInner {
+    width: 100%;
+    height: 100%;
+
+    .FlexSectionMain {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 30px;
+      width: 100%;
+
+      .LogoSection {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        img {
+          width: 100%;
+          height: 100%;
+          max-width: 140px;
+          margin: auto;
+        }
+      }
+      .LinkSection {
+        width: 100%;
+
+        .ul {
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+          flex-direction: column;
+          gap: 20px;
+          width: 100%;
+          height: 100%;
+          list-style: none;
+          text-decoration: none;
+          padding: 0;
+          li {
+            list-style: none;
+            text-decoration: none;
+            width: 100%;
+            padding: 14px 20px;
+            &:active{
+              scale: 0.9;
+            }
+            a {
+              color: var(--main-white-color);
+              font-family: Inter;
+              font-size: 15px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 18px;
+              text-decoration: none;
+              text-transform: capitalize;
+              width: 100%;
+              span {
+                padding-right: 10px;
+                font-size: 16px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+//?------------------------------ PROJECTS SKULL SECTION ------------------------------------
+.ProjectsSkullMainDiv {
+  width: 100%;
+  height: 100%;
+  
+  .ProjectsInnerDiv {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: var(--main-white-color);
+    gap: 25px;
+    margin: auto;
+    max-width: 305px;
+    .HeaderImage {
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--secondry-bg-color);
+      overflow: hidden;
+      width: 100px;
+      height: 100px;
+      svg {
+        width: 60px;
+        height: 60px;
+      }
+    }
+    .ContextText {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 20px;
+      h3 {
+        text-align: center;
+        font-feature-settings: "clig" off, "liga" off;
+        font-family: Inter;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-transform: capitalize;
+      }
+      p {
+        text-transform: capitalize;
+        text-align: center;
+        font-family: Inter;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+      }
+      button{
+        width: 100%;
+        height: 48px;
+        font-size: 16px;
+      }
+    }
+  }
+}
+.ProjectsSkullCardOuterMainSection{
+  width: 100%;
+  background-color: var(--sidebar-bg-color);
+  border-radius: 30px;
+  -webkit-box-shadow: 0px 2px 50px -43px rgba(255,255,255,1);
+-moz-box-shadow: 0px 2px 50px -43px rgba(255,255,255,1);
+box-shadow: 0px 2px 50px -43px rgba(255,255,255,1);
+  .ProjectContentSkullInnerSectio{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 20px 20px;
+    gap: 20px;
+    .ProjectsSkullImageSection{
+      width: 40%;
+     
+
+      img{
+        width: 100%;
+        height: 100%;
+        max-height: 300px;
+        object-fit: cover;
+        border-radius: 20px;
+      }
+    }
+    .ProjectContentTextSection{
+      width: 60%;
+      .FlexSection{
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        gap: 30px;
+        color: var(--main-white-color);
+        h2{
+          font-family: Inter;
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
+        }
+        h6{
+          font-family: Inter;
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+        }
+        p{
+          font-family: Inter;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+          color: var(--non-hilighted-text);
+        }
+      }
+    }
+  }
+}
