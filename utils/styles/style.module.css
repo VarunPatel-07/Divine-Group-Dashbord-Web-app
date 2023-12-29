@@ -186,4 +186,81 @@
 }
 .AddProjectModalOuterDivMainSection .AddProjectModalInnerSection .AddInformationPart .FormSectionInputFlex .textInputSec .ButtonsFlexSection button {
   height: 50px !important;
+}
+
+.AddAdminPassModal {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: 11111111111;
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: 0.3s all;
+}
+.AddAdminPassModal .AdminPassCardInner {
+  background-color: var(--sidebar-bg-color);
+  max-width: 450px;
+  max-height: -moz-fit-content;
+  max-height: fit-content;
+  padding: 40px 40px;
+  border-radius: 30px;
+}
+.AddAdminPassModal .AdminPassCardInner .cardMainInput {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 40px;
+}
+.AddAdminPassModal .AdminPassCardInner .cardMainInput p {
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--main-white-color);
+  text-transform: capitalize;
+}
+.AddAdminPassModal .AdminPassCardInner .cardMainInput .InputFiledFlex {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.AddAdminPassModal .AdminPassCardInner .cardMainInput .InputFiledFlex label {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--main-white-color);
+  text-transform: capitalize;
+}
+.AddAdminPassModal .AdminPassCardInner .cardMainInput .InputFiledFlex input {
+  width: 100%;
+  height: 48px;
+  background-color: var(--secondry-bg-color);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  resize: none;
+  padding: 8px 14px;
+  color: var(--main-white-color);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+.AddAdminPassModal .AdminPassCardInner .cardMainInput .InputFiledFlex input:focus {
+  border: 0;
+  outline: 1px solid var(--button-main-color);
+}
+.AddAdminPassModal .AdminPassCardInner .cardMainInput button {
+  border: 0;
+  outline: 0;
 }/*# sourceMappingURL=style.module.css.map */

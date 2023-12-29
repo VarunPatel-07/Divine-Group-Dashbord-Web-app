@@ -6,8 +6,9 @@
 }
 button {
   cursor: pointer;
+  transition: 0.1s all;
   &:active {
-    scale: 0.9;
+    scale: 0.97;
   }
 }
 
@@ -32,10 +33,15 @@ body {
       margin: 0;
     }
   }
-  h1,h2,h3,h4,h5,h6,p{
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
     margin: 0;
     padding: 0;
-
   }
 }
 .active {
@@ -129,6 +135,12 @@ body {
   line-height: 16px;
   padding: 4px 32px;
   text-transform: capitalize;
+  transition: 0.1s all;
+  &:disabled {
+    cursor: not-allowed;
+    scale: 1 !important;
+    opacity:0.8 ;
+  }
 }
 .hiddenModal {
   scale: 0;
@@ -139,6 +151,6 @@ body {
 .notVisibles {
   scale: 0;
 }
-.height-48{
+.height-48 {
   height: 48px;
 }

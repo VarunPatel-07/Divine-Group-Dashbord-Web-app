@@ -76,6 +76,8 @@
 
 .loginSignUpPageSection {
   position: relative;
+  width: 100%;
+  height: 100%;
 }
 .loginSignUpPageSection .backgroundImage {
   width: 100%;
@@ -89,10 +91,10 @@
 .loginSignUpPageSection .LoginCardPageMainSection {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.4);
-  -webkit-backdrop-filter: blur(1px);
-          backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
   inset: 0;
   display: flex;
   align-items: center;
@@ -109,9 +111,14 @@
   border: 1.5px solid rgba(255, 255, 255, 0);
   background: linear-gradient(135deg, rgba(26, 19, 43, 0.8) 1.56%, rgba(26, 19, 43, 0.4) 98.91%);
   -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
   padding: 30px 30px;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage::-webkit-scrollbar-thumb, .loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage::-webkit-scrollbar, .loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage::-webkit-scrollbar-track {
+  width: 0;
+  height: 0;
 }
 .loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection {
   display: flex;
@@ -140,7 +147,7 @@
   gap: 40px;
 }
 .loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Input label,
-.loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Input p {
+.loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Input .navigatorBtn {
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
@@ -149,14 +156,19 @@
   color: var(--main-white-color);
   text-transform: capitalize;
 }
-.loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Input p {
+.loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Input .navigatorBtn {
   font-size: 13px;
   text-align: end;
   padding-top: 10px;
   padding-right: 5px;
   cursor: pointer;
+  text-align: end;
+  width: 100%;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
 }
-.loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Input p:hover {
+.loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Input .navigatorBtn:hover {
   color: var(--button-main-color);
   text-decoration: underline;
 }
@@ -199,7 +211,7 @@
 .loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Buttons {
   width: 100%;
 }
-.loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Buttons p {
+.loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Buttons .navigatorBtn {
   padding-top: 12px;
   font-family: Inter;
   font-size: 14px;
@@ -208,16 +220,46 @@
   line-height: normal;
   color: var(--main-white-color);
   text-align: center;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
 }
-.loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Buttons p span {
+.loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Buttons .navigatorBtn:active {
+  scale: 0.95 !important;
+}
+.loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Buttons .navigatorBtn span {
   color: var(--button-main-color);
   text-transform: capitalize;
   cursor: pointer;
 }
-.loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Buttons p span:hover {
+.loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Buttons .navigatorBtn span:hover {
   text-decoration: underline;
 }
 .loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Buttons button {
   width: 100%;
   height: 45px;
+}
+.loginSignUpPageSection .LoginCardPageMainSection .SignUpPage {
+  max-width: 500px;
+  max-height: 640px;
+}
+.loginSignUpPageSection .LoginCardPageMainSection .SignUpPage .LoginCardInnerSection {
+  height: 100%;
+  justify-content: space-between;
+  gap: 20px !important;
+}
+.loginSignUpPageSection .LoginCardPageMainSection .SignUpPage .LoginCardInnerSection .Input {
+  gap: 20px !important;
+}
+.loginSignUpPageSection .LoginCardPageMainSection .SignUpPage .LoginCardInnerSection .Input p {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--main-white-color);
+  text-transform: capitalize;
 }/*# sourceMappingURL=style.module.css.map */

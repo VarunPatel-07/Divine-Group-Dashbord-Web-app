@@ -79,6 +79,8 @@
 // ? ------------- LOGIN PAGE SECTION ---------------------------
 .loginSignUpPageSection {
   position: relative;
+  width: 100%;
+  height: 100%;
   .backgroundImage {
     width: 100%;
     height: 100vh;
@@ -90,9 +92,10 @@
   .LoginCardPageMainSection {
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
     inset: 0;
     display: flex;
     align-items: center;
@@ -111,9 +114,17 @@
         rgba(26, 19, 43, 0.8) 1.56%,
         rgba(26, 19, 43, 0.4) 98.91%
       );
+      -webkit-backdrop-filter: blur(5px);
       backdrop-filter: blur(5px);
       padding: 30px 30px;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
+      &::-webkit-scrollbar-thumb,
+      &::-webkit-scrollbar,
+      &::-webkit-scrollbar-track {
+        width: 0;
+        height: 0;
+      }
       .LoginCardInnerSection {
         display: flex;
         align-items: center;
@@ -139,7 +150,7 @@
           width: 100%;
           gap: 40px;
           label,
-          p {
+          .navigatorBtn {
             font-family: Inter;
             font-size: 16px;
             font-style: normal;
@@ -148,12 +159,17 @@
             color: var(--main-white-color);
             text-transform: capitalize;
           }
-          p {
+          .navigatorBtn {
             font-size: 13px;
             text-align: end;
             padding-top: 10px;
             padding-right: 5px;
             cursor: pointer;
+            text-align: end;
+            width: 100%;
+            background-color: transparent;
+            outline: 0;
+            border: 0;
             &:hover {
               color: var(--button-main-color);
               text-decoration: underline;
@@ -180,13 +196,13 @@
               width: 100%;
               padding: 10px 14px;
               height: 48px;
-              
+
               &:focus {
                 border: 0;
                 outline: 1px solid var(--button-main-color);
               }
             }
-            button{
+            button {
               position: absolute;
               background-color: transparent;
               color: var(--main-white-color);
@@ -200,7 +216,7 @@
         }
         .Buttons {
           width: 100%;
-          p {
+          .navigatorBtn {
             padding-top: 12px;
             font-family: Inter;
             font-size: 14px;
@@ -209,12 +225,20 @@
             line-height: normal;
             color: var(--main-white-color);
             text-align: center;
-            
-            span{
+            cursor: pointer;
+            text-align: center;
+            width: 100%;
+            background-color: transparent;
+            outline: 0;
+            border: 0;
+            &:active {
+              scale: 0.95 !important;
+            }
+            span {
               color: var(--button-main-color);
               text-transform: capitalize;
               cursor: pointer;
-              &:hover{
+              &:hover {
                 text-decoration: underline;
               }
             }
@@ -222,6 +246,27 @@
           button {
             width: 100%;
             height: 45px;
+          }
+        }
+      }
+    }
+    .SignUpPage {
+      max-width: 500px;
+      max-height: 640px;
+      .LoginCardInnerSection {
+        height: 100%;
+        justify-content: space-between;
+        gap: 20px !important;
+        .Input {
+          gap: 20px !important;
+          p {
+            font-family: Inter;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            color: var(--main-white-color);
+            text-transform: capitalize;
           }
         }
       }

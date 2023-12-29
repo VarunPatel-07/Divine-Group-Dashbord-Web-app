@@ -5,15 +5,22 @@ import BgImg from "../../../images/header-bg.png";
 import Image from "next/image";
 import Logo from "../../../images/Logo.png";
 import Eye from "../helper/Eye";
+import { useRouter } from 'next/navigation';
 
 function Login() {
   const [isEyeClose, setisEyeClose] = useState(false);
   const EyeClickBtn = () => {
+    e.preventDefault();
     if (isEyeClose) {
       setisEyeClose(false);
     } else {
       setisEyeClose(true);
     }
+  };
+  const { push } = useRouter();
+  const CreateAccountBtn = () => {
+    push("/pages/sign-up");
+    
   };
   return (
     <div className="login-sign-up-page">
@@ -27,7 +34,7 @@ function Login() {
           ></Image>
         </div>
         <div className={styles.LoginCardPageMainSection}>
-          <div className={styles.LoginCardPage}>
+          <form className={styles.LoginCardPage}>
             <div className={styles.LoginCardInnerSection}>
               <div className={styles.logoImg}>
                 <Image src={Logo} alt="logo" width="100%" height="100%"></Image>
@@ -35,7 +42,7 @@ function Login() {
               <div className={styles.Input}>
                 <div className="col-md-12">
                   <div className={styles.InputFlexSec}>
-                    <label htmlFor="UserName">UserName</label>
+                    <label htmlFor="UserName">User Name</label>
                     <input
                       type="text"
                       id="UserName"
@@ -52,24 +59,25 @@ function Login() {
                         id="UserName"
                         placeholder="Plese Enter Your UserName"
                       />
-                      <button onClick={EyeClickBtn}>
+                      <button onClick={EyeClickBtn} type="button">
                         <Eye isEyeClose={isEyeClose} />
                       </button>
                     </div>
                   </div>
-                  <p>Forgot Password?</p>
+                  <button className={styles.navigatorBtn}>Forgot Password?</button>
                 </div>
               </div>
               <div className={styles.Buttons}>
                 <div className="col-md-12">
                   <button className="filled-btn">Sign In</button>
-                  <p>
-                    Don`t Have an Account? <span> create account </span>
-                  </p>
+                  <button className={styles.navigatorBtn} type="button" onClick={CreateAccountBtn}>
+                    Don`t Have an Account?{" "}
+                    <span > create account </span>
+                  </button>
                 </div>
               </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
