@@ -5,6 +5,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  text-transform: capitalize;
 }
 
 .userrole {
@@ -15,6 +16,7 @@
   font-weight: 400;
   line-height: normal;
   opacity: 0.6;
+  text-transform: capitalize;
 }
 
 .navberMain {
@@ -214,6 +216,7 @@
   justify-content: flex-start;
   padding: 20px 20px;
   gap: 20px;
+  overflow: hidden;
 }
 .ProjectsSkullCardOuterMainSection .ProjectContentSkullInnerSectio .ProjectsSkullImageSection {
   width: 40%;
@@ -243,6 +246,7 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  line-break: anywhere;
 }
 .ProjectsSkullCardOuterMainSection .ProjectContentSkullInnerSectio .ProjectContentTextSection .FlexSection h6 {
   font-family: Inter;
@@ -250,6 +254,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  line-break: anywhere;
 }
 .ProjectsSkullCardOuterMainSection .ProjectContentSkullInnerSectio .ProjectContentTextSection .FlexSection p {
   font-family: Inter;
@@ -258,4 +263,5 @@
   font-weight: 500;
   line-height: normal;
   color: var(--non-hilighted-text);
+  line-break: anywhere;
 }/*# sourceMappingURL=style.module.css.map */

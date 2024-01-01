@@ -9,12 +9,12 @@ import { useRouter } from "next/navigation";
 import Form from "react-bootstrap/Form";
 import AddAdminPass from "@/utils/AddAdminPass";
 import noteContext from "@/context/noteContext";
-const Host = "http://localhost:500";
-import axios from "axios";
+
+
 function SignUp() {
   const context = useContext(noteContext);
 
-  const { content } = context;
+  const { content  ,RegisterUser } = context;
   const [Role, setRole] = useState("user");
   const [RoleIsAdmin, setRoleIsAdmin] = useState(false);
   const [ShowAdminPass, setShowAdminPass] = useState(false);
@@ -51,7 +51,7 @@ function SignUp() {
       setShowAdminPass(false);
     }
   };
-  const SumbitButton = (e) => {
+  const SubmitButton = (e) => {
     e.preventDefault();
     if (InputVal === "DivineGroup@Admin") {
       setRoleIsAdmin(true);
@@ -63,36 +63,21 @@ function SignUp() {
     setShowAdminPass(false);
   };
   const OnChange = (e) => {
-    console.log(e.target.value);
+    
     setInputVal(e.target.value);
   };
   const FillingInputFiled = (e) => {
     setInputFields({ ...InputFields, [e.target.name]: e.target.value });
   };
-  const OnCardInfoSumbit = async (e) => {
+  const OnCardInfoSubmit = async (e) => {
     e.preventDefault();
-    console.log(InputFields);
     const formdata = new FormData();
     formdata.append("username", InputFields.username);
     formdata.append("name", InputFields.name);
     formdata.append("email", InputFields.email);
     formdata.append("password", InputFields.password);
     formdata.append("role", Role);
-
-    console.log(formdata);
-
-    const responce = await axios.post(
-      `${Host}/app/api/auth/register`,
-      InputFields
-    );
-
-    console.log(responce);
-    if(responce.data.success){
-      push("/");
-      sessionStorage.setItem('authtoken' , responce.datatoken)
-    }else{
-      console.log(responce.data.message)
-    }
+    RegisterUser(InputFields)
   };
 
   return (
@@ -100,7 +85,7 @@ function SignUp() {
       {ShowAdminPass ? (
         <AddAdminPass
           SetRoleButton={SetRoleButton}
-          SumbitButton={SumbitButton}
+          SubmitButton={SubmitButton}
           OnChange={OnChange}
         />
       ) : (
@@ -120,7 +105,7 @@ function SignUp() {
           <div className={styles.LoginCardPageMainSection}>
             <form
               className={`${styles.LoginCardPage} ${styles.SignUpPage}`}
-              onSubmit={OnCardInfoSumbit}
+              onSubmit={OnCardInfoSubmit}
             >
               <div className={styles.LoginCardInnerSection}>
                 <div className={styles.logoImg}>
@@ -158,7 +143,7 @@ function SignUp() {
                           type="text"
                           id="name"
                           name="name"
-                          placeholder="Plese Enter Your Name"
+                          placeholder="Please Enter Your Name"
                           onChange={FillingInputFiled}
                         />
                       </div>

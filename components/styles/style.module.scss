@@ -5,6 +5,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  text-transform: capitalize;
 }
 .userrole {
   color: var(--main-white-color);
@@ -14,6 +15,7 @@
   font-weight: 400;
   line-height: normal;
   opacity: 0.6;
+  text-transform: capitalize;
 }
 
 //?------------------------------ NAVBAR SECTION ------------------------------------
@@ -219,6 +221,7 @@ box-shadow: 0px 2px 50px -43px rgba(255,255,255,1);
     justify-content: flex-start;
     padding: 20px 20px;
     gap: 20px;
+    overflow: hidden;
     .ProjectsSkullImageSection{
       width: 40%;
      
@@ -246,6 +249,7 @@ box-shadow: 0px 2px 50px -43px rgba(255,255,255,1);
           font-style: normal;
           font-weight: 700;
           line-height: normal;
+        line-break: anywhere;
         }
         h6{
           font-family: Inter;
@@ -253,6 +257,7 @@ box-shadow: 0px 2px 50px -43px rgba(255,255,255,1);
           font-style: normal;
           font-weight: 500;
           line-height: normal;
+          line-break: anywhere;
         }
         p{
           font-family: Inter;
@@ -261,6 +266,7 @@ box-shadow: 0px 2px 50px -43px rgba(255,255,255,1);
           font-weight: 500;
           line-height: normal;
           color: var(--non-hilighted-text);
+          line-break: anywhere;
         }
       }
     }

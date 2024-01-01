@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import styles from "./styles/style.module.css";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 
