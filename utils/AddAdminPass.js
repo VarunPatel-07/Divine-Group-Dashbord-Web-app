@@ -4,13 +4,12 @@ import styles from "./styles/style.module.css";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 
 function AddAdminPass(props) {
-  
-  const { SetRoleButton, SumbitButton ,OnChange } = props;
-  
+  const { SetRoleButton, SubmitButton, OnChange } = props;
+
   return (
     <div className={styles.AddAdminPassModal}>
       <div className={styles.AdminPassCardInner}>
-        <form className={styles.cardMainInput} onSubmit={SumbitButton}>
+        <form className={styles.cardMainInput} onSubmit={SubmitButton}>
           <div className="col-md-12">
             <button
               onClick={SetRoleButton}
@@ -36,8 +35,8 @@ function AddAdminPass(props) {
               <label htmlFor="">enter the password</label>
               <input
                 type="password"
-                
-                placeholder="Enter The Password" onChange={OnChange}
+                placeholder="Enter The Password"
+                onChange={OnChange}
               />
             </div>
           </div>
@@ -45,6 +44,7 @@ function AddAdminPass(props) {
             <button
               style={{ width: "100%", height: "48px" }}
               className="filled-btn"
+              type="submit"
             >
               sumbit
             </button>

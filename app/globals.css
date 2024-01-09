@@ -11,7 +11,7 @@ button {
     scale: 0.97;
   }
 }
-.w-0{
+.w-0 {
   scale: 0;
   padding: 0;
   overflow: hidden;
@@ -24,6 +24,7 @@ button {
   --sidebar-bg-color: #1a142a;
   --button-main-color: rgba(244, 24, 132, 1);
   --secondry-bg-color: #2c2341;
+  --popup-bg-color:#342b4a;
   --non-hilighted-text: rgb(255, 255, 255, 0.6);
 }
 body {
@@ -144,8 +145,11 @@ body {
   &:disabled {
     cursor: not-allowed;
     scale: 1 !important;
-    opacity:0.8 ;
+    opacity: 0.8;
   }
+}
+.filled-btn:disabled {
+  opacity: 0.5;
 }
 .hiddenModal {
   scale: 0;
@@ -159,7 +163,7 @@ body {
 .height-48 {
   height: 48px;
 }
-.loader-main{
+.loader-main {
   width: 100%;
   height: 100%;
   display: flex;
@@ -170,8 +174,10 @@ body {
   border: 5px solid #979797;
   border-top: 5px solid #ffffff;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 100%;
+  height: 100%;
+  max-width: 40px;
+  max-height: 40px;
   animation: spin 1s linear infinite;
 }
 @keyframes spin {
@@ -182,7 +188,7 @@ body {
     transform: rotate(360deg);
   }
 }
-.form-check{
+.form-check {
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
@@ -190,18 +196,17 @@ body {
   line-height: 16px;
   color: var(--main-white-color);
 }
-input{
+input {
   margin: 0 !important;
   padding: 0;
-
 }
-.txt-pera-1{
+.txt-pera-1 {
   font-family: Inter;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
   text-transform: capitalize;
-  color: rgb(246, 244, 245 , 0.5);
+  color: rgb(246, 244, 245, 0.5);
   width: 100%;
   padding: 0 0 0 35px;
   margin: 0;

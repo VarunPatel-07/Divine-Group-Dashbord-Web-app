@@ -44,6 +44,7 @@
       height: 100%;
       cursor: pointer;
       position: relative;
+
       &::after {
         position: absolute;
         content: "";
@@ -59,8 +60,47 @@
         display: flex;
         align-items: center;
         gap: 10px;
+
         .image {
+          border-radius: 50%;
           overflow: hidden;
+          width: 50px;
+          height: 50px;
+          .DefaultProfile {
+            width: 100%;
+            height: 100%;
+            background-color: azure;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .pera {
+              width: 100%;
+              height: 100%;
+
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              p {
+                color: rgb(255, 255, 255);
+                font-family: Inter;
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 600;
+                text-transform: uppercase;
+                padding: 0;
+                margin: 0;
+              }
+            }
+          }
+        }
+        .UserName {
+          .flex {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-direction: column;
+            gap: 3px;
+          }
         }
       }
     }
@@ -119,7 +159,7 @@
             text-decoration: none;
             width: 100%;
             padding: 14px 20px;
-            &:active{
+            &:active {
               scale: 0.9;
             }
             a {
@@ -143,11 +183,67 @@
     }
   }
 }
+.TwoStepVerificationSection {
+  transition: 1s all;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  height: 120px;
+  max-width: 420px;
+  background-color: var(--popup-bg-color);
+  border: 1px solid var(--main-white-color);
+  z-index: 1111;
+  .InnerSec {
+    width: 100%;
+    height: 100%;
+    padding: 12px 16px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+
+    .TextSec {
+      p {
+        color: var(--main-white-color);
+        font-family: Inter;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 24px;
+        text-transform: capitalize;
+      }
+    }
+    .buttonGroups {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      width: 100%;
+      button {
+        background-color: transparent;
+        border-radius: 10px;
+        border: 1px solid var(--main-white-color);
+        padding: 5px 20px;
+        color: var(--main-white-color);
+        font-family: Inter;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-transform: capitalize;
+        &:hover {
+          background-color: var(--main-white-color);
+          color: black;
+        }
+      }
+    }
+  }
+}
 //?------------------------------ PROJECTS SKULL SECTION ------------------------------------
 .ProjectsSkullMainDiv {
   width: 100%;
   height: 100%;
-  
+
   .ProjectsInnerDiv {
     width: 100%;
     height: 100%;
@@ -198,7 +294,7 @@
         font-weight: 400;
         line-height: 16px;
       }
-      button{
+      button {
         width: 100%;
         height: 48px;
         font-size: 16px;
@@ -206,60 +302,70 @@
     }
   }
 }
-.ProjectsSkullCardOuterMainSection{
+.ProjectsSkullCardOuterMainSection {
   width: 100%;
-  background-color: var(--sidebar-bg-color);
-  border-radius: 30px;
-  -webkit-box-shadow: 0px 2px 50px -43px rgba(255,255,255,1);
--moz-box-shadow: 0px 2px 50px -43px rgba(255,255,255,1);
-box-shadow: 0px 2px 50px -43px rgba(255,255,255,1);
-  .ProjectContentSkullInnerSectio{
+  background-color: transparent;
+  cursor: pointer;
+
+  .ProjectContentSkullInnerSection {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: stretch;
     justify-content: flex-start;
-    padding: 20px 20px;
-    gap: 20px;
+    gap: 18px;
     overflow: hidden;
-    .ProjectsSkullImageSection{
-      width: 40%;
-     
+    position: relative;
+    flex-direction: column;
+    .ProjectsSkullImageSection {
+      width: 100%;
 
-      img{
+      img {
         width: 100%;
         height: 100%;
-        max-height: 300px;
+        max-height: 250px;
         object-fit: cover;
-        border-radius: 20px;
+        border-radius: 10px;
+        aspect-ratio: 1;
+        min-width: 250px;
+        max-height: 250px;
+      }
+      span{
+        width: 100%;
+        height: 100%;
+        max-height: 250px;
+        object-fit: cover;
+        border-radius: 10px;
+        aspect-ratio: 1;
+        min-width: 250px;
+        max-height: 250px;
       }
     }
-    .ProjectContentTextSection{
-      width: 60%;
-      .FlexSection{
+    .ProjectContentTextSection {
+      width: 100%;
+      padding: 0 10px;
+      .FlexSection {
         display: flex;
         align-items: flex-start;
         justify-content: flex-start;
         flex-direction: column;
-        gap: 30px;
+        gap: 10px;
         color: var(--main-white-color);
-        h2{
+        h2 {
           font-family: Inter;
-          font-size: 20px;
+          font-size: 16px;
           font-style: normal;
           font-weight: 700;
           line-height: normal;
-        line-break: anywhere;
-        }
-        h6{
-          font-family: Inter;
-          font-size: 15px;
-          font-style: normal;
-          font-weight: 500;
-          line-height: normal;
           line-break: anywhere;
+          text-transform: capitalize;
+          width: 100%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
-        p{
+       
+        p {
           font-family: Inter;
           font-size: 12px;
           font-style: normal;
@@ -267,8 +373,32 @@ box-shadow: 0px 2px 50px -43px rgba(255,255,255,1);
           line-height: normal;
           color: var(--non-hilighted-text);
           line-break: anywhere;
+          text-transform: capitalize;
+          width: 100%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+         
         }
       }
+    }
+    .CardStatusIcon {
+      position: absolute;
+      top: 10px;
+      right: 30px;
+      font-family: Inter;
+      font-size: 11px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      color: var(--non-hilighted-text);
+      line-break: anywhere;
+      text-transform: capitalize;
+      width: fit-content;
+      padding: 3px 10px;
+      border-radius: 20px;
+      border: 1px solid var(--non-hilighted-text);
+      opacity: 0.5;
     }
   }
 }

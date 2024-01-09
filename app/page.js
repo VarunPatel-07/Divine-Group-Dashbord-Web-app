@@ -7,17 +7,16 @@ function Home() {
   const [Loading, setLoading] = useState(true);
   const context = useContext(noteContext);
 
-  const { IsLogIn ,  AuthToken , FetchUserDetail } = context;
+  const { IsLogIn, AuthToken, FetchUserDetail } = context;
   useEffect(() => {
-    
-    if (IsLogIn.Is_Login_Status || IsLogIn.authToken!=="undefined") {
-      setLoading(false);
-      FetchUserDetail( AuthToken);
-    } else {
+    if (!IsLogIn) {
       setLoading(true);
       push("/pages/login");
+      
+    } else {
+      setLoading(false);
+      FetchUserDetail(AuthToken);
     }
-   
   }, []);
   if (Loading) {
     return (

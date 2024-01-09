@@ -107,7 +107,8 @@
 .loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage {
   width: 100%;
   max-width: 480px;
-  max-height: 500px;
+  max-height: -moz-fit-content;
+  max-height: fit-content;
   height: 100%;
   margin: 50px auto;
   border-radius: 28px;
@@ -115,7 +116,7 @@
   background: linear-gradient(135deg, rgba(26, 19, 43, 0.8) 1.56%, rgba(26, 19, 43, 0.4) 98.91%);
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
-  padding: 30px 30px;
+  padding: 30px 40px;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -148,6 +149,30 @@
   flex-direction: column;
   width: 100%;
   gap: 40px;
+}
+.loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Input .VerificationText {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 12px;
+  flex-direction: column;
+}
+.loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Input .VerificationText h3 {
+  font-family: Inter;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  color: var(--main-white-color);
+}
+.loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Input .VerificationText p {
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--non-hilighted-text);
 }
 .loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Input label,
 .loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Input .navigatorBtn {
@@ -196,6 +221,7 @@
   width: 100%;
   padding: 10px 14px;
   height: 48px;
+  width: 100%;
 }
 .loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Input .InputFlexSec input:focus {
   border: 0;
@@ -211,8 +237,68 @@
   transform: translateY(-50%);
   right: 14px;
 }
+.loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Input .InputFlexSecVerification {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+.loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Input .InputFlexSecVerification input {
+  color: var(--main-white-color);
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(44, 35, 65, 0.8);
+  width: 100%;
+  max-width: 60px;
+  padding: 10px 14px;
+  height: 60px;
+  width: 100%;
+}
+.loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Input .InputFlexSecVerification input:focus {
+  border: 0;
+  outline: 1px solid var(--button-main-color);
+}
+.loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Input .InputFlexSecVerification input::-moz-placeholder {
+  color: var(--non-hilighted-text);
+}
+.loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Input .InputFlexSecVerification input::placeholder {
+  color: var(--non-hilighted-text);
+}
+.loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Input .InputFlexSecVerification button {
+  position: absolute;
+  background-color: transparent;
+  color: var(--main-white-color);
+  outline: 0;
+  border: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 14px;
+}
 .loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Buttons {
   width: 100%;
+}
+.loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Buttons .BackPageButton {
+  padding-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Buttons .BackPageButton button {
+  padding: 0;
+  margin: 0;
+}
+.loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Buttons .BackPageButton .navigatorBtn:nth-child(2) {
+  font-size: 16px;
+  font-weight: 500;
 }
 .loginSignUpPageSection .LoginCardPageMainSection .LoginCardPage .LoginCardInnerSection .Buttons .navigatorBtn {
   padding-top: 12px;
@@ -265,4 +351,64 @@
   line-height: normal;
   color: var(--main-white-color);
   text-transform: capitalize;
+}
+
+.InformationModalSection {
+  width: 100%;
+  height: 100%;
+  max-width: 350px;
+  max-height: 80px;
+  background-color: aliceblue;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.InformationModalSection .InformationModalInnerSection {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.InformationModalSection .InformationModalInnerSection .paragraph {
+  height: 90%;
+  width: 100%;
+  padding: 0 12px;
+}
+.InformationModalSection .InformationModalInnerSection .paragraph p {
+  text-align: start;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  color: #0e0e0e;
+  text-transform: capitalize;
+}
+.InformationModalSection .InformationModalInnerSection .progressBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 6px;
+  width: 100%;
+  background-color: var(--button-main-color);
+  padding: 1px;
+  animation: Line 3s ease-in 1;
+}
+@keyframes Line {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
 }/*# sourceMappingURL=style.module.css.map */

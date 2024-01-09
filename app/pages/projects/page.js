@@ -5,8 +5,11 @@ import ProjectsSkull from "@/components/ProjectsSkull";
 import AddProjectModal from "@/utils/AddProjectModal";
 import noteContext from "@/context/noteContext";
 import Loader from "@/utils/Loader";
+import { useRouter } from "next/navigation";
+import SkeletonProjectLoader from "@/components/SkeletonProjectLoader";
 
 function Projects() {
+  const { push } = useRouter();
   const context = useContext(noteContext);
   const {
     Projects,
@@ -14,6 +17,7 @@ function Projects() {
     FetchAllPublicProjects,
     FetchAllYourProjects,
     AuthToken,
+    IsLogIn,
   } = context;
   const [IsLoading, setIsLoading] = useState(true);
   const [FetchAllProjects, setFetchAllProjects] = useState(true);
@@ -35,9 +39,14 @@ function Projects() {
     setAddModalState(true);
   };
   useEffect(() => {
-    FetchAllPublicProjects(AuthToken);
-    FetchAllYourProjects(AuthToken);
-    setIsLoading(false);
+    if (!IsLogIn) {
+      setIsLoading(true);
+      push("/pages/login");
+    } else {
+      FetchAllPublicProjects(AuthToken);
+      FetchAllYourProjects(AuthToken);
+      setIsLoading(false);
+    }
   }, []);
 
   return (
@@ -72,15 +81,16 @@ function Projects() {
             </div>
             <div className={styles.ProjectsAddingMainSec}>
               {IsLoading ? (
-                <Loader />
+                <SkeletonProjectLoader/>
               ) : (
                 <ProjectsSkull
                   OpenModalButton={OpenModalButton}
-                  Projects={FetchAllProjects?PublicProjects:ProjectContent}
-                  IsLoading={IsLoading}
+                  Projects={FetchAllProjects ? PublicProjects : ProjectContent}
+                  FetchAllProjects={FetchAllProjects}
                 />
               )}
             </div>
+            
           </div>
         </div>
       </div>

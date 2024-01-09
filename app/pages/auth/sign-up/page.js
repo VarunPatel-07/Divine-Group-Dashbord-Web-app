@@ -1,10 +1,10 @@
 "use client";
 import React, { useContext, useState } from "react";
-import styles from "../styles/style.module.css";
-import BgImg from "../../../images/header-bg.png";
+import styles from "../../styles/style.module.css";
+// import BgImg from "../../../../images/";
 import Image from "next/image";
-import Logo from "../../../images/Logo.png";
-import Eye from "../helper/Eye";
+// import Logo from "../../../images/Logo.png";
+import Eye from "../../helper/Eye";
 import { useRouter } from "next/navigation";
 import Form from "react-bootstrap/Form";
 import AddAdminPass from "@/utils/AddAdminPass";
@@ -18,7 +18,7 @@ function SignUp() {
   const [Role, setRole] = useState("user");
   const [RoleIsAdmin, setRoleIsAdmin] = useState(false);
   const [ShowAdminPass, setShowAdminPass] = useState(false);
-  const [isEyeClose, setisEyeClose] = useState(false);
+  const [IsEyeClose, setIsEyeClose] = useState(false);
   const [InputVal, setInputVal] = useState("");
   const [InputFields, setInputFields] = useState({
     username: "",
@@ -30,10 +30,10 @@ function SignUp() {
 
   const EyeClickBtn = (e) => {
     e.preventDefault();
-    if (isEyeClose) {
-      setisEyeClose(false);
+    if (IsEyeClose) {
+      setIsEyeClose(false);
     } else {
-      setisEyeClose(true);
+      setIsEyeClose(true);
     }
   };
   const { push } = useRouter();
@@ -52,8 +52,10 @@ function SignUp() {
     }
   };
   const SubmitButton = (e) => {
+    
     e.preventDefault();
     if (InputVal === "DivineGroup@Admin") {
+      console.log("hello")
       setRoleIsAdmin(true);
       setRole("Admin");
     } else {
@@ -63,7 +65,7 @@ function SignUp() {
     setShowAdminPass(false);
   };
   const OnChange = (e) => {
-    
+  
     setInputVal(e.target.value);
   };
   const FillingInputFiled = (e) => {
@@ -77,7 +79,7 @@ function SignUp() {
     formdata.append("email", InputFields.email);
     formdata.append("password", InputFields.password);
     formdata.append("role", Role);
-    RegisterUser(InputFields)
+    RegisterUser(formdata)
   };
 
   return (
@@ -167,14 +169,14 @@ function SignUp() {
                       <label htmlFor="password">password</label>
                       <div className="w-100 position-relative height-48">
                         <input
-                          type={isEyeClose ? "text" : "password"}
+                          type={IsEyeClose ? "text" : "password"}
                           id="password"
                           name="password"
                           placeholder="Plese Enter a strong and apropriate password"
                           onChange={FillingInputFiled}
                         />
                         <button onClick={EyeClickBtn} type="button">
-                          <Eye isEyeClose={isEyeClose} />
+                          <Eye isEyeClose={IsEyeClose} />
                         </button>
                       </div>
                     </div>
