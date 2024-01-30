@@ -4,6 +4,7 @@
     "authtoken",
     "Cryptr",
     "emailvarification",
+    "fetchusers",
     "formdata",
     "Loding",
     "Pincode",

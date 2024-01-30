@@ -7,51 +7,58 @@ import Logo from "../../../../images/Logo.png";
 import Eye from "../../helper/Eye";
 import noteContext from "@/context/noteContext";
 import { useRouter } from "next/navigation";
+import Loader from "@/utils/Loader";
 
 function OTP() {
   const { push } = useRouter();
-  const inputRef = useRef(0);
+  const inputRefs = useRef([]);
   const context = useContext(noteContext);
-  const { VerifyOTP } = context;
+  const { AuthToken, VerifyOTP, GlobalLoadingState } = context;
   const initialState = [];
-  const [VerificationInput, setVerificationInputFiled] = useState(initialState);
   const [ActiveOtpState, setActiveOtpState] = useState(0);
-
-  const OnChange = (e) => {
-    setVerificationInputFiled({
-      ...VerificationInput,
-      [e.target.name]: e.target.value,
-    });
-    if (ActiveOtpState <= 2) {
-      setActiveOtpState(ActiveOtpState + 1);
+  const [OTPArray, setOTPArray] = useState(new Array(4).fill(""));
+  const OnChange = (index, e) => {
+    const length = 4;
+    const value = e.target.value;
+    if (isNaN(value)) return;
+    const NewOtp = [...OTPArray];
+    NewOtp[index] = value.substring(value.length - 1);
+    setOTPArray(NewOtp);
+    if (value && index < length - 1 && inputRefs.current[index + 1]) {
+      inputRefs.current[index + 1].focus();
     }
   };
 
   const OnSumbit = (e) => {
     e.preventDefault();
-    const VerificationText =
-      VerificationInput.InputFiledOne +
-      VerificationInput.InputFiledTwo +
-      VerificationInput.InputFiledThree +
-      VerificationInput.InputFiledFour;
-    VerifyOTP(VerificationText);
-  };
-  window.addEventListener("keydown", function (event) {
-    const key = event.key; // "a", "1", "Shift", etc.
+    const combinedOtp = OTPArray.join("");
 
-    if (key === "Backspace") {
-     
-      if(ActiveOtpState !== 0){
-          setActiveOtpState(ActiveOtpState - 1);
-      }
-      
+    const OTPTxt = {
+      oneTimeToken: combinedOtp,
+    };
+    VerifyOTP(AuthToken, OTPTxt);
+  };
+  const HandelClick = (index) => {
+    inputRefs.current[index].setSelectionRange(1, 1);
+    if (index > 0 && !OTPArray[index - 1]) {
+      inputRefs.current[OTPArray.indexOf("")].focus()
     }
-  });
+  };
+  const HandelKeyDown = (index, e) => {
+    if (
+      e.key == "Backspace" &&
+      !OTPArray[index] &&
+      index > 0 &&
+      inputRefs.current[index - 1]
+    ) {
+      inputRefs.current[index - 1].focus();
+    }
+  };
   useEffect(() => {
-    const Input = document.querySelectorAll("#Input");
-  
-    Input[ActiveOtpState].focus();
-  }, [ActiveOtpState]);
+    if (inputRefs.current[0]) {
+      inputRefs.current[0].focus();
+    }
+  }, []);
   return (
     <div className="login-sign-up-page">
       <div className={styles.loginSignUpPageSection}>
@@ -77,68 +84,34 @@ function OTP() {
                   </p>
                 </div>
                 <div className="row p-0">
-                  <div className="col-md-3 ">
-                    <div className={styles.InputFlexSecVerification}>
-                      <input
-                        type="text"
-                        id="Input"
-                        name="InputFiledOne"
-                        placeholder="0"
-                        onChange={OnChange}
-                        className="text-center"
-                        maxLength="1"
-                        ref={inputRef}
-                      />
+                  {OTPArray.map((value, index) => (
+                    <div className="col-md-3 " key={index}>
+                      <div className={styles.InputFlexSecVerification}>
+                        <input
+                          type="text"
+                          id="Input"
+                          name="InputFiledOne"
+                          placeholder="0"
+                          onChange={(e) => OnChange(index, e)}
+                          onClick={() => HandelClick(index)}
+                          onKeyDown={(e) => HandelKeyDown(index, e)}
+                          className="text-center"
+                          ref={(input) => (inputRefs.current[index] = input)}
+                          value={value}
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div className="col-md-3 ">
-                    <div className={styles.InputFlexSecVerification}>
-                      <input
-                        type="text"
-                        id="Input"
-                        name="InputFiledTwo"
-                        placeholder="0"
-                        onChange={OnChange}
-                        className="text-center"
-                        maxLength="1"
-                        ref={inputRef}
-                      />
-                    </div>
-                  </div>
-                  <div className="col-md-3 ">
-                    <div className={styles.InputFlexSecVerification}>
-                      <input
-                        type="text"
-                        id="Input"
-                        name="InputFiledThree"
-                        placeholder="0"
-                        onChange={OnChange}
-                        className="text-center"
-                        maxLength="1"
-                        ref={inputRef}
-                      />
-                    </div>
-                  </div>
-                  <div className="col-md-3">
-                    <div className={styles.InputFlexSecVerification}>
-                      <input
-                        type="text"
-                        id="Input"
-                        name="InputFiledFour"
-                        placeholder="0"
-                        onChange={OnChange}
-                        className="text-center"
-                        maxLength="1"
-                        ref={inputRef}
-                      />
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
               <div className={styles.Buttons}>
                 <div className="col-md-12 w-100">
                   <button className="filled-btn" type="submit">
-                    Continue
+                    {GlobalLoadingState.OTP_Verification_Loding ? (
+                      <Loader />
+                    ) : (
+                      " Continue"
+                    )}
                   </button>
                   <div className={styles.BackPageButton}>
                     <button className={styles.navigatorBtn} type="button">

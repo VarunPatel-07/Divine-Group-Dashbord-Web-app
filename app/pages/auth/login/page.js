@@ -12,23 +12,23 @@ import Loader from "@/utils/Loader";
 function Login() {
   const { push } = useRouter();
   const context = useContext(noteContext);
-  const { LogInToYourAccount, ErrorState, GlobalLoadingState } =
-    context;
+  const { LogInToYourAccount, ErrorState, GlobalLoadingState } = context;
   const [IsEyeClose, setIsEyeClose] = useState(false);
   const [InputFields, setInputFields] = useState({
     username: "",
     password: "",
   });
   const EyeClickBtn = (e) => {
-    e.preventDefault();
+   
     if (IsEyeClose) {
       setIsEyeClose(false);
     } else {
       setIsEyeClose(true);
     }
+   
   };
   const CreateAccountBtn = () => {
-    push("/pages/sign-up");
+    push("/pages/auth/sign-up");
   };
   const OnChange = (e) => {
     setInputFields({ ...InputFields, [e.target.name]: e.target.value });
@@ -39,7 +39,7 @@ function Login() {
   };
   return (
     <>
-      <div className="login-sign-up-page">
+      <div className="login-sign-up-page w-100 h-100">
         <div className={styles.loginSignUpPageSection}>
           <div className={styles.backgroundImage}>
             <Image
@@ -85,18 +85,34 @@ function Login() {
                           onChange={OnChange}
                         />
                         <button onClick={EyeClickBtn} type="button">
-                          <Eye IsEyeClose={IsEyeClose} />
+                          <Eye isEyeClose={IsEyeClose} />
                         </button>
                       </div>
                     </div>
-                    <button className={styles.navigatorBtn} style={{width:"fit-content", marginLeft:'auto' , display:'flex'}}>
+                    <button
+                      className={styles.navigatorBtn}
+                      style={{
+                        width: "fit-content",
+                        marginLeft: "auto",
+                        display: "flex",
+                      }}
+                    >
                       Forgot Password?
                     </button>
                   </div>
                 </div>
                 <div className={styles.Buttons}>
                   <div className="col-md-12 w-100">
-                    <button className="filled-btn" type="submit" disabled={InputFields.username.length>=3&&InputFields.password.length>=8?false:true}>
+                    <button
+                      className="filled-btn"
+                      type="submit"
+                      disabled={
+                        InputFields.username.length >= 3 &&
+                        InputFields.password.length >= 8
+                          ? false
+                          : true
+                      }
+                    >
                       {GlobalLoadingState.LogInLoading ? <Loader /> : "Sign In"}
                     </button>
                     <button
@@ -125,6 +141,7 @@ function Login() {
       ) : (
         ""
       )}
+     
     </>
   );
 }

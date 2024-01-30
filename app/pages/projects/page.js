@@ -12,7 +12,7 @@ function Projects() {
   const { push } = useRouter();
   const context = useContext(noteContext);
   const {
-    Projects,
+    UsersProjects,
     PublicProjects,
     FetchAllPublicProjects,
     FetchAllYourProjects,
@@ -21,7 +21,7 @@ function Projects() {
   } = context;
   const [IsLoading, setIsLoading] = useState(true);
   const [FetchAllProjects, setFetchAllProjects] = useState(true);
-  const [ProjectContent, setProjectContent] = useState();
+  const [UsersProjectContent, setUsersProjectContent] = useState();
   const [AddModalState, setAddModalState] = useState(false);
   const AllProjects = () => {
     setFetchAllProjects(true);
@@ -29,7 +29,7 @@ function Projects() {
   };
   const YourProjects = () => {
     setFetchAllProjects(false);
-    setProjectContent(Projects);
+    setUsersProjectContent(UsersProjects);
     setIsLoading(false);
   };
   const CloseModalBtn = () => {
@@ -41,7 +41,7 @@ function Projects() {
   useEffect(() => {
     if (!IsLogIn) {
       setIsLoading(true);
-      push("/pages/login");
+      push("/pages/auth/login");
     } else {
       FetchAllPublicProjects(AuthToken);
       FetchAllYourProjects(AuthToken);
@@ -81,16 +81,15 @@ function Projects() {
             </div>
             <div className={styles.ProjectsAddingMainSec}>
               {IsLoading ? (
-                <SkeletonProjectLoader/>
+                <SkeletonProjectLoader />
               ) : (
                 <ProjectsSkull
                   OpenModalButton={OpenModalButton}
-                  Projects={FetchAllProjects ? PublicProjects : ProjectContent}
+                  Projects={FetchAllProjects ? PublicProjects : UsersProjectContent}
                   FetchAllProjects={FetchAllProjects}
                 />
               )}
             </div>
-            
           </div>
         </div>
       </div>

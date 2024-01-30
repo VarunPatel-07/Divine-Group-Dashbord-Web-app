@@ -1,20 +1,20 @@
 "use client";
 import React, { useContext, useState } from "react";
 import styles from "../../styles/style.module.css";
-// import BgImg from "../../../../images/";
+import BgImg from "../../../../images/header-bg.png";
 import Image from "next/image";
-// import Logo from "../../../images/Logo.png";
+import Logo from "../../../../images/Logo.png";
 import Eye from "../../helper/Eye";
 import { useRouter } from "next/navigation";
 import Form from "react-bootstrap/Form";
 import AddAdminPass from "@/utils/AddAdminPass";
 import noteContext from "@/context/noteContext";
-
+import Loader from "@/utils/Loader";
 
 function SignUp() {
   const context = useContext(noteContext);
 
-  const { content  ,RegisterUser } = context;
+  const { content, RegisterUser, GlobalLoadingState } = context;
   const [Role, setRole] = useState("user");
   const [RoleIsAdmin, setRoleIsAdmin] = useState(false);
   const [ShowAdminPass, setShowAdminPass] = useState(false);
@@ -38,7 +38,7 @@ function SignUp() {
   };
   const { push } = useRouter();
   const CreateAccountBtn = () => {
-    push("/pages/login");
+    push("/pages/auth/login");
   };
   const SetRoleButtonTwo = () => {
     setRoleIsAdmin(false);
@@ -52,10 +52,9 @@ function SignUp() {
     }
   };
   const SubmitButton = (e) => {
-    
     e.preventDefault();
     if (InputVal === "DivineGroup@Admin") {
-      console.log("hello")
+      console.log("hello");
       setRoleIsAdmin(true);
       setRole("Admin");
     } else {
@@ -65,7 +64,6 @@ function SignUp() {
     setShowAdminPass(false);
   };
   const OnChange = (e) => {
-  
     setInputVal(e.target.value);
   };
   const FillingInputFiled = (e) => {
@@ -79,7 +77,7 @@ function SignUp() {
     formdata.append("email", InputFields.email);
     formdata.append("password", InputFields.password);
     formdata.append("role", Role);
-    RegisterUser(formdata)
+    RegisterUser(formdata);
   };
 
   return (
@@ -230,7 +228,11 @@ function SignUp() {
                         InputFields.password.length < 8
                       }
                     >
-                      Sign In
+                      {GlobalLoadingState.Sign_In_Loding ? (
+                        <Loader />
+                      ) : (
+                        "Sign In"
+                      )}
                     </button>
                     <button
                       className={styles.navigatorBtn}

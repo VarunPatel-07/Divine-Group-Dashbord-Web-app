@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 * {
   padding: 0;
   margin: 0;
@@ -24,8 +25,9 @@ button {
   --sidebar-bg-color: #1a142a;
   --button-main-color: rgba(244, 24, 132, 1);
   --secondry-bg-color: #2c2341;
-  --popup-bg-color:#342b4a;
+  --popup-bg-color: #342b4a;
   --non-hilighted-text: rgb(255, 255, 255, 0.6);
+  --border-color: rgb(255, 255, 255, 0.1);
 }
 body {
   background-color: var(--main-bg-color) !important;
@@ -50,6 +52,9 @@ body {
     padding: 0;
   }
 }
+a {
+  text-decoration: none !important;
+}
 .active {
   background-color: var(--button-main-color) !important;
   width: 100% !important;
@@ -65,7 +70,7 @@ body {
   margin-left: auto;
   height: 100vh;
   background-color: var(--main-bg-color);
-  padding: 65px 0 0 0;
+  padding: 70px 0 0 0;
   overflow-y: auto;
 }
 .active-li-btn {
@@ -171,13 +176,13 @@ body {
   justify-content: center;
 }
 .loader {
-  border: 5px solid #979797;
-  border-top: 5px solid #ffffff;
+  border: 3px solid #979797;
+  border-top: 3px solid #ffffff;
   border-radius: 50%;
   width: 100%;
   height: 100%;
-  max-width: 40px;
-  max-height: 40px;
+  max-width: 30px;
+  max-height: 30px;
   animation: spin 1s linear infinite;
 }
 @keyframes spin {
@@ -210,4 +215,141 @@ input {
   width: 100%;
   padding: 0 0 0 35px;
   margin: 0;
+}
+.alice-carousel__prev-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 5px;
+  padding: 0 !important;
+}
+.alice-carousel__prev-btn-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.alice-carousel__prev-btn-item,
+.alice-carousel__next-btn-item {
+  transition: 0.5s all;
+}
+.alice-carousel__prev-btn-item span,
+.alice-carousel__next-btn-item span {
+  background-color: white;
+  opacity: 1;
+  font-size: 20px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  mix-blend-mode: multiply;
+  background-color: rgb(235, 235, 235);
+  padding: 7px;
+  transition: 0.5s all;
+  border: 3px solid rgb(235, 235, 235);
+}
+.__inactive {
+  display: none !important;
+}
+.alice-carousel__prev-btn-item span:hover,
+.alice-carousel__next-btn-item span:hover {
+  background-color: #ffffff;
+  border: 3px solid black;
+}
+.alice-carousel__prev-btn-item span::after {
+  position: absolute;
+  height: 100% !important;
+  width: 100% !important;
+  top: 0;
+  left: 0;
+  text-align: center;
+  content: "" !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-image: url(https://www.freeiconspng.com/uploads/right-arrow-icon-12.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: rotate(180deg);
+  mix-blend-mode: multiply;
+  background-color: white;
+}
+.alice-carousel__next-btn-item span::after {
+  position: absolute;
+  height: 100% !important;
+  width: 100% !important;
+  top: 0;
+  left: 0;
+  text-align: center;
+  content: "" !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(https://www.freeiconspng.com/uploads/right-arrow-icon-12.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  mix-blend-mode: multiply;
+  background-color: white;
+}
+.alice-carousel__next-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 5px;
+  padding: 0 !important;
+}
+.alice-carousel__next-btn-wrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.Show_Modal {
+  transition: 0.3s all;
+}
+.Hide_Modal {
+  transition: 0.3s all;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  top: 0 !important;
+  left: 0 !important;
+  overflow: hidden;
+  padding: 0 !important;
+}
+.Hide_Modal button {
+  opacity: 0;
+}
+.Show_Group_Chat_Modal{
+  top: 0;
+  left: 0;
+}
+.Hide_Group_Chat_Modal{
+  top: 0;
+  left: -100%;
+ 
+}
+._Border_Bottom{
+  border-bottom: 1px solid rgb(246, 244, 245, 0.5);
+  margin-bottom: 10px;
+}
+._Selected_{
+  background-color: #B4D5FE !important;
+  width: 0 !important;
+  height: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+ 
+}
+._Show_Continue_Btn{
+  width: 100% !important;
+  
+}
+._Show_Continue_Btn button svg{
+  opacity: 1 !important;
 }

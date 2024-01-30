@@ -31,12 +31,79 @@
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   .nav {
     width: 100%;
     height: 100%;
     padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .SearchBarSection {
+      width: 50%;
+      height: 35px;
+      .SearchFlexSection {
+        display: flex;
+        align-items: stretch;
+        justify-content: flex-start;
+        width: 100%;
+        max-width: 450px;
+        height: 100%;
+        border: 1px solid var(--non-hilighted-text);
+        border-radius: 20px;
+        overflow: hidden;
+        background-color: var( --secondry-bg-color);
+        .SearchInput {
+          width: 85%;
+          height: 100%;
+          input {
+            width: 100%;
+            height: 100%;
+            background-color: var(--main-bg-color);
+            padding: 0 10px;
+            color: var(--main-white-color);
+
+            font-family: Inter;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 18px;
+            border: 0;
+            outline: 0;
+            &:focus{
+              border: 0;
+              outline: 0;
+              box-shadow: none;
+            }
+          }
+        }
+        .SearchButton {
+          width: 15%;
+          height: 100%;
+          cursor: pointer;
+          button {
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            border: 0;
+            outline: 0;
+            color: var(--main-white-color);
+
+            font-family: Inter;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 18px;
+            cursor: pointer;
+            svg{
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
     .NavbarProfileSection {
+      width: 50%;
       display: flex;
       align-items: center;
       justify-content: flex-end;
@@ -117,6 +184,7 @@
   top: 0;
   overflow: hidden;
   padding: 20px 16px 20px 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
   .SidebarInner {
     width: 100%;
     height: 100%;
@@ -158,9 +226,14 @@
             list-style: none;
             text-decoration: none;
             width: 100%;
-            padding: 14px 20px;
+
+            height: 48px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             &:active {
-              scale: 0.9;
+              scale: 0.98;
             }
             a {
               color: var(--main-white-color);
@@ -172,6 +245,12 @@
               text-decoration: none;
               text-transform: capitalize;
               width: 100%;
+              position: absolute;
+              height: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: flex-start;
+              padding: 0 20px;
               span {
                 padding-right: 10px;
                 font-size: 16px;
@@ -184,12 +263,13 @@
   }
 }
 .TwoStepVerificationSection {
-  transition: 1s all;
+  transition: 1s ease-in-out;
   position: absolute;
   bottom: 20px;
   left: 20px;
-  height: 120px;
-  max-width: 420px;
+  height: 100%;
+  max-width: 450px;
+  max-height: 140px;
   background-color: var(--popup-bg-color);
   border: 1px solid var(--main-white-color);
   z-index: 1111;
@@ -330,7 +410,7 @@
         min-width: 250px;
         max-height: 250px;
       }
-      span{
+      span {
         width: 100%;
         height: 100%;
         max-height: 250px;
@@ -364,7 +444,7 @@
           overflow: hidden;
           text-overflow: ellipsis;
         }
-       
+
         p {
           font-family: Inter;
           font-size: 12px;
@@ -378,14 +458,13 @@
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-         
         }
       }
     }
     .CardStatusIcon {
       position: absolute;
-      top: 10px;
-      right: 30px;
+      top: 8px;
+      right: 8px;
       font-family: Inter;
       font-size: 11px;
       font-style: normal;
@@ -398,7 +477,8 @@
       padding: 3px 10px;
       border-radius: 20px;
       border: 1px solid var(--non-hilighted-text);
-      opacity: 0.5;
+
+      background-color: rgb(0, 0, 0, 0.9);
     }
   }
 }

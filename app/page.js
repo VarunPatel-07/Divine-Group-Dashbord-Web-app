@@ -11,7 +11,7 @@ function Home() {
   useEffect(() => {
     if (!IsLogIn) {
       setLoading(true);
-      push("/pages/login");
+      push("/pages/auth/login");
       
     } else {
       setLoading(false);

@@ -17,19 +17,25 @@ const ContextApi = ({ children }) => {
   });
   const HOST = "http://localHOST:500";
   const initialState = [];
+  const [ChatData, setChatData] = useState(initialState);
   const [GlobalLoadingState, setGlobalLoadingState] = useState({
     LogInLoading: false,
+    Sign_In_Loding: false,
+    OTP_Verification_Loding: false,
+    Single_Project_Loding: false,
+    Profile_Loding: false,
   });
   const [ErrorState, setErrorState] = useState({
     IsError: false,
     ErrorMessage: "",
   });
   const [content, setContent] = useState(initialState);
-  const [Projects, setProjects] = useState(initialState);
+  const [UsersProjects, setUsersProjects] = useState(initialState);
   const [PublicProjects, setPublicProjects] = useState(initialState);
-  const [UserInfo, setUserInfo] = useState({
-    name: "d g",
-  });
+  const [SpecificProjectDetails, setSpecificProjectDetails] =
+    useState(initialState);
+  const [AllChatUsersInfo, setAllChatUsersInfo] = useState(initialState);
+  const [UserInfo, setUserInfo] = useState(initialState);
   const { push } = useRouter();
   const AuthToken = [];
 
@@ -42,7 +48,6 @@ const ContextApi = ({ children }) => {
       return true;
     }
   });
-
   if (IsLogIn) {
     let token = cryptr.decrypt(getCookie("Users_Authentication_Token"));
     AuthToken.push(JSON.parse(token));
@@ -56,6 +61,9 @@ const ContextApi = ({ children }) => {
   // this the function is used to register user
   const RegisterUser = async (formdata) => {
     try {
+      setGlobalLoadingState({
+        Sign_In_Loding: true,
+      });
       const response = await axios({
         method: "post",
         url: `${HOST}/app/api/auth/register`,
@@ -75,9 +83,15 @@ const ContextApi = ({ children }) => {
         AuthToken.push(token);
 
         FetchUserDetail(response.data.token);
-        push("/auth/Otp");
+        push("/pages/auth/Otp");
+        setGlobalLoadingState({
+          Sign_In_Loding: false,
+        });
       } else {
         console.log(response.data.message);
+        setGlobalLoadingState({
+          Sign_In_Loding: false,
+        });
       }
     } catch (error) {
       console.log(error);
@@ -108,12 +122,11 @@ const ContextApi = ({ children }) => {
         } else {
           push("/");
         }
-       
       } else {
         setErrorState({ IsError: true, ErrorMessage: response.data.message });
         setTimeout(() => {
           setErrorState({ IsError: false, ErrorMessage: "" });
-        }, 3000);
+        }, 1500);
         setGlobalLoadingState({
           LogInLoading: false,
         });
@@ -123,13 +136,26 @@ const ContextApi = ({ children }) => {
     }
   };
   // verify OTP
-  const VerifyOTP = async (VerificationInput) => {
+  const VerifyOTP = async (Token, VerificationInput) => {
     try {
-      const response = await axios.post(
-        `${HOST}/app/api/auth/emailvarification` ,VerificationInput
-      );
+      console.log(VerificationInput);
+      setGlobalLoadingState({
+        OTP_Verification_Loding: true,
+      });
+      const response = await axios({
+        method: "post",
+        url: `${HOST}/app/api/auth/emailvarification`,
+        data: VerificationInput,
+        headers: {
+          authtoken: Token,
+        },
+      });
+      console.log(response);
       if (response.data.success) {
         push("/");
+        setGlobalLoadingState({
+          OTP_Verification_Loding: false,
+        });
       }
     } catch (error) {
       console.log(error);
@@ -140,6 +166,9 @@ const ContextApi = ({ children }) => {
     try {
       if (Token.length == 0) {
       } else {
+        setGlobalLoadingState({
+          Profile_Loding: true,
+        });
         if (!sessionStorage.getItem("User_InforMation")) {
           const response = await axios.get(`${HOST}/app/api/auth/getuserinfo`, {
             headers: {
@@ -148,11 +177,18 @@ const ContextApi = ({ children }) => {
           });
 
           const Data = response.data;
-          setUserInfo(Data);
 
+          setGlobalLoadingState({
+            Profile_Loding: false,
+          });
+          setUserInfo(Data);
           sessionStorage.setItem("User_InforMation", JSON.stringify(Data));
         } else {
           const Data = JSON.parse(sessionStorage.getItem("User_InforMation"));
+
+          setGlobalLoadingState({
+            Profile_Loding: false,
+          });
           setUserInfo(Data);
         }
       }
@@ -195,7 +231,7 @@ const ContextApi = ({ children }) => {
         );
         const Data = response.data;
 
-        setProjects(Data);
+        setUsersProjects(Data);
       }
     } catch (error) {
       console.log(error);
@@ -222,22 +258,122 @@ const ContextApi = ({ children }) => {
       console.log(error);
     }
   };
+  const FetchSpecificProject = async (Token, id) => {
+    try {
+      setGlobalLoadingState({
+        Single_Project_Loding: true,
+      });
+      if (Token.length == 0) {
+      } else {
+        const response = await axios.get(
+          `${HOST}/app/api/project/fetchSpecificProject/${id}`,
+          {
+            headers: {
+              authtoken: Token,
+            },
+          }
+        );
+        const Data = response.data;
+        console.log(Data);
+        setGlobalLoadingState({
+          Single_Project_Loding: false,
+        });
+        setSpecificProjectDetails(Data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const Update_User_Information = async (Token, Updated_Info) => {
+    try {
+      if (Token.length == 0) {
+      } else {
+        const response = await axios({
+          method: "put",
+          url: `${HOST}/app/api/auth/updateUserinfo`,
+          data: Updated_Info,
+          headers: {
+            authtoken: Token,
+            "Content-Type": `multipart/form-data`,
+          },
+        });
+        const Data = response.data;
+
+        setUserInfo(Data);
+        sessionStorage.clear("User_InforMation");
+        FetchUserDetail(Token);
+        console.log(Data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const Fetch_All_Chats = async (Token) => {
+    try {
+      if (Token.length == 0) {
+      } else {
+        const response = await axios({
+          method: "get",
+          url: `${HOST}/app/api/chat/fetchChat`,
+          headers: {
+            authtoken: Token,
+          },
+        });
+        const Data = response.data;
+        console.log(Data);
+        setChatData(Data);
+      }
+    } catch (error) {}
+  };
+  const Fetch_All_Users_For_Chat = async (Token, searchVal) => {
+    try {
+      if (Token.length == 0) {
+      } else {
+        const response = await axios.get(
+          `${HOST}/app/api/chat/fetchAllUsersForChat?search=${
+            searchVal ? searchVal : ""
+          }`,
+          {
+            headers: {
+              authtoken: Token,
+            },
+          }
+        );
+
+        const Data = response.data;
+        setAllChatUsersInfo(Data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const Create_Group_Chat_API = (Token , User_Id) => {
+    
+  };
   const contextValue = {
     content,
     IsLogIn,
     AuthToken,
     UserInfo,
-    Projects,
+    UsersProjects,
     PublicProjects,
     ErrorState,
     GlobalLoadingState,
+    SpecificProjectDetails,
+    ChatData,
+    AllChatUsersInfo,
     VerifyOTP,
+    setIsLogIn,
     FetchAllYourProjects,
     ControlAddProjects,
     FetchUserDetail,
     RegisterUser,
     LogInToYourAccount,
     FetchAllPublicProjects,
+    FetchSpecificProject,
+    Update_User_Information,
+    Fetch_All_Chats,
+    Fetch_All_Users_For_Chat,
   };
   return (
     <NoteContext.Provider value={contextValue}>{children}</NoteContext.Provider>

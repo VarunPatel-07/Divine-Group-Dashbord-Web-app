@@ -18,26 +18,40 @@ function Sidebar() {
   const context = useContext(noteContext);
   const { UserInfo } = context;
   const [VerificationConsent, setVerificationConsent] = useState(false);
-
+  const [CookiesConsent, setCookiesConsent] = useState(false);
   if (!UserInfo.twoStepVerification) {
     if (!cookie.get("Two_Step_Verification_Delay_48Hour")) {
       setTimeout(() => {
         setVerificationConsent(true);
-      }, 4000);
+      }, 40000);
     }
+  }
+
+  if (
+    !localStorage.getItem("User_Accepted_CookiesConsent") &&
+    !cookie.get("User_Accepted_CookiesConsent")
+  ) {
+    setTimeout(() => {
+      setCookiesConsent(true);
+    }, 1000);
   }
 
   const EnableTwoStepVerification = () => {};
   const CancelButton = () => {
-    const oneDay = 24 * 60 * 60 * 1000;
+    const oneDay = 72 * 60 * 60 * 1000;
     cookie.set("Two_Step_Verification_Delay_48Hour", true, {
       expires: Date.now() - oneDay,
     });
     setVerificationConsent(false);
   };
+  const AcceptCookiesConsent = () => {
+    localStorage.setItem("User_Accepted_CookiesConsent", true);
+    cookie.set("User_Accepted_CookiesConsent", true);
+    setCookiesConsent(false);
+  };
   if (
     pathname === "/pages/auth/login" ||
-    pathname === "/pages/auth/login" ||
+    pathname === "/pages/auth/sign-up" ||
     pathname === "/pages/auth/Otp"
   ) {
   } else {
@@ -128,6 +142,24 @@ function Sidebar() {
               <div className={styles.buttonGroups}>
                 <button onClick={CancelButton}>cancel</button>
                 <button onClick={EnableTwoStepVerification}>enable</button>
+              </div>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
+        {CookiesConsent ? (
+          <div className={styles.TwoStepVerificationSection}>
+            <div className={styles.InnerSec}>
+              <div className={styles.TextSec}>
+                <p>
+                  Cookies help us deliver the best experience on our website. By
+                  using our website, you agree to the use of cookies. Find out
+                  how we use cookies.
+                </p>
+              </div>
+              <div className={styles.buttonGroups}>
+                <button onClick={AcceptCookiesConsent}>accept</button>
               </div>
             </div>
           </div>
