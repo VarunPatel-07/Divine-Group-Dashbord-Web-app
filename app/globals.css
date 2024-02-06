@@ -12,6 +12,18 @@ button {
     scale: 0.97;
   }
 }
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: var(--main-white-color) !important;
+  transition: background-color 5000s ease-in-out 0s;
+  box-shadow: inset 0 0 20px 20px #23232329;
+  background: rgba(44, 35, 65, 0.8);
+  color: var(--main-white-color) !important;
+  caret-color: white;
+}
 .w-0 {
   scale: 0;
   padding: 0;
@@ -325,31 +337,87 @@ input {
 .Hide_Modal button {
   opacity: 0;
 }
-.Show_Group_Chat_Modal{
+.Show_Group_Chat_Modal {
   top: 0;
   left: 0;
 }
-.Hide_Group_Chat_Modal{
+.Hide_Group_Chat_Modal {
   top: 0;
   left: -100%;
- 
 }
-._Border_Bottom{
+._Border_Bottom {
   border-bottom: 1px solid rgb(246, 244, 245, 0.5);
   margin-bottom: 10px;
 }
-._Selected_{
-  background-color: #B4D5FE !important;
+._Selected_ {
+  background-color: #b4d5fe !important;
   width: 0 !important;
   height: 0 !important;
   padding: 0 !important;
   overflow: hidden !important;
- 
 }
-._Show_Continue_Btn{
+._Show_Continue_Btn {
   width: 100% !important;
-  
 }
-._Show_Continue_Btn button svg{
+._Show_Continue_Btn button svg {
   opacity: 1 !important;
+}
+.Current_Chat_Indicator {
+  background-color: #0c0a0a9c !important;
+}
+.Show_Group_Info {
+  width: 80% !important;
+  transition: ease-in-out 0.2s;
+}
+.Hide_Group_Info {
+  width: 0% !important;
+  overflow: hidden;
+  /* transition: ease-in-out 0.2s; */
+}
+.Message {
+  position: relative;
+  z-index: 11;
+  width: fit-content;
+  padding: 10px 20px;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  text-transform: capitalize;
+  color: var(--main-white-color);
+  background-color: #0c0a0a;
+  border-radius: 20px;
+  margin: 10px;
+}
+.Message_Received {
+  margin-right: auto;
+}
+.Message_Sent {
+  margin-left: auto;
+}
+.Message_Sent .Display_Flex {
+  flex-direction: row-reverse;
+}
+.Message_Received .Message_Arrow::before {
+  position: absolute;
+  content: "";
+  width: 20px;
+  height: 20px;
+  top: 0;
+  left: -10px;
+  background-color: rgb(170, 125, 89);
+  clip-path: polygon(0 0, 100% 100%, 100% 0);
+}
+.Message_Sent .Message_Arrow::after {
+  position: absolute;
+  content: "";
+  width: 20px;
+  height: 20px;
+  top: 0;
+  right: -10px;
+  background-color: var(--button-main-color) !important;
+  clip-path: polygon(0 0, 0 100%, 100% 0);
+}
+.Message_Sent .Message_Arrow {
+  background-color: var(--button-main-color) !important;
 }

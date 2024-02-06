@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ContextApi from "@/context/ContextApi";
+import "react-loading-skeleton/dist/skeleton.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -24,3 +25,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+

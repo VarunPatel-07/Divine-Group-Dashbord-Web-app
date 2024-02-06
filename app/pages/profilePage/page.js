@@ -28,10 +28,9 @@ function Profile() {
   const LogOutButton = () => {
     let getToken = getCookie("Users_Authentication_Token");
     if (getToken) {
-      console.log(IsLogIn);
       setIsLogIn(false);
       deleteCookie("Users_Authentication_Token");
-      console.log(IsLogIn);
+      sessionStorage.clear("User_InforMation");
     }
   };
   const EditProfileButton = () => {
@@ -96,7 +95,16 @@ function Profile() {
                   {UserInfo.ProfileImage ? (
                     <picture>
                       <source src={UserInfo.ProfileImage} type="" />
-                      <img src={UserInfo.ProfileImage} alt="" style={{objectFit:'cover' , objectPosition:'center' , width:'100%' , height:'100%'}} />
+                      <img
+                        src={UserInfo.ProfileImage}
+                        alt=""
+                        style={{
+                          objectFit: "cover",
+                          objectPosition: "center",
+                          width: "100%",
+                          height: "100%",
+                        }}
+                      />
                     </picture>
                   ) : (
                     <div className={styles.pera}>

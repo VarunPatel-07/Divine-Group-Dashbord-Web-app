@@ -263,4 +263,80 @@
 .AddAdminPassModal .AdminPassCardInner .cardMainInput button {
   border: 0;
   outline: 0;
+}
+
+.ChatProfile {
+  width: 100%;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.ChatProfile:hover {
+  background-color: var(--secondry-bg-color);
+}
+.ChatProfile .ChatProfileInner {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  padding: 15px 12px;
+}
+.ChatProfile .ChatProfileInner .ProfilePhoto {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.ChatProfile .ChatProfileInner .ProfilePhoto img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.ChatProfile .ChatProfileInner .ProfilePhoto .DefaultProfile {
+  width: 100%;
+  height: 100%;
+  background-color: lightcoral;
+}
+.ChatProfile .ChatProfileInner .ProfilePhoto .DefaultProfile .pera {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ChatProfile .ChatProfileInner .ProfilePhoto .DefaultProfile .pera p {
+  color: var(--main-white-color);
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0;
+  margin: 0;
+}
+.ChatProfile .ChatProfileInner .ProfileText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 8px;
+  height: 100%;
+}
+.ChatProfile .ChatProfileInner .ProfileText h4 {
+  color: var(--main-white-color);
+  font-family: Inter;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  text-transform: capitalize;
+}
+.ChatProfile .ChatProfileInner .ProfileText p {
+  color: var(--non-hilighted-text);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+  text-transform: capitalize;
 }/*# sourceMappingURL=style.module.css.map */

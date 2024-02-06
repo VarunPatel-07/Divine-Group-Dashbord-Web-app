@@ -6,7 +6,7 @@ import NoteContext from "./noteContext";
 import { useRouter } from "next/navigation";
 import { setCookie, getCookie, deleteCookie } from "cookies-next";
 import Cryptr from "cryptr";
-
+import io from "socket.io-client";
 //
 //
 const ContextApi = ({ children }) => {
@@ -16,6 +16,7 @@ const ContextApi = ({ children }) => {
     saltLength: 10,
   });
   const HOST = "http://localHOST:500";
+  var socket = io(HOST);
   const initialState = [];
   const [ChatData, setChatData] = useState(initialState);
   const [GlobalLoadingState, setGlobalLoadingState] = useState({
@@ -36,6 +37,14 @@ const ContextApi = ({ children }) => {
     useState(initialState);
   const [AllChatUsersInfo, setAllChatUsersInfo] = useState(initialState);
   const [UserInfo, setUserInfo] = useState(initialState);
+  const [MessageContent_Container_State, setMessageContent_Container_State] =
+    useState(initialState);
+  const [Active_State, setActive_State] = useState(false);
+  const [ShowGroupInfoModal, setShowGroupInfoModal] = useState(false);
+  const [
+    Selected_Chat_Users_Data_To_Chat,
+    setSelected_Chat_Users_Data_To_Chat,
+  ] = useState(initialState);
   const { push } = useRouter();
   const AuthToken = [];
 
@@ -50,6 +59,7 @@ const ContextApi = ({ children }) => {
   });
   if (IsLogIn) {
     let token = cryptr.decrypt(getCookie("Users_Authentication_Token"));
+
     AuthToken.push(JSON.parse(token));
   }
 
@@ -177,11 +187,11 @@ const ContextApi = ({ children }) => {
           });
 
           const Data = response.data;
-
+          setUserInfo(Data);
           setGlobalLoadingState({
             Profile_Loding: false,
           });
-          setUserInfo(Data);
+
           sessionStorage.setItem("User_InforMation", JSON.stringify(Data));
         } else {
           const Data = JSON.parse(sessionStorage.getItem("User_InforMation"));
@@ -308,7 +318,7 @@ const ContextApi = ({ children }) => {
       console.log(error);
     }
   };
-  const Fetch_All_Chats = async (Token) => {
+  const Fetch_All_Chats = async (Token, search_query) => {
     try {
       if (Token.length == 0) {
       } else {
@@ -320,7 +330,6 @@ const ContextApi = ({ children }) => {
           },
         });
         const Data = response.data;
-        console.log(Data);
         setChatData(Data);
       }
     } catch (error) {}
@@ -347,10 +356,117 @@ const ContextApi = ({ children }) => {
       console.log(error);
     }
   };
-  const Create_Group_Chat_API = (Token , User_Id) => {
-    
+  const Create_Group_Chat_API_Caller = async (Token, formdata) => {
+    try {
+      if (Token.length == 0) {
+      } else {
+        const response = await axios({
+          method: "post",
+          url: `${HOST}/app/api/chat/creatGroupGhat`,
+          data: formdata,
+          headers: {
+            authtoken: Token,
+            "Content-Type": `multipart/form-data`,
+          },
+        });
+        if (response.data.success) {
+          Fetch_All_Chats(Token);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
+  const Create_One_TO_One_Chat_API_Caller = async (Token, formdata) => {
+    try {
+      if (Token.length == 0) {
+      } else {
+        const response = await axios({
+          method: "post",
+          url: `${HOST}/app/api/chat/createChat`,
+          data: formdata,
+          headers: {
+            authtoken: Token,
+            "Content-Type": `multipart/form-data`,
+          },
+        });
+        console.log(response);
+        if (response.data.success) {
+          Fetch_All_Chats(Token);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  // todo ==>> complete this from frontend to backend
+  const Fetch_ALL_Similar_Group = async (Token, ID) => {
+    try {
+      const response = axios.get(
+        `${HOST}/app/api/chat/fetchAllRelatedChat/:${ID}`,
+        {
+          headers: {
+            authtoken: Token,
+            "Content-Type": `multipart/form-data`,
+          },
+        }
+      );
+    } catch (error) {}
+  };
+  const Message_Fetching_API_Controller_Function = async (Token, _ID) => {
+    try {
+      if (Token.length == 0 && _ID.length == 0) return;
+      else {
+        const response = await axios.get(
+          `${HOST}/app/api/message/fetchMessage/${_ID}`,
+          {
+            headers: {
+              authtoken: Token,
+              "Content-Type": `multipart/form-data`,
+            },
+          }
+        );
+
+        if (response.data.success) {
+          const Message = response.data.FetchMessage;
+          console.log(Message);
+          setMessageContent_Container_State(Message);
+        }
+        socket.emit("join chat", _ID);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const Send_Messages_API_Controller_Function = async (Token, formdata) => {
+    try {
+      if (Token.length == 0) return;
+      else {
+        const response = await axios({
+          method: "post",
+          url: `${HOST}/app/api/message/sendMessage`,
+          data: formdata,
+          headers: {
+            authtoken: Token,
+            "Content-Type": `multipart/form-data`,
+          },
+        });
+        if (response.data.success) {
+          const NewMessages = response.data.Message;
+          socket.emit('NewMessage' , NewMessages)
+          setMessageContent_Container_State([
+            ...MessageContent_Container_State,
+            NewMessages,
+          ]);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const contextValue = {
+    HOST,
     content,
     IsLogIn,
     AuthToken,
@@ -362,6 +478,14 @@ const ContextApi = ({ children }) => {
     SpecificProjectDetails,
     ChatData,
     AllChatUsersInfo,
+    MessageContent_Container_State,
+    Selected_Chat_Users_Data_To_Chat,
+    Active_State,
+    ShowGroupInfoModal,
+    setShowGroupInfoModal,
+    setMessageContent_Container_State,
+    setActive_State,
+    setSelected_Chat_Users_Data_To_Chat,
     VerifyOTP,
     setIsLogIn,
     FetchAllYourProjects,
@@ -374,6 +498,11 @@ const ContextApi = ({ children }) => {
     Update_User_Information,
     Fetch_All_Chats,
     Fetch_All_Users_For_Chat,
+    Create_Group_Chat_API_Caller,
+    Create_One_TO_One_Chat_API_Caller,
+    Fetch_ALL_Similar_Group,
+    Message_Fetching_API_Controller_Function,
+    Send_Messages_API_Controller_Function,
   };
   return (
     <NoteContext.Provider value={contextValue}>{children}</NoteContext.Provider>

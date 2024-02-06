@@ -52,7 +52,7 @@
         border: 1px solid var(--non-hilighted-text);
         border-radius: 20px;
         overflow: hidden;
-        background-color: var( --secondry-bg-color);
+        background-color: var(--secondry-bg-color);
         .SearchInput {
           width: 85%;
           height: 100%;
@@ -70,7 +70,7 @@
             line-height: 18px;
             border: 0;
             outline: 0;
-            &:focus{
+            &:focus {
               border: 0;
               outline: 0;
               box-shadow: none;
@@ -95,7 +95,7 @@
             font-weight: 500;
             line-height: 18px;
             cursor: pointer;
-            svg{
+            svg {
               cursor: pointer;
             }
           }
@@ -482,3 +482,4 @@
     }
   }
 }
+
