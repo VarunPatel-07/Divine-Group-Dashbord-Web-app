@@ -102,71 +102,106 @@
         }
       }
     }
-    .NavbarProfileSection {
-      width: 50%;
+    .NavbarProfileSection_OUTER_Main_Sec {
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      padding-right: 40px;
-      height: 100%;
-      cursor: pointer;
-      position: relative;
-
-      &::after {
-        position: absolute;
-        content: "";
-        width: 30px;
-        height: 100%;
-        right: 0;
-        top: 0;
-        background-image: url(../../images/Arrow\ -\ Down\ 6.svg);
-        background-repeat: no-repeat;
-        background-position: center;
-      }
-      .profile {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-
-        .image {
-          border-radius: 50%;
-          overflow: hidden;
-          width: 50px;
-          height: 50px;
-          .DefaultProfile {
-            width: 100%;
-            height: 100%;
-            background-color: azure;
+      width: 100%;
+      gap: 50px;
+      .Notification_Bell {
+        button {
+          background-color: transparent;
+          border: 0;
+          outline: 0;
+          color: var(--main-white-color);
+          font-size: 28px;
+          position: relative;
+          .notification_Icon {
+            position: absolute;
+            top: 0;
+            right: -5px;
             display: flex;
             align-items: center;
             justify-content: center;
-            .pera {
+            width: 20px;
+            height: 20px;
+            overflow: hidden;
+            background-color: #ff0000;
+            border-radius: 50%;
+            color: var(--main-white-color);
+            font-family: Inter;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+            text-transform: uppercase;
+          }
+        }
+      }
+      .NavbarProfileSection {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 40px;
+        height: 100%;
+        cursor: pointer;
+        position: relative;
+
+        &::after {
+          position: absolute;
+          content: "";
+          width: 30px;
+          height: 100%;
+          right: 0;
+          top: 0;
+          background-image: url(../../images/Arrow\ -\ Down\ 6.svg);
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+        .profile {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          .image {
+            border-radius: 50%;
+            overflow: hidden;
+            width: 50px;
+            height: 50px;
+            .DefaultProfile {
               width: 100%;
               height: 100%;
-
+              background-color: azure;
               display: flex;
               align-items: center;
               justify-content: center;
-              p {
-                color: rgb(255, 255, 255);
-                font-family: Inter;
-                font-size: 20px;
-                font-style: normal;
-                font-weight: 600;
-                text-transform: uppercase;
-                padding: 0;
-                margin: 0;
+              .pera {
+                width: 100%;
+                height: 100%;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                p {
+                  color: rgb(255, 255, 255);
+                  font-family: Inter;
+                  font-size: 20px;
+                  font-style: normal;
+                  font-weight: 600;
+                  text-transform: uppercase;
+                  padding: 0;
+                  margin: 0;
+                }
               }
             }
           }
-        }
-        .UserName {
-          .flex {
-            display: flex;
-            align-items: flex-start;
-            justify-content: flex-start;
-            flex-direction: column;
-            gap: 3px;
+          .UserName {
+            .flex {
+              display: flex;
+              align-items: flex-start;
+              justify-content: flex-start;
+              flex-direction: column;
+              gap: 3px;
+            }
           }
         }
       }
@@ -482,4 +517,3 @@
     }
   }
 }
-

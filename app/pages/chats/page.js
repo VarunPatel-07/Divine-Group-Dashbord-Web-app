@@ -1,15 +1,20 @@
 "use client";
 import React, { useState, useContext, useEffect, useRef } from "react";
+import Script from "next/script";
 import styles from "../styles/style.module.css";
-import { FaPlus, FaLock } from "react-icons/fa";
+import { FaPlus, FaLock, FaImages, FaChevronDown } from "react-icons/fa";
 import { IoIosClose } from "react-icons/io";
-import { IoArrowBack } from "react-icons/io5";
+import { IoArrowBack, IoDocumentText } from "react-icons/io5";
 import { useRouter } from "next/navigation";
 import { LuMoveRight } from "react-icons/lu";
 import { HiMiniUserGroup } from "react-icons/hi2";
 import { FaCamera } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
+import { FaUser } from "react-icons/fa6";
 import { MdOutlineDeleteOutline } from "react-icons/md";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+import { BsThreeDotsVertical } from "react-icons/bs";
+
 import noteContext from "@/context/noteContext";
 import bg from "./bg.png";
 import Image from "next/image";
@@ -17,18 +22,22 @@ import Loader from "@/utils/Loader";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import ChatProfile from "@/utils/ChatProfile";
 import Banner from "../../../images/banner.png";
-import useSound from "use-sound";
+import { AiOutlineUserAdd } from "react-icons/ai";
+
 import io from "socket.io-client";
+
 // todo the error is in only this page find it
 function ChatPage() {
-  const [play] = useSound("./sounds/sentMessageSound.mp3");
+  const HOST = "http://localHOST:500";
+  socket = io(HOST);
   const initialState = [];
   const { push } = useRouter();
   const MessageRef = useRef(null);
   const CurrentMessageRef = useRef(null);
   const context = useContext(noteContext);
+
   const {
-    HOST,
+    newArray,
     Fetch_All_Chats,
     FetchUserDetail,
     AuthToken,
@@ -38,6 +47,9 @@ function ChatPage() {
     MessageContent_Container_State,
     setMessageContent_Container_State,
     AllChatUsersInfo,
+    Notification,
+    setNotification,
+
     Active_State,
     ShowGroupInfoModal,
     setShowGroupInfoModal,
@@ -47,6 +59,12 @@ function ChatPage() {
     Create_One_TO_One_Chat_API_Caller,
     Message_Fetching_API_Controller_Function,
     Send_Messages_API_Controller_Function,
+    Send_Messages_With_Images_API_Controller_Function,
+    NotificationController,
+    Edit_Message_API_Caller_Function,
+    Delete_Message_Api_Caller,
+    Add_Member_IN_Group_API_Caller_Function,
+    Remove_User_From_Group_API_Caller,
   } = context;
   const [ShowModal, setShowModal] = useState(false);
   const [ShowCreateGroupModal, setShowCreateGroupModal] = useState(false);
@@ -63,32 +81,97 @@ function ChatPage() {
   const [InputMessage, setInputMessage] = useState(initialState);
   const [Search_Query, setSearch_Query] = useState(initialState);
   const [IS_Socket_Connected, setIS_Socket_Connected] = useState(false);
+  const [Typing, setTyping] = useState(false);
+  const [IS_Typing, setIS_Typing] = useState({
+    _typing: false,
+    _Sender_Info: [],
+  });
+  const [ShowMoreActionModal, setShowMoreActionModal] = useState(false);
+  const [SendImagesState, setSendImagesState] = useState(initialState);
+  const [Show_Send_Messages_Modal, setShow_Send_Messages_Modal] =
+    useState(false);
+  const [Is_Edited_Message_Container, setIs_Edited_Message_Container] =
+    useState({
+      Edited: false,
+      message: [],
+    });
+
+  const [ShowDeleteMessagePopup, setShowDeleteMessagePopup] = useState({
+    state: false,
+    message: [],
+  });
+  const [Add_New_Member_To_Group_Modal, setAdd_New_Member_To_Group_Modal] =
+    useState({ Show: false, Users_Info: [], _Group_ID: [] });
   var socket, selectedChatCompar;
   useEffect(() => {
     const _User_Info_ = JSON.parse(sessionStorage.getItem("User_InforMation"));
-    socket = io(HOST);
     socket.emit("initialize", _User_Info_);
-    socket.on("connection", () => {
+    socket.on("connected", () => {
       setIS_Socket_Connected(true);
     });
+    socket.on("startTyping", (Room) =>
+      setIS_Typing({ _typing: true, _Sender_Info: Room })
+    );
+
+    socket.on("stopTyping", () =>
+      setIS_Typing({ _typing: false, _Sender_Info: [] })
+    );
+
     selectedChatCompar = Selected_Chat_Users_Data_To_Chat;
   }, []);
+
   useEffect(() => {
-    socket?.on("Message Received", (newMessageReceived) => {
-      if (
-        !Selected_Chat_Users_Data_To_Chat ||
-        Selected_Chat_Users_Data_To_Chat._id !== newMessageReceived.chat._id
-      ) {
-        // notification
-      } else {
-        setMessageContent_Container_State([
-          ...MessageContent_Container_State,
-          newMessageReceived,
-        ]);
+    socket?.on("MessageReceived", (NewMessageReceived) => {
+      //  todo notification
+      if (NewMessageReceived) {
+        Message_Fetching_API_Controller_Function(
+          AuthToken,
+          NewMessageReceived.ChatId._id
+        );
+        Fetch_All_Chats(AuthToken);
       }
+    });
+    socket?.on("MessageEdited", (EditedMessageReceived) => {
+      Message_Fetching_API_Controller_Function(
+        AuthToken,
+        EditedMessageReceived.ChatId._id
+      );
+      Fetch_All_Chats(AuthToken);
+    });
+    socket?.on("MessageDeleted", (DeletedMessageReceived) => {
+      Message_Fetching_API_Controller_Function(
+        AuthToken,
+        DeletedMessageReceived.ChatId
+      );
+      Fetch_All_Chats(AuthToken);
     });
   });
 
+  const Message_Input_Field = (e) => {
+    console.log(IS_Typing);
+    setInputMessage(e.target.value);
+    if (!IS_Socket_Connected) return;
+
+    // Ensure typing state is managed correctly
+    if (!Typing) {
+      setTyping(true);
+      // Emit "startTyping" event when user starts typing
+      socket.emit("startTyping", Selected_Chat_Users_Data_To_Chat);
+    }
+
+    let lastTypingTime = new Date().getTime();
+    var timerLength = 4000;
+
+    setTimeout(() => {
+      var timeNow = new Date().getTime();
+      var timeDiff = timeNow - lastTypingTime;
+      // If user is typing and has been inactive for the timer length, emit "stopTyping" event
+      if (timeDiff >= timerLength && Typing) {
+        socket.emit("stopTyping", Selected_Chat_Users_Data_To_Chat);
+        setTyping(false);
+      }
+    }, timerLength);
+  };
   const Show_Modal_Button = () => {
     if (ShowModal) {
       setShowModal(false);
@@ -191,16 +274,112 @@ function ChatPage() {
     setShowGroupInfoModal(false);
   };
   const DeleteChatButton = () => {};
-  const Message_Input_Field = (e) => {
-    setInputMessage(e.target.value);
-  };
+
   const Call_MessageSending_API_On_Sumbit = (e) => {
+    if (!Is_Edited_Message_Container.Edited) {
+      socket.emit("stopTyping", Selected_Chat_Users_Data_To_Chat._ID);
+      e.preventDefault();
+      const formdata = new FormData();
+      formdata.append("chatId", Selected_Chat_Users_Data_To_Chat._ID);
+      formdata.append("content", InputMessage);
+      Send_Messages_API_Controller_Function(
+        AuthToken,
+        formdata,
+        Selected_Chat_Users_Data_To_Chat._ID
+      );
+      setInputMessage("");
+    } else {
+      socket.emit("stopTyping", Selected_Chat_Users_Data_To_Chat._ID);
+      e.preventDefault();
+      const formdata = new FormData();
+      formdata.append("content", InputMessage);
+      Edit_Message_API_Caller_Function(
+        AuthToken,
+        formdata,
+        Is_Edited_Message_Container.message._id
+      );
+      setIs_Edited_Message_Container({
+        Edited: false,
+        message: [],
+      });
+      setInputMessage("");
+    }
+  };
+  const ShowMoreActionModal_Button_Controller = () => {
+    if (ShowMoreActionModal) {
+      setShowMoreActionModal(false);
+    } else {
+      setShowMoreActionModal(true);
+    }
+  };
+  const SendPhotos_And_Video_Button_Controller = () => {
+    if (Show_Send_Messages_Modal) {
+      setShow_Send_Messages_Modal(false);
+    } else {
+      setShow_Send_Messages_Modal(true);
+    }
+    setShowMoreActionModal(false);
+  };
+  const Chat_Images_Selector = (e) => {
+    setSendImagesState(e.target.files);
+  };
+  const SendPhotos_And_Video_API_Controller_Function = (e) => {
     e.preventDefault();
     const formdata = new FormData();
     formdata.append("chatId", Selected_Chat_Users_Data_To_Chat._ID);
     formdata.append("content", InputMessage);
-    Send_Messages_API_Controller_Function(AuthToken, formdata);
+    for (const Image of SendImagesState) {
+      formdata.append("ChatImages", Image);
+    }
+
+    setShow_Send_Messages_Modal(false);
+    Send_Messages_With_Images_API_Controller_Function(AuthToken, formdata);
     setInputMessage("");
+  };
+  const Copy_Message_Controller = () => {};
+  const Replay_Button_Controller = () => {};
+  const Edit_Message_Button = (e, message) => {
+    setInputMessage(message.Content);
+    setIs_Edited_Message_Container({
+      Edited: true,
+      message: message,
+    });
+  };
+  const Delete_Message_Button = (e, message) => {
+    e.preventDefault();
+    setShowDeleteMessagePopup({ state: true, message: message });
+  };
+  const Delete_message_Final_Button_Controller = (message) => {
+    console.log(message);
+    Delete_Message_Api_Caller(AuthToken, message._id);
+
+    setShowDeleteMessagePopup({ state: false, message: [] });
+  };
+  const ShowAdd_New_Member_In_Group_Controller = (Users_Array, GroupID) => {
+    setAdd_New_Member_To_Group_Modal({
+      Show: true,
+      Users_Info: Users_Array,
+      _Group_ID: GroupID,
+    });
+    Fetch_All_Users_For_Chat(AuthToken);
+  };
+  const Add_Selected_User_To_The_Group = (NewUsersArray, GroupId) => {
+    const Users_Id_Array = [];
+    NewUsersArray.map((info) => Users_Id_Array.push(info._id));
+    console.log("Json", JSON.stringify(Users_Id_Array));
+    const formdata = new FormData();
+    formdata.append("usersId", JSON.stringify(Users_Id_Array));
+    Add_Member_IN_Group_API_Caller_Function(AuthToken, GroupId, formdata);
+    setAdd_New_Member_To_Group_Modal({
+      Show: false,
+      Users_Info: [],
+      _Group_ID: "",
+    });
+  };
+  const Remove_User_From_Group = (GroupID, UserId) => {
+    const formdata = new FormData();
+    formdata.append("usersId", UserId);
+    Remove_User_From_Group_API_Caller(AuthToken, GroupID, UserId);
   };
   useEffect(() => {
     if (CurrentMessageRef.current) {
@@ -219,6 +398,7 @@ function ChatPage() {
       Fetch_All_Chats(AuthToken);
     }
   }, []);
+
   return (
     <SkeletonTheme baseColor="#1a142a" highlightColor="#1f1830" width="100%">
       <div className="container-main-sec">
@@ -695,11 +875,25 @@ function ChatPage() {
                               <Skeleton width="200px" height="100%" />
                             </h4>
                           )}
-                          {Selected_Chat_Users_Data_To_Chat._Name ? (
-                            <p>click hear for group info</p>
+
+                          {IS_Typing._Sender_Info._Sender?._id ==
+                          UserInfo._id ? (
+                            <p>click hear for users Information info</p>
                           ) : (
                             <p>
-                              <Skeleton width="200px" height="100%" />
+                              {IS_Typing._typing ? (
+                                <>
+                                  {IS_Typing._Sender_Info._IS_GroupChat
+                                    ? `${IS_Typing._Sender_Info._Sender.name} is typing...`
+                                    : "typing..."}
+                                </>
+                              ) : (
+                                <>
+                                  {IS_Typing._Sender_Info._IS_GroupChat
+                                    ? "click hear for users group info"
+                                    : "click hear for users Information info"}
+                                </>
+                              )}
                             </p>
                           )}
                         </div>
@@ -772,11 +966,210 @@ function ChatPage() {
                                       </div>
                                     </div>
                                   )}
-                                  <div
-                                    className={`${styles.Message_content} Message_Arrow`}
-                                  >
-                                    <p>{message.Content}</p>
-                                  </div>
+
+                                  {message.ContentImage.length == 0 ? (
+                                    <div
+                                      className={`${styles.Message_content} Message_Arrow`}
+                                    >
+                                      <div className={styles.InnerSec}>
+                                        <p>{message.Content}</p>
+                                      </div>
+                                      <div className={styles.Edited_Message}>
+                                        <span>
+                                          {message.Edited ? "Edited" : ""}
+                                        </span>
+                                      </div>
+                                      <div
+                                        className={`${styles.DropDownArrowButton} downArrow`}
+                                      >
+                                        <div className="btn-group dropdown">
+                                          <button
+                                            type="button"
+                                            className="btn "
+                                            style={{
+                                              border: "0",
+                                              outline: "0",
+                                              padding: "0",
+                                              fontSize: "14px",
+                                              color: "var(--main-white-color)",
+                                            }}
+                                            data-bs-toggle="dropdown"
+                                            aria-expanded="false"
+                                          >
+                                            <BsThreeDotsVertical />
+                                          </button>
+
+                                          <ul className="dropdown-menu dropdown-menu-dark">
+                                            <li>
+                                              <button
+                                                className="dropdown-item"
+                                                href="#"
+                                                onClick={
+                                                  Copy_Message_Controller
+                                                }
+                                              >
+                                                copy Message
+                                              </button>
+                                            </li>
+                                            <li>
+                                              <button
+                                                className="dropdown-item"
+                                                href="#"
+                                                onClick={
+                                                  Replay_Button_Controller
+                                                }
+                                              >
+                                                Replay
+                                              </button>
+                                            </li>
+
+                                            {message.sender._id ==
+                                            UserInfo._id ? (
+                                              <>
+                                                <li>
+                                                  <button
+                                                    className="dropdown-item"
+                                                    href="#"
+                                                    onClick={(e) =>
+                                                      Edit_Message_Button(
+                                                        e,
+                                                        message
+                                                      )
+                                                    }
+                                                  >
+                                                    Edit Message
+                                                  </button>
+                                                </li>
+                                              </>
+                                            ) : (
+                                              ""
+                                            )}
+                                            <li>
+                                              <button
+                                                className="dropdown-item"
+                                                href="#"
+                                                onClick={(e) =>
+                                                  Delete_Message_Button(
+                                                    e,
+                                                    message
+                                                  )
+                                                }
+                                              >
+                                                Delete Message
+                                              </button>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  ) : (
+                                    <div
+                                      className={`${styles.ChatImages_Array_Flex_Section} Message_11  Message_Arrow `}
+                                    >
+                                      <div className={styles.InnerSec}>
+                                        <div className={styles.Images}>
+                                          {message.ContentImage.map(
+                                            (Img, index) => {
+                                              return (
+                                                <picture key={index}>
+                                                  <source src={Img} type="" />
+                                                  <img src={Img} alt="" />
+                                                </picture>
+                                              );
+                                            }
+                                          )}
+                                        </div>
+                                        <div className={styles.Content}>
+                                          <p>{message.Content}</p>
+                                        </div>
+                                      </div>
+                                      <div className={styles.Edited_Message}>
+                                        <span>
+                                          {message.Edited ? "Edited" : ""}
+                                        </span>
+                                      </div>
+                                      <div
+                                        className={`${styles.DropDownArrowButton} downArrow`}
+                                      >
+                                        <div className="btn-group dropdown">
+                                          <button
+                                            type="button"
+                                            className="btn "
+                                            style={{
+                                              border: "0",
+                                              outline: "0",
+                                              padding: "0",
+                                              fontSize: "14px",
+                                              color: "var(--main-white-color)",
+                                            }}
+                                            data-bs-toggle="dropdown"
+                                            aria-expanded="false"
+                                          >
+                                            <BsThreeDotsVertical />
+                                          </button>
+
+                                          <ul className="dropdown-menu dropdown-menu-dark">
+                                            <li>
+                                              <button
+                                                className="dropdown-item"
+                                                href="#"
+                                                onClick={
+                                                  Copy_Message_Controller
+                                                }
+                                              >
+                                                copy Message
+                                              </button>
+                                            </li>
+                                            <li>
+                                              <button
+                                                className="dropdown-item"
+                                                href="#"
+                                                onClick={
+                                                  Replay_Button_Controller
+                                                }
+                                              >
+                                                Replay
+                                              </button>
+                                            </li>
+                                            {message.sender._id ==
+                                            UserInfo._id ? (
+                                              <>
+                                                <li>
+                                                  <button
+                                                    className="dropdown-item"
+                                                    onClick={(e) =>
+                                                      Edit_Message_Button(
+                                                        e,
+                                                        message
+                                                      )
+                                                    }
+                                                  >
+                                                    Edit Message
+                                                  </button>
+                                                </li>
+                                              </>
+                                            ) : (
+                                              ""
+                                            )}
+                                            <li>
+                                              <button
+                                                className="dropdown-item"
+                                                href="#"
+                                                onClick={(e) =>
+                                                  Delete_Message_Button(
+                                                    e,
+                                                    message
+                                                  )
+                                                }
+                                              >
+                                                Delete Message
+                                              </button>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  )}
                                 </div>
                               </div>
                             ))}
@@ -791,6 +1184,15 @@ function ChatPage() {
                     <div className={styles.Send_Messages_Footer_Input_Field}>
                       <div className={styles.Input_Filed_To_Enter_Message}>
                         <form onSubmit={Call_MessageSending_API_On_Sumbit}>
+                          <button
+                            type="button"
+                            onClick={ShowMoreActionModal_Button_Controller}
+                            className={
+                              ShowMoreActionModal ? "Rotate_button" : ""
+                            }
+                          >
+                            <FaPlus />
+                          </button>
                           <input
                             type="text"
                             ref={MessageRef}
@@ -802,6 +1204,101 @@ function ChatPage() {
                           />
                         </form>
                       </div>
+                      <div
+                        className={`${styles.MoreActionModalMainDiv} ${
+                          ShowMoreActionModal ? "" : "HideMoreActionModal"
+                        } `}
+                      >
+                        <div className={styles.MoreActionModalInnerDiv}>
+                          <ul>
+                            <li>
+                              <button type="button">
+                                <span style={{ color: "#daa073" }}>
+                                  <IoDocumentText />
+                                </span>
+                                <p>document</p>
+                              </button>
+                            </li>
+                            <li>
+                              <button
+                                type="button"
+                                onClick={SendPhotos_And_Video_Button_Controller}
+                              >
+                                <span
+                                  style={{ color: "rgba(244, 24, 132, 1)" }}
+                                >
+                                  <FaImages />
+                                </span>
+                                <p>Photos & video </p>
+                              </button>
+                            </li>
+                            <li>
+                              <button type="button">
+                                <span
+                                  className={styles.users}
+                                  style={{ color: "#009DE2" }}
+                                >
+                                  <FaUser />
+                                </span>
+                                <p>contact </p>
+                              </button>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className={`${styles.SendImages_ALL_Action_Modal_Outer_DIV} ${
+                    Show_Send_Messages_Modal ? "Hide_Send_Message_Modal" : ""
+                  }`}
+                >
+                  <div
+                    className={styles.SendImages_ALL_Action_Modal_Inner_Section}
+                  >
+                    <div className={styles.Display_Flex__Section}>
+                      <form>
+                        <div className={styles.Close_Button}>
+                          <button
+                            onClick={SendPhotos_And_Video_Button_Controller}
+                          >
+                            <IoIosClose />
+                          </button>
+                        </div>
+                        <div className={styles.ADD_Images_Input}>
+                          <label htmlFor="images">
+                            <FaImages />
+                          </label>
+                          <input
+                            type="file"
+                            name=""
+                            id="images"
+                            className="d-none"
+                            onChange={Chat_Images_Selector}
+                            multiple
+                          />
+                        </div>
+                        <div className={styles.ADD_Message_Input}>
+                          <input
+                            type="text"
+                            placeholder="type a message"
+                            value={InputMessage}
+                            onChange={Message_Input_Field}
+                          />
+                        </div>
+                        <div className={styles.Sumbit_Button}>
+                          <button
+                            onClick={
+                              SendPhotos_And_Video_API_Controller_Function
+                            }
+                          >
+                            <span className={styles.Span_BG}></span>
+                            <span>send</span>
+                            <MdKeyboardDoubleArrowRight />
+                          </button>
+                        </div>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -862,6 +1359,12 @@ function ChatPage() {
                         </div>
                         <div className={styles.Group_And_Contact_Name}>
                           <p>{GroupUsersInformation._Name}</p>
+                          <p className="Group_Admin_Name_Pera">
+                            Group created by{" "}
+                            <span>
+                              {GroupUsersInformation._Group_Admin_Info?.name}
+                            </span>
+                          </p>
                         </div>
                       </div>
                       {GroupUsersInformation._IS_GroupChat ? (
@@ -870,6 +1373,41 @@ function ChatPage() {
                             <h6>members</h6>
                           </div>
                           <div className={styles.List_OF_All_Members}>
+                            {GroupUsersInformation._Group_Admin_Info?._id ==
+                            UserInfo._id ? (
+                              <div
+                                className={styles.MembersGroupProfile}
+                                onClick={() =>
+                                  ShowAdd_New_Member_In_Group_Controller(
+                                    GroupUsersInformation._Users,
+                                    GroupUsersInformation._ID
+                                  )
+                                }
+                              >
+                                <div
+                                  className={
+                                    styles.MembersGroupProfile_Inner_Section
+                                  }
+                                >
+                                  <div className={styles.Profile_Photo}>
+                                    <div className={styles.DefaultProfile}>
+                                      <div className={styles.pera}>
+                                        <p style={{ fontSize: "25px" }}>
+                                          <AiOutlineUserAdd />
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div className={styles.User_Info}>
+                                    <div className={styles.Info}>
+                                      <h5>Add New User</h5>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            ) : (
+                              ""
+                            )}
                             {GroupUsersInformation._Users?.map((info) => (
                               <div
                                 className={styles.MembersGroupProfile}
@@ -914,16 +1452,62 @@ function ChatPage() {
                                     </div>
                                   </div>
                                   <div className={styles.User_Info}>
-                                    <div className={styles.Name}>
-                                      <p>
-                                        {info.name === UserInfo.name
-                                          ? `you`
-                                          : `${info.name}`}
-                                      </p>
+                                    <div className={styles.Info}>
+                                      <div className={styles.Name}>
+                                        <p>
+                                          {info.name === UserInfo.name
+                                            ? `you`
+                                            : `${info.name}`}
+                                        </p>
+                                      </div>
+                                      <div className={styles.userName}>
+                                        <p>{info.username}</p>
+                                      </div>
                                     </div>
-                                    <div className={styles.userName}>
-                                      <p>{info.username}</p>
-                                    </div>
+                                    {info._id ==
+                                    GroupUsersInformation._Group_Admin_Info
+                                      ._id ? (
+                                      <div className={styles.GroupAdmin}>
+                                        <span>group admin</span>
+                                      </div>
+                                    ) : (
+                                      <div className={styles.Action_Btn}>
+                                        <div className="btn-group dropdown">
+                                          <button
+                                            type="button"
+                                            className="btn "
+                                            style={{
+                                              border: "0",
+                                              outline: "0",
+                                              padding: "0",
+                                              fontSize: "14px",
+                                              color: "var(--main-white-color)",
+                                            }}
+                                            data-bs-toggle="dropdown"
+                                            aria-expanded="false"
+                                          >
+                                            <BsThreeDotsVertical />
+                                          </button>
+
+                                          <ul className="dropdown-menu dropdown-menu-dark">
+                                            <li>
+                                              <button
+                                                className="dropdown-item"
+                                                href="#"
+                                                onClick={() =>
+                                                  Remove_User_From_Group(
+                                                    GroupUsersInformation._ID,
+                                                    info._id
+                                                  )
+                                                }
+                                              >
+                                                Remove User
+                                              </button>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                    )}
                                   </div>
                                 </div>
                               </div>
@@ -977,7 +1561,232 @@ function ChatPage() {
             </div>
           </div>
         </div>
+        <div
+          className={`${styles.deleteMessagePopup} ${
+            ShowDeleteMessagePopup.state ? "" : "d-none"
+          }`}
+        >
+          <div className={styles.deleteMessagePopupInner}>
+            <div
+              className="card"
+              style={{
+                backgroundColor: "#342b4a",
+                padding: "24px 24px",
+                borderRadius: "20px",
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <div
+                className="card-body"
+                style={{
+                  backgroundColor: "#342b4a",
+                  width: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  padding: "0",
+                }}
+              >
+                <div className="w-100">
+                  <h5 className="card-title">delete message</h5>
+                  <p className="card-text" style={{ marginTop: "20px" }}>
+                    do you want to delete the selected massage
+                  </p>
+                </div>
+
+                <div
+                  style={{
+                    width: "100%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "flex-end",
+                    gap: "22px",
+                  }}
+                >
+                  <button
+                    className="btn "
+                    onClick={() => setShowDeleteMessagePopup({ state: false })}
+                  >
+                    cancel
+                  </button>
+                  <button
+                    className="btn "
+                    onClick={() =>
+                      Delete_message_Final_Button_Controller(
+                        ShowDeleteMessagePopup.message
+                      )
+                    }
+                    style={{
+                      border: "0",
+                      backgroundColor: "rgba(244, 24, 132, 1)",
+                    }}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className={`${styles.AddNewUserToGroupForThatShowAllTheUser} ${
+            Add_New_Member_To_Group_Modal.Show ? "" : "d-none"
+          }`}
+        >
+          <div className={styles.InnerSec}>
+            <div className={styles.Group_Chat_SearchBar}>
+              <div className={styles.Header}>
+                <div className={styles.Flex_Sec}>
+                  <button
+                    onClick={() =>
+                      setAdd_New_Member_To_Group_Modal({
+                        Show: false,
+                        Users_Info: [],
+                        _Group_ID: [],
+                      })
+                    }
+                  >
+                    <IoIosClose />
+                  </button>
+                  <h5>Add member</h5>
+                </div>
+              </div>
+              <div className={styles.Search}>
+                <input
+                  type="search"
+                  name=""
+                  onChange={CreateGroupChatSearchBar}
+                  placeholder="search with name"
+                  id=""
+                />
+              </div>
+              <div
+                className={`${styles.SelectedUsers} ${
+                  !SelectedUsersArray.length > 0 ? "" : "_Border_Bottom"
+                }`}
+              >
+                {SelectedUsersArray.map((Info) => (
+                  <div className={styles.SelectedUsersProfile} key={Info._id}>
+                    <div className={styles.SelectedUsersProfileInnerSec}>
+                      <div className={styles.DefaultProfile}>
+                        {Info._Pic ? (
+                          <picture>
+                            <source src={Info._Pic} type="" />
+                            <img
+                              src={Info._Pic}
+                              alt=""
+                              style={{
+                                objectFit: "cover",
+                                objectPosition: "center",
+                                width: "100%",
+                                height: "100%",
+                              }}
+                            />
+                          </picture>
+                        ) : (
+                          <div className={styles.pera}>
+                            <p>{Info._Name?.split(" ")[0].split("")[0]}</p>
+                            <p>{Info._Name?.split(" ")[1].split("")[0]}</p>
+                          </div>
+                        )}
+                      </div>
+                      <div className={styles.SelectedUsersProfileName}>
+                        <p>{Info._Name}</p>
+                        <button onClick={() => RemoveMember(Info._id)}>
+                          <IoIosClose />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className={styles.Group_Chat_All_Members}>
+              {AllChatUsersInfo.map((UserInfo) => (
+                <div
+                  className={`${styles.Members_Profile} ${
+                    SelectedUsersArray.some((item) => item._id === UserInfo._id)
+                      ? "_Selected_"
+                      : ""
+                  } ${
+                    Add_New_Member_To_Group_Modal.Users_Info?.some(
+                      (item) => item._id === UserInfo._id
+                    )
+                      ? "_Selected_"
+                      : ""
+                  }`}
+                  key={UserInfo._id}
+                  onClick={() =>
+                    AddInTheGroupChatArray(
+                      UserInfo._id,
+                      UserInfo.name,
+                      UserInfo.ProfileImage
+                    )
+                  }
+                >
+                  <div className={styles.Profile_Inner_sec}>
+                    <div className={styles._Profile_Photo}>
+                      <div className={styles.DefaultProfile}>
+                        {UserInfo.ProfileImage ? (
+                          <picture>
+                            <source src={UserInfo.ProfileImage} type="" />
+                            <img
+                              src={UserInfo.ProfileImage}
+                              alt=""
+                              style={{
+                                objectFit: "cover",
+                                objectPosition: "center",
+                                width: "100%",
+                                height: "100%",
+                              }}
+                            />
+                          </picture>
+                        ) : (
+                          <div className={styles.pera}>
+                            <p>{UserInfo.name?.split(" ")[0].split("")[0]}</p>
+                            <p>{UserInfo.name?.split(" ")[1].split("")[0]}</p>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                    <div className={styles.MembersName}>
+                      <div className={styles._InnerFlex}>
+                        <h4>{UserInfo.name}</h4>
+
+                        <p>{UserInfo.username}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            {SelectedUsersArray.length >= 2 ? (
+              <div className={styles.Footer_Button}>
+                <button
+                  onClick={() =>
+                    Add_Selected_User_To_The_Group(
+                      SelectedUsersArray,
+                      Add_New_Member_To_Group_Modal._Group_ID
+                    )
+                  }
+                >
+                  <LuMoveRight />
+                </button>
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
+        </div>
       </div>
+
+      <Script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossOrigin="anonymous"
+      />
     </SkeletonTheme>
   );
 }

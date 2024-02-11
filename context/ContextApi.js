@@ -1,12 +1,13 @@
 "use client";
 require("dotenv").config();
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import NoteContext from "./noteContext";
 import { useRouter } from "next/navigation";
 import { setCookie, getCookie, deleteCookie } from "cookies-next";
 import Cryptr from "cryptr";
 import io from "socket.io-client";
+
 //
 //
 const ContextApi = ({ children }) => {
@@ -45,6 +46,9 @@ const ContextApi = ({ children }) => {
     Selected_Chat_Users_Data_To_Chat,
     setSelected_Chat_Users_Data_To_Chat,
   ] = useState(initialState);
+  const [Notification, setNotification] = useState(initialState);
+
+  const NotificationArray = [];
   const { push } = useRouter();
   const AuthToken = [];
 
@@ -426,19 +430,22 @@ const ContextApi = ({ children }) => {
             },
           }
         );
-
+        socket.emit("JoinChatRoom", _ID);
         if (response.data.success) {
           const Message = response.data.FetchMessage;
-          console.log(Message);
+
           setMessageContent_Container_State(Message);
         }
-        socket.emit("join chat", _ID);
       }
     } catch (error) {
       console.log(error);
     }
   };
-  const Send_Messages_API_Controller_Function = async (Token, formdata) => {
+  const Send_Messages_API_Controller_Function = async (
+    Token,
+    formdata,
+    _ID
+  ) => {
     try {
       if (Token.length == 0) return;
       else {
@@ -451,9 +458,11 @@ const ContextApi = ({ children }) => {
             "Content-Type": `multipart/form-data`,
           },
         });
+
         if (response.data.success) {
           const NewMessages = response.data.Message;
-          socket.emit('NewMessage' , NewMessages)
+          socket.emit("NewMessageSocket", NewMessages);
+          Fetch_All_Chats(Token);
           setMessageContent_Container_State([
             ...MessageContent_Container_State,
             NewMessages,
@@ -464,7 +473,112 @@ const ContextApi = ({ children }) => {
       console.log(error);
     }
   };
+  const Send_Messages_With_Images_API_Controller_Function = async (
+    Token,
+    formdata
+  ) => {
+    try {
+      const response = await axios({
+        method: "post",
+        url: `${HOST}/app/api/message/SendImages`,
+        data: formdata,
+        headers: {
+          authtoken: Token,
+          "Content-Type": `multipart/form-data`,
+        },
+      });
+      if (response.data.success) {
+        const NewMessages = response.data.Message;
+        socket.emit("NewMessageSocket", NewMessages);
 
+        setMessageContent_Container_State([
+          ...MessageContent_Container_State,
+          NewMessages,
+        ]);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const NotificationController = (NewMessageReceived) => {
+    if (!Notification.includes(NewMessageReceived)) {
+      setNotification((previous) => [...previous, NewMessageReceived]);
+      console.log("notification2", NewMessageReceived);
+    }
+  };
+  const Edit_Message_API_Caller_Function = async (Token, formdata, Id) => {
+    try {
+      if (Token.length == 0) return;
+      const response = await axios({
+        method: "put",
+        url: `${HOST}/app/api/message/EditMessage/${Id}`,
+        data: formdata,
+        headers: {
+          authtoken: Token,
+          "Content-Type": `multipart/form-data`,
+        },
+      });
+      const Data = response.data;
+      socket.emit("EditMessageSocket", Data.Message);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const Delete_Message_Api_Caller = async (Token, Id) => {
+    try {
+      if (Token.length == 0) return;
+      const response = await axios({
+        method: "delete",
+        url: `${HOST}/app/api/message/DeleteMessage/${Id}`,
+        headers: {
+          authtoken: Token,
+          "Content-Type": `multipart/form-data`,
+        },
+      });
+      const Data = response.data;
+      socket.emit("DeleteMessageSocket", Data.Message);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const Add_Member_IN_Group_API_Caller_Function = async (
+    Token,
+    GroupID,
+    formdata
+  ) => {
+    try {
+      if (Token.length == 0) return;
+      const response = await axios({
+        method: "put",
+        url: `${HOST}/app/api/chat/addMemberToChat/${GroupID}`,
+        data: formdata,
+        headers: {
+          authtoken: Token,
+          "Content-Type": `multipart/form-data`,
+        },
+      });
+      console.log(response);
+    } catch (error) {}
+  };
+  const Remove_User_From_Group_API_Caller = async (
+    Token,
+    GroupID,
+    formdata
+  ) => {
+    try {
+      if (Token.length == 0) return;
+      const response = await axios({
+        method: "put",
+        url: `${HOST}/app/api/chat/removeMember/${GroupID}`,
+        data: formdata,
+        headers: {
+          authtoken: Token,
+          "Content-Type": `multipart/form-data`,
+        },
+      });
+      console.log(response);
+    } catch (error) {}
+  };
   const contextValue = {
     HOST,
     content,
@@ -482,6 +596,9 @@ const ContextApi = ({ children }) => {
     Selected_Chat_Users_Data_To_Chat,
     Active_State,
     ShowGroupInfoModal,
+    Notification,
+    setNotification,
+
     setShowGroupInfoModal,
     setMessageContent_Container_State,
     setActive_State,
@@ -503,6 +620,12 @@ const ContextApi = ({ children }) => {
     Fetch_ALL_Similar_Group,
     Message_Fetching_API_Controller_Function,
     Send_Messages_API_Controller_Function,
+    Send_Messages_With_Images_API_Controller_Function,
+    NotificationController,
+    Edit_Message_API_Caller_Function,
+    Delete_Message_Api_Caller,
+    Add_Member_IN_Group_API_Caller_Function,
+    Remove_User_From_Group_API_Caller
   };
   return (
     <NoteContext.Provider value={contextValue}>{children}</NoteContext.Provider>

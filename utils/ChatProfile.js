@@ -22,7 +22,8 @@ function ChatProfile(props) {
     Name,
     ISGroupChat,
     users,
-    _user_ID
+    _user_ID,
+    
   ) => {
     const NewInfoObj = {
       _ID: Id,
@@ -30,11 +31,13 @@ function ChatProfile(props) {
       _Name: Name,
       _IS_GroupChat: ISGroupChat,
       _Users: users,
-      _userID: _user_ID,
+      _Sender: UserInfo,
+      _Group_Admin_Info: Chat_Info.GroupAdmin,
     };
-    setShowGroupInfoModal(false)
+    setShowGroupInfoModal(false);
     Message_Fetching_API_Controller_Function(AuthToken, NewInfoObj._ID);
     setSelected_Chat_Users_Data_To_Chat(NewInfoObj);
+
     setActive_State(true);
   };
   return (
@@ -56,7 +59,8 @@ function ChatProfile(props) {
               Chat_Info.ProfileImage,
               Chat_Info.ChatName,
               Chat_Info.IsGroupChat,
-              Chat_Info.users
+              Chat_Info.users,
+              Chat_Info
             )
           }
         >
@@ -95,8 +99,7 @@ function ChatProfile(props) {
                   _users_info.ProfileImage,
                   _users_info.name,
                   Chat_Info.IsGroupChat,
-                  Chat_Info.users,
-                  _users_info._id
+                  Chat_Info.users
                 )
               }
             >

@@ -1470,7 +1470,7 @@
             flex-direction: column;
             .Send_Messages_Headers {
               position: relative;
-              z-index: 11;
+              z-index: 20;
               background-color: var(--popup-bg-color);
               width: 100%;
               height: 100%;
@@ -1596,22 +1596,147 @@
                       .Message_content {
                         color: #000;
                         clear: both;
-                        padding: 12px 12px;
+
                         position: relative;
                         margin: 8px 0;
                         max-width: 400px;
                         border-radius: 8px;
                         width: fit-content;
-                        z-index: 1;
+                        // z-index: 1;
                         background-color: rgb(170, 125, 89);
-
-                        p {
+                        .InnerSec {
+                          width: 100%;
+                          height: 100%;
+                          padding: 12px 18px 15px 12px;
+                          position: relative;
+                          overflow: hidden;
+                          p {
+                            color: var(--main-white-color);
+                            font-family: Inter;
+                            font-size: 16px;
+                            font-style: normal;
+                            font-weight: 400;
+                            text-transform: capitalize;
+                          }
+                        }
+                        .Edited_Message {
+                          position: absolute;
+                          right: 5px;
+                          bottom: -2px;
+                          span {
+                            color: var(--non-hilighted-text);
+                            font-family: Inter;
+                            font-size: 10px;
+                            font-style: normal;
+                            font-weight: 400;
+                            text-transform: capitalize;
+                          }
+                        }
+                        .DropDownArrowButton {
+                          position: absolute;
+                          top: -2px;
+                          right: 0px;
                           color: var(--main-white-color);
-                          font-family: Inter;
-                          font-size: 16px;
-                          font-style: normal;
-                          font-weight: 400;
-                          text-transform: capitalize;
+                          transition: 0.05s all;
+                          opacity: 0;
+                          button {
+                            color: var(--main-white-color);
+                            font-family: Inter;
+                            font-size: 14px;
+                            font-style: normal;
+                            font-weight: 400;
+                            text-transform: capitalize;
+                          }
+                        }
+                        &:hover {
+                          .DropDownArrowButton {
+                            opacity: 1;
+                            right: 0;
+                          }
+                        }
+                      }
+                      .ChatImages_Array_Flex_Section {
+                        color: #000;
+                        clear: both;
+                        position: relative;
+                        margin: 8px 0;
+                        max-width: 600px;
+                        border-radius: 8px 0 8px 8px;
+                        width: fit-content;
+                        // z-index: 1;
+                        background-color: rgb(170, 125, 89);
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        .InnerSec {
+                          width: 100%;
+                          height: 100%;
+                          padding: 8px 8px;
+                          position: relative;
+                          overflow: hidden;
+
+                          .Images {
+                            width: 100%;
+                            height: 100%;
+                            display: flex;
+                            align-items: stretch;
+                            gap: 8px;
+                            img {
+                              width: 150px;
+
+                              height: 150px;
+                              object-fit: cover;
+                              border-radius: 8px;
+                              position: relative;
+                              // z-index: 11;
+                            }
+                          }
+                          .Content {
+                            padding-top: 8px;
+                            p {
+                              color: var(--main-white-color);
+                              font-family: Inter;
+                              font-size: 16px;
+                              font-style: normal;
+                              font-weight: 400;
+                              text-transform: capitalize;
+                            }
+                          }
+                        }
+                        .Edited_Message {
+                          position: absolute;
+                          right: 5px;
+                          bottom: -2px;
+                          span {
+                            color: var(--non-hilighted-text);
+                            font-family: Inter;
+                            font-size: 10px;
+                            font-style: normal;
+                            font-weight: 400;
+                            text-transform: capitalize;
+                          }
+                        }
+                        .DropDownArrowButton {
+                          position: absolute;
+                          top: -2px;
+                          right: 0px;
+                          color: var(--main-white-color);
+                          transition: 0.05s all;
+                          opacity: 0;
+                          button {
+                            color: var(--main-white-color);
+                            font-family: Inter;
+                            font-size: 14px;
+                            font-style: normal;
+                            font-weight: 400;
+                            text-transform: capitalize;
+                          }
+                        }
+                        &:hover {
+                          .DropDownArrowButton {
+                            opacity: 1;
+                            right: 0;
+                          }
                         }
                       }
                     }
@@ -1633,6 +1758,27 @@
                 form {
                   width: 100%;
                   height: 100%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: flex-start;
+                  gap: 20px;
+                  button {
+                    background-color: transparent;
+                    border: 0;
+                    outline: 0;
+                    color: var(--main-white-color);
+
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    &:hover {
+                      background-color: var(--main-bg-color);
+                    }
+                    svg {
+                      width: 20px;
+                      height: 20px;
+                    }
+                  }
                 }
                 input {
                   width: 100%;
@@ -1649,6 +1795,245 @@
                   line-height: 16px;
                   text-transform: capitalize;
                   padding: 0 20px;
+                }
+              }
+              .MoreActionModalMainDiv {
+                transition: 0.6s all;
+                visibility: visible;
+                opacity: 1;
+                position: absolute;
+                z-index: 111;
+                top: -240%;
+                left: 20px;
+                width: 210px;
+                padding: 8px 8px;
+                background-color: var(--secondry-bg-color);
+                border-radius: 10px;
+
+                .MoreActionModalInnerDiv {
+                  width: 100%;
+                  height: 100%;
+                  ul {
+                    list-style: none;
+                    text-decoration: none;
+                    width: 100%;
+                    height: 100%;
+                    overflow: hidden;
+                    li {
+                      list-style: none;
+                      text-decoration: none;
+                      width: 100%;
+                      height: 100%;
+                      overflow: hidden;
+                      &:hover {
+                        background-color: var(--sidebar-bg-color);
+                        border-radius: 8px;
+                      }
+                      button {
+                        background-color: transparent;
+                        width: 100%;
+                        height: 100%;
+                        border: 0;
+                        outline: 0;
+                        text-align: start;
+                        padding: 8px 15px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
+                        gap: 10px;
+                        overflow: hidden;
+                        .users {
+                          svg {
+                            height: 30px;
+                            width: 18px;
+                          }
+                        }
+                        span {
+                          width: 20%;
+                          svg {
+                            height: 30px;
+                            width: 25px;
+                          }
+                        }
+                        p {
+                          width: 80%;
+                          height: 100%;
+                          color: var(--main-white-color);
+                          font-family: Inter;
+                          font-size: 16px;
+                          font-style: normal;
+                          font-weight: 500;
+                          line-height: 16px;
+                          text-transform: capitalize;
+                          white-space: nowrap;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        .SendImages_ALL_Action_Modal_Outer_DIV {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          background-color: var(--sidebar-bg-color);
+          z-index: 11;
+          transform: translateX(-200%);
+          .SendImages_ALL_Action_Modal_Inner_Section {
+            width: 100%;
+            height: 100%;
+
+            .Display_Flex__Section {
+              width: 100%;
+              height: 100%;
+
+              form {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+                padding: 0 30px;
+                .Close_Button {
+                  width: 100%;
+                  button {
+                    border: 0;
+                    outline: 0;
+                    background-color: transparent;
+                    color: var(--main-white-color);
+                    font-size: 40px;
+                  }
+                }
+                .ADD_Images_Input {
+                  label {
+                    width: 250px;
+                    height: 250px;
+                    color: #64548c;
+                    padding: 25px 25px;
+                    position: relative;
+                    &::before {
+                      position: absolute;
+                      content: " drag and drop or click to select the images  ";
+                      width: 100%;
+                      height: 100%;
+                      inset: 0;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      text-align: center;
+                      padding: 0 30px;
+                      -webkit-backdrop-filter: blur(3px);
+                      backdrop-filter: blur(3px);
+                      color: var(--main-white-color);
+                      font-family: Inter;
+                      font-size: 16px;
+                      font-style: normal;
+                      font-weight: 600;
+                      line-height: 26px;
+                      text-transform: capitalize;
+                    }
+                    svg {
+                      width: 100%;
+                      height: 100%;
+                    }
+                  }
+                }
+                .ADD_Message_Input {
+                  width: 100%;
+                  padding: 0 30px 60px 30px;
+                  border-bottom: 1px solid var(--border-color);
+                  input {
+                    width: 100%;
+                    height: 45px;
+                    background-color: #64548c;
+                    border: 0;
+                    border-radius: 10px;
+                    color: var(--main-white-color);
+                    padding: 0 12px;
+                    font-family: Inter;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 16px;
+                    text-transform: capitalize;
+                    &:focus {
+                      border: 0;
+                      outline: 0;
+                    }
+                    &::placeholder {
+                      color: var(--main-white-color);
+                    }
+                  }
+                }
+                .Sumbit_Button {
+                  width: 100%;
+                  button {
+                    margin-left: auto;
+                    width: 150px;
+                    height: 50px;
+                    border: 0;
+                    outline: 0;
+                    background-color: var(--button-main-color);
+                    border-radius: 50px;
+                    color: var(--main-white-color);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: relative;
+                    overflow: hidden;
+
+                    .Span_BG {
+                      position: absolute;
+                      width: 100%;
+                      height: 100%;
+                      border-radius: 50px;
+                      background-color: #bd8153;
+                      top: 0;
+                      left: -150px;
+                      transition: 0.3s all;
+                    }
+                    &:hover {
+                      svg {
+                        animation: Animation 0.6s ease-in infinite;
+                      }
+                      .Span_BG {
+                        left: 0;
+                      }
+                    }
+                    @keyframes Animation {
+                      0% {
+                        transform: translateX(-10px);
+                      }
+                      100% {
+                        transform: translateX(0px);
+                      }
+                    }
+                    span {
+                      color: var(--main-white-color);
+                      padding: 0 12px;
+                      font-family: Inter;
+                      font-size: 20px;
+                      font-style: normal;
+                      font-weight: 500;
+                      line-height: 16px;
+                      text-transform: capitalize;
+                      position: relative;
+                      z-index: 11;
+                    }
+                    svg {
+                      width: 40px;
+                      height: 40px;
+                      position: relative;
+                      z-index: 11;
+                    }
+                  }
                 }
               }
             }
@@ -1750,15 +2135,20 @@
                   }
                 }
                 .Group_And_Contact_Name {
+                  display: flex;
+                  align-items: center;
+                  flex-direction: column;
+                  gap: 10px;
                   p {
                     color: var(--main-white-color);
                     font-family: Inter;
-                    font-size: 24px;
+                    font-size: 20px;
                     font-style: normal;
                     font-weight: 600;
                     text-transform: capitalize;
                     padding: 0;
                     margin: 0;
+                    text-align: center;
                   }
                 }
               }
@@ -1766,12 +2156,13 @@
                 width: 100%;
 
                 background-color: var(--main-bg-color);
-                padding: 20px 15px;
+                padding: 20px 0px;
                 border-radius: 20px;
                 margin-bottom: 20px;
                 .Title {
                   width: 100%;
-                  padding-bottom: 15px;
+                  padding: 0 15px 15px 15px;
+
                   h6 {
                     color: var(--button-main-color);
                     font-family: Inter;
@@ -1787,13 +2178,18 @@
                   height: 100%;
                   .MembersGroupProfile {
                     width: 100%;
-                    padding: 10px 0;
+
+                    cursor: pointer;
+                    &:hover {
+                      background-color: #64548c;
+                    }
                     .MembersGroupProfile_Inner_Section {
                       display: flex;
                       align-items: center;
                       justify-content: flex-start;
                       width: 100%;
                       gap: 20px;
+                      padding: 15px 15px;
                       .Profile_Photo {
                         .DefaultProfile {
                           width: 45px;
@@ -1825,30 +2221,58 @@
                       .User_Info {
                         display: flex;
                         align-items: flex-start;
-                        justify-content: flex-start;
-                        flex-direction: column;
-                        gap: 8px;
+                        justify-content: space-between;
 
-                        .userName {
-                          p {
-                            color: var(--main-white-color);
-                            font-family: Inter;
-                            font-size: 13px;
-                            font-style: normal;
-                            font-weight: 400;
-                            line-height: 13px;
-                            text-transform: capitalize;
-                          }
-                        }
-                        .Name {
-                          p {
+                        width: 100%;
+                        .Info {
+                          display: flex;
+                          align-items: flex-start;
+                          justify-content: flex-start;
+                          flex-direction: column;
+                          gap: 8px;
+                          h5 {
                             color: var(--main-white-color);
                             font-family: Inter;
                             font-size: 16px;
                             font-style: normal;
                             font-weight: 400;
-                            line-height: 16px;
+                            line-height: 13px;
                             text-transform: capitalize;
+                          }
+                          .userName {
+                            p {
+                              color: var(--main-white-color);
+                              font-family: Inter;
+                              font-size: 13px;
+                              font-style: normal;
+                              font-weight: 400;
+                              line-height: 13px;
+                              text-transform: capitalize;
+                            }
+                          }
+                          .Name {
+                            p {
+                              color: var(--main-white-color);
+                              font-family: Inter;
+                              font-size: 16px;
+                              font-style: normal;
+                              font-weight: 400;
+                              line-height: 16px;
+                              text-transform: capitalize;
+                            }
+                          }
+                        }
+                        .GroupAdmin {
+                          span {
+                            color: #f41884;
+                            font-family: Inter;
+                            font-size: 10px;
+                            font-style: normal;
+                            font-weight: 400;
+                            text-transform: capitalize;
+                            background-color: #463375;
+                            padding: 5px 8px;
+                            border-radius: 5px;
                           }
                         }
                       }
@@ -1965,6 +2389,325 @@
             }
           }
         }
+      }
+    }
+  }
+}
+.deleteMessagePopup {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: 11111111111;
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: 0.3s all;
+  inset: 0;
+  .deleteMessagePopupInner {
+    width: 500px;
+    height: 230px;
+    h5 {
+      color: var(--main-white-color);
+      font-family: Inter;
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+    p {
+      color: var(--main-white-color);
+      font-family: Inter;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      text-transform: capitalize;
+    }
+    button {
+      height: 45px;
+      width: 150px;
+      border-radius: 45px;
+      border: 1px solid var(--button-main-color);
+      color: var(--main-white-color);
+      font-family: Inter;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      text-transform: capitalize;
+    }
+  }
+}
+.AddNewUserToGroupForThatShowAllTheUser {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: 11111111111;
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: 0.3s all;
+  inset: 0;
+  .InnerSec {
+    width: 500px;
+    height: 100%;
+    max-height: 550px;
+    background-color: var(--secondry-bg-color);
+    overflow: auto;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    & ::-webkit-scrollbar {
+      display: none;
+      width: 0;
+    }
+    .Group_Chat_SearchBar {
+      width: 100%;
+
+      background-color: var(--sidebar-bg-color);
+      position: sticky;
+      top: 0;
+
+      .Header {
+        background-color: var(--popup-bg-color);
+        .Flex_Sec {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          gap: 24px;
+          padding: 30px 12px 12px 12px;
+          button {
+            color: var(--main-white-color);
+            font-family: Inter;
+            font-size: 35px;
+            background-color: transparent;
+            border: 0;
+            outline: 0;
+          }
+          h5 {
+            color: var(--main-white-color);
+            font-family: Inter;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 20px;
+            text-transform: capitalize;
+          }
+        }
+      }
+      .Search {
+        padding: 15px 20px;
+        input {
+          width: 100%;
+          height: 40px;
+          background-color: transparent;
+          border: 0;
+          outline: 0;
+          color: var(--main-white-color);
+          font-family: Inter;
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 20px;
+          border-bottom: 1px solid rgb(255, 255, 255, 0.15);
+          &::placeholder {
+            text-transform: capitalize;
+          }
+        }
+      }
+      .SelectedUsers {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        width: 100%;
+        max-height: 150px;
+        overflow: auto;
+        & ::-webkit-scrollbar {
+          display: none;
+          width: 0;
+        }
+        .SelectedUsersProfile {
+          height: 100%;
+
+          max-height: 50px;
+          overflow: hidden;
+          margin: 10px 10px;
+          .SelectedUsersProfileInnerSec {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 8px;
+            .DefaultProfile {
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              overflow: hidden;
+              background-color: lightcoral;
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+              .pera {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 16px;
+                font-family: Inter;
+                font-weight: 500;
+                text-transform: capitalize;
+                color: var(--main-white-color);
+                width: 100%;
+                height: 100%;
+              }
+            }
+            .SelectedUsersProfileName {
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              p {
+                color: var(--main-white-color);
+                font-family: Inter;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 400;
+                text-transform: uppercase;
+                padding: 0;
+                margin: 0;
+              }
+              button {
+                width: 25px;
+                height: 25px;
+
+                border-radius: 50%;
+                background-color: transparent;
+                color: var(--main-white-color);
+                border: 0;
+                outline: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                svg {
+                  width: 100%;
+                  height: 100%;
+                }
+                &:hover {
+                  background-color: var(--main-white-color);
+                  color: #0e0e0e;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .Group_Chat_All_Members {
+      width: 100%;
+      height: 100%;
+
+      .Members_Profile {
+        width: 100%;
+        height: 70px;
+        padding: 0 20px;
+        overflow: hidden;
+        cursor: pointer;
+        border-bottom: 1px solid rgb(255, 255, 255, 0.15);
+        &:hover {
+          background-color: #463375;
+        }
+        .Profile_Inner_sec {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          gap: 20px;
+          ._Profile_Photo {
+            .DefaultProfile {
+              width: 55px;
+              height: 55px;
+              border-radius: 50%;
+              background-color: lightcoral;
+              overflow: hidden;
+
+              .pera {
+                width: 100%;
+                height: 100%;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                p {
+                  color: var(--main-white-color);
+                  font-family: Inter;
+                  font-size: 22px;
+                  font-style: normal;
+                  font-weight: 600;
+                  text-transform: uppercase;
+                  padding: 0;
+                  margin: 0;
+                }
+              }
+            }
+          }
+          .MembersName {
+            width: 100%;
+            ._InnerFlex {
+              width: 100%;
+              display: flex;
+              align-items: flex-start;
+              justify-content: flex-start;
+              flex-direction: column;
+              gap: 8px;
+              h4 {
+                color: var(--main-white-color);
+                font-family: Inter;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 16px;
+                text-transform: capitalize;
+              }
+              p {
+                color: var(--main-white-color);
+                font-family: Inter;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 14px;
+                text-transform: capitalize;
+              }
+            }
+          }
+        }
+      }
+    }
+    .Footer_Button {
+      position: sticky;
+      bottom: 8px;
+      display: flex;
+      align-self: flex-end;
+      padding-right: 12px;
+      button {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--button-main-color);
+        color: var(--main-white-color);
+        border: 0;
+        outline: 0;
+        margin-left: auto;
+        font-size: 20px;
       }
     }
   }
