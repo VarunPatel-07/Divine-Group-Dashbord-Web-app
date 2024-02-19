@@ -2,7 +2,14 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import Script from "next/script";
 import styles from "../styles/style.module.css";
-import { FaPlus, FaLock, FaImages, FaChevronDown } from "react-icons/fa";
+import {
+  FaPlus,
+  FaLock,
+  FaImages,
+  FaChevronDown,
+  FaPen,
+  FaRegSave,
+} from "react-icons/fa";
 import { IoIosClose } from "react-icons/io";
 import { IoArrowBack, IoDocumentText } from "react-icons/io5";
 import { useRouter } from "next/navigation";
@@ -11,7 +18,7 @@ import { HiMiniUserGroup } from "react-icons/hi2";
 import { FaCamera } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import { FaUser } from "react-icons/fa6";
-import { MdOutlineDeleteOutline } from "react-icons/md";
+import { MdOutlineDeleteOutline, MdOutlineGroupAdd } from "react-icons/md";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { BsThreeDotsVertical } from "react-icons/bs";
 
@@ -22,7 +29,7 @@ import Loader from "@/utils/Loader";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import ChatProfile from "@/utils/ChatProfile";
 import Banner from "../../../images/banner.png";
-import { AiOutlineUserAdd } from "react-icons/ai";
+import { AiOutlineClear, AiOutlineUserAdd } from "react-icons/ai";
 
 import io from "socket.io-client";
 
@@ -34,6 +41,7 @@ function ChatPage() {
   const { push } = useRouter();
   const MessageRef = useRef(null);
   const CurrentMessageRef = useRef(null);
+  const Input_Ref = useRef(null);
   const context = useContext(noteContext);
 
   const {
@@ -49,11 +57,12 @@ function ChatPage() {
     AllChatUsersInfo,
     Notification,
     setNotification,
-
+    ComanGroupInfoContainer,
     Active_State,
     ShowGroupInfoModal,
     setShowGroupInfoModal,
     Selected_Chat_Users_Data_To_Chat,
+    setSelected_Chat_Users_Data_To_Chat,
     Fetch_All_Users_For_Chat,
     Create_Group_Chat_API_Caller,
     Create_One_TO_One_Chat_API_Caller,
@@ -65,6 +74,9 @@ function ChatPage() {
     Delete_Message_Api_Caller,
     Add_Member_IN_Group_API_Caller_Function,
     Remove_User_From_Group_API_Caller,
+    Clear_All_Chat_API_Caller,
+    Rename_Chat_API_Caller_Function,
+    Delete_Chat_API_Caller_Function,
   } = context;
   const [ShowModal, setShowModal] = useState(false);
   const [ShowCreateGroupModal, setShowCreateGroupModal] = useState(false);
@@ -102,6 +114,15 @@ function ChatPage() {
   });
   const [Add_New_Member_To_Group_Modal, setAdd_New_Member_To_Group_Modal] =
     useState({ Show: false, Users_Info: [], _Group_ID: [] });
+  const [EditableChatName, setEditableChatName] = useState(false);
+  const [
+    RenameChatStateHandlerForChatName,
+    setRenameChatStateHandlerForChatName,
+  ] = useState(initialState);
+  const [
+    RenameChatStateHandlerForProfile_Image,
+    setRenameChatStateHandlerForProfile_Image,
+  ] = useState(initialState);
   var socket, selectedChatCompar;
   useEffect(() => {
     const _User_Info_ = JSON.parse(sessionStorage.getItem("User_InforMation"));
@@ -143,6 +164,36 @@ function ChatPage() {
         AuthToken,
         DeletedMessageReceived.ChatId
       );
+      Fetch_All_Chats(AuthToken);
+    });
+    socket?.on("NewChatCreated", () => {
+      Fetch_All_Chats(AuthToken);
+    });
+    socket?.on("NewMemberADDInGroup", () => {
+      Fetch_All_Chats(AuthToken);
+    });
+    socket?.on("NewGroupCreated", () => {
+      Fetch_All_Chats(AuthToken);
+    });
+
+    socket?.on("MemberRemovedFromGroup", () => {
+      Fetch_All_Chats(AuthToken);
+    });
+    socket?.on("ChatInfoUpdated", (UpdatedChatInfo) => {
+      const NewInfoObj = {
+        _ID: UpdatedChatInfo._id,
+        _Profile_Photo: UpdatedChatInfo.ProfileImage,
+        _Name: UpdatedChatInfo.ChatName,
+        _IS_GroupChat: UpdatedChatInfo.IsGroupChat,
+        _Users: UpdatedChatInfo.users,
+        _Sender: UserInfo,
+        _Group_Admin_Info: UpdatedChatInfo.GroupAdmin,
+        _Users_ID: UpdatedChatInfo.users,
+      };
+      setSelected_Chat_Users_Data_To_Chat(NewInfoObj);
+      Fetch_All_Chats(AuthToken);
+    });
+    socket?.on("ChatDeleted", () => {
       Fetch_All_Chats(AuthToken);
     });
   });
@@ -214,7 +265,7 @@ function ChatPage() {
       };
 
       setSelectedUsersArray((prevState) => [...prevState, InfoObj]);
-      console.log(SelectedUsersArray);
+      // console.log(SelectedUsersArray);
     } else {
       console.log("included");
     }
@@ -262,47 +313,53 @@ function ChatPage() {
     }
   };
   const ShowGroupInfoButton = (_Chat_Information) => {
-    console.log(_Chat_Information);
     if (_Chat_Information.length == []) {
     } else {
       setShowGroupInfoModal(true);
       console.log(_Chat_Information);
       setGroupUsersInformation(_Chat_Information);
+      setRenameChatStateHandlerForChatName(_Chat_Information._Name);
     }
   };
   const Close_Modal_Button = () => {
     setShowGroupInfoModal(false);
   };
-  const DeleteChatButton = () => {};
 
   const Call_MessageSending_API_On_Sumbit = (e) => {
+    e.preventDefault();
     if (!Is_Edited_Message_Container.Edited) {
-      socket.emit("stopTyping", Selected_Chat_Users_Data_To_Chat._ID);
-      e.preventDefault();
-      const formdata = new FormData();
-      formdata.append("chatId", Selected_Chat_Users_Data_To_Chat._ID);
-      formdata.append("content", InputMessage);
-      Send_Messages_API_Controller_Function(
-        AuthToken,
-        formdata,
-        Selected_Chat_Users_Data_To_Chat._ID
-      );
-      setInputMessage("");
+      if (InputMessage.length == 0) {
+      } else {
+        socket.emit("stopTyping", Selected_Chat_Users_Data_To_Chat._ID);
+
+        const formdata = new FormData();
+        formdata.append("chatId", Selected_Chat_Users_Data_To_Chat._ID);
+        formdata.append("content", InputMessage);
+        Send_Messages_API_Controller_Function(
+          AuthToken,
+          formdata,
+          Selected_Chat_Users_Data_To_Chat._ID
+        );
+        setInputMessage("");
+      }
     } else {
-      socket.emit("stopTyping", Selected_Chat_Users_Data_To_Chat._ID);
-      e.preventDefault();
-      const formdata = new FormData();
-      formdata.append("content", InputMessage);
-      Edit_Message_API_Caller_Function(
-        AuthToken,
-        formdata,
-        Is_Edited_Message_Container.message._id
-      );
-      setIs_Edited_Message_Container({
-        Edited: false,
-        message: [],
-      });
-      setInputMessage("");
+      if (InputMessage.length == 0) {
+      } else {
+        socket.emit("stopTyping", Selected_Chat_Users_Data_To_Chat._ID);
+        e.preventDefault();
+        const formdata = new FormData();
+        formdata.append("content", InputMessage);
+        Edit_Message_API_Caller_Function(
+          AuthToken,
+          formdata,
+          Is_Edited_Message_Container.message._id
+        );
+        setIs_Edited_Message_Container({
+          Edited: false,
+          message: [],
+        });
+        setInputMessage("");
+      }
     }
   };
   const ShowMoreActionModal_Button_Controller = () => {
@@ -379,7 +436,75 @@ function ChatPage() {
   const Remove_User_From_Group = (GroupID, UserId) => {
     const formdata = new FormData();
     formdata.append("usersId", UserId);
-    Remove_User_From_Group_API_Caller(AuthToken, GroupID, UserId);
+    Remove_User_From_Group_API_Caller(AuthToken, GroupID, formdata);
+  };
+  const ClearAllChatButton = () => {
+    console.log(Selected_Chat_Users_Data_To_Chat._ID);
+    Clear_All_Chat_API_Caller(AuthToken, Selected_Chat_Users_Data_To_Chat._ID);
+  };
+  const SaveChatNameButton = (Id) => {
+    console.log(
+      RenameChatStateHandlerForProfile_Image,
+      RenameChatStateHandlerForChatName
+    );
+    setEditableChatName(false);
+    const formdata = new FormData();
+    formdata.append("chatName", RenameChatStateHandlerForChatName);
+    formdata.append("ProfileImage", RenameChatStateHandlerForProfile_Image);
+    Rename_Chat_API_Caller_Function(AuthToken, Id, formdata);
+    setShowGroupInfoModal(false);
+  };
+  const EditChatNameButton = () => {
+    setEditableChatName(true);
+
+    Input_Ref.current.focus();
+  };
+  const ContentEditableProfileImage = (e) => {
+    console.log(e.target.files[0]);
+    setRenameChatStateHandlerForProfile_Image(e.target.files[0]);
+  };
+  const ContentEditableInput = (e) => {
+    // console.log(e.target.value);
+    setRenameChatStateHandlerForChatName(e.target.value);
+  };
+  const Delete_Chat_Button = (ChatId) => {
+    console.log(ChatId);
+    Delete_Chat_API_Caller_Function(AuthToken, ChatId);
+  };
+  const Create_Group_With_Clicked_User = (info) => {
+    info.forEach((element) => {
+      if (element._id == UserInfo._id) {
+      } else {
+        console.log("heloooooo", element);
+        Fetch_All_Users_For_Chat(AuthToken);
+        setShowCreateGroupModal(true);
+        // SelectedUsersArray
+        const isIdIncluded = SelectedUsersArray.some(
+          (item) => item._id === element._id
+        );
+        if (!isIdIncluded) {
+          const InfoObj = {
+            _id: element._id,
+            _Name: element.name,
+            _Pic: element.ProfileImage,
+          };
+
+          setSelectedUsersArray((prevState) => [...prevState, InfoObj]);
+          console.log(SelectedUsersArray);
+        } else {
+          console.log("included");
+        }
+        // email: "eva.miller@example.com";
+        // name: "Eva Miller";
+        // password: "$2b$10$kKnhmRijshk8iIg8aqw2rOpaj8hjidZg/e5kKG6.PbA5Xf9oJ.6Pq";
+        // role: "user";
+        // twoStepVerification: false;
+        // username: "user8";
+        // verified: false;
+        // __v: 0;
+        // _id: "65b8c9112f9ce02aeebe2306";
+      }
+    });
   };
   useEffect(() => {
     if (CurrentMessageRef.current) {
@@ -1316,12 +1441,33 @@ function ChatPage() {
                           </button>
                         </div>
                         <div className={styles.ChatName_Title}>
-                          <p>
-                            {GroupUsersInformation._IS_GroupChat
-                              ? "group info"
-                              : "contact info"}
-                          </p>
+                          <div>
+                            <p>
+                              {GroupUsersInformation._IS_GroupChat
+                                ? "group info"
+                                : "contact info"}
+                            </p>
+                          </div>
                         </div>
+                        {GroupUsersInformation._IS_GroupChat ? (
+                          <div className={styles.Edit_Group_Name_Button}>
+                            {EditableChatName ? (
+                              <button
+                                onClick={() =>
+                                  SaveChatNameButton(GroupUsersInformation._ID)
+                                }
+                              >
+                                <FaRegSave />
+                              </button>
+                            ) : (
+                              <button onClick={EditChatNameButton}>
+                                <FaPen />
+                              </button>
+                            )}
+                          </div>
+                        ) : (
+                          ""
+                        )}
                       </div>
                     </div>
                     <div className={styles.GroupInformation_Info_Section}>
@@ -1356,15 +1502,42 @@ function ChatPage() {
                               </p>
                             </div>
                           )}
+                          {EditableChatName ? (
+                            <div className={styles.AddGroupImageInput}>
+                              <label htmlFor="inputFile">
+                                <FaCamera />
+                              </label>
+                              <input
+                                type="file"
+                                name=""
+                                className="d-none"
+                                id="inputFile"
+                                onChange={ContentEditableProfileImage}
+                              />
+                            </div>
+                          ) : (
+                            ""
+                          )}
                         </div>
                         <div className={styles.Group_And_Contact_Name}>
-                          <p>{GroupUsersInformation._Name}</p>
-                          <p className="Group_Admin_Name_Pera">
-                            Group created by{" "}
-                            <span>
-                              {GroupUsersInformation._Group_Admin_Info?.name}
-                            </span>
-                          </p>
+                          <textarea
+                            disabled={!EditableChatName}
+                            ref={Input_Ref}
+                            onChange={ContentEditableInput}
+                            value={RenameChatStateHandlerForChatName}
+                            cols="1"
+                          ></textarea>
+
+                          {GroupUsersInformation._Group_Admin_Info ? (
+                            <p className="Group_Admin_Name_Pera">
+                              Group created by
+                              <span style={{ paddingLeft: "4px" }}>
+                                {GroupUsersInformation._Group_Admin_Info?.name}
+                              </span>
+                            </p>
+                          ) : (
+                            ""
+                          )}
                         </div>
                       </div>
                       {GroupUsersInformation._IS_GroupChat ? (
@@ -1480,7 +1653,7 @@ function ChatPage() {
                                               border: "0",
                                               outline: "0",
                                               padding: "0",
-                                              fontSize: "14px",
+                                              fontSize: "18px",
                                               color: "var(--main-white-color)",
                                             }}
                                             data-bs-toggle="dropdown"
@@ -1515,16 +1688,135 @@ function ChatPage() {
                           </div>
                         </div>
                       ) : (
-                        ""
+                        <div className={styles.AllMemberList_Section}>
+                          <div className={styles.Title}>
+                            <h6>
+                              {`${ComanGroupInfoContainer.length} groups in
+                              comman`}
+                            </h6>
+                          </div>
+                          <div className={styles.List_OF_All_Members}>
+                            <div
+                              className={styles.MembersGroupProfile}
+                              onClick={() =>
+                                Create_Group_With_Clicked_User(
+                                  GroupUsersInformation._Users
+                                )
+                              }
+                            >
+                              <div
+                                className={
+                                  styles.MembersGroupProfile_Inner_Section
+                                }
+                              >
+                                <div className={styles.Profile_Photo}>
+                                  <div className={styles.DefaultProfile}>
+                                    <div className={styles.pera}>
+                                      <p style={{ fontSize: "22px" }}>
+                                        <MdOutlineGroupAdd />
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className={styles.User_Info}>
+                                  <div className={styles.Info}>
+                                    <div className={styles.Coman_title}>
+                                      <p>
+                                        create Group with
+                                        <span>
+                                          {RenameChatStateHandlerForChatName}
+                                        </span>
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            {ComanGroupInfoContainer.length > 0 ? (
+                              <div className="w-100">
+                                {ComanGroupInfoContainer?.map((info) => (
+                                  <div
+                                    className={styles.MembersGroupProfile}
+                                    key={info._id}
+                                  >
+                                    <div
+                                      className={
+                                        styles.MembersGroupProfile_Inner_Section
+                                      }
+                                    >
+                                      <div className={styles.Profile_Photo}>
+                                        <div className={styles.DefaultProfile}>
+                                          {info.ProfileImage ? (
+                                            <picture>
+                                              <source
+                                                src={info.ProfileImage}
+                                                type=""
+                                              />
+                                              <img
+                                                src={info.ProfileImage}
+                                                alt=""
+                                                style={{
+                                                  objectFit: "cover",
+                                                  objectPosition: "center",
+                                                  width: "100%",
+                                                  height: "100%",
+                                                }}
+                                              />
+                                            </picture>
+                                          ) : (
+                                            <div className={styles.pera}>
+                                              <p>{info.name?.split("")[0]}</p>
+                                              <p>
+                                                {
+                                                  info.name
+                                                    ?.split(" ")[1]
+                                                    ?.split("")[0]
+                                                }
+                                              </p>
+                                            </div>
+                                          )}
+                                        </div>
+                                      </div>
+                                      <div className={styles.User_Info}>
+                                        <div className={styles.Info}>
+                                          <div className={styles.Name}>
+                                            <p>{info.ChatName}</p>
+                                          </div>
+                                          <div className={styles.userName}>
+                                            <p>{info.username}</p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                        </div>
                       )}
                       <div className={styles.CRUD_Operation_Section}>
                         <ul>
                           <li>
-                            <button onClick={DeleteChatButton}>
+                            <button
+                              onClick={() =>
+                                Delete_Chat_Button(GroupUsersInformation._ID)
+                              }
+                            >
                               <span>
                                 <MdOutlineDeleteOutline />
                               </span>
                               <p>delete chat</p>
+                            </button>
+                          </li>
+                          <li>
+                            <button onClick={ClearAllChatButton}>
+                              <span>
+                                <AiOutlineClear />
+                              </span>
+                              <p>Clear chat</p>
                             </button>
                           </li>
                         </ul>

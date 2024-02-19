@@ -13,6 +13,7 @@ function ChatProfile(props) {
     ShowGroupInfoModal,
     setShowGroupInfoModal,
     setActive_State,
+    Find_ALL_Coman_Group,
   } = context;
   const { Chat_Info, LatestMessage, Search_Query } = props;
 
@@ -22,8 +23,7 @@ function ChatProfile(props) {
     Name,
     ISGroupChat,
     users,
-    _user_ID,
-    
+    Single_User_ID
   ) => {
     const NewInfoObj = {
       _ID: Id,
@@ -33,10 +33,14 @@ function ChatProfile(props) {
       _Users: users,
       _Sender: UserInfo,
       _Group_Admin_Info: Chat_Info.GroupAdmin,
+      _Users_ID: Single_User_ID,
     };
     setShowGroupInfoModal(false);
     Message_Fetching_API_Controller_Function(AuthToken, NewInfoObj._ID);
     setSelected_Chat_Users_Data_To_Chat(NewInfoObj);
+    if (!NewInfoObj._IS_GroupChat) {
+      Find_ALL_Coman_Group(AuthToken, NewInfoObj._Users_ID);
+    }
 
     setActive_State(true);
   };
@@ -99,7 +103,8 @@ function ChatProfile(props) {
                   _users_info.ProfileImage,
                   _users_info.name,
                   Chat_Info.IsGroupChat,
-                  Chat_Info.users
+                  Chat_Info.users,
+                  _users_info._id
                 )
               }
             >

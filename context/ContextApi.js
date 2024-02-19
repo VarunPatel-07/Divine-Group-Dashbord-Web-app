@@ -47,7 +47,8 @@ const ContextApi = ({ children }) => {
     setSelected_Chat_Users_Data_To_Chat,
   ] = useState(initialState);
   const [Notification, setNotification] = useState(initialState);
-
+  const [ComanGroupInfoContainer, setComanGroupInfoContainer] =
+    useState(initialState);
   const NotificationArray = [];
   const { push } = useRouter();
   const AuthToken = [];
@@ -374,7 +375,10 @@ const ContextApi = ({ children }) => {
           },
         });
         if (response.data.success) {
-          Fetch_All_Chats(Token);
+          socket.on(
+            "NewGroupCreatedBackEndSocket",
+            response.data.FullGroupChat
+          );
         }
       }
     } catch (error) {
@@ -394,7 +398,7 @@ const ContextApi = ({ children }) => {
             "Content-Type": `multipart/form-data`,
           },
         });
-        console.log(response);
+        socket.emit("NewChatCreatedBackendSocket", response.data.FullChat);
         if (response.data.success) {
           Fetch_All_Chats(Token);
         }
@@ -461,6 +465,7 @@ const ContextApi = ({ children }) => {
 
         if (response.data.success) {
           const NewMessages = response.data.Message;
+
           socket.emit("NewMessageSocket", NewMessages);
           Fetch_All_Chats(Token);
           setMessageContent_Container_State([
@@ -557,7 +562,10 @@ const ContextApi = ({ children }) => {
           "Content-Type": `multipart/form-data`,
         },
       });
-      console.log(response);
+      socket.emit(
+        "NewMemberADDInGroupBackEndSocket",
+        response.data.UpdatedChat
+      );
     } catch (error) {}
   };
   const Remove_User_From_Group_API_Caller = async (
@@ -576,7 +584,77 @@ const ContextApi = ({ children }) => {
           "Content-Type": `multipart/form-data`,
         },
       });
-      console.log(response);
+      const Data = response.data;
+      socket.emit("MemberRemovedFromGroupBackEndSocket", Data.UpdatedChat);
+    } catch (error) {}
+  };
+  const Find_ALL_Coman_Group = async (Token, ID) => {
+    console.log(ID);
+    try {
+      if (Token.length == 0) return;
+      const response = await axios.get(
+        `${HOST}/app/api/chat/fetchAllRelatedChat/${ID}`,
+        {
+          headers: {
+            authtoken: Token,
+            "Content-Type": `multipart/form-data`,
+          },
+        }
+      );
+      const Data = response.data;
+      if (Data.success) {
+        setComanGroupInfoContainer(Data.FetchAllRelatedChat);
+      }
+    } catch (error) {}
+  };
+  const Clear_All_Chat_API_Caller = async (Token, ChatId) => {
+    try {
+      if (Token.length == 0) return;
+      const response = await axios.delete(
+        `${HOST}/app/api/message/clearAllChats/${ChatId}`,
+        {
+          headers: {
+            authtoken: Token,
+            "Content-Type": `multipart/form-data`,
+          },
+        }
+      );
+      if (response.data.success) {
+        Message_Fetching_API_Controller_Function(Token, ChatId);
+      }
+    } catch (error) {}
+  };
+  const Rename_Chat_API_Caller_Function = async (Token, Id, formdata) => {
+    try {
+      if (Token.length == 0) return;
+      const response = await axios({
+        method: "put",
+        url: `${HOST}/app/api/chat/renameChat/${Id}`,
+        data: formdata,
+        headers: {
+          authtoken: Token,
+          "Content-Type": `multipart/form-data`,
+        },
+      });
+      const Data = response.data;
+
+      socket.emit("ChatInfoUpdatedBackEndSocket", Data.updatedChat);
+    } catch (error) {}
+  };
+  const Delete_Chat_API_Caller_Function = async (Token, ChatID) => {
+    try {
+      if (Token.length == 0) return;
+      const response = await axios({
+        method: "delete",
+        url: `${HOST}/app/api/chat/DeleteALLChat/${ChatID}`,
+        headers: {
+          authtoken: Token,
+          "Content-Type": `multipart/form-data`,
+        },
+      });
+      const Data = response.data;
+      socket.emit("ChatDeletedBackEndSocket", Data.updatedChat);
+      Clear_All_Chat_API_Caller(Token, ChatID);
     } catch (error) {}
   };
   const contextValue = {
@@ -597,6 +675,7 @@ const ContextApi = ({ children }) => {
     Active_State,
     ShowGroupInfoModal,
     Notification,
+    ComanGroupInfoContainer,
     setNotification,
 
     setShowGroupInfoModal,
@@ -625,7 +704,11 @@ const ContextApi = ({ children }) => {
     Edit_Message_API_Caller_Function,
     Delete_Message_Api_Caller,
     Add_Member_IN_Group_API_Caller_Function,
-    Remove_User_From_Group_API_Caller
+    Remove_User_From_Group_API_Caller,
+    Find_ALL_Coman_Group,
+    Clear_All_Chat_API_Caller,
+    Rename_Chat_API_Caller_Function,
+    Delete_Chat_API_Caller_Function,
   };
   return (
     <NoteContext.Provider value={contextValue}>{children}</NoteContext.Provider>

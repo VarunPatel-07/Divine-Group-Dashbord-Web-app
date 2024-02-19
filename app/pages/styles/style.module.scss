@@ -781,6 +781,9 @@
         padding: 0 0 10px 0;
         position: relative;
         border-right: 1px solid rgb(255, 255, 255, 0.15);
+        &::-webkit-scrollbar {
+          display: none;
+        }
 
         .ChatUsersListPartInnerSection {
           .SearchBar {
@@ -789,6 +792,12 @@
             align-items: center;
             justify-content: space-between;
             gap: 12px;
+            position: sticky;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background-color: var(--main-bg-color);
+            border-bottom: 1px solid var(--border-color);
             .Search {
               width: 90%;
               input {
@@ -2060,6 +2069,7 @@
               position: sticky;
               top: 0;
               right: 0;
+              z-index: 11;
               .TitleInnerSec {
                 display: flex;
                 align-items: center;
@@ -2090,6 +2100,16 @@
                     text-transform: capitalize;
                   }
                 }
+                .Edit_Group_Name_Button {
+                  margin-left: auto;
+                  button {
+                    background-color: transparent;
+                    color: var(--main-white-color);
+                    border: 0;
+                    outline: 0;
+                    font-size: 16px;
+                  }
+                }
               }
             }
             .GroupInformation_Info_Section {
@@ -2114,6 +2134,7 @@
                   border-radius: 50%;
                   background-color: lightcoral;
                   overflow: hidden;
+                  position: relative;
 
                   .pera {
                     width: 100%;
@@ -2133,22 +2154,59 @@
                       margin: 0;
                     }
                   }
+                  .AddGroupImageInput {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    background-color: rgba(0, 0, 0, 0.3);
+                    padding: 10px 20px;
+                    backdrop-filter: blur(5px);
+                    -webkit-backdrop-filter: blur(5px);
+                    transition: 0.2s all;
+                    label {
+                      font-size: 22px;
+                      color: var(--main-white-color);
+                      text-align: center;
+                      width: 100%;
+                    }
+                  }
                 }
                 .Group_And_Contact_Name {
                   display: flex;
                   align-items: center;
                   flex-direction: column;
                   gap: 10px;
-                  p {
+                  position: relative;
+                  padding: 20px;
+                  width: 100%;
+                  textarea {
                     color: var(--main-white-color);
                     font-family: Inter;
-                    font-size: 20px;
+                    font-size: 18px;
                     font-style: normal;
                     font-weight: 600;
                     text-transform: capitalize;
                     padding: 0;
                     margin: 0;
                     text-align: center;
+                    overflow: hidden;
+                    line-break: anywhere;
+                    margin: auto;
+                    width: 100%;
+                    background-color: transparent;
+                    border: 0;
+                    outline: 0;
+                    resize: none;
+                    &:focus {
+                      border: 0;
+                      outline: 0;
+                      padding-bottom: 5px;
+                      border-bottom: 1px solid var(--border-color);
+                    }
+                    &::-webkit-input-placeholder {
+                      color: var(--main-white-color);
+                    }
                   }
                 }
               }
@@ -2220,9 +2278,9 @@
                       }
                       .User_Info {
                         display: flex;
-                        align-items: flex-start;
+                        align-items: center;
                         justify-content: space-between;
-
+                        height: 100%;
                         width: 100%;
                         .Info {
                           display: flex;
@@ -2261,6 +2319,21 @@
                               text-transform: capitalize;
                             }
                           }
+                          .Coman_title {
+                            p{
+                              color: var(--main-white-color);
+                              font-family: Inter;
+                              font-size: 15px;
+                              font-style: normal;
+                              font-weight: 400;
+                              line-height: 16px;
+                              text-transform: capitalize;
+                              span {
+                                padding-left: 4px;
+                              }
+                            }
+                          
+                          }
                         }
                         .GroupAdmin {
                           span {
@@ -2278,6 +2351,18 @@
                       }
                     }
                   }
+                  .GroupInfo_peraGraph {
+                    padding: 8px 15px;
+                    p {
+                      color: var(--non-hilighted-text);
+                      font-family: Inter;
+                      font-size: 14px;
+                      font-style: normal;
+                      font-weight: 400;
+                      line-height: 18px;
+                      text-transform: capitalize;
+                    }
+                  }
                 }
               }
               .CRUD_Operation_Section {
@@ -2292,6 +2377,7 @@
                   align-items: flex-start;
                   justify-content: flex-start;
                   flex-direction: column;
+                  gap: 25px;
                   li {
                     button {
                       background-color: transparent;
