@@ -374,6 +374,11 @@ input {
   overflow: hidden;
   /* transition: ease-in-out 0.2s; */
 }
+.Span_Class {
+  width: 100%;
+  min-height: 163px;
+  display: block;
+}
 .Message {
   position: relative;
   z-index: 11;
@@ -457,4 +462,86 @@ input {
 }
 .opacity5 {
   opacity: 0.7;
+}
+.Card-transparent .card {
+  background-color: rgba(100, 85, 144, 0.2) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
+  backdrop-filter: blur(5px) !important;
+  color: var(--main-white-color) !important;
+  border-radius: 15px !important;
+  overflow: hidden;
+  border: 0 !important;
+}
+.col-md-11 {
+  width: 100% !important;
+}
+.Button_Active {
+  background-color: var(--button-main-color) !important;
+}
+.accordion {
+}
+
+.accordion-button {
+  border: 0;
+  outline: 0;
+  box-shadow: none !important;
+  background-color: #2c2341 !important;
+  color: var(--main-white-color) !important;
+  font-family: Inter;
+  font-size: 18px !important;
+  font-style: normal;
+  font-weight: 500 !important;
+  text-transform: capitalize;
+  &:focus {
+    border: 0;
+    outline: 0;
+    box-shadow: none !important;
+  }
+  &:active {
+    scale: 1 !important;
+  }
+}
+.accordion-button::after {
+  color: var(--main-white-color) !important;
+  content: "\25be" !important;
+  background-image: url("") !important;
+  height: 100% !important;
+  font-size: 28px;
+}
+.accordion-button:not(.collapsed)::after {
+  background-image: url("") !important;
+}
+.accordion-button:not(.collapsed) {
+  box-shadow: none !important;
+  background-color: #2c2341 !important;
+}
+.accordion-item {
+  background-color: #2c2341 !important;
+  border-radius: 24px !important;
+  overflow: hidden;
+  border: 0 !important;
+  margin: 12px 0 !important;
+}
+.accordion-body {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--non-hilighted-text) !important;
+  padding: 15px 34px !important;
+}
+.accordion-body ul {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 8px;
+}
+.accordion-body li {
+  list-style-type:disc;
+}
+.accordion-body p {
+  color: var(--non-hilighted-text) !important;
+  font-family: Inter;
+  font-size: 16px !important;
+  font-style: normal;
+  font-weight: 500 !important;
+  text-transform: capitalize;
 }

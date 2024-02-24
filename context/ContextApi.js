@@ -17,6 +17,7 @@ const ContextApi = ({ children }) => {
     saltLength: 10,
   });
   const HOST = "http://localHOST:500";
+  const WeatherAPI_Key = "9b860e2afc6486921d1350a0db0190d5";
   var socket = io(HOST);
   const initialState = [];
   const [ChatData, setChatData] = useState(initialState);
@@ -49,6 +50,8 @@ const ContextApi = ({ children }) => {
   const [Notification, setNotification] = useState(initialState);
   const [ComanGroupInfoContainer, setComanGroupInfoContainer] =
     useState(initialState);
+  const [Weather_Info_State, setWeather_Info_State] = useState(initialState);
+  const [Customer_Info, setCustomer_Info] = useState(initialState);
   const NotificationArray = [];
   const { push } = useRouter();
   const AuthToken = [];
@@ -657,6 +660,57 @@ const ContextApi = ({ children }) => {
       Clear_All_Chat_API_Caller(Token, ChatID);
     } catch (error) {}
   };
+  const Weather_API_Caller_Function = async (lat, lon) => {
+    try {
+      const response = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${WeatherAPI_Key}`
+      );
+
+      const weatherData = response.data;
+
+      setWeather_Info_State(weatherData);
+    } catch (error) {
+      console.error("Error fetching weather data:", error);
+    }
+  };
+  const Customer_Fetching_Api = async (Token, Page_NO) => {
+    try {
+      const response = await axios.get(
+        `${HOST}/app/api/customerContactInfo/GetAllCustomer?page=${Page_NO}`,
+        {
+          headers: {
+            authtoken: Token,
+            "Content-Type": `multipart/form-data`,
+          },
+        }
+      );
+      const Data = response.data;
+      if (Data.success) {
+        setCustomer_Info(Data.Filtered_Data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const Fetch_More_Customer_API_Caller_Fun = async (Token, Page_NO) => {
+    try {
+      const response = await axios.get(
+        `${HOST}/app/api/customerContactInfo/GetAllCustomer?page=${Page_NO}`,
+        {
+          headers: {
+            authtoken: Token,
+            "Content-Type": `multipart/form-data`,
+          },
+        }
+      );
+      const Data = response.data;
+      if (Data.success) {
+        setCustomer_Info(Data.Filtered_Data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const contextValue = {
     HOST,
     content,
@@ -677,7 +731,10 @@ const ContextApi = ({ children }) => {
     Notification,
     ComanGroupInfoContainer,
     setNotification,
-
+    Customer_Info,
+    setCustomer_Info,
+    Weather_Info_State,
+    setWeather_Info_State,
     setShowGroupInfoModal,
     setMessageContent_Container_State,
     setActive_State,
@@ -709,6 +766,9 @@ const ContextApi = ({ children }) => {
     Clear_All_Chat_API_Caller,
     Rename_Chat_API_Caller_Function,
     Delete_Chat_API_Caller_Function,
+    Weather_API_Caller_Function,
+    Customer_Fetching_Api,
+    Fetch_More_Customer_API_Caller_Fun,
   };
   return (
     <NoteContext.Provider value={contextValue}>{children}</NoteContext.Provider>

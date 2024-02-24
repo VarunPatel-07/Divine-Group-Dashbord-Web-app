@@ -8,7 +8,7 @@ import Logo from "../images/Logo.png";
 import { usePathname } from "next/navigation";
 import { IoMdSettings } from "react-icons/io";
 import { PiUsersThreeFill } from "react-icons/pi";
-import { LuUsers } from "react-icons/lu";
+import { LuBadgeHelp, LuUsers } from "react-icons/lu";
 import { IoChatbubblesSharp } from "react-icons/io5";
 import { BsFillBuildingsFill } from "react-icons/bs";
 import noteContext from "@/context/noteContext";
@@ -123,6 +123,14 @@ function Sidebar() {
                         <IoMdSettings />
                       </span>
                       setting
+                    </Link>
+                  </li>
+                  <li className={pathname == "/pages/HelpCenter" ? "active" : ""}>
+                    <Link href="/pages/HelpCenter">
+                      <span>
+                        <LuBadgeHelp />
+                      </span>
+                      Help Center
                     </Link>
                   </li>
                 </ul>
