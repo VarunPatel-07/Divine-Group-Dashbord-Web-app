@@ -10,8 +10,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Divine Group || An Growing Real Estate Company",
   description:
-    "Experience the highest level of real estate expertise with Divine Group, a company that is rapidly expanding and committed to redefining industry standards. Our dedication to excellence, along with our passion for innovation, guarantees unmatched service and satisfaction for each and every client. Discover a world of possibilities and elevate your real estate experience with Divine Group today.",
-    keywords:'real este'
+    "Experience unparalleled real estate expertise with Divine Group. We are a rapidly expanding company committed to redefining industry standards. Our unwavering dedication to excellence, combined with our passion for innovation, guarantees that every client receives top-notch service and satisfaction. Embark on a journey of endless possibilities and elevate your real estate experience with Divine Group today.",
+  keywords:
+    "Real estate expertise , Divine Group , Industry standards ,Top-notch service ,Client satisfaction, Innovation in real estate ,Endless possibilities, Elevate real estate experience, Rapidly expanding company, Unwavering dedication, Excellence in real estate ,Real estate journey , Divine Group services ,Real estate innovation ,Redefining industry standards",
 };
 
 export default function RootLayout({ children }) {

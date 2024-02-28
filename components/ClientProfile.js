@@ -3,6 +3,7 @@ import styles from "./styles/style.module.css";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 function ClientProfile(props) {
   const { CustomerInfo, Loading } = props;
+ 
   if (!Loading) {
     return (
       <div className={styles.Client_Profile_Main_Section}>
@@ -30,9 +31,7 @@ function ClientProfile(props) {
       <SkeletonTheme baseColor="#64548c" highlightColor="#1f1830" width="100%">
         <div className={styles.Client_Profile_Main_Section}>
           <div className={styles.Inner_Section}>
-            <div className={styles.DefaultProfile}>
-              <Skeleton width="100%" height="100%" />
-            </div>
+            <Skeleton width="50px" height="50px" circle={true} />
             <div className={styles.Customer_Info_txt}>
               <div className={styles.FullName}>
                 <h5 className="w-100">
@@ -49,9 +48,7 @@ function ClientProfile(props) {
         </div>
         <div className={styles.Client_Profile_Main_Section}>
           <div className={styles.Inner_Section}>
-            <div className={styles.DefaultProfile}>
-              <Skeleton width="100%" height="100%" />
-            </div>
+            <Skeleton width="50px" height="50px" circle={true} />
             <div className={styles.Customer_Info_txt}>
               <div className={styles.FullName}>
                 <h5 className="w-100">
@@ -68,9 +65,7 @@ function ClientProfile(props) {
         </div>
         <div className={styles.Client_Profile_Main_Section}>
           <div className={styles.Inner_Section}>
-            <div className={styles.DefaultProfile}>
-              <Skeleton width="100%" height="100%" />
-            </div>
+            <Skeleton width="50px" height="50px" circle={true} />
             <div className={styles.Customer_Info_txt}>
               <div className={styles.FullName}>
                 <h5 className="w-100">
@@ -87,9 +82,7 @@ function ClientProfile(props) {
         </div>
         <div className={styles.Client_Profile_Main_Section}>
           <div className={styles.Inner_Section}>
-            <div className={styles.DefaultProfile}>
-              <Skeleton width="100%" height="100%" />
-            </div>
+            <Skeleton width="50px" height="50px" circle={true} />
             <div className={styles.Customer_Info_txt}>
               <div className={styles.FullName}>
                 <h5 className="w-100">
@@ -106,9 +99,7 @@ function ClientProfile(props) {
         </div>
         <div className={styles.Client_Profile_Main_Section}>
           <div className={styles.Inner_Section}>
-            <div className={styles.DefaultProfile}>
-              <Skeleton width="100%" height="100%" />
-            </div>
+            <Skeleton width="50px" height="50px" circle={true} />
             <div className={styles.Customer_Info_txt}>
               <div className={styles.FullName}>
                 <h5 className="w-100">
@@ -125,9 +116,7 @@ function ClientProfile(props) {
         </div>
         <div className={styles.Client_Profile_Main_Section}>
           <div className={styles.Inner_Section}>
-            <div className={styles.DefaultProfile}>
-              <Skeleton width="100%" height="100%" />
-            </div>
+            <Skeleton width="50px" height="50px" circle={true} />
             <div className={styles.Customer_Info_txt}>
               <div className={styles.FullName}>
                 <h5 className="w-100">

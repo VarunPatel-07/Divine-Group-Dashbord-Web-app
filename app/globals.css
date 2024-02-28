@@ -9,7 +9,7 @@ button {
   cursor: pointer;
   transition: 0.1s all;
   &:active {
-    scale: 0.97;
+    scale: 0.99;
   }
 }
 input:-webkit-autofill,
@@ -159,6 +159,7 @@ a {
   padding: 4px 32px;
   text-transform: capitalize;
   transition: 0.1s all;
+
   &:disabled {
     cursor: not-allowed;
     scale: 1 !important;
@@ -356,6 +357,16 @@ input {
   padding: 0 !important;
   overflow: hidden !important;
 }
+._Selected_One {
+  background-color: #64548c !important;
+  width: 0 !important;
+  height: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+._Selected_One:hover {
+  background-color: #64548c !important;
+}
 ._Show_Continue_Btn {
   width: 100% !important;
 }
@@ -532,10 +543,10 @@ input {
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 .accordion-body li {
-  list-style-type:disc;
+  list-style-type: disc;
 }
 .accordion-body p {
   color: var(--non-hilighted-text) !important;
@@ -544,4 +555,79 @@ input {
   font-style: normal;
   font-weight: 500 !important;
   text-transform: capitalize;
+}
+.accordion-body p span {
+  color: var(--main-white-color);
+  font-weight: 700;
+}
+.table thead {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 111;
+}
+.table thead th {
+  height: 60px;
+  background-color: var(--popup-bg-color) !important;
+  border-bottom: 1px solid var(--border-color);
+}
+.table tbody th,
+.table tbody td {
+  height: 60px;
+  background-color: var(--main-bg-color) !important;
+  border-bottom: 1px solid var(--border-color);
+  overflow: hidden;
+}
+.table thead th:first-child {
+  height: 60px;
+
+  border-radius: 15px 0 0 0;
+}
+.table thead th:last-child {
+  height: 60px;
+
+  border-radius: 0 15px 0 0;
+}
+.table tbody th:first-child {
+  height: 60px;
+  overflow: hidden;
+}
+.table tbody td:last-child {
+  height: 60px;
+  overflow: hidden;
+}
+/* .table thead p{
+  justify-content: center;
+} */
+.table p {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--main-white-color);
+  text-transform: capitalize;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 8px;
+  text-align: center;
+}
+.table button {
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  &::after {
+    display: none;
+  }
+}
+.drop-btn {
+  background-color: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+}
+.drop-btn::after {
+  display: none !important ;
 }

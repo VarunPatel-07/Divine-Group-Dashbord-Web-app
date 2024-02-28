@@ -55,7 +55,9 @@ const ContextApi = ({ children }) => {
   const NotificationArray = [];
   const { push } = useRouter();
   const AuthToken = [];
-
+  const [ListOFUsers_Container_State, setListOFUsers_Container_State] =
+    useState(initialState);
+  const [Show_Btn, setShow_Btn] = useState(true);
   const [IsLogIn, setIsLogIn] = useState(() => {
     let getToken = getCookie("Users_Authentication_Token");
 
@@ -676,7 +678,9 @@ const ContextApi = ({ children }) => {
   const Customer_Fetching_Api = async (Token, Page_NO) => {
     try {
       const response = await axios.get(
-        `${HOST}/app/api/customerContactInfo/GetAllCustomer?page=${Page_NO}`,
+        `${HOST}/app/api/customerContactInfo/GetAllCustomer?page=${
+          Page_NO || 1
+        }`,
         {
           headers: {
             authtoken: Token,
@@ -692,25 +696,35 @@ const ContextApi = ({ children }) => {
       console.log(error);
     }
   };
-  const Fetch_More_Customer_API_Caller_Fun = async (Token, Page_NO) => {
+
+  const List_OF_User_Fetching_API_Caller_Function = async (Token, PageNo) => {
+    console.log("pageno", PageNo);
     try {
-      const response = await axios.get(
-        `${HOST}/app/api/customerContactInfo/GetAllCustomer?page=${Page_NO}`,
-        {
+      if (Token.length == 0) {
+      } else {
+        const response = await axios({
+          method: "get",
+          url: `${HOST}/app/api/auth/fetchAllUsers?PageNo=${PageNo || 1}`,
           headers: {
             authtoken: Token,
             "Content-Type": `multipart/form-data`,
           },
+        });
+        if (response.data && response.data.length > 0) {
+          setShow_Btn(true);
+          console.log(response.data);
+          setListOFUsers_Container_State(response.data);
+          if (response.data.length >= 10) {
+          } else {
+            setShow_Btn(false);
+          }
+        } else {
+          setShow_Btn(false);
         }
-      );
-      const Data = response.data;
-      if (Data.success) {
-        setCustomer_Info(Data.Filtered_Data);
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
+
   const contextValue = {
     HOST,
     content,
@@ -734,6 +748,10 @@ const ContextApi = ({ children }) => {
     Customer_Info,
     setCustomer_Info,
     Weather_Info_State,
+    Show_Btn,
+    setShow_Btn,
+    ListOFUsers_Container_State,
+    setListOFUsers_Container_State,
     setWeather_Info_State,
     setShowGroupInfoModal,
     setMessageContent_Container_State,
@@ -768,7 +786,8 @@ const ContextApi = ({ children }) => {
     Delete_Chat_API_Caller_Function,
     Weather_API_Caller_Function,
     Customer_Fetching_Api,
-    Fetch_More_Customer_API_Caller_Fun,
+
+    List_OF_User_Fetching_API_Caller_Function,
   };
   return (
     <NoteContext.Provider value={contextValue}>{children}</NoteContext.Provider>

@@ -3178,3 +3178,309 @@
     }
   }
 }
+// ? ------------- Users PAGE SECTION ---------------------------
+.Users_Page_Main_Section {
+  width: 100%;
+  height: 100%;
+  padding: 16px 16px;
+  overflow: hidden;
+  .Users_Page_Inner_Section {
+    width: 100%;
+    height: 100%;
+    .List_Of_Users {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 30px 0 0 0;
+      .Header_Main_Data_Section {
+        width: 100%;
+        position: relative;
+        overflow: auto;
+      }
+      .Button_Flex_Section {
+        margin: 30px 0 30px auto;
+        padding: 0 30px;
+
+        button {
+          height: 45px;
+          margin: 0 10px;
+        }
+      }
+    }
+  }
+}
+// ? ------------- Customer PAGE SECTION ---------------------------
+.Customer_Main_Outer_Div_Section {
+  width: 100%;
+  height: 100%;
+
+  .Customer_Inner_Section {
+    width: 100%;
+    height: 100%;
+    .Flex_Section_Main {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: stretch;
+      justify-content: flex-start;
+      .List_OF_Users_Section {
+        width: 40%;
+        border-right: 1px solid var(--border-color);
+        .List_Section {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: flex-start;
+          flex-direction: column;
+          justify-content: flex-start;
+          overflow: auto;
+          &::-webkit-scrollbar {
+            display: none;
+          }
+
+          .Header_Section {
+            width: 100%;
+
+            position: sticky;
+            top: 0;
+            left: 0;
+            background-color: var(--main-bg-color);
+            padding: 20px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            border-bottom: 1px solid var(--border-color);
+            gap: 30px;
+            z-index: 11;
+            .Head_Txt {
+              width: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              p {
+                font-family: Inter;
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 16px;
+                color: var(--main-white-color);
+                text-transform: capitalize;
+              }
+            }
+            .Head_SearchBar {
+              width: 100%;
+
+              input {
+                width: 100%;
+                background-color: var(--secondry-bg-color);
+                border: 0;
+                outline: 0;
+                border-radius: 15px;
+                height: 40px;
+                padding: 0 20px;
+                font-family: Inter;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 16px;
+                color: var(--main-white-color);
+                text-transform: capitalize;
+              }
+            }
+          }
+          .Customer_List_Sec {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+      .Action_ON_User_Section {
+        width: 60%;
+        width: 100%;
+        height: 100%;
+        .Customer_Info_Section {
+          width: 100%;
+          height: 100%;
+          .Inner_Section {
+            width: 100%;
+            height: 100%;
+
+            .Header_Section {
+              display: flex;
+              align-items: flex-start;
+              justify-content: space-between;
+              padding: 16px 16px;
+              border-bottom: 1px solid var(--border-color);
+              .Profile {
+                .Client_Profile_Main_Section {
+                  width: 100%;
+
+                  .Inner_Section {
+                    padding: 10px 15px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    width: 100%;
+                    height: 100%;
+                    gap: 12px;
+                    .DefaultProfile {
+                      width: 50px;
+                      height: 50px;
+                      min-width: 50px;
+                      border-radius: 50%;
+                      background-color: #daa073;
+                      overflow: hidden;
+                      .pera {
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        p {
+                          color: var(--main-white-color);
+                          font-family: Inter;
+                          font-size: 18px;
+                          font-style: normal;
+                          font-weight: 600;
+                          line-height: 18px;
+                          text-transform: capitalize;
+                        }
+                      }
+                    }
+                    .Customer_Info_txt {
+                      display: flex;
+                      align-items: flex-start;
+                      justify-content: flex-start;
+                      flex-direction: column;
+                      gap: 8px;
+                      width: 100%;
+                      .FullName {
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        gap: 5px;
+                        h5 {
+                          color: var(--main-white-color);
+                          font-family: Inter;
+                          font-size: 15px;
+                          font-style: normal;
+                          font-weight: 600;
+                          line-height: 15px;
+                          text-transform: capitalize;
+
+                          span {
+                            height: 15px !important;
+                            border-radius: 3px !important;
+                            overflow: hidden;
+                          }
+                        }
+                      }
+                      .Email {
+                        width: 100%;
+                        h6 {
+                          color: var(--non-hilighted-text);
+                          font-family: Inter;
+                          font-size: 15px;
+                          font-style: normal;
+                          font-weight: 400;
+                          line-height: 15px;
+                          width: 100%;
+                          span {
+                            height: 15px !important;
+                            border-radius: 3px !important;
+                            overflow: hidden;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              .Time {
+                .Time_Container {
+                  display: flex;
+                  align-items: center;
+                  justify-content: flex-end;
+                  p {
+                    color: var(--non-hilighted-text);
+                    font-family: Inter;
+                    font-size: 12px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 12px;
+                    text-transform: capitalize;
+                  }
+                }
+              }
+            }
+            .Message_OF_Client_Section {
+              padding: 20px 24px;
+              .InterestedIN {
+                display: flex;
+                align-items: flex-start;
+                h4 {
+                  color: var(--button-main-color);
+                  font-family: Inter;
+                  font-size: 20px;
+                  font-style: normal;
+                  font-weight: 500;
+                  line-height: 20px;
+                  text-transform: capitalize;
+                }
+                ul {
+                  display: flex;
+                  align-items: flex-start;
+                  justify-content: flex-start;
+                  gap: 20px;
+                  padding: 14px 45px;
+                  flex-direction: column;
+                  li {
+                    color: var(--main-white-color);
+                    list-style-type: decimal;
+
+                    p {
+                      color: var(--main-white-color);
+                      font-family: Inter;
+                      font-size: 16px;
+                      font-style: normal;
+                      font-weight: 400;
+                      line-height: 26px;
+                      text-transform: capitalize;
+                    }
+                  }
+                }
+              }
+              .Message {
+                display: flex;
+                align-items: flex-start;
+                h4 {
+                  color: var(--button-main-color);
+                  font-family: Inter;
+                  font-size: 20px;
+                  font-style: normal;
+                  font-weight: 500;
+                  line-height: 20px;
+                  text-transform: capitalize;
+                }
+                p {
+                  color: var(--main-white-color);
+                  font-family: Inter;
+                  font-size: 16px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: 26px;
+                  text-transform: capitalize;
+                  padding: 14px 24px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
