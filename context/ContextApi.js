@@ -57,7 +57,10 @@ const ContextApi = ({ children }) => {
   const AuthToken = [];
   const [ListOFUsers_Container_State, setListOFUsers_Container_State] =
     useState(initialState);
+  const [Client_search_result, setClient_search_result] =
+    useState(initialState);
   const [Show_Btn, setShow_Btn] = useState(true);
+  const [Is_Sending, setIs_Sending] = useState(false);
   const [IsLogIn, setIsLogIn] = useState(() => {
     let getToken = getCookie("Users_Authentication_Token");
 
@@ -696,6 +699,26 @@ const ContextApi = ({ children }) => {
       console.log(error);
     }
   };
+  const Search_Customer_Fetching_API = async (Token, searchVal) => {
+    try {
+      const response = await axios.get(
+        `${HOST}/app/api/customerContactInfo/searchCustomer?search=${searchVal}`,
+        {
+          headers: {
+            authtoken: Token,
+            "Content-Type": `multipart/form-data`,
+          },
+        }
+      );
+      const Data = response.data;
+      if (Data.success) {
+        console.log(Data.clientArr);
+        setClient_search_result(Data.clientArr);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const List_OF_User_Fetching_API_Caller_Function = async (Token, PageNo) => {
     console.log("pageno", PageNo);
@@ -724,6 +747,27 @@ const ContextApi = ({ children }) => {
       }
     } catch (error) {}
   };
+  const Mail_Sending_To_Client_API_Caller_Function = async (
+    Token,
+    formdata
+  ) => {
+    try {
+      setIs_Sending(true);
+      const response = await axios({
+        method: "post",
+        url: `${HOST}/app/api/mail/sendMailToClient`,
+        headers: {
+          authtoken: Token,
+          "Content-Type": `multipart/form-data`,
+        },
+        data: formdata,
+      });
+      console.log(response);
+      setIs_Sending(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const contextValue = {
     HOST,
@@ -749,7 +793,10 @@ const ContextApi = ({ children }) => {
     setCustomer_Info,
     Weather_Info_State,
     Show_Btn,
+    Is_Sending,
     setShow_Btn,
+    Client_search_result,
+    setClient_search_result,
     ListOFUsers_Container_State,
     setListOFUsers_Container_State,
     setWeather_Info_State,
@@ -786,8 +833,9 @@ const ContextApi = ({ children }) => {
     Delete_Chat_API_Caller_Function,
     Weather_API_Caller_Function,
     Customer_Fetching_Api,
-
+    Search_Customer_Fetching_API,
     List_OF_User_Fetching_API_Caller_Function,
+    Mail_Sending_To_Client_API_Caller_Function,
   };
   return (
     <NoteContext.Provider value={contextValue}>{children}</NoteContext.Provider>
