@@ -1,6 +1,6 @@
 "use client";
 require("dotenv").config();
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, use } from "react";
 import axios from "axios";
 import NoteContext from "./noteContext";
 import { useRouter } from "next/navigation";
@@ -61,6 +61,10 @@ const ContextApi = ({ children }) => {
     useState(initialState);
   const [Show_Btn, setShow_Btn] = useState(true);
   const [Is_Sending, setIs_Sending] = useState(false);
+  const [All_Sent_Mail_Storing_State, setAll_Sent_Mail_Storing_State] =
+    useState(initialState);
+  const [Show_Customer_Pagination_Btn, setShow_Customer_Pagination_Btn] =
+    useState(false);
   const [IsLogIn, setIsLogIn] = useState(() => {
     let getToken = getCookie("Users_Authentication_Token");
 
@@ -768,7 +772,73 @@ const ContextApi = ({ children }) => {
       console.log(error);
     }
   };
-
+  const FetchAll_Mail_OF_Log_IN_User = async (Token, PageNo) => {
+    try {
+      if (Token.length == 0) {
+      } else {
+        const response = await axios.get(
+          `${HOST}/app/api/mail/fetchAllSentMail?page=${PageNo || 1}`,
+          {
+            headers: {
+              authtoken: Token,
+              "Content-Type": `multipart/form-data`,
+            },
+          }
+        );
+        const Data = response.data;
+        if (Data.success && Data.Filtered_Data.length > 0) {
+          setShow_Customer_Pagination_Btn(true);
+          setAll_Sent_Mail_Storing_State(Data.Filtered_Data);
+          if (response.data.length >= 10) {
+          } else {
+            setShow_Customer_Pagination_Btn(false);
+          }
+          console.log(Show_Customer_Pagination_Btn);
+        } else {
+          setShow_Customer_Pagination_Btn(false);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const Delete_Mail_API_Calling_Function = async (Token, Info) => {
+    try {
+      if (Token.length == 0) {
+      } else {
+        const response = await axios({
+          method: "delete",
+          url: `${HOST}/app/api/mail/deleteCustomerMail`,
+          headers: {
+            authtoken: Token,
+          },
+          data: {
+            SelectedCustomer: Info,
+          },
+        });
+        if (response.data.success) {
+          FetchAll_Mail_OF_Log_IN_User(Token);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const Compare_Password_API_Calling_Function = async (Token, password) => {
+    const response = await axios({
+      method: "post",
+      url: `${HOST}/app/api/auth/comparePassword`,
+      headers: {
+        authtoken: Token,
+      },
+      data: {
+        password: password,
+      },
+    });
+    if (response.data.success) {
+      console.log(response.data.success);
+    }
+  };
   const contextValue = {
     HOST,
     content,
@@ -836,6 +906,12 @@ const ContextApi = ({ children }) => {
     Search_Customer_Fetching_API,
     List_OF_User_Fetching_API_Caller_Function,
     Mail_Sending_To_Client_API_Caller_Function,
+    FetchAll_Mail_OF_Log_IN_User,
+    All_Sent_Mail_Storing_State,
+    setAll_Sent_Mail_Storing_State,
+    Show_Customer_Pagination_Btn,
+    Delete_Mail_API_Calling_Function,
+    Compare_Password_API_Calling_Function
   };
   return (
     <NoteContext.Provider value={contextValue}>{children}</NoteContext.Provider>

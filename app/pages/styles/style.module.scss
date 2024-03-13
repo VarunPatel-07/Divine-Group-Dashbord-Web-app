@@ -3217,6 +3217,7 @@
   width: 100%;
   height: 100%;
   position: relative;
+  overflow: hidden;
 
   .Customer_Inner_Section {
     width: 100%;
@@ -3481,6 +3482,22 @@
             }
           }
         }
+        .sent_mail_inbox {
+          width: 100%;
+          height: 100%;
+          padding-left: 15px;
+          padding-right: 15px;
+          padding-top: 25px;
+          padding-bottom: 25px;
+          .list_of_mail {
+            width: 100%;
+            height: 100%;
+            .inner_section {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
       }
     }
     .SelectedUsersProfile {
@@ -3657,7 +3674,7 @@
     transform: translateX(-50%);
     background-color: var(--popup-bg-color);
     border-radius: 10px;
-   
+
     overflow: hidden;
     .sending_mail_notification_inner_sec {
       width: 100%;
@@ -3694,5 +3711,149 @@
   }
   100% {
     z-index: 11;
+  }
+}
+// ? ------------------ Setting Page Section ------------------------
+.SettingPage_Main_Section {
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  .list_section {
+    width: 35%;
+    .List_Of_Action_Section {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+      gap: 20px;
+      padding: 30px 30px;
+      height: 100%;
+      border-right: 1px solid var(--border-color);
+      .List_Section_Card {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 20px;
+        cursor: pointer;
+        .text_section {
+          p {
+            font-family: Inter;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 24px;
+            color: var(--main-white-color);
+            text-transform: capitalize;
+            opacity: 0.4;
+          }
+        }
+        span {
+          display: block;
+          width: 50px;
+          height: 3px;
+          border-radius: 2px;
+          background-color: transparent;
+        }
+      }
+    }
+  }
+  .More_Detailed_Section {
+    width: 65%;
+    .change_password_main_section {
+      width: calc(100% - 200px);
+
+      border-radius: 15px;
+      margin: 30px auto 0 0;
+      .change_password_inner_section {
+        width: 100%;
+        height: 100%;
+        .main_input_section {
+          width: 100%;
+          height: 100%;
+          padding: 0 30px;
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
+          flex-direction: column;
+          gap: 24px;
+          h3 {
+            font-family: Inter;
+            font-size: 22px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 24px;
+            color: var(--main-white-color);
+            text-transform: capitalize;
+          }
+          input {
+            width: 100%;
+            height: 100%;
+            height: 45px;
+            border-radius: 15px;
+            border: 0;
+            outline: 0;
+            padding: 0 25px;
+            background-color: var(--popup-bg-color);
+            font-family: Inter;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px;
+            color: var(--main-white-color);
+            text-transform: capitalize;
+            &:focus {
+              border: 2px solid var(--button-main-color);
+            }
+            &::placeholder {
+              color: var(--non-hilighted-text);
+            }
+          }
+          label {
+            font-family: Inter;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px;
+            color: var(--non-hilighted-text);
+            text-transform: capitalize;
+          }
+          button {
+            font-size: 18px !important;
+            height: 40px;
+          }
+          .fill_the_current_password_filed {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-direction: column;
+            width: 100%;
+            gap: 8px;
+            .input_field {
+              width: 100%;
+              position: relative;
+              button {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 30px;
+                border: 0;
+                outline: 0;
+                background-color: transparent;
+                color: var(--main-white-color);
+              }
+            }
+          }
+          .Button_section {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            width: 100%;
+          }
+        }
+      }
+    }
   }
 }

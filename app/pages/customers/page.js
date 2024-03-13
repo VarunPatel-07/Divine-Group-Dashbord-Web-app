@@ -8,6 +8,7 @@ import Loader from "@/utils/Loader";
 import ClientProfile from "@/components/ClientProfile";
 import { MdAttachFile, MdMoveToInbox } from "react-icons/md";
 import { CgExpand } from "react-icons/cg";
+import { ImCheckboxChecked, ImCheckboxUnchecked } from "react-icons/im";
 
 import {
   IoClose,
@@ -16,7 +17,12 @@ import {
   IoTrashBin,
 } from "react-icons/io5";
 import { FaRegEdit } from "react-icons/fa";
-import { IoIosClose, IoIosExpand } from "react-icons/io";
+import {
+  IoIosArrowBack,
+  IoIosArrowForward,
+  IoIosClose,
+  IoIosExpand,
+} from "react-icons/io";
 import Head from "next/head";
 
 function Customer() {
@@ -36,13 +42,20 @@ function Customer() {
   const [Email_Files_Storing_State, setEmail_Files_Storing_State] = useState(
     []
   );
-  
+  const [Selected_Mail_Storing_State, setSelected_Mail_Storing_State] =
+    useState(initialState);
+  const [
+    Is_Sent_Mail_Clicked_OR_Fetching_Started,
+    setIs_Sent_Mail_Clicked_OR_Fetching_Started,
+  ] = useState(false);
+
   const [Mail_Info_Storing_State, setMail_Info_Storing_State] = useState({
     subject: "",
     body: "",
     Img: [],
     Email: [],
   });
+
   const {
     AuthToken,
     UserInfo,
@@ -53,10 +66,15 @@ function Customer() {
     Client_search_result,
     setClient_search_result,
     Mail_Sending_To_Client_API_Caller_Function,
-    Is_Sending
+    Is_Sending,
+    FetchAll_Mail_OF_Log_IN_User,
+    All_Sent_Mail_Storing_State,
+    setAll_Sent_Mail_Storing_State,
+    Show_Customer_Pagination_Btn,
+    Delete_Mail_API_Calling_Function,
   } = context;
   const Client_Info_Adding = (Info) => {
-    console.log(Info);
+    setIs_Sent_Mail_Clicked_OR_Fetching_Started(false);
     setSelected_Client_Container_State(Info);
   };
   const SearchClientsInput = (e) => {
@@ -91,8 +109,8 @@ function Customer() {
       setSelected_client_to_send_mail(newObj);
     }
   };
-  const send_Mail_Button_Controller = () => {
-   
+  const send_Mail_Button_Controller = (e) => {
+    e.preventDefault();
     setShowSendMailModal(false);
     const formdata = new FormData();
 
@@ -143,10 +161,63 @@ function Customer() {
   const ImageUploader = (e) => {
     setEmail_Img_Storing_State(e.target.files);
   };
+  const Show_Sent_Mail_Inbox = (e) => {
+    setIs_Sent_Mail_Clicked_OR_Fetching_Started(true);
+    setSelected_Client_Container_State([]);
+  };
+  const Month_Name = (num) => {
+    const months = [
+      "",
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    if (num < 10) {
+      return months[num.split("")[1]];
+    } else {
+      return months[num];
+    }
+  };
+  const onClickInfoStoring_Button = (Info) => {
+    const isIdIncluded = Selected_Mail_Storing_State?.some(
+      (item) => item._id === Info._id
+    );
+    if (isIdIncluded) {
+      const newArray = Selected_Mail_Storing_State.filter(
+        (obj) => obj._id !== Info._id
+      );
+      setSelected_Mail_Storing_State(newArray);
+    } else {
+      setSelected_Mail_Storing_State((previous) => [...previous, Info]);
+    }
+  };
+  const ShowPreviousCustomer_Btn = () => {
+    if (PageNo <= 1) {
+    } else {
+      setPageNo((prevPageNo) => prevPageNo - 1);
+    }
+  };
+  const ShowMoreCustomer_Btn = () => {
+    setPageNo((prevPageNo) => prevPageNo + 1);
+  };
+  const Delete_Selected_Mail_Button = () => {
+    // console.log("delete button",Selected_Mail_Storing_State);
+    Delete_Mail_API_Calling_Function(AuthToken, Selected_Mail_Storing_State);
+  };
   useEffect(() => {
     setLoding(true);
     Customer_Fetching_Api(AuthToken);
     setLoding(false);
+    FetchAll_Mail_OF_Log_IN_User(AuthToken, PageNo);
   }, []);
   return (
     <>
@@ -181,9 +252,15 @@ function Customer() {
                             </a>
                           </li>
                           <li>
-                            <a className="dropdown-item py-3" href="#">
+                            <a
+                              className="dropdown-item py-3"
+                              onClick={Show_Sent_Mail_Inbox}
+                            >
                               <span
-                                style={{ paddingRight: "5px", rotate: "30deg" }}
+                                style={{
+                                  paddingRight: "5px",
+                                  rotate: "30deg",
+                                }}
                               >
                                 <IoSendSharp />
                               </span>
@@ -325,6 +402,161 @@ function Customer() {
                     </div>
                   </div>
                 )}
+                {Is_Sent_Mail_Clicked_OR_Fetching_Started ? (
+                  <div className={styles.sent_mail_inbox}>
+                    <div className={styles.list_of_mail}>
+                      {All_Sent_Mail_Storing_State.length == 0 ? (
+                        <div>
+                          <p className="mail-label">no such mail was sent</p>
+                        </div>
+                      ) : (
+                        <div className={styles.inner_section}>
+                          <div className="d-flex align-items-center justify-content-between rounded-top-2  px-3 py-3 bg-sidebar">
+                            <ul className="list-unstyled d-flex align-items-center justify-content-end">
+                              <li>
+                                {!Selected_Mail_Storing_State.length > 0 ? (
+                                  ""
+                                ) : (
+                                  <button
+                                    className="btn-one"
+                                    onClick={Delete_Selected_Mail_Button}
+                                  >
+                                    <IoTrashBin />
+                                  </button>
+                                )}
+                              </li>
+                            </ul>
+                            <ul className="list-unstyled d-flex align-items-center justify-content-end">
+                              <li>
+                                <button
+                                  className="btn-one"
+                                  onClick={ShowPreviousCustomer_Btn}
+                                  disabled={PageNo == 1}
+                                >
+                                  <IoIosArrowBack />
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  className="btn-one"
+                                  onClick={ShowMoreCustomer_Btn}
+                                  disabled={!Show_Customer_Pagination_Btn}
+                                >
+                                  <IoIosArrowForward />
+                                </button>
+                              </li>
+                            </ul>
+                          </div>
+                          <table className="table">
+                            <thead>
+                              {/* <tr>
+                              <th scope="col">
+                                <p>No.</p>
+                              </th>
+                              <th scope="col">
+                                <p>No.</p>
+                              </th>
+
+                              <th scope="col">
+                                <p>status</p>
+                              </th>
+                              <th scope="col">
+                                <p>status</p>
+                              </th>
+                              <th scope="col">
+                                <div className={styles.Button_Flex_Section}>
+                                  <button
+                                    className="filled-btn"
+                                    // onClick={ShowPreviousUserInfoButton}
+                                    // disabled={PageNo == 1}
+                                  >
+                                    <span>Previous</span>
+                                  </button>
+                                  <button
+                                    className="filled-btn"
+                                    // onClick={ShowMorUserButton}
+                                    // disabled={!Show_Btn}
+                                  >
+                                    <span>next</span>
+                                  </button>
+                                </div>
+                              </th>
+                            </tr> */}
+                            </thead>
+                            <tbody>
+                              {All_Sent_Mail_Storing_State?.map(
+                                (Info, index) => (
+                                  <tr
+                                    key={Info._id}
+                                    className="curser_Pointer "
+                                  >
+                                    <th scope="row">
+                                      <div className="d-flex h-100 align-items-center justify-content-center">
+                                        <button
+                                          className="text-white"
+                                          onClick={() =>
+                                            onClickInfoStoring_Button(Info)
+                                          }
+                                        >
+                                          {Selected_Mail_Storing_State?.some(
+                                            (item) => item._id === Info._id
+                                          ) ? (
+                                            <ImCheckboxChecked />
+                                          ) : (
+                                            <ImCheckboxUnchecked />
+                                          )}
+                                        </button>
+                                      </div>
+                                    </th>
+                                    <td scope="col">
+                                      <p className="text-lowercase fs-14">
+                                        {" "}
+                                        {Info?.senderId?.email}
+                                      </p>
+                                    </td>
+                                    <td scope="col">
+                                      <p className="fs-14">{Info.subject}</p>
+                                    </td>
+                                    <td scope="col">
+                                      <p className="fs-14 text-lowercase text-overflow ">
+                                        {Info.body}
+                                      </p>
+                                    </td>
+                                    <td scope="col">
+                                      <div className="d-flex align-items-center justify-content-center h-100">
+                                        <p className="fs-14">
+                                          {Month_Name(
+                                            Info?.createdAt
+                                              .split("T")[0]
+                                              ?.split("-")[1]
+                                          )}
+                                        </p>
+                                        <p className="p-0 fs-14">
+                                          {Info?.createdAt
+                                            .split("T")[0]
+                                            ?.split("-")[2] < 10
+                                            ? Info?.createdAt
+                                                .split("T")[0]
+                                                ?.split("-")[2]
+                                                ?.split("")[1]
+                                            : Info?.createdAt
+                                                .split("T")[0]
+                                                ?.split("-")[2]}
+                                        </p>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                )
+                              )}
+                            </tbody>
+                          </table>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
               <div
                 className={`${styles.send_mail_main_section_div} ${
@@ -337,204 +569,215 @@ function Customer() {
                   }`}
                 >
                   <div className={styles.send_mail_inner_section_div}>
-                    <div className="w-100 position-relative">
-                      <div className="w-100 position-sticky top-0 z-1">
-                        <div className="d-flex w-100 bg-flex-sec">
-                          <p>new mali</p>
-                          <div>
-                            <button onClick={Expand_Button}>
-                              <CgExpand />
-                            </button>
-                            <button onClick={Close_Modal_Control_Btn}>
-                              <IoClose />
-                            </button>
+                    <form action="" onSubmit={send_Mail_Button_Controller}>
+                      <div className="w-100 position-relative">
+                        <div className="w-100 position-sticky top-0 z-1">
+                          <div className="d-flex w-100 bg-flex-sec">
+                            <p>new mali</p>
+                            <div>
+                              <button onClick={Expand_Button}>
+                                <CgExpand />
+                              </button>
+                              <button onClick={Close_Modal_Control_Btn}>
+                                <IoClose />
+                              </button>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div className={styles.inner_container}>
-                        <div className="w-100">
-                          <div className="w-100 position-relative">
-                            <div className="d-flex gap-2 border-bottom-one align-items-center ">
-                              <label htmlFor="input-to" className="mail-label">
-                                to:
-                              </label>
-                              <input
-                                type="text"
-                                className="mail-input"
-                                id="input-to"
-                                value={Search_Val}
-                                onChange={SearchClientsInput}
-                                ref={clientInput}
-                                name="sender"
-                              />
-                            </div>
-                            <div className="w-100">
-                              <div className="row-one p-0">
-                                {Selected_client_to_send_mail?.map((Info) => (
-                                  <div
-                                    className="object-fit-contain p-0"
-                                    key={Info._id}
-                                  >
+                        <div className={styles.inner_container}>
+                          <div className="w-100">
+                            <div className="w-100 position-relative">
+                              <div className="d-flex gap-2 border-bottom-one align-items-center ">
+                                <label
+                                  htmlFor="input-to"
+                                  className="mail-label"
+                                >
+                                  to:
+                                </label>
+                                <input
+                                  type="text"
+                                  className="mail-input"
+                                  id="input-to"
+                                  value={Search_Val}
+                                  onChange={SearchClientsInput}
+                                  ref={clientInput}
+                                  name="sender"
+                                />
+                              </div>
+                              <div className="w-100">
+                                <div className="row-one p-0">
+                                  {Selected_client_to_send_mail?.map((Info) => (
                                     <div
-                                      className={styles.SelectedUsersProfile}
+                                      className="object-fit-contain p-0"
+                                      key={Info._id}
                                     >
                                       <div
-                                        className={
-                                          styles.SelectedUsersProfileInnerSec
-                                        }
+                                        className={styles.SelectedUsersProfile}
                                       >
-                                        <div className={styles.DefaultProfile}>
-                                          <div className={styles.pera}>
-                                            <p>
-                                              {Info.firstname?.split("")[0]}
-                                            </p>
-                                          </div>
-                                        </div>
                                         <div
                                           className={
-                                            styles.SelectedUsersProfileName
+                                            styles.SelectedUsersProfileInnerSec
                                           }
                                         >
-                                          <p>{Info.email}</p>
-                                          <button
-                                            onClick={() =>
-                                              RemoveMember(Info._id)
+                                          <div
+                                            className={styles.DefaultProfile}
+                                          >
+                                            <div className={styles.pera}>
+                                              <p>
+                                                {Info.firstname?.split("")[0]}
+                                              </p>
+                                            </div>
+                                          </div>
+                                          <div
+                                            className={
+                                              styles.SelectedUsersProfileName
                                             }
                                           >
-                                            <IoIosClose />
-                                          </button>
+                                            <p>{Info.email}</p>
+                                            <button
+                                              onClick={() =>
+                                                RemoveMember(Info._id)
+                                              }
+                                            >
+                                              <IoIosClose />
+                                            </button>
+                                          </div>
                                         </div>
                                       </div>
                                     </div>
-                                  </div>
-                                ))}
+                                  ))}
+                                </div>
                               </div>
-                            </div>
-                            <div className={styles.search_suggestion_result}>
-                              <div
-                                className={
-                                  styles.search_suggestion_result_inner_section
-                                }
-                              >
-                                <div className="w-100">
-                                  {Client_search_result.length > 0 ? (
-                                    <div className="w-100">
-                                      {Client_search_result?.map((info) => {
-                                        return (
-                                          <div
-                                            className={`${
-                                              Selected_client_to_send_mail?.some(
-                                                (clientInfo) =>
-                                                  clientInfo._id == info._id
-                                              )
-                                                ? "d-none"
-                                                : "w-100"
-                                            }`}
-                                            key={info._id}
-                                            onClick={() =>
-                                              client_array_setter_for_client(
-                                                info
-                                              )
-                                            }
-                                          >
-                                            <ClientProfile
-                                              CustomerInfo={info}
-                                              Loading={false}
-                                            />
-                                          </div>
-                                        );
-                                      })}
-                                    </div>
-                                  ) : (
-                                    ""
-                                  )}
+                              <div className={styles.search_suggestion_result}>
+                                <div
+                                  className={
+                                    styles.search_suggestion_result_inner_section
+                                  }
+                                >
+                                  <div className="w-100">
+                                    {Client_search_result.length > 0 ? (
+                                      <div className="w-100">
+                                        {Client_search_result?.map((info) => {
+                                          return (
+                                            <div
+                                              className={`${
+                                                Selected_client_to_send_mail?.some(
+                                                  (clientInfo) =>
+                                                    clientInfo._id == info._id
+                                                )
+                                                  ? "d-none"
+                                                  : "w-100"
+                                              }`}
+                                              key={info._id}
+                                              onClick={() =>
+                                                client_array_setter_for_client(
+                                                  info
+                                                )
+                                              }
+                                            >
+                                              <ClientProfile
+                                                CustomerInfo={info}
+                                                Loading={false}
+                                              />
+                                            </div>
+                                          );
+                                        })}
+                                      </div>
+                                    ) : (
+                                      ""
+                                    )}
+                                  </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
-                          <div className="w-100 ">
-                            <div className="d-flex gap-2 border-bottom-one align-items-center">
-                              <label htmlFor="input-to" className="mail-label">
-                                subject:
-                              </label>
-                              <input
-                                type="text"
-                                className="mail-input"
-                                id="input-to"
-                                name="subject"
-                                onChange={Mail_Info_Setter}
-                              />
-                            </div>
-                          </div>
-                          <div className="w-100">
-                            <div className="d-flex">
-                              <textarea
-                                name="body"
-                                cols="50"
-                                rows="15"
-                                className="mail-text-area h-100"
-                                onChange={Mail_Info_Setter}
-                              ></textarea>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="w-100 position-sticky bottom-0 bg-color pt-2 pb-2">
-                        <div className={styles.send_mail_footer_bar_section}>
-                          <div className={styles.insert_file_and_all_section}>
-                            <ul>
-                              <li>
-                                <input
-                                  type="file"
-                                  className="d-none"
-                                  id="emailImageUploader"
-                                  accept="image/png, image/gif, image/jpeg"
-                                  onChange={ImageUploader}
-                                  multiple
-                                />
-                                <label htmlFor="emailImageUploader">
-                                  <IoImagesOutline />
-                                </label>
-                              </li>
-                              <li>
-                                <input
-                                  type="file"
-                                  className="d-none"
-                                  id="emailPdfUploader"
-                                  accept="application/pdf,.csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
-                                  onChange={FilesUploader}
-                                  multiple
-                                />
-                                <label htmlFor="emailPdfUploader">
-                                  <MdAttachFile />
-                                </label>
-                              </li>
-                              <li>
-                                <button>
-                                  <IoTrashBin />
-                                </button>
-                              </li>
-                            </ul>
-                            <ul>
-                              <li>
-                                <button
-                                  onClick={send_Mail_Button_Controller}
-                                  className="filled-btn pt-2 pb-2"
+                            <div className="w-100 ">
+                              <div className="d-flex gap-2 border-bottom-one align-items-center">
+                                <label
+                                  htmlFor="input-to"
+                                  className="mail-label"
                                 >
-                                  Send
-                                </button>
-                              </li>
-                            </ul>
+                                  subject:
+                                </label>
+                                <input
+                                  type="text"
+                                  className="mail-input"
+                                  id="input-to"
+                                  name="subject"
+                                  onChange={Mail_Info_Setter}
+                                />
+                              </div>
+                            </div>
+                            <div className="w-100">
+                              <div className="d-flex">
+                                <textarea
+                                  name="body"
+                                  cols="50"
+                                  rows="15"
+                                  className="mail-text-area h-100"
+                                  onChange={Mail_Info_Setter}
+                                ></textarea>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="w-100 position-sticky bottom-0 bg-color pt-2 pb-2">
+                          <div className={styles.send_mail_footer_bar_section}>
+                            <div className={styles.insert_file_and_all_section}>
+                              <ul>
+                                <li>
+                                  <input
+                                    type="file"
+                                    className="d-none"
+                                    id="emailImageUploader"
+                                    accept="image/png, image/gif, image/jpeg"
+                                    onChange={ImageUploader}
+                                    multiple
+                                  />
+                                  <label htmlFor="emailImageUploader">
+                                    <IoImagesOutline />
+                                  </label>
+                                </li>
+                                <li>
+                                  <input
+                                    type="file"
+                                    className="d-none"
+                                    id="emailPdfUploader"
+                                    accept="application/pdf,.csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                                    onChange={FilesUploader}
+                                    multiple
+                                  />
+                                  <label htmlFor="emailPdfUploader">
+                                    <MdAttachFile />
+                                  </label>
+                                </li>
+                                <li>
+                                  <button>
+                                    <IoTrashBin />
+                                  </button>
+                                </li>
+                              </ul>
+                              <ul>
+                                <li>
+                                  <button
+                                    type="submit"
+                                    className="filled-btn pt-2 pb-2"
+                                  >
+                                    Send
+                                  </button>
+                                </li>
+                              </ul>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </form>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
           <div
             className={`${styles.sending_mail_notification} ${
               Is_Sending ? "sending" : ""

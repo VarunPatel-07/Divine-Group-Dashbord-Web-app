@@ -3090,6 +3090,7 @@
   width: 100%;
   height: 100%;
   position: relative;
+  overflow: hidden;
 }
 .Customer_Main_Outer_Div_Section .Customer_Inner_Section {
   width: 100%;
@@ -3346,6 +3347,22 @@
   text-transform: capitalize;
   padding: 14px 24px;
 }
+.Customer_Main_Outer_Div_Section .Customer_Inner_Section .Flex_Section_Main .Action_ON_User_Section .sent_mail_inbox {
+  width: 100%;
+  height: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+.Customer_Main_Outer_Div_Section .Customer_Inner_Section .Flex_Section_Main .Action_ON_User_Section .sent_mail_inbox .list_of_mail {
+  width: 100%;
+  height: 100%;
+}
+.Customer_Main_Outer_Div_Section .Customer_Inner_Section .Flex_Section_Main .Action_ON_User_Section .sent_mail_inbox .list_of_mail .inner_section {
+  width: 100%;
+  height: 100%;
+}
 .Customer_Main_Outer_Div_Section .Customer_Inner_Section .SelectedUsersProfile {
   border-radius: 20px;
   border: 1px solid var(--border-color);
@@ -3551,4 +3568,147 @@
   100% {
     z-index: 11;
   }
+}
+.SettingPage_Main_Section {
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+.SettingPage_Main_Section .list_section {
+  width: 35%;
+}
+.SettingPage_Main_Section .list_section .List_Of_Action_Section {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px 30px;
+  height: 100%;
+  border-right: 1px solid var(--border-color);
+}
+.SettingPage_Main_Section .list_section .List_Of_Action_Section .List_Section_Card {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  cursor: pointer;
+}
+.SettingPage_Main_Section .list_section .List_Of_Action_Section .List_Section_Card .text_section p {
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--main-white-color);
+  text-transform: capitalize;
+  opacity: 0.4;
+}
+.SettingPage_Main_Section .list_section .List_Of_Action_Section .List_Section_Card span {
+  display: block;
+  width: 50px;
+  height: 3px;
+  border-radius: 2px;
+  background-color: transparent;
+}
+.SettingPage_Main_Section .More_Detailed_Section {
+  width: 65%;
+}
+.SettingPage_Main_Section .More_Detailed_Section .change_password_main_section {
+  width: calc(100% - 200px);
+  border-radius: 15px;
+  margin: 30px auto 0 0;
+}
+.SettingPage_Main_Section .More_Detailed_Section .change_password_main_section .change_password_inner_section {
+  width: 100%;
+  height: 100%;
+}
+.SettingPage_Main_Section .More_Detailed_Section .change_password_main_section .change_password_inner_section .main_input_section {
+  width: 100%;
+  height: 100%;
+  padding: 0 30px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 24px;
+}
+.SettingPage_Main_Section .More_Detailed_Section .change_password_main_section .change_password_inner_section .main_input_section h3 {
+  font-family: Inter;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--main-white-color);
+  text-transform: capitalize;
+}
+.SettingPage_Main_Section .More_Detailed_Section .change_password_main_section .change_password_inner_section .main_input_section input {
+  width: 100%;
+  height: 100%;
+  height: 45px;
+  border-radius: 15px;
+  border: 0;
+  outline: 0;
+  padding: 0 25px;
+  background-color: var(--popup-bg-color);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--main-white-color);
+  text-transform: capitalize;
+}
+.SettingPage_Main_Section .More_Detailed_Section .change_password_main_section .change_password_inner_section .main_input_section input:focus {
+  border: 2px solid var(--button-main-color);
+}
+.SettingPage_Main_Section .More_Detailed_Section .change_password_main_section .change_password_inner_section .main_input_section input::-moz-placeholder {
+  color: var(--non-hilighted-text);
+}
+.SettingPage_Main_Section .More_Detailed_Section .change_password_main_section .change_password_inner_section .main_input_section input::placeholder {
+  color: var(--non-hilighted-text);
+}
+.SettingPage_Main_Section .More_Detailed_Section .change_password_main_section .change_password_inner_section .main_input_section label {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--non-hilighted-text);
+  text-transform: capitalize;
+}
+.SettingPage_Main_Section .More_Detailed_Section .change_password_main_section .change_password_inner_section .main_input_section button {
+  font-size: 18px !important;
+  height: 40px;
+}
+.SettingPage_Main_Section .More_Detailed_Section .change_password_main_section .change_password_inner_section .main_input_section .fill_the_current_password_filed {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+}
+.SettingPage_Main_Section .More_Detailed_Section .change_password_main_section .change_password_inner_section .main_input_section .fill_the_current_password_filed .input_field {
+  width: 100%;
+  position: relative;
+}
+.SettingPage_Main_Section .More_Detailed_Section .change_password_main_section .change_password_inner_section .main_input_section .fill_the_current_password_filed .input_field button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 30px;
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+  color: var(--main-white-color);
+}
+.SettingPage_Main_Section .More_Detailed_Section .change_password_main_section .change_password_inner_section .main_input_section .Button_section {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
 }/*# sourceMappingURL=style.module.css.map */
