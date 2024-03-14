@@ -52,7 +52,9 @@ function Sidebar() {
   if (
     pathname === "/pages/auth/login" ||
     pathname === "/pages/auth/sign-up" ||
-    pathname === "/pages/auth/Otp"
+    pathname === "/pages/auth/Otp" ||
+    pathname === "/pages/auth/forgot-password"||
+    pathname === "/pages/auth/reset-password"
   ) {
   } else {
     return (
@@ -125,7 +127,9 @@ function Sidebar() {
                       setting
                     </Link>
                   </li>
-                  <li className={pathname == "/pages/HelpCenter" ? "active" : ""}>
+                  <li
+                    className={pathname == "/pages/HelpCenter" ? "active" : ""}
+                  >
                     <Link href="/pages/HelpCenter">
                       <span>
                         <LuBadgeHelp />

@@ -3616,9 +3616,13 @@
   width: 65%;
 }
 .SettingPage_Main_Section .More_Detailed_Section .change_password_main_section {
-  width: calc(100% - 200px);
-  border-radius: 15px;
+  width: 100%;
   margin: 30px auto 0 0;
+}
+@media only screen and (min-width: 1200px) {
+  .SettingPage_Main_Section .More_Detailed_Section .change_password_main_section {
+    width: calc(100% - 200px);
+  }
 }
 .SettingPage_Main_Section .More_Detailed_Section .change_password_main_section .change_password_inner_section {
   width: 100%;
@@ -3710,5 +3714,109 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  width: 100%;
+}
+.SettingPage_Main_Section .More_Detailed_Section .Two_Step_Verification_Main_Section {
+  width: 100%;
+  margin: 30px auto 0 0;
+}
+@media only screen and (min-width: 1200px) {
+  .SettingPage_Main_Section .More_Detailed_Section .Two_Step_Verification_Main_Section {
+    width: calc(100% - 200px);
+  }
+}
+.SettingPage_Main_Section .More_Detailed_Section .Two_Step_Verification_Main_Section .Two_Step_Verification_Inner_Section {
+  padding: 0 30px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 32px;
+}
+.SettingPage_Main_Section .More_Detailed_Section .Two_Step_Verification_Main_Section .Two_Step_Verification_Inner_Section .Title_Main_Section h3 {
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--main-white-color);
+  text-transform: capitalize;
+}
+.SettingPage_Main_Section .More_Detailed_Section .Two_Step_Verification_Main_Section .Two_Step_Verification_Inner_Section .Title_Main_Section h3 span {
+  color: var(--button-main-color);
+  font-weight: 700;
+}
+.SettingPage_Main_Section .More_Detailed_Section .Two_Step_Verification_Main_Section .Two_Step_Verification_Inner_Section .Input_And_Button_Section {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 32px;
+}
+.SettingPage_Main_Section .More_Detailed_Section .Two_Step_Verification_Main_Section .Two_Step_Verification_Inner_Section .Input_And_Button_Section input {
+  width: 100%;
+  height: 100%;
+  height: 45px;
+  border-radius: 15px;
+  border: 0;
+  outline: 0;
+  padding: 0 25px;
+  background-color: var(--popup-bg-color);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--main-white-color);
+  text-transform: capitalize;
+}
+.SettingPage_Main_Section .More_Detailed_Section .Two_Step_Verification_Main_Section .Two_Step_Verification_Inner_Section .Input_And_Button_Section input:focus {
+  border: 2px solid var(--button-main-color);
+}
+.SettingPage_Main_Section .More_Detailed_Section .Two_Step_Verification_Main_Section .Two_Step_Verification_Inner_Section .Input_And_Button_Section input::-moz-placeholder {
+  color: var(--non-hilighted-text);
+}
+.SettingPage_Main_Section .More_Detailed_Section .Two_Step_Verification_Main_Section .Two_Step_Verification_Inner_Section .Input_And_Button_Section input::placeholder {
+  color: var(--non-hilighted-text);
+}
+.SettingPage_Main_Section .More_Detailed_Section .Two_Step_Verification_Main_Section .Two_Step_Verification_Inner_Section .Input_And_Button_Section label {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--non-hilighted-text);
+  text-transform: capitalize;
+}
+.SettingPage_Main_Section .More_Detailed_Section .Two_Step_Verification_Main_Section .Two_Step_Verification_Inner_Section .Input_And_Button_Section button {
+  font-size: 18px !important;
+  height: 40px;
+}
+.SettingPage_Main_Section .More_Detailed_Section .Two_Step_Verification_Main_Section .Two_Step_Verification_Inner_Section .Input_And_Button_Section .fill_the_current_password_filed {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+}
+.SettingPage_Main_Section .More_Detailed_Section .Two_Step_Verification_Main_Section .Two_Step_Verification_Inner_Section .Input_And_Button_Section .fill_the_current_password_filed .input_field {
+  width: 100%;
+  position: relative;
+}
+.SettingPage_Main_Section .More_Detailed_Section .Two_Step_Verification_Main_Section .Two_Step_Verification_Inner_Section .Input_And_Button_Section .fill_the_current_password_filed .input_field button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 30px;
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+  color: var(--main-white-color);
+}
+.SettingPage_Main_Section .More_Detailed_Section .Two_Step_Verification_Main_Section .Two_Step_Verification_Inner_Section .Input_And_Button_Section .Button_Section {
   width: 100%;
 }/*# sourceMappingURL=style.module.css.map */

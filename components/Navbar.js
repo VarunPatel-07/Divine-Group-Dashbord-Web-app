@@ -19,7 +19,7 @@ function Navbar() {
     UserInfo,
     Notification,
     setNotification,
-    newArray
+    newArray,
   } = context;
   const { push } = useRouter();
   const BackgroundColor = [
@@ -81,7 +81,9 @@ function Navbar() {
   if (
     pathname === "/pages/auth/login" ||
     pathname === "/pages/auth/sign-up" ||
-    pathname === "/pages/auth/Otp"
+    pathname === "/pages/auth/Otp" ||
+    pathname === "/pages/auth/forgot-password" ||
+    pathname === "/pages/auth/reset-password"
   ) {
   } else {
     return (
@@ -126,8 +128,8 @@ function Navbar() {
                       ""
                     )} */}
                     <span className={styles.notification_Icon}>
-                        {Notification.length}
-                      </span>
+                      {Notification.length}
+                    </span>
                   </button>
                 </div>
                 <div

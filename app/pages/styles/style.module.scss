@@ -3761,9 +3761,12 @@
   .More_Detailed_Section {
     width: 65%;
     .change_password_main_section {
-      width: calc(100% - 200px);
+      @media only screen and (min-width: 1200px) {
+        width: calc(100% - 200px);
+      }
 
-      border-radius: 15px;
+      width: 100%;
+      // border-radius: 15px;
       margin: 30px auto 0 0;
       .change_password_inner_section {
         width: 100%;
@@ -3831,9 +3834,11 @@
             flex-direction: column;
             width: 100%;
             gap: 8px;
+
             .input_field {
               width: 100%;
               position: relative;
+
               button {
                 position: absolute;
                 top: 50%;
@@ -3850,6 +3855,111 @@
             display: flex;
             align-items: center;
             justify-content: flex-end;
+            width: 100%;
+          }
+        }
+      }
+    }
+    .Two_Step_Verification_Main_Section {
+      @media only screen and (min-width: 1200px) {
+        width: calc(100% - 200px);
+      }
+
+      width: 100%;
+      // border-radius: 15px;
+      margin: 30px auto 0 0;
+      .Two_Step_Verification_Inner_Section {
+        padding: 0 30px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        gap: 32px;
+        .Title_Main_Section {
+          h3 {
+            font-family: Inter;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 24px;
+            color: var(--main-white-color);
+            text-transform: capitalize;
+            span {
+              color: var(--button-main-color);
+              font-weight: 700;
+            }
+          }
+        }
+        .Input_And_Button_Section {
+          width: 100%;
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
+          flex-direction: column;
+          gap: 32px;
+          input {
+            width: 100%;
+            height: 100%;
+            height: 45px;
+            border-radius: 15px;
+            border: 0;
+            outline: 0;
+            padding: 0 25px;
+            background-color: var(--popup-bg-color);
+            font-family: Inter;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px;
+            color: var(--main-white-color);
+            text-transform: capitalize;
+            &:focus {
+              border: 2px solid var(--button-main-color);
+            }
+            &::placeholder {
+              color: var(--non-hilighted-text);
+            }
+          }
+          label {
+            font-family: Inter;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px;
+            color: var(--non-hilighted-text);
+            text-transform: capitalize;
+          }
+          button {
+            font-size: 18px !important;
+            height: 40px;
+          }
+          .fill_the_current_password_filed {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-direction: column;
+            width: 100%;
+            gap: 8px;
+
+            .input_field {
+              width: 100%;
+              position: relative;
+
+              button {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 30px;
+                border: 0;
+                outline: 0;
+                background-color: transparent;
+                color: var(--main-white-color);
+              }
+            }
+          }
+          .Button_Section {
             width: 100%;
           }
         }

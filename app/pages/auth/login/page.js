@@ -19,13 +19,11 @@ function Login() {
     password: "",
   });
   const EyeClickBtn = (e) => {
-   
     if (IsEyeClose) {
       setIsEyeClose(false);
     } else {
       setIsEyeClose(true);
     }
-   
   };
   const CreateAccountBtn = () => {
     push("/pages/auth/sign-up");
@@ -36,6 +34,9 @@ function Login() {
   const OnSumbitButton = (e) => {
     e.preventDefault();
     LogInToYourAccount(InputFields);
+  };
+  const ForgotPassword_Btn = () => {
+    push("/pages/auth/forgot-password");
   };
   return (
     <>
@@ -91,6 +92,8 @@ function Login() {
                     </div>
                     <button
                       className={styles.navigatorBtn}
+                      type="button"
+                      onClick={ForgotPassword_Btn}
                       style={{
                         width: "fit-content",
                         marginLeft: "auto",
@@ -141,7 +144,6 @@ function Login() {
       ) : (
         ""
       )}
-     
     </>
   );
 }

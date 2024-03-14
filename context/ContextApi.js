@@ -43,6 +43,7 @@ const ContextApi = ({ children }) => {
     useState(initialState);
   const [Active_State, setActive_State] = useState(false);
   const [ShowGroupInfoModal, setShowGroupInfoModal] = useState(false);
+
   const [
     Selected_Chat_Users_Data_To_Chat,
     setSelected_Chat_Users_Data_To_Chat,
@@ -65,6 +66,20 @@ const ContextApi = ({ children }) => {
     useState(initialState);
   const [Show_Customer_Pagination_Btn, setShow_Customer_Pagination_Btn] =
     useState(false);
+
+  const [ComparPassword_Result, setComparPassword_Result] = useState({
+    password_IS_Wrong_Shake: false,
+    password_Is_true: false,
+  });
+  const [
+    Two_step_verification_is_completed,
+    setTwo_step_verification_is_completed,
+  ] = useState({
+    password_is_wrong: false,
+    success: false,
+  });
+  const [IS_Password_Changed_In_Settings, setIS_Password_Changed_In_Settings] =
+    useState(false);
   const [IsLogIn, setIsLogIn] = useState(() => {
     let getToken = getCookie("Users_Authentication_Token");
 
@@ -73,6 +88,11 @@ const ContextApi = ({ children }) => {
     } else {
       return true;
     }
+  });
+  const [Mail_Sent, setMail_Sent] = useState(false);
+  const [Reset_password, setReset_password] = useState({
+    samePass: false,
+    success: false,
   });
   if (IsLogIn) {
     let token = cryptr.decrypt(getCookie("Users_Authentication_Token"));
@@ -145,7 +165,7 @@ const ContextApi = ({ children }) => {
           LogInLoading: false,
         });
         if (response.data.twoStepVerification) {
-          push("/auth/Otp");
+          push("/pages/auth/Otp");
         } else {
           push("/");
         }
@@ -825,6 +845,10 @@ const ContextApi = ({ children }) => {
     }
   };
   const Compare_Password_API_Calling_Function = async (Token, password) => {
+    setComparPassword_Result({
+      password_Is_true: false,
+      password_IS_Wrong_Shake: false,
+    });
     const response = await axios({
       method: "post",
       url: `${HOST}/app/api/auth/comparePassword`,
@@ -836,7 +860,121 @@ const ContextApi = ({ children }) => {
       },
     });
     if (response.data.success) {
-      console.log(response.data.success);
+      setComparPassword_Result({
+        password_Is_true: true,
+        password_IS_Wrong_Shake: false,
+      });
+    } else {
+      setComparPassword_Result({
+        password_Is_true: false,
+        password_IS_Wrong_Shake: true,
+      });
+    }
+  };
+  const Change_Password_API_Calling_function = async (Token, password) => {
+    try {
+      if (Token.length == 0) {
+      } else {
+        const response = await axios({
+          method: "put",
+          url: `${HOST}/app/api/auth/changePassword`,
+          headers: {
+            authtoken: Token,
+          },
+          data: {
+            newPassword: password,
+          },
+        });
+        if (response.data.success) {
+          setComparPassword_Result({
+            password_Is_true: false,
+            password_IS_Wrong_Shake: false,
+          });
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const toggle_two_step_verification_API_Calling_Function = async (
+    Token,
+    password
+  ) => {
+    try {
+      setTwo_step_verification_is_completed({
+        password_is_wrong: false,
+        success: false,
+      });
+      if (Token.length == 0) {
+      } else {
+        const response = await axios({
+          method: "put",
+          url: `${HOST}/app/api/auth/toggletwostepverification`,
+          headers: {
+            authtoken: Token,
+          },
+          data: {
+            accountPassword: password,
+          },
+        });
+        if (response.data.success) {
+          setTwo_step_verification_is_completed({
+            password_is_wrong: false,
+            success: true,
+          });
+        } else {
+          setTwo_step_verification_is_completed({
+            password_is_wrong: true,
+            success: false,
+          });
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const Forgot_Password_Token_Generator_API_Calling_Function = async (
+    email
+  ) => {
+    try {
+      const response = await axios({
+        method: "post",
+        url: `${HOST}/app/api/auth/forget-password-token`,
+        data: {
+          email: email,
+        },
+      });
+      console.log(response);
+      if (response.data.success || response.data.Is_token) {
+        setMail_Sent(true);
+        setCookie("verification_Token_send", true, { maxAge: 3600 });
+        console.log(getCookie("verification_Token_send"));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const Reset_Password_API_Calling_Function = async (
+    newPassword,
+    forgotPassToken,
+    id
+  ) => {
+    try {
+      const response = await axios({
+        method: "put",
+        url: `${HOST}/app/api/auth/reset-password?forgotPassToken=${forgotPassToken}&id=${id}`,
+        data: {
+          password: newPassword,
+        },
+      });
+      if (response.data.success) {
+        setReset_password({ success: true, samePass: false });
+      }
+      if (response.data.samePass) {
+        setReset_password({ success: false, samePass: true });
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
   const contextValue = {
@@ -866,8 +1004,14 @@ const ContextApi = ({ children }) => {
     Is_Sending,
     setShow_Btn,
     Client_search_result,
+    ComparPassword_Result,
+    setComparPassword_Result,
     setClient_search_result,
     ListOFUsers_Container_State,
+    IS_Password_Changed_In_Settings,
+    Two_step_verification_is_completed,
+    Mail_Sent,
+    setTwo_step_verification_is_completed,
     setListOFUsers_Container_State,
     setWeather_Info_State,
     setShowGroupInfoModal,
@@ -911,7 +1055,12 @@ const ContextApi = ({ children }) => {
     setAll_Sent_Mail_Storing_State,
     Show_Customer_Pagination_Btn,
     Delete_Mail_API_Calling_Function,
-    Compare_Password_API_Calling_Function
+    Compare_Password_API_Calling_Function,
+    Change_Password_API_Calling_function,
+    toggle_two_step_verification_API_Calling_Function,
+    Forgot_Password_Token_Generator_API_Calling_Function,
+    Reset_Password_API_Calling_Function,
+    Reset_password
   };
   return (
     <NoteContext.Provider value={contextValue}>{children}</NoteContext.Provider>

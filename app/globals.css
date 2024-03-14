@@ -132,6 +132,14 @@ a {
   line-height: normal;
   color: var(--main-white-color);
 }
+.forgot-pass-h4 {
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--main-white-color);
+}
 .transperent-btn {
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -766,7 +774,41 @@ input {
   span {
     background-color: var(--button-main-color) !important;
   }
-  p{
+  p {
     opacity: 1 !important;
   }
+}
+@keyframes shake-horizontal {
+  0%,
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70% {
+    -webkit-transform: translateX(-10px);
+    transform: translateX(-10px);
+  }
+  20%,
+  40%,
+  60% {
+    -webkit-transform: translateX(10px);
+    transform: translateX(10px);
+  }
+  80% {
+    -webkit-transform: translateX(8px);
+    transform: translateX(8px);
+  }
+  90% {
+    -webkit-transform: translateX(-8px);
+    transform: translateX(-8px);
+  }
+}
+
+.shake-horizontal {
+  -webkit-animation: shake-horizontal 0.8s
+    cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+  animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
 }
