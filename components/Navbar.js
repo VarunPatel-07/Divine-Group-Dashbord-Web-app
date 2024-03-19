@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useContext } from "react";
 import styles from "./styles/style.module.css";
+import Logo from "../images/Logo.png";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import userImg from "../images/userimg.png";
@@ -20,6 +21,7 @@ function Navbar() {
     Notification,
     setNotification,
     newArray,
+    Button_Clicked,
   } = context;
   const { push } = useRouter();
   const BackgroundColor = [
@@ -74,7 +76,9 @@ function Navbar() {
   const ProfilePageButton = () => {
     push("/pages/profilePage");
   };
-
+  const Respo_Click_Button = () => {
+    Button_Clicked();
+  };
   useEffect(() => {
     FetchUserDetail(AuthToken);
   }, []);
@@ -117,21 +121,33 @@ function Navbar() {
                 )}
               </div>
               <div className={styles.NavbarProfileSection_OUTER_Main_Sec}>
-                <div className={styles.Notification_Bell}>
-                  <button>
+                <button
+                  onClick={Respo_Click_Button}
+                  className={styles.Respo_Btn}
+                >
+                  <div class="container-one">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                  </div>
+                </button>
+                <div className={styles.Logo_Sec}>
+                  <Image
+                    src={Logo}
+                    height="100%"
+                    width="100%"
+                    alt="company logo"
+                  />
+                </div>
+                {/* <div className={styles.Notification_Bell}>
+                   <button>
                     <FaRegBell />
-                    {/* {Notification ? (
-                      <span className={styles.notification_Icon}>
-                        {Notification.length}
-                      </span>
-                    ) : (
-                      ""
-                    )} */}
+                  
                     <span className={styles.notification_Icon}>
                       {Notification.length}
                     </span>
                   </button>
-                </div>
+                </div> */}
                 <div
                   className={styles.NavbarProfileSection}
                   onClick={ProfilePageButton}

@@ -27,7 +27,7 @@
   position: fixed;
   top: 0;
   right: 0;
-  z-index: 11;
+  z-index: 1111;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
@@ -108,32 +108,11 @@
   width: 100%;
   gap: 50px;
 }
-.navberMain .nav .NavbarProfileSection_OUTER_Main_Sec .Notification_Bell button {
-  background-color: transparent;
-  border: 0;
-  outline: 0;
-  color: var(--main-white-color);
-  font-size: 28px;
-  position: relative;
+.navberMain .nav .NavbarProfileSection_OUTER_Main_Sec .Respo_Btn {
+  display: none;
 }
-.navberMain .nav .NavbarProfileSection_OUTER_Main_Sec .Notification_Bell button .notification_Icon {
-  position: absolute;
-  top: 0;
-  right: -5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  overflow: hidden;
-  background-color: #ff0000;
-  border-radius: 50%;
-  color: var(--main-white-color);
-  font-family: Inter;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  text-transform: uppercase;
+.navberMain .nav .NavbarProfileSection_OUTER_Main_Sec .Logo_Sec {
+  display: none;
 }
 .navberMain .nav .NavbarProfileSection_OUTER_Main_Sec .NavbarProfileSection {
   display: flex;
@@ -213,7 +192,8 @@
 }
 .sidebarMainSec .SidebarInner {
   width: 100%;
-  height: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 .sidebarMainSec .SidebarInner .FlexSectionMain {
   display: flex;
@@ -222,6 +202,9 @@
   flex-direction: column;
   gap: 30px;
   width: 100%;
+}
+.sidebarMainSec .SidebarInner .FlexSectionMain .respo_Btn {
+  display: none;
 }
 .sidebarMainSec .SidebarInner .FlexSectionMain .LogoSection {
   width: 100%;
@@ -517,6 +500,7 @@
   height: 100%;
   gap: 12px;
   position: relative;
+  overflow: hidden;
 }
 .Client_Profile_Main_Section .Inner_Section .DefaultProfile {
   width: 50px;
@@ -541,6 +525,9 @@
   font-weight: 600;
   line-height: 18px;
   text-transform: capitalize;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .Client_Profile_Main_Section .Inner_Section .Customer_Info_txt {
   display: flex;
@@ -564,6 +551,9 @@
   font-weight: 600;
   line-height: 15px;
   text-transform: capitalize;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .Client_Profile_Main_Section .Inner_Section .Customer_Info_txt .FullName h5 span {
   height: 15px !important;
@@ -581,9 +571,275 @@
   font-weight: 400;
   line-height: 15px;
   width: 100%;
+  line-break: anywhere;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .Client_Profile_Main_Section .Inner_Section .Customer_Info_txt .Email h6 span {
   height: 15px !important;
   border-radius: 3px !important;
   overflow: hidden;
+}
+
+@media only screen and (max-width: 1199px) {
+  .navberMain {
+    width: 100%;
+  }
+}
+.navberMain .nav {
+  width: 100%;
+  height: 100%;
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media only screen and (max-width: 991px) {
+  .navberMain .nav {
+    padding: 10px 16px;
+  }
+}
+.navberMain .nav .SearchBarSection {
+  width: 50%;
+  height: 35px;
+  display: none;
+}
+.navberMain .nav .SearchBarSection .SearchFlexSection {
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 450px;
+  height: 100%;
+  border: 1px solid var(--non-hilighted-text);
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: var(--secondry-bg-color);
+}
+.navberMain .nav .SearchBarSection .SearchFlexSection .SearchInput {
+  width: 85%;
+  height: 100%;
+}
+.navberMain .nav .SearchBarSection .SearchFlexSection .SearchInput input {
+  width: 100%;
+  height: 100%;
+  background-color: var(--main-bg-color);
+  padding: 0 10px;
+  color: var(--main-white-color);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  border: 0;
+  outline: 0;
+}
+.navberMain .nav .SearchBarSection .SearchFlexSection .SearchInput input:focus {
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+}
+.navberMain .nav .SearchBarSection .SearchFlexSection .SearchButton {
+  width: 15%;
+  height: 100%;
+  cursor: pointer;
+}
+.navberMain .nav .SearchBarSection .SearchFlexSection .SearchButton button {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  color: var(--main-white-color);
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  cursor: pointer;
+}
+.navberMain .nav .SearchBarSection .SearchFlexSection .SearchButton button svg {
+  cursor: pointer;
+}
+@media only screen and (max-width: 991px) {
+  .navberMain .nav .NavbarProfileSection_OUTER_Main_Sec {
+    justify-content: space-between;
+  }
+  .navberMain .nav .NavbarProfileSection_OUTER_Main_Sec .Respo_Btn {
+    display: block;
+    width: 30px;
+    height: 40px;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+  }
+  .navberMain .nav .NavbarProfileSection_OUTER_Main_Sec .Logo_Sec {
+    display: block;
+    width: 100px;
+    height: 40px;
+  }
+  .navberMain .nav .NavbarProfileSection_OUTER_Main_Sec .Logo_Sec img {
+    width: 100%;
+    height: 100%;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .navberMain .nav .NavbarProfileSection_OUTER_Main_Sec .NavbarProfileSection {
+    padding-right: 0px;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .navberMain .nav .NavbarProfileSection_OUTER_Main_Sec .NavbarProfileSection::after {
+    display: none;
+  }
+}
+.navberMain .nav .NavbarProfileSection_OUTER_Main_Sec .NavbarProfileSection .profile .image {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 50px;
+  height: 50px;
+}
+.navberMain .nav .NavbarProfileSection_OUTER_Main_Sec .NavbarProfileSection .profile .image .DefaultProfile {
+  width: 100%;
+  height: 100%;
+  background-color: azure;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navberMain .nav .NavbarProfileSection_OUTER_Main_Sec .NavbarProfileSection .profile .image .DefaultProfile .pera {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navberMain .nav .NavbarProfileSection_OUTER_Main_Sec .NavbarProfileSection .profile .image .DefaultProfile .pera p {
+  color: rgb(255, 255, 255);
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0;
+  margin: 0;
+}
+@media only screen and (max-width: 991px) {
+  .navberMain .nav .NavbarProfileSection_OUTER_Main_Sec .NavbarProfileSection .profile .UserName {
+    display: none;
+  }
+}
+.navberMain .nav .NavbarProfileSection_OUTER_Main_Sec .NavbarProfileSection .profile .UserName .flex {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 3px;
+}
+
+@media only screen and (max-width: 1199px) {
+  .sidebarMainSec {
+    transform: translateX(-100%);
+    width: 100%;
+    max-width: 380px;
+    transition: 0.4s all;
+    z-index: 11111;
+    overflow: auto;
+    padding: 0 0 30px 0;
+  }
+  .sidebarMainSec::-webkit-scrollbar {
+    display: none;
+  }
+}
+.sidebarMainSec .SidebarInner .FlexSectionMain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+}
+@media only screen and (max-width: 991px) {
+  .sidebarMainSec .SidebarInner .FlexSectionMain .respo_Btn {
+    display: block;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 8px 16px;
+    position: sticky;
+    top: 0px;
+    background-color: var(--sidebar-bg-color);
+  }
+  .sidebarMainSec .SidebarInner .FlexSectionMain .respo_Btn button {
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+  }
+  .sidebarMainSec .SidebarInner .FlexSectionMain .respo_Btn button svg {
+    font-size: 40px;
+    color: #fff;
+  }
+}
+.sidebarMainSec .SidebarInner .FlexSectionMain .LogoSection {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+.sidebarMainSec .SidebarInner .FlexSectionMain .LogoSection img {
+  width: 100%;
+  height: 100%;
+  max-width: 140px;
+  margin: auto;
+}
+.sidebarMainSec .SidebarInner .FlexSectionMain .LinkSection {
+  width: 100%;
+}
+.sidebarMainSec .SidebarInner .FlexSectionMain .LinkSection .ul {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  text-decoration: none;
+  padding: 0;
+}
+.sidebarMainSec .SidebarInner .FlexSectionMain .LinkSection .ul li {
+  list-style: none;
+  text-decoration: none;
+  width: 100%;
+  height: 48px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sidebarMainSec .SidebarInner .FlexSectionMain .LinkSection .ul li:active {
+  scale: 0.98;
+}
+.sidebarMainSec .SidebarInner .FlexSectionMain .LinkSection .ul li a {
+  color: var(--main-white-color);
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+  text-decoration: none;
+  text-transform: capitalize;
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 20px;
+}
+.sidebarMainSec .SidebarInner .FlexSectionMain .LinkSection .ul li a span {
+  padding-right: 10px;
+  font-size: 16px;
 }/*# sourceMappingURL=style.module.css.map */

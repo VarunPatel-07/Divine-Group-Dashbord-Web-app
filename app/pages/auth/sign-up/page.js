@@ -119,7 +119,7 @@ function SignUp() {
                 <div className={styles.Input}>
                   <div className="row p-0 w-100">
                     <div
-                      className="col-md-6 col-sm-6 col-6 pt-0 pb-0"
+                      className="col-md-6  pt-0 pb-0"
                       style={{ paddingLeft: "0" }}
                     >
                       <div className={styles.InputFlexSec}>
@@ -134,7 +134,7 @@ function SignUp() {
                       </div>
                     </div>
                     <div
-                      className="col-md-6 col-sm-6 col-6 pt-0 pb-0"
+                      className="col-md-6  pt-0 pb-0"
                       style={{ paddingRight: "0" }}
                     >
                       <div className={styles.InputFlexSec}>

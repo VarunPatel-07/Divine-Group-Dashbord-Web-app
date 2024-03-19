@@ -42,7 +42,7 @@ function ForgotPassword() {
 //   }, []);
   return (
     <>
-      <div className="login-sign-up-page w-100 h-100">
+      <div className="login-sign-up-page w-100 ">
         <div className={styles.loginSignUpPageSection}>
           <div className={styles.backgroundImage}>
             <Image

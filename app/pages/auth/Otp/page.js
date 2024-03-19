@@ -83,9 +83,9 @@ function OTP() {
                     Enter the 4-digit code sent to you at saraxxxxx@gmail.com
                   </p>
                 </div>
-                <div className="row p-0">
+                <div className="row p-0 justify-content-between w-100">
                   {OTPArray.map((value, index) => (
-                    <div className="col-md-3 " key={index}>
+                    <div className="col-md-3 col-3 p-1 " key={index}>
                       <div className={styles.InputFlexSecVerification}>
                         <input
                           type="text"

@@ -6,17 +6,18 @@ import { GoGraph } from "react-icons/go";
 import Image from "next/image";
 import Logo from "../images/Logo.png";
 import { usePathname } from "next/navigation";
-import { IoMdSettings } from "react-icons/io";
+import { IoMdSettings, IoIosCloseCircle } from "react-icons/io";
 import { PiUsersThreeFill } from "react-icons/pi";
 import { LuBadgeHelp, LuUsers } from "react-icons/lu";
 import { IoChatbubblesSharp } from "react-icons/io5";
 import { BsFillBuildingsFill } from "react-icons/bs";
+
 import noteContext from "@/context/noteContext";
 import cookie from "cookie-cutter";
 function Sidebar() {
   const pathname = usePathname();
   const context = useContext(noteContext);
-  const { UserInfo } = context;
+  const { UserInfo, Responsive_Button_Click, Button_Clicked } = context;
   const [VerificationConsent, setVerificationConsent] = useState(false);
   const [CookiesConsent, setCookiesConsent] = useState(false);
   if (!UserInfo.twoStepVerification) {
@@ -49,19 +50,31 @@ function Sidebar() {
     cookie.set("User_Accepted_CookiesConsent", true);
     setCookiesConsent(false);
   };
+  const Click_Button = () => {
+    Button_Clicked();
+  };
   if (
     pathname === "/pages/auth/login" ||
     pathname === "/pages/auth/sign-up" ||
     pathname === "/pages/auth/Otp" ||
-    pathname === "/pages/auth/forgot-password"||
+    pathname === "/pages/auth/forgot-password" ||
     pathname === "/pages/auth/reset-password"
   ) {
   } else {
     return (
       <>
-        <div className={styles.sidebarMainSec}>
+        <div
+          className={`${styles.sidebarMainSec} ${
+            Responsive_Button_Click ? "responsive_sideBar" : ""
+          }`}
+        >
           <div className={styles.SidebarInner}>
             <div className={styles.FlexSectionMain}>
+              <div className={styles.respo_Btn}>
+                <button onClick={Click_Button}>
+                  <IoIosCloseCircle />
+                </button>
+              </div>
               <div className={styles.LogoSection}>
                 <Image
                   src={Logo}
@@ -72,7 +85,10 @@ function Sidebar() {
               </div>
               <div className={styles.LinkSection}>
                 <ul className={styles.ul}>
-                  <li className={pathname == "/" ? "active" : ""}>
+                  <li
+                    className={pathname == "/" ? "active" : ""}
+                    onClick={Click_Button}
+                  >
                     <Link href="/">
                       <span>
                         <GoGraph />
@@ -80,7 +96,7 @@ function Sidebar() {
                       Dashboard
                     </Link>
                   </li>
-                  <li className={pathname == "/pages/projects" ? "active" : ""}>
+                  <li className={pathname == "/pages/projects" ? "active" : ""}  onClick={Click_Button}>
                     <Link href="/pages/projects">
                       <span>
                         <BsFillBuildingsFill />
@@ -88,7 +104,7 @@ function Sidebar() {
                       projects
                     </Link>
                   </li>
-                  <li className={pathname == "/pages/chats" ? "active" : ""}>
+                  <li className={pathname == "/pages/chats" ? "active" : ""}  onClick={Click_Button}>
                     <Link href="/pages/chats">
                       <span>
                         <IoChatbubblesSharp />
@@ -99,7 +115,7 @@ function Sidebar() {
 
                   <li
                     className={pathname == "/pages/customers" ? "active" : ""}
-                  >
+                    onClick={Click_Button}>
                     <Link href="/pages/customers">
                       <span>
                         <PiUsersThreeFill />
@@ -108,7 +124,7 @@ function Sidebar() {
                     </Link>
                   </li>
                   {UserInfo.role === "Admin" ? (
-                    <li className={pathname == "/pages/users" ? "active" : ""}>
+                    <li className={pathname == "/pages/users" ? "active" : ""}  onClick={Click_Button}>
                       <Link href="/pages/users">
                         <span>
                           <LuUsers />
@@ -119,7 +135,7 @@ function Sidebar() {
                   ) : (
                     ""
                   )}
-                  <li className={pathname == "/pages/setting" ? "active" : ""}>
+                  <li className={pathname == "/pages/setting" ? "active" : ""}  onClick={Click_Button}>
                     <Link href="/pages/setting">
                       <span>
                         <IoMdSettings />
@@ -129,7 +145,7 @@ function Sidebar() {
                   </li>
                   <li
                     className={pathname == "/pages/HelpCenter" ? "active" : ""}
-                  >
+                    onClick={Click_Button}>
                     <Link href="/pages/HelpCenter">
                       <span>
                         <LuBadgeHelp />

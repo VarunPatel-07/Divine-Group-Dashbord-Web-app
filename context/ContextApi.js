@@ -66,6 +66,7 @@ const ContextApi = ({ children }) => {
     useState(initialState);
   const [Show_Customer_Pagination_Btn, setShow_Customer_Pagination_Btn] =
     useState(false);
+  const [Responsive_Button_Click, setResponsive_Button_Click] = useState(false);
 
   const [ComparPassword_Result, setComparPassword_Result] = useState({
     password_IS_Wrong_Shake: false,
@@ -977,6 +978,17 @@ const ContextApi = ({ children }) => {
       console.log(error);
     }
   };
+  const Button_Clicked = () => {
+    if (Responsive_Button_Click) {
+      setResponsive_Button_Click(false);
+      const body = document.body;
+      body.classList.remove('body-100-vh')
+    } else {
+      setResponsive_Button_Click(true);
+      const body = document.body;
+      body.classList.add('body-100-vh')
+    }
+  };
   const contextValue = {
     HOST,
     content,
@@ -1011,6 +1023,8 @@ const ContextApi = ({ children }) => {
     IS_Password_Changed_In_Settings,
     Two_step_verification_is_completed,
     Mail_Sent,
+    Responsive_Button_Click,
+    setResponsive_Button_Click,
     setTwo_step_verification_is_completed,
     setListOFUsers_Container_State,
     setWeather_Info_State,
@@ -1060,7 +1074,8 @@ const ContextApi = ({ children }) => {
     toggle_two_step_verification_API_Calling_Function,
     Forgot_Password_Token_Generator_API_Calling_Function,
     Reset_Password_API_Calling_Function,
-    Reset_password
+    Reset_password,
+    Button_Clicked,
   };
   return (
     <NoteContext.Provider value={contextValue}>{children}</NoteContext.Provider>

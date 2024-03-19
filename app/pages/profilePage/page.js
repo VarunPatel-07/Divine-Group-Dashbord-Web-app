@@ -77,7 +77,6 @@ function Profile() {
               <h1>My Profile</h1>
             </div>
             <div className={styles.ButtonGroupSec}>
-              <button className="transperent-btn"> delete Account</button>
               <button className="filled-btn" onClick={LogOutButton}>
                 log out
               </button>
@@ -113,19 +112,19 @@ function Profile() {
                     </div>
                   )}
                 </div>
-              </div>
-              <div className={styles.UpdateImage}>
-                <label htmlFor="ProfileImage">
-                  <LuCamera />
-                </label>
-                <input
-                  type="file"
-                  name="ProfileImage"
-                  id="ProfileImage"
-                  className="d-none"
-                  disabled={!EditInfo}
-                  onChange={Profile_Input_filed}
-                />
+                <div className={styles.UpdateImage}>
+                  <label htmlFor="ProfileImage">
+                    <LuCamera />
+                  </label>
+                  <input
+                    type="file"
+                    name="ProfileImage"
+                    id="ProfileImage"
+                    className="d-none"
+                    disabled={!EditInfo}
+                    onChange={Profile_Input_filed}
+                  />
+                </div>
               </div>
             </div>
             <div className={styles.UserInformation}>

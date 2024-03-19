@@ -1,0 +1,275 @@
+//?------------------------------ NAVBAR SECTION ------------------------------------
+.navberMain {
+  @media only screen and (max-width: 1199px) {
+    width: 100%;
+  }
+  .nav {
+    width: 100%;
+    height: 100%;
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media only screen and (max-width: 991px) {
+      padding: 10px 16px;
+    }
+    .SearchBarSection {
+      width: 50%;
+      height: 35px;
+      display: none;
+      .SearchFlexSection {
+        display: flex;
+        align-items: stretch;
+        justify-content: flex-start;
+        width: 100%;
+        max-width: 450px;
+        height: 100%;
+        border: 1px solid var(--non-hilighted-text);
+        border-radius: 20px;
+        overflow: hidden;
+        background-color: var(--secondry-bg-color);
+        .SearchInput {
+          width: 85%;
+          height: 100%;
+          input {
+            width: 100%;
+            height: 100%;
+            background-color: var(--main-bg-color);
+            padding: 0 10px;
+            color: var(--main-white-color);
+
+            font-family: Inter;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 18px;
+            border: 0;
+            outline: 0;
+            &:focus {
+              border: 0;
+              outline: 0;
+              box-shadow: none;
+            }
+          }
+        }
+        .SearchButton {
+          width: 15%;
+          height: 100%;
+          cursor: pointer;
+          button {
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            border: 0;
+            outline: 0;
+            color: var(--main-white-color);
+
+            font-family: Inter;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 18px;
+            cursor: pointer;
+            svg {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+    .NavbarProfileSection_OUTER_Main_Sec {
+      
+      @media only screen and (max-width: 991px) {
+        justify-content: space-between;
+        .Respo_Btn {
+          display: block;
+          width: 30px;
+          height: 40px;
+          background-color: transparent;
+          border: 0;
+          outline: 0;
+        }
+        .Logo_Sec {
+          display: block;
+          width: 100px;
+          height: 40px;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+
+      .NavbarProfileSection {
+
+        @media only screen and (max-width: 991px) {
+          padding-right: 0px;
+         
+        }
+        &::after {
+          @media only screen and (max-width: 991px) {
+            display: none;
+          }
+        }
+        .profile {
+
+          .image {
+            border-radius: 50%;
+            overflow: hidden;
+            width: 50px;
+            height: 50px;
+            .DefaultProfile {
+              width: 100%;
+              height: 100%;
+              background-color: azure;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              .pera {
+                width: 100%;
+                height: 100%;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                p {
+                  color: rgb(255, 255, 255);
+                  font-family: Inter;
+                  font-size: 20px;
+                  font-style: normal;
+                  font-weight: 600;
+                  text-transform: uppercase;
+                  padding: 0;
+                  margin: 0;
+                }
+              }
+            }
+          }
+          .UserName {
+            @media only screen and (max-width: 991px) {
+              display: none;
+            }
+            .flex {
+              display: flex;
+              align-items: flex-start;
+              justify-content: flex-start;
+              flex-direction: column;
+              gap: 3px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// ? ---------------------------- SIDEBAR SECTION ----------------------------------
+.sidebarMainSec {
+  @media only screen and (max-width: 1199px) {
+    transform: translateX(-100%);
+    width: 100%;
+    max-width: 380px;
+    transition: 0.4s all;
+    z-index: 11111;
+    overflow: auto;
+    padding: 0 0 30px 0;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .SidebarInner {
+    .FlexSectionMain {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 30px;
+      width: 100%;
+      @media only screen and (max-width: 991px) {
+        .respo_Btn {
+          display: block;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          padding: 8px 16px;
+          position: sticky;
+          top: 0px;
+          background-color: var(--sidebar-bg-color);
+          button {
+            background-color: transparent;
+            border: 0;
+            outline: 0;
+            svg {
+              font-size: 40px;
+              color: #fff;
+            }
+          }
+        }
+      }
+
+      .LogoSection {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        img {
+          width: 100%;
+          height: 100%;
+          max-width: 140px;
+          margin: auto;
+        }
+      }
+      .LinkSection {
+        width: 100%;
+
+        .ul {
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+          flex-direction: column;
+          gap: 20px;
+          width: 100%;
+          height: 100%;
+          list-style: none;
+          text-decoration: none;
+          padding: 0;
+          li {
+            list-style: none;
+            text-decoration: none;
+            width: 100%;
+
+            height: 48px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            &:active {
+              scale: 0.98;
+            }
+            a {
+              color: var(--main-white-color);
+              font-family: Inter;
+              font-size: 15px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 18px;
+              text-decoration: none;
+              text-transform: capitalize;
+              width: 100%;
+              position: absolute;
+              height: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: flex-start;
+              padding: 0 20px;
+              span {
+                padding-right: 10px;
+                font-size: 16px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
