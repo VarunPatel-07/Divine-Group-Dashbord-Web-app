@@ -287,12 +287,12 @@ function Home() {
                       className={styles.Sticky_Header_Section}
                       onClick={FetchMoreCustomer}
                     >
-                      <h5>recent customer inquire {Customer_Info.length}</h5>
+                      <h5>recent customer inquire {Customer_Info.total}</h5>
                     </div>
                     <div className={styles.Recent_Client_Inquire_Map_Section}>
-                      {Customer_Info.length != 0 ? (
+                      {Customer_Info?.data.length != 0 ? (
                         <div className="w-100">
-                          {Customer_Info.map((CustomerInfo) => (
+                          {Customer_Info?.data?.map((CustomerInfo) => (
                             <div className="w-100" key={CustomerInfo._id}>
                               <ClientProfile
                                 CustomerInfo={CustomerInfo}

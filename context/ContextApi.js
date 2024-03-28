@@ -52,7 +52,10 @@ const ContextApi = ({ children }) => {
   const [ComanGroupInfoContainer, setComanGroupInfoContainer] =
     useState(initialState);
   const [Weather_Info_State, setWeather_Info_State] = useState(initialState);
-  const [Customer_Info, setCustomer_Info] = useState(initialState);
+  const [Customer_Info, setCustomer_Info] = useState({
+    total: [],
+    data: [],
+  });
   const NotificationArray = [];
   const { push } = useRouter();
   const AuthToken = [];
@@ -65,6 +68,8 @@ const ContextApi = ({ children }) => {
   const [All_Sent_Mail_Storing_State, setAll_Sent_Mail_Storing_State] =
     useState(initialState);
   const [Show_Customer_Pagination_Btn, setShow_Customer_Pagination_Btn] =
+    useState(false);
+    const [Not_Show_Current_Chat_Page, setNot_Show_Current_Chat_Page] =
     useState(false);
   const [Responsive_Button_Click, setResponsive_Button_Click] = useState(false);
 
@@ -95,6 +100,8 @@ const ContextApi = ({ children }) => {
     samePass: false,
     success: false,
   });
+  const [Show_Chat_Section_On_Click, setShow_Chat_Section_On_Click] =
+    useState(false);
   if (IsLogIn) {
     let token = cryptr.decrypt(getCookie("Users_Authentication_Token"));
 
@@ -718,7 +725,10 @@ const ContextApi = ({ children }) => {
       );
       const Data = response.data;
       if (Data.success) {
-        setCustomer_Info(Data.Filtered_Data);
+        setCustomer_Info({
+          total: Data.totalInquire,
+          data: Data.Filtered_Data,
+        });
       }
     } catch (error) {
       console.log(error);
@@ -982,11 +992,11 @@ const ContextApi = ({ children }) => {
     if (Responsive_Button_Click) {
       setResponsive_Button_Click(false);
       const body = document.body;
-      body.classList.remove('body-100-vh')
+      body.classList.remove("body-100-vh");
     } else {
       setResponsive_Button_Click(true);
       const body = document.body;
-      body.classList.add('body-100-vh')
+      body.classList.add("body-100-vh");
     }
   };
   const contextValue = {
@@ -1024,6 +1034,8 @@ const ContextApi = ({ children }) => {
     Two_step_verification_is_completed,
     Mail_Sent,
     Responsive_Button_Click,
+    Show_Chat_Section_On_Click, setShow_Chat_Section_On_Click,
+    Not_Show_Current_Chat_Page, setNot_Show_Current_Chat_Page,
     setResponsive_Button_Click,
     setTwo_step_verification_is_completed,
     setListOFUsers_Container_State,

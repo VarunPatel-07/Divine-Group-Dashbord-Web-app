@@ -45,7 +45,7 @@ function Users() {
                 <div className={styles.Header_Main_Data_Section}>
                   <table className="table">
                     <thead>
-                      <tr>
+                      <tr className="text-capitalize">
                         <th scope="col">
                           <p>No.</p>
                         </th>

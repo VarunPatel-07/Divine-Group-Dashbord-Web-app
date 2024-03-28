@@ -77,6 +77,9 @@ function ChatPage() {
     Clear_All_Chat_API_Caller,
     Rename_Chat_API_Caller_Function,
     Delete_Chat_API_Caller_Function,
+    Show_Chat_Section_On_Click,
+    setShow_Chat_Section_On_Click,
+    Not_Show_Current_Chat_Page, setNot_Show_Current_Chat_Page,
   } = context;
   const [ShowModal, setShowModal] = useState(false);
   const [ShowCreateGroupModal, setShowCreateGroupModal] = useState(false);
@@ -102,6 +105,7 @@ function ChatPage() {
   const [SendImagesState, setSendImagesState] = useState(initialState);
   const [Show_Send_Messages_Modal, setShow_Send_Messages_Modal] =
     useState(false);
+
   const [Is_Edited_Message_Container, setIs_Edited_Message_Container] =
     useState({
       Edited: false,
@@ -115,6 +119,7 @@ function ChatPage() {
   const [Add_New_Member_To_Group_Modal, setAdd_New_Member_To_Group_Modal] =
     useState({ Show: false, Users_Info: [], _Group_ID: [] });
   const [EditableChatName, setEditableChatName] = useState(false);
+  
   const [
     RenameChatStateHandlerForChatName,
     setRenameChatStateHandlerForChatName,
@@ -316,6 +321,7 @@ function ChatPage() {
     if (_Chat_Information.length == []) {
     } else {
       setShowGroupInfoModal(true);
+      setNot_Show_Current_Chat_Page(true)
       console.log(_Chat_Information);
       setGroupUsersInformation(_Chat_Information);
       setRenameChatStateHandlerForChatName(_Chat_Information._Name);
@@ -323,6 +329,7 @@ function ChatPage() {
   };
   const Close_Modal_Button = () => {
     setShowGroupInfoModal(false);
+    setNot_Show_Current_Chat_Page(false)
   };
 
   const Call_MessageSending_API_On_Sumbit = (e) => {
@@ -506,6 +513,10 @@ function ChatPage() {
       }
     });
   };
+  const GoBackToTheChatsListPage = () => {
+    setSelected_Chat_Users_Data_To_Chat([]);
+    setShow_Chat_Section_On_Click(false);
+  };
   useEffect(() => {
     if (CurrentMessageRef.current) {
       CurrentMessageRef.current.scrollIntoView({
@@ -526,12 +537,16 @@ function ChatPage() {
 
   return (
     <SkeletonTheme baseColor="#1a142a" highlightColor="#1f1830" width="100%">
-      <div className="container-main-sec">
+      <div className="container-main-sec min_height_100_dvh">
         <div className={styles.ChatPageSectionMain}>
           <div className={styles.ChatPageSectionInnerDiv}>
             <div className={styles.ChatPageFlexSection}>
               {/* this is the  section where all the chat is gonna listed */}
-              <div className={styles.ChatUsersListPart}>
+              <div
+                className={`${styles.ChatUsersListPart} ${
+                  Show_Chat_Section_On_Click ? "not_show_chat_list" : ""
+                }`}
+              >
                 <div className={styles.ChatUsersListPartInnerSection}>
                   <div className={styles.SearchBar}>
                     <div className={styles.Search}>
@@ -925,8 +940,18 @@ function ChatPage() {
                 </div>
               </div>
               {/* this is a page where the chat of the users is gonna see */}
-              <div className={styles.CurrentChatPartPage}>
-                <div className={styles.Current_ChatPart_Page_Inner_Section}>
+              <div
+                className={`${styles.CurrentChatPartPage} ${
+                  Show_Chat_Section_On_Click ? "show_chat_class" : ""
+                }`}
+              >
+                <div
+                  className={`${styles.Current_ChatPart_Page_Inner_Section} ${
+                    Not_Show_Current_Chat_Page
+                      ? "do_not_show_current_chat_page"
+                      : ""
+                  }`}
+                >
                   <div className={styles.Chat_BackGround_Image}>
                     <Image src={bg} alt="" width="100%" height="100%" />
                   </div>
@@ -939,6 +964,15 @@ function ChatPage() {
                           ShowGroupInfoButton(Selected_Chat_Users_Data_To_Chat)
                         }
                       >
+                        <div className={styles.Respo_Back_Button}>
+                          <button
+                            className="transperent-btn p-0 border-0 text-white "
+                            style={{ fontSize: "16px" }}
+                            onClick={GoBackToTheChatsListPage}
+                          >
+                            <IoArrowBack />
+                          </button>
+                        </div>
                         {Selected_Chat_Users_Data_To_Chat._Name ? (
                           <div className={styles.DefaultProfile}>
                             {Selected_Chat_Users_Data_To_Chat._Profile_Photo !==

@@ -45,6 +45,7 @@ function Profile() {
   };
   const EditUserInformationButton = () => {
     if (Updated_Info.name || Updated_Info.username || Updated_Info.email) {
+      console.log(Updated_Info)
       const formdata = new FormData();
       formdata.append("ProfileImage", ProfilePhoto);
       formdata.append("name", Updated_Info.name);
@@ -159,7 +160,7 @@ function Profile() {
                     <input
                       type="text"
                       placeholder={UserInfo.name}
-                      style={{ textTransform: "capitalize" }}
+                     
                       disabled={!EditInfo}
                       ref={HtmlRef}
                       onChange={UpdateInfo}
@@ -173,7 +174,7 @@ function Profile() {
                     <input
                       type="text"
                       placeholder={UserInfo.username}
-                      style={{ textTransform: "capitalize" }}
+                      
                       disabled={!EditInfo}
                       onChange={UpdateInfo}
                       name="username"
@@ -184,7 +185,7 @@ function Profile() {
                     <input
                       type="text"
                       placeholder={UserInfo.role}
-                      style={{ textTransform: "capitalize" }}
+                      style={{cursor:'not-allowed'}}
                       disabled
                     />
                   </div>

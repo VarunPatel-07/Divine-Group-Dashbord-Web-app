@@ -31,7 +31,7 @@ function DetailedProject({ params }) {
   } else {
     return (
       <>
-        <div className="container-main-sec">
+        <div className="container-main-sec pb-5">
           <div className={styles.FullPageProject}>
             <div className={styles.FullPageProjectsInnerSection}>
               <div className={styles.MainNavbarSection}></div>

@@ -635,7 +635,7 @@ input {
   font-weight: 500;
   line-height: 16px;
   color: var(--main-white-color);
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   width: 100%;
   height: 100%;
   display: flex;
@@ -868,7 +868,46 @@ input {
 .responsive_sideBar {
   transform: translateX(0) !important;
 }
-.body-100-vh{
+.body-100-vh {
   height: 100vh;
   overflow: hidden;
+}
+@media only screen and (max-width: 767px) {
+  .container-main-sec {
+    min-height: 100dvh;
+  }
+  .show_chat_class {
+    width: 100% !important;
+    transform: translateX(0%) !important;
+    overflow: hidden !important;
+    height: 100% !important;
+  }
+  .not_show_chat_list {
+    width: 0% !important;
+    transform: translateX(-100%) !important;
+    overflow: hidden !important;
+    height: 0% !important;
+  }
+  .do_not_show_current_chat_page {
+    width: 0% !important;
+    overflow: hidden;
+  }
+  .Show_Group_Info {
+    width: 100% !important;
+    transition: ease-in-out 0.2s;
+  }
+  .min_height_100_dvh{
+    height: 100dvh !important;
+  }
+  .accordion-button {
+   
+    font-size: 18px !important;
+  }
+  .accordion-body {
+    
+    padding: 16px 24px !important;
+    ul{
+      padding: 0 !important;
+    }
+  }
 }

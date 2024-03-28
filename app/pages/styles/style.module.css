@@ -1422,6 +1422,8 @@
   height: 100%;
   top: 0;
   left: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Chat_BackGround_Image img {
   width: 100%;
@@ -1450,6 +1452,9 @@
   justify-content: flex-start;
   gap: 16px;
   cursor: pointer;
+}
+.ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Headers .Send_Messages_Headers_Inner_Section .Respo_Back_Button {
+  display: none;
 }
 .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Headers .Send_Messages_Headers_Inner_Section .DefaultProfile {
   width: 10%;
@@ -2330,9 +2335,15 @@
   flex-direction: column;
   gap: 30px;
 }
+.ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .NotActive_DefaultPage_main .NotActive_DefaultPage_Inner .Banner_Image {
+  width: 100%;
+  height: 100%;
+}
 .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .NotActive_DefaultPage_main .NotActive_DefaultPage_Inner .Banner_Image img {
   -o-object-fit: contain;
      object-fit: contain;
+  width: 100%;
+  height: 100%;
 }
 .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .NotActive_DefaultPage_main .NotActive_DefaultPage_Inner .Text_Section {
   padding-bottom: 30px;
@@ -4540,5 +4551,1726 @@
     transition: background-color 5000s ease-in-out 0s;
     box-shadow: inset 0 0 20px 20px rgba(35, 35, 35, 0.1607843137);
     background: rgba(44, 35, 65, 0.8);
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart {
+    width: 100%;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .ChatUsersListPartInnerSection .All_ChatIcons_Flex_Section .ChatProfile {
+    width: 100%;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .ChatUsersListPartInnerSection .All_ChatIcons_Flex_Section .ChatProfile:hover {
+    background-color: var(--secondry-bg-color);
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .ChatUsersListPartInnerSection .All_ChatIcons_Flex_Section .ChatProfile .ChatProfileInner {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 15px 12px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .ChatUsersListPartInnerSection .All_ChatIcons_Flex_Section .ChatProfile .ChatProfileInner .ProfilePhoto {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .ChatUsersListPartInnerSection .All_ChatIcons_Flex_Section .ChatProfile .ChatProfileInner .ProfilePhoto img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .ChatUsersListPartInnerSection .All_ChatIcons_Flex_Section .ChatProfile .ChatProfileInner .ProfilePhoto .DefaultProfile {
+    width: 100%;
+    height: 100%;
+    background-color: lightcoral;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .ChatUsersListPartInnerSection .All_ChatIcons_Flex_Section .ChatProfile .ChatProfileInner .ProfilePhoto .DefaultProfile .pera {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .ChatUsersListPartInnerSection .All_ChatIcons_Flex_Section .ChatProfile .ChatProfileInner .ProfilePhoto .DefaultProfile .pera p {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0;
+    margin: 0;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .ChatUsersListPartInnerSection .All_ChatIcons_Flex_Section .ChatProfile .ChatProfileInner .ProfileText {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    height: 100%;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .ChatUsersListPartInnerSection .All_ChatIcons_Flex_Section .ChatProfile .ChatProfileInner .ProfileText h4 {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    text-transform: capitalize;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .ChatUsersListPartInnerSection .All_ChatIcons_Flex_Section .ChatProfile .ChatProfileInner .ProfileText p {
+    color: var(--non-hilighted-text);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14px;
+    text-transform: capitalize;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .ChatUsersListPartInnerSection .No_Chat_Data_Exist_Info {
+    padding: 12px 12px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .ChatUsersListPartInnerSection .No_Chat_Data_Exist_Info p {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    text-transform: capitalize;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: 0.35s ease-in;
+    background-color: var(--main-bg-color);
+    overflow: hidden;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal ::-webkit-scrollbar {
+    display: none;
+    width: 0;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    -ms-overflow-style: none;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    scrollbar-width: none;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_Header_Section {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    width: 100%;
+    height: 150px;
+    background-color: var(--popup-bg-color);
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_Header_Section .Header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 0 12px 15px 12px;
+    gap: 24px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_Header_Section .Header .Back_Button button {
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    color: var(--main-white-color);
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_Header_Section .Header .Back_Button button svg {
+    height: 100%;
+    width: 26px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_Header_Section .Header .Header_Text h3 {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    text-transform: capitalize;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_SearchBar {
+    width: 100%;
+    background-color: var(--main-bg-color);
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_SearchBar .Search {
+    padding: 15px 20px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_SearchBar .Search input {
+    width: 100%;
+    height: 40px;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_SearchBar .Search input::-moz-placeholder {
+    text-transform: capitalize;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_SearchBar .Search input::placeholder {
+    text-transform: capitalize;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_SearchBar .SelectedUsers {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    max-height: 150px;
+    overflow: auto;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_SearchBar .SelectedUsers ::-webkit-scrollbar {
+    display: none;
+    width: 0;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_SearchBar .SelectedUsers .SelectedUsersProfile {
+    height: 100%;
+    max-height: 50px;
+    overflow: hidden;
+    margin: 10px 10px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_SearchBar .SelectedUsers .SelectedUsersProfile .SelectedUsersProfileInnerSec {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_SearchBar .SelectedUsers .SelectedUsersProfile .SelectedUsersProfileInnerSec .DefaultProfile {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: lightcoral;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_SearchBar .SelectedUsers .SelectedUsersProfile .SelectedUsersProfileInnerSec .DefaultProfile img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_SearchBar .SelectedUsers .SelectedUsersProfile .SelectedUsersProfileInnerSec .DefaultProfile .pera {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-family: Inter;
+    font-weight: 500;
+    text-transform: capitalize;
+    color: var(--main-white-color);
+    width: 100%;
+    height: 100%;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_SearchBar .SelectedUsers .SelectedUsersProfile .SelectedUsersProfileInnerSec .SelectedUsersProfileName {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_SearchBar .SelectedUsers .SelectedUsersProfile .SelectedUsersProfileInnerSec .SelectedUsersProfileName p {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    text-transform: uppercase;
+    padding: 0;
+    margin: 0;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_SearchBar .SelectedUsers .SelectedUsersProfile .SelectedUsersProfileInnerSec .SelectedUsersProfileName button {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: transparent;
+    color: var(--main-white-color);
+    border: 0;
+    outline: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_SearchBar .SelectedUsers .SelectedUsersProfile .SelectedUsersProfileInnerSec .SelectedUsersProfileName button svg {
+    width: 100%;
+    height: 100%;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_SearchBar .SelectedUsers .SelectedUsersProfile .SelectedUsersProfileInnerSec .SelectedUsersProfileName button:hover {
+    background-color: var(--main-white-color);
+    color: #0e0e0e;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_All_Members {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_All_Members ::-webkit-scrollbar {
+    display: none;
+    width: 0;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_All_Members .Members_Profile {
+    width: 100%;
+    height: 70px;
+    padding: 0 20px;
+    overflow: hidden;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_All_Members .Members_Profile:hover {
+    background-color: var(--secondry-bg-color);
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_All_Members .Members_Profile .Profile_Inner_sec {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_All_Members .Members_Profile .Profile_Inner_sec ._Profile_Photo .DefaultProfile {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background-color: lightcoral;
+    overflow: hidden;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_All_Members .Members_Profile .Profile_Inner_sec ._Profile_Photo .DefaultProfile .pera {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_All_Members .Members_Profile .Profile_Inner_sec ._Profile_Photo .DefaultProfile .pera p {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0;
+    margin: 0;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_All_Members .Members_Profile .Profile_Inner_sec .MembersName {
+    width: 100%;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_All_Members .Members_Profile .Profile_Inner_sec .MembersName ._InnerFlex {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_All_Members .Members_Profile .Profile_Inner_sec .MembersName ._InnerFlex h4 {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    text-transform: capitalize;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Group_Chat_All_Members .Members_Profile .Profile_Inner_sec .MembersName ._InnerFlex p {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14px;
+    text-transform: capitalize;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Final_Create_Group_Chat_Button_Section {
+    width: 100%;
+    padding: 20px 20px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Final_Create_Group_Chat_Button_Section .Final_Button {
+    width: 100%;
+    transition: 1s ease-in-out;
+    width: 0;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Final_Create_Group_Chat_Button_Section .Final_Button button {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    background-color: var(--button-main-color);
+    height: 50px;
+    border-radius: 30px;
+    color: var(--main-white-color);
+    max-width: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: auto;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Create_Group_Chat_Modal .Create_Group_Chat_Modal_Inner_Section .Final_Create_Group_Chat_Button_Section .Final_Button button svg {
+    width: 70px;
+    height: 35px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    opacity: 0;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Add_Group_Chat_ChatName_Modal {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: 0.35s ease-in;
+    background-color: var(--main-bg-color);
+    overflow: hidden;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Add_Group_Chat_ChatName_Modal ::-webkit-scrollbar {
+    display: none;
+    width: 0;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Add_Group_Chat_ChatName_Modal .Add_Group_Chat_ChatName_Modal_InnerSection {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    -ms-overflow-style: none;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-between;
+    scrollbar-width: none;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Add_Group_Chat_ChatName_Modal .Add_Group_Chat_ChatName_Modal_InnerSection .Group_Chat_Header_Section {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    width: 100%;
+    height: 150px;
+    background-color: var(--popup-bg-color);
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Add_Group_Chat_ChatName_Modal .Add_Group_Chat_ChatName_Modal_InnerSection .Group_Chat_Header_Section .Header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 0 12px 15px 12px;
+    gap: 24px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Add_Group_Chat_ChatName_Modal .Add_Group_Chat_ChatName_Modal_InnerSection .Group_Chat_Header_Section .Header .Back_Button button {
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    color: var(--main-white-color);
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Add_Group_Chat_ChatName_Modal .Add_Group_Chat_ChatName_Modal_InnerSection .Group_Chat_Header_Section .Header .Back_Button button svg {
+    height: 100%;
+    width: 26px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Add_Group_Chat_ChatName_Modal .Add_Group_Chat_ChatName_Modal_InnerSection .Group_Chat_Header_Section .Header .Header_Text h3 {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    text-transform: capitalize;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Add_Group_Chat_ChatName_Modal .Add_Group_Chat_ChatName_Modal_InnerSection .Group_Chat_Profile_Photo {
+    margin: 30px auto;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Add_Group_Chat_ChatName_Modal .Add_Group_Chat_ChatName_Modal_InnerSection .Group_Chat_Profile_Photo label {
+    overflow: hidden;
+    position: relative;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    background-color: rgba(186, 186, 186, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.3);
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Add_Group_Chat_ChatName_Modal .Add_Group_Chat_ChatName_Modal_InnerSection .Group_Chat_Profile_Photo label svg {
+    width: 100px;
+    height: 100px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Add_Group_Chat_ChatName_Modal .Add_Group_Chat_ChatName_Modal_InnerSection .Group_Chat_Profile_Photo label .Camera_Icon {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(1px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    color: var(--main-white-color);
+    -webkit-backdrop-filter: blur(1px);
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Add_Group_Chat_ChatName_Modal .Add_Group_Chat_ChatName_Modal_InnerSection .Group_Chat_Profile_Photo label .Camera_Icon svg {
+    width: 30px;
+    height: 30px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Add_Group_Chat_ChatName_Modal .Add_Group_Chat_ChatName_Modal_InnerSection .Group_Chat_Profile_Photo label .Camera_Icon p {
+    font-family: Inter;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    max-width: 100px;
+    text-align: center;
+    line-height: 15px;
+    text-transform: capitalize;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Add_Group_Chat_ChatName_Modal .Add_Group_Chat_ChatName_Modal_InnerSection .Group_Chat_Add_ChatName_Input_Field {
+    width: 100%;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Add_Group_Chat_ChatName_Modal .Add_Group_Chat_ChatName_Modal_InnerSection .Group_Chat_Add_ChatName_Input_Field ._Input_Field {
+    width: 100%;
+    padding: 10px 12px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Add_Group_Chat_ChatName_Modal .Add_Group_Chat_ChatName_Modal_InnerSection .Group_Chat_Add_ChatName_Input_Field ._Input_Field input {
+    width: 100%;
+    height: 45px;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    text-transform: capitalize;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Add_Group_Chat_ChatName_Modal .Add_Group_Chat_ChatName_Modal_InnerSection .Final_Create_Group_Chat_Button_Section {
+    width: 100%;
+    padding: 20px 20px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Add_Group_Chat_ChatName_Modal .Add_Group_Chat_ChatName_Modal_InnerSection .Final_Create_Group_Chat_Button_Section .Final_Button {
+    width: 100%;
+    transition: 1s ease-in-out;
+    width: 0;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Add_Group_Chat_ChatName_Modal .Add_Group_Chat_ChatName_Modal_InnerSection .Final_Create_Group_Chat_Button_Section .Final_Button button {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    background-color: var(--button-main-color);
+    height: 50px;
+    border-radius: 30px;
+    color: var(--main-white-color);
+    max-width: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: auto;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .ChatUsersListPart .Add_Group_Chat_ChatName_Modal .Add_Group_Chat_ChatName_Modal_InnerSection .Final_Create_Group_Chat_Button_Section .Final_Button button svg {
+    width: 70px;
+    height: 35px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    opacity: 0;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage {
+    width: 0%;
+    transform: translateX(100%);
+    overflow: hidden;
+    height: 0;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Headers {
+    padding: 8px 15px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Headers .Send_Messages_Headers_Inner_Section {
+    gap: 8px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Headers .Send_Messages_Headers_Inner_Section .Respo_Back_Button {
+    display: block;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Headers .Send_Messages_Headers_Inner_Section .DefaultProfile {
+    height: 35px;
+    min-width: 35px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Headers .Send_Messages_Headers_Inner_Section .DefaultProfile .pera p {
+    font-size: 14px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Text_Input_Field_For_Text {
+    width: 100%;
+    height: 100%;
+    padding: 10px 0;
+    position: relative;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Text_Input_Field_For_Text .ScrollableSection {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Text_Input_Field_For_Text .ScrollableSection .Flex__Section {
+    padding: 20px 15px;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Text_Input_Field_For_Text .ScrollableSection .Flex__Section::-webkit-scrollbar {
+    display: none;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Text_Input_Field_For_Text .ScrollableSection .Flex__Section .Messages_Outre_Div .Message_Inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Text_Input_Field_For_Text .ScrollableSection .Flex__Section .Messages_Outre_Div .Message_Inner .Message_Sender_Profile .DefaultProfile {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: lightcoral;
+    overflow: hidden;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Text_Input_Field_For_Text .ScrollableSection .Flex__Section .Messages_Outre_Div .Message_Inner .Message_Sender_Profile .DefaultProfile .pera {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Text_Input_Field_For_Text .ScrollableSection .Flex__Section .Messages_Outre_Div .Message_Inner .Message_Sender_Profile .DefaultProfile .pera p {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    text-transform: uppercase;
+    padding: 0;
+    margin: 0;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Text_Input_Field_For_Text .ScrollableSection .Flex__Section .Messages_Outre_Div .Message_Inner .Message_content {
+    color: #000;
+    clear: both;
+    position: relative;
+    margin: 8px 0;
+    max-width: 400px;
+    border-radius: 8px;
+    width: -moz-fit-content;
+    width: fit-content;
+    background-color: rgb(170, 125, 89);
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Text_Input_Field_For_Text .ScrollableSection .Flex__Section .Messages_Outre_Div .Message_Inner .Message_content .InnerSec {
+    width: 100%;
+    height: 100%;
+    padding: 5px 15px;
+    position: relative;
+    overflow: hidden;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Text_Input_Field_For_Text .ScrollableSection .Flex__Section .Messages_Outre_Div .Message_Inner .Message_content .InnerSec p {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    text-transform: capitalize;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Text_Input_Field_For_Text .ScrollableSection .Flex__Section .Messages_Outre_Div .Message_Inner .Message_content .Edited_Message {
+    position: absolute;
+    right: 5px;
+    bottom: -2px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Text_Input_Field_For_Text .ScrollableSection .Flex__Section .Messages_Outre_Div .Message_Inner .Message_content .Edited_Message span {
+    color: var(--non-hilighted-text);
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    text-transform: capitalize;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Text_Input_Field_For_Text .ScrollableSection .Flex__Section .Messages_Outre_Div .Message_Inner .Message_content .DropDownArrowButton {
+    position: absolute;
+    top: -5px;
+    right: 1%;
+    color: var(--main-white-color);
+    transition: 0.05s all;
+    opacity: 1;
+    z-index: 1;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Text_Input_Field_For_Text .ScrollableSection .Flex__Section .Messages_Outre_Div .Message_Inner .Message_content .DropDownArrowButton button {
+    font-size: 12px !important;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Text_Input_Field_For_Text .ScrollableSection .Flex__Section .Messages_Outre_Div .Message_Inner .ChatImages_Array_Flex_Section {
+    color: #000;
+    clear: both;
+    position: relative;
+    margin: 8px 0;
+    max-width: 600px;
+    border-radius: 8px 0 8px 8px;
+    width: -moz-fit-content;
+    width: fit-content;
+    background-color: rgb(170, 125, 89);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Text_Input_Field_For_Text .ScrollableSection .Flex__Section .Messages_Outre_Div .Message_Inner .ChatImages_Array_Flex_Section .InnerSec {
+    width: 100%;
+    height: 100%;
+    padding: 8px 8px;
+    position: relative;
+    overflow: hidden;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Text_Input_Field_For_Text .ScrollableSection .Flex__Section .Messages_Outre_Div .Message_Inner .ChatImages_Array_Flex_Section .InnerSec .Images {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Text_Input_Field_For_Text .ScrollableSection .Flex__Section .Messages_Outre_Div .Message_Inner .ChatImages_Array_Flex_Section .InnerSec .Images img {
+    width: 150px;
+    height: 150px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border-radius: 8px;
+    position: relative;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Text_Input_Field_For_Text .ScrollableSection .Flex__Section .Messages_Outre_Div .Message_Inner .ChatImages_Array_Flex_Section .InnerSec .Content {
+    padding-top: 8px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Text_Input_Field_For_Text .ScrollableSection .Flex__Section .Messages_Outre_Div .Message_Inner .ChatImages_Array_Flex_Section .InnerSec .Content p {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    text-transform: capitalize;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Text_Input_Field_For_Text .ScrollableSection .Flex__Section .Messages_Outre_Div .Message_Inner .ChatImages_Array_Flex_Section .Edited_Message {
+    position: absolute;
+    right: 5px;
+    bottom: -2px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Text_Input_Field_For_Text .ScrollableSection .Flex__Section .Messages_Outre_Div .Message_Inner .ChatImages_Array_Flex_Section .Edited_Message span {
+    color: var(--non-hilighted-text);
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    text-transform: capitalize;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Text_Input_Field_For_Text .ScrollableSection .Flex__Section .Messages_Outre_Div .Message_Inner .ChatImages_Array_Flex_Section .DropDownArrowButton {
+    position: absolute;
+    top: -2px;
+    right: 0px;
+    color: var(--main-white-color);
+    transition: 0.05s all;
+    opacity: 0;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Text_Input_Field_For_Text .ScrollableSection .Flex__Section .Messages_Outre_Div .Message_Inner .ChatImages_Array_Flex_Section .DropDownArrowButton button {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    text-transform: capitalize;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Text_Input_Field_For_Text .ScrollableSection .Flex__Section .Messages_Outre_Div .Message_Inner .ChatImages_Array_Flex_Section:hover .DropDownArrowButton {
+    opacity: 1;
+    right: 0;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Footer_Input_Field {
+    width: 100%;
+    height: 100%;
+    max-height: 65px;
+    position: relative;
+    z-index: 11;
+    background-color: var(--popup-bg-color);
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Footer_Input_Field .Input_Filed_To_Enter_Message {
+    width: 100%;
+    height: 100%;
+    padding: 8px 20px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Footer_Input_Field .Input_Filed_To_Enter_Message form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Footer_Input_Field .Input_Filed_To_Enter_Message form button {
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    color: var(--main-white-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Footer_Input_Field .Input_Filed_To_Enter_Message form button:hover {
+    background-color: var(--main-bg-color);
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Footer_Input_Field .Input_Filed_To_Enter_Message form button svg {
+    width: 20px;
+    height: 20px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Footer_Input_Field .Input_Filed_To_Enter_Message input {
+    width: 100%;
+    height: 100%;
+    background-color: var(--main-bg-color);
+    border: 0;
+    outline: 0;
+    border-radius: 10px;
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    text-transform: capitalize;
+    padding: 0 20px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Footer_Input_Field .MoreActionModalMainDiv {
+    transition: 0.6s all;
+    visibility: visible;
+    opacity: 1;
+    position: absolute;
+    z-index: 111;
+    top: -240%;
+    left: 20px;
+    width: 210px;
+    padding: 8px 8px;
+    background-color: var(--secondry-bg-color);
+    border-radius: 10px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Footer_Input_Field .MoreActionModalMainDiv .MoreActionModalInnerDiv {
+    width: 100%;
+    height: 100%;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Footer_Input_Field .MoreActionModalMainDiv .MoreActionModalInnerDiv ul {
+    list-style: none;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Footer_Input_Field .MoreActionModalMainDiv .MoreActionModalInnerDiv ul li {
+    list-style: none;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Footer_Input_Field .MoreActionModalMainDiv .MoreActionModalInnerDiv ul li:hover {
+    background-color: var(--sidebar-bg-color);
+    border-radius: 8px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Footer_Input_Field .MoreActionModalMainDiv .MoreActionModalInnerDiv ul li button {
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    outline: 0;
+    text-align: start;
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    overflow: hidden;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Footer_Input_Field .MoreActionModalMainDiv .MoreActionModalInnerDiv ul li button .users svg {
+    height: 30px;
+    width: 18px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Footer_Input_Field .MoreActionModalMainDiv .MoreActionModalInnerDiv ul li button span {
+    width: 20%;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Footer_Input_Field .MoreActionModalMainDiv .MoreActionModalInnerDiv ul li button span svg {
+    height: 30px;
+    width: 25px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .Current_ChatPart_Page_Inner_Section .Send_Messages_UI_Main_Div .Send_Messages_Footer_Input_Field .MoreActionModalMainDiv .MoreActionModalInnerDiv ul li button p {
+    width: 80%;
+    height: 100%;
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    text-transform: capitalize;
+    white-space: nowrap;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .SendImages_ALL_Action_Modal_Outer_DIV {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--sidebar-bg-color);
+    z-index: 11;
+    transform: translateX(-200%);
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .SendImages_ALL_Action_Modal_Outer_DIV .SendImages_ALL_Action_Modal_Inner_Section {
+    width: 100%;
+    height: 100%;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .SendImages_ALL_Action_Modal_Outer_DIV .SendImages_ALL_Action_Modal_Inner_Section .Display_Flex__Section {
+    width: 100%;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .SendImages_ALL_Action_Modal_Outer_DIV .SendImages_ALL_Action_Modal_Inner_Section .Display_Flex__Section form {
+    padding: 35px 16px;
+    justify-content: flex-end;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .SendImages_ALL_Action_Modal_Outer_DIV .SendImages_ALL_Action_Modal_Inner_Section .Display_Flex__Section form .ADD_Images_Input {
+    width: 100%;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .SendImages_ALL_Action_Modal_Outer_DIV .SendImages_ALL_Action_Modal_Inner_Section .Display_Flex__Section form .ADD_Images_Input label {
+    width: 100%;
+    height: 150px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .SendImages_ALL_Action_Modal_Outer_DIV .SendImages_ALL_Action_Modal_Inner_Section .Display_Flex__Section form .ADD_Message_Input {
+    width: 100%;
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .SendImages_ALL_Action_Modal_Outer_DIV .SendImages_ALL_Action_Modal_Inner_Section .Display_Flex__Section form .Sumbit_Button {
+    width: 100%;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .SendImages_ALL_Action_Modal_Outer_DIV .SendImages_ALL_Action_Modal_Inner_Section .Display_Flex__Section form .Sumbit_Button button {
+    margin-left: auto;
+    width: 150px;
+    height: 40px;
+    font-size: 16px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .SendImages_ALL_Action_Modal_Outer_DIV .SendImages_ALL_Action_Modal_Inner_Section .Display_Flex__Section form .Sumbit_Button button svg {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    z-index: 11;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation {
+    width: 100%;
+    overflow: auto;
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: var(--main-black-color);
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation::-webkit-scrollbar {
+    display: none;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec {
+    width: 100%;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInfoTitle {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: var(--popup-bg-color);
+    height: 65px;
+    position: sticky;
+    top: 0;
+    right: 0;
+    z-index: 11;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInfoTitle .TitleInnerSec {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    height: 100%;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInfoTitle .TitleInnerSec .CloseButton button {
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    color: var(--main-white-color);
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInfoTitle .TitleInnerSec .CloseButton button svg {
+    width: 26px;
+    height: 100%;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInfoTitle .TitleInnerSec .ChatName_Title p {
+    height: 100%;
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    text-transform: capitalize;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInfoTitle .TitleInnerSec .Edit_Group_Name_Button {
+    margin-left: auto;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInfoTitle .TitleInnerSec .Edit_Group_Name_Button button {
+    background-color: transparent;
+    color: var(--main-white-color);
+    border: 0;
+    outline: 0;
+    font-size: 16px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 20px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .Profile_Photo_And_Name_section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    background-color: var(--main-bg-color);
+    padding: 40px 0;
+    border-radius: 0 0 20px 20px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .Profile_Photo_And_Name_section .DefaultProfile {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: lightcoral;
+    overflow: hidden;
+    position: relative;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .Profile_Photo_And_Name_section .DefaultProfile .pera {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .Profile_Photo_And_Name_section .DefaultProfile .pera p {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0;
+    margin: 0;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .Profile_Photo_And_Name_section .DefaultProfile .AddGroupImageInput {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 10px 20px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: 0.2s all;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .Profile_Photo_And_Name_section .DefaultProfile .AddGroupImageInput label {
+    font-size: 22px;
+    color: var(--main-white-color);
+    text-align: center;
+    width: 100%;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .Profile_Photo_And_Name_section .Group_And_Contact_Name {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    padding: 20px;
+    width: 100%;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .Profile_Photo_And_Name_section .Group_And_Contact_Name textarea {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    text-transform: capitalize;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    overflow: hidden;
+    line-break: anywhere;
+    margin: auto;
+    width: 100%;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    resize: none;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .Profile_Photo_And_Name_section .Group_And_Contact_Name textarea:focus {
+    border: 0;
+    outline: 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .Profile_Photo_And_Name_section .Group_And_Contact_Name textarea::-webkit-input-placeholder {
+    color: var(--main-white-color);
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .AllMemberList_Section {
+    width: 100%;
+    background-color: var(--main-bg-color);
+    padding: 20px 0px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .AllMemberList_Section .Title {
+    width: 100%;
+    padding: 0 15px 15px 15px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .AllMemberList_Section .Title h6 {
+    color: var(--button-main-color);
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    text-transform: capitalize;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .AllMemberList_Section .List_OF_All_Members {
+    width: 100%;
+    height: 100%;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .AllMemberList_Section .List_OF_All_Members .MembersGroupProfile {
+    width: 100%;
+    cursor: pointer;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .AllMemberList_Section .List_OF_All_Members .MembersGroupProfile:hover {
+    background-color: #64548c;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .AllMemberList_Section .List_OF_All_Members .MembersGroupProfile .MembersGroupProfile_Inner_Section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 20px;
+    padding: 15px 15px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .AllMemberList_Section .List_OF_All_Members .MembersGroupProfile .MembersGroupProfile_Inner_Section .Profile_Photo .DefaultProfile {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: lightcoral;
+    overflow: hidden;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .AllMemberList_Section .List_OF_All_Members .MembersGroupProfile .MembersGroupProfile_Inner_Section .Profile_Photo .DefaultProfile .pera {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .AllMemberList_Section .List_OF_All_Members .MembersGroupProfile .MembersGroupProfile_Inner_Section .Profile_Photo .DefaultProfile .pera p {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0;
+    margin: 0;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .AllMemberList_Section .List_OF_All_Members .MembersGroupProfile .MembersGroupProfile_Inner_Section .User_Info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .AllMemberList_Section .List_OF_All_Members .MembersGroupProfile .MembersGroupProfile_Inner_Section .User_Info .Info {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .AllMemberList_Section .List_OF_All_Members .MembersGroupProfile .MembersGroupProfile_Inner_Section .User_Info .Info h5 {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 13px;
+    text-transform: capitalize;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .AllMemberList_Section .List_OF_All_Members .MembersGroupProfile .MembersGroupProfile_Inner_Section .User_Info .Info .userName p {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 13px;
+    text-transform: capitalize;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .AllMemberList_Section .List_OF_All_Members .MembersGroupProfile .MembersGroupProfile_Inner_Section .User_Info .Info .Name p {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    text-transform: capitalize;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .AllMemberList_Section .List_OF_All_Members .MembersGroupProfile .MembersGroupProfile_Inner_Section .User_Info .Info .Coman_title p {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    text-transform: capitalize;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .AllMemberList_Section .List_OF_All_Members .MembersGroupProfile .MembersGroupProfile_Inner_Section .User_Info .Info .Coman_title p span {
+    padding-left: 4px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .AllMemberList_Section .List_OF_All_Members .MembersGroupProfile .MembersGroupProfile_Inner_Section .User_Info .GroupAdmin span {
+    color: #f41884;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    text-transform: capitalize;
+    background-color: #463375;
+    padding: 5px 8px;
+    border-radius: 5px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .AllMemberList_Section .List_OF_All_Members .GroupInfo_peraGraph {
+    padding: 8px 15px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .AllMemberList_Section .List_OF_All_Members .GroupInfo_peraGraph p {
+    color: var(--non-hilighted-text);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    text-transform: capitalize;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .CRUD_Operation_Section {
+    margin-top: 20px;
+    width: 100%;
+    background-color: var(--main-bg-color);
+    border-radius: 20px;
+    padding: 15px 15px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .CRUD_Operation_Section ul {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 25px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .CRUD_Operation_Section ul li button {
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .CRUD_Operation_Section ul li button span {
+    color: rgba(255, 0, 0, 0.7);
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .CRUD_Operation_Section ul li button span svg {
+    width: 26px;
+    height: 100%;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .GroupChatInformation .GroupChatInformation_Inner_Sec .GroupInformation_Info_Section .CRUD_Operation_Section ul li button p {
+    color: rgba(255, 0, 0, 0.7);
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    text-transform: capitalize;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .NotActive_DefaultPage_main .NotActive_DefaultPage_Inner {
+    padding: 15px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .NotActive_DefaultPage_main .NotActive_DefaultPage_Inner .Banner_Image img {
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .NotActive_DefaultPage_main .NotActive_DefaultPage_Inner .Text_Section .Main_Text {
+    max-width: 400px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .NotActive_DefaultPage_main .NotActive_DefaultPage_Inner .Text_Section .Main_Text h3 {
+    font-size: 16px;
+  }
+  .ChatPageSectionMain .ChatPageSectionInnerDiv .ChatPageFlexSection .CurrentChatPartPage .NotActive_DefaultPage_main .NotActive_DefaultPage_Inner .Text_Section .Secondary_Text p {
+    font-size: 12px;
+  }
+  .deleteMessagePopup {
+    position: absolute;
+  }
+  .deleteMessagePopup .deleteMessagePopupInner {
+    width: 100%;
+    padding: 0 16px;
+  }
+  .deleteMessagePopup .deleteMessagePopupInner h5 {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+  .deleteMessagePopup .deleteMessagePopupInner p {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+  .deleteMessagePopup .deleteMessagePopupInner button {
+    height: 45px;
+    width: 150px;
+    border-radius: 45px;
+    border: 1px solid var(--button-main-color);
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: 11111111111;
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: 0.3s all;
+    inset: 0;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec {
+    width: 500px;
+    height: 100%;
+    max-height: 550px;
+    background-color: var(--secondry-bg-color);
+    overflow: auto;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec ::-webkit-scrollbar {
+    display: none;
+    width: 0;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_SearchBar {
+    width: 100%;
+    background-color: var(--sidebar-bg-color);
+    position: sticky;
+    top: 0;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_SearchBar .Header {
+    background-color: var(--popup-bg-color);
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_SearchBar .Header .Flex_Sec {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 24px;
+    padding: 30px 12px 12px 12px;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_SearchBar .Header .Flex_Sec button {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 35px;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_SearchBar .Header .Flex_Sec h5 {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    text-transform: capitalize;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_SearchBar .Search {
+    padding: 15px 20px;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_SearchBar .Search input {
+    width: 100%;
+    height: 40px;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_SearchBar .Search input::-moz-placeholder {
+    text-transform: capitalize;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_SearchBar .Search input::placeholder {
+    text-transform: capitalize;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_SearchBar .SelectedUsers {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    max-height: 150px;
+    overflow: auto;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_SearchBar .SelectedUsers ::-webkit-scrollbar {
+    display: none;
+    width: 0;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_SearchBar .SelectedUsers .SelectedUsersProfile {
+    height: 100%;
+    max-height: 50px;
+    overflow: hidden;
+    margin: 10px 10px;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_SearchBar .SelectedUsers .SelectedUsersProfile .SelectedUsersProfileInnerSec {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_SearchBar .SelectedUsers .SelectedUsersProfile .SelectedUsersProfileInnerSec .DefaultProfile {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: lightcoral;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_SearchBar .SelectedUsers .SelectedUsersProfile .SelectedUsersProfileInnerSec .DefaultProfile img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_SearchBar .SelectedUsers .SelectedUsersProfile .SelectedUsersProfileInnerSec .DefaultProfile .pera {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-family: Inter;
+    font-weight: 500;
+    text-transform: capitalize;
+    color: var(--main-white-color);
+    width: 100%;
+    height: 100%;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_SearchBar .SelectedUsers .SelectedUsersProfile .SelectedUsersProfileInnerSec .SelectedUsersProfileName {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_SearchBar .SelectedUsers .SelectedUsersProfile .SelectedUsersProfileInnerSec .SelectedUsersProfileName p {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    text-transform: uppercase;
+    padding: 0;
+    margin: 0;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_SearchBar .SelectedUsers .SelectedUsersProfile .SelectedUsersProfileInnerSec .SelectedUsersProfileName button {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: transparent;
+    color: var(--main-white-color);
+    border: 0;
+    outline: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_SearchBar .SelectedUsers .SelectedUsersProfile .SelectedUsersProfileInnerSec .SelectedUsersProfileName button svg {
+    width: 100%;
+    height: 100%;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_SearchBar .SelectedUsers .SelectedUsersProfile .SelectedUsersProfileInnerSec .SelectedUsersProfileName button:hover {
+    background-color: var(--main-white-color);
+    color: #0e0e0e;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_All_Members {
+    width: 100%;
+    height: 100%;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_All_Members .Members_Profile {
+    width: 100%;
+    height: 70px;
+    padding: 0 20px;
+    overflow: hidden;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_All_Members .Members_Profile:hover {
+    background-color: #463375;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_All_Members .Members_Profile .Profile_Inner_sec {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_All_Members .Members_Profile .Profile_Inner_sec ._Profile_Photo .DefaultProfile {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background-color: lightcoral;
+    overflow: hidden;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_All_Members .Members_Profile .Profile_Inner_sec ._Profile_Photo .DefaultProfile .pera {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_All_Members .Members_Profile .Profile_Inner_sec ._Profile_Photo .DefaultProfile .pera p {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0;
+    margin: 0;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_All_Members .Members_Profile .Profile_Inner_sec .MembersName {
+    width: 100%;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_All_Members .Members_Profile .Profile_Inner_sec .MembersName ._InnerFlex {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_All_Members .Members_Profile .Profile_Inner_sec .MembersName ._InnerFlex h4 {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    text-transform: capitalize;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Group_Chat_All_Members .Members_Profile .Profile_Inner_sec .MembersName ._InnerFlex p {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14px;
+    text-transform: capitalize;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Footer_Button {
+    position: sticky;
+    bottom: 8px;
+    display: flex;
+    align-self: flex-end;
+    padding-right: 12px;
+  }
+  .AddNewUserToGroupForThatShowAllTheUser .InnerSec .Footer_Button button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--button-main-color);
+    color: var(--main-white-color);
+    border: 0;
+    outline: 0;
+    margin-left: auto;
+    font-size: 20px;
+  }
+  .Users_Page_Main_Section {
+    width: 100%;
+    height: 100%;
+    padding: 16px 16px;
+    overflow: hidden;
+  }
+  .Users_Page_Main_Section .Users_Page_Inner_Section {
+    width: 100%;
+    height: 100%;
+  }
+  .Users_Page_Main_Section .Users_Page_Inner_Section .List_Of_Users {
+    margin: 10px 0 65px 0;
+  }
+  .Users_Page_Main_Section .Users_Page_Inner_Section .List_Of_Users .Button_Flex_Section {
+    padding: 15px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    margin: 0;
+    z-index: 111;
+    background-color: var(--main-bg-color);
+  }
+  .Users_Page_Main_Section .Users_Page_Inner_Section .List_Of_Users .Button_Flex_Section button {
+    height: 35px;
+    margin: 0 10px;
+  }
+  .HelpCenter_Main_Section {
+    padding: 16px 0px;
+  }
+  .HelpCenter_Main_Section .HelpCenter_Inner_section .HelpCenter_Button_Section {
+    width: 100%;
+    padding: 0 16px;
+  }
+  .HelpCenter_Main_Section .HelpCenter_Inner_section .HelpCenter_Button_Section .Title {
+    width: 100%;
+    margin-top: 20px;
+  }
+  .HelpCenter_Main_Section .HelpCenter_Inner_section .HelpCenter_Button_Section .Title h4 {
+    font-family: Inter;
+    font-size: 18px;
+  }
+  .HelpCenter_Main_Section .HelpCenter_Inner_section .HelpCenter_Button_Section ul li button {
+    padding: 16px 10px;
+    border-radius: 23px;
+    min-width: 90px;
+  }
+  .HelpCenter_Main_Section .HelpCenter_Inner_section .Faq_Section_Main {
+    width: 100%;
+    height: 100%;
+    background-color: #1a132b;
+    border-radius: 16px;
+    overflow: auto;
+    position: relative;
+  }
+  .HelpCenter_Main_Section .HelpCenter_Inner_section .Faq_Section_Main::-webkit-scrollbar {
+    display: none;
+  }
+  .HelpCenter_Main_Section .HelpCenter_Inner_section .Faq_Section_Main .Fixed_Header_Title {
+    padding: 14px 20px;
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid var(--border-color);
+    z-index: 111;
+    background-color: rgba(26, 19, 43, 0.537254902);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+  .HelpCenter_Main_Section .HelpCenter_Inner_section .Faq_Section_Main .Fixed_Header_Title h4 {
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px;
+    color: var(--main-white-color);
+    text-transform: capitalize;
+  }
+  .HelpCenter_Main_Section .HelpCenter_Inner_section .Faq_Section_Main .Faq_Part {
+    padding: 12px 12px;
+  }
+  .SettingPage_Main_Section {
+    flex-direction: column;
+  }
+  .SettingPage_Main_Section .list_section {
+    width: 100%;
+  }
+  .SettingPage_Main_Section .list_section .List_Of_Action_Section {
+    gap: 12px;
+  }
+  .SettingPage_Main_Section .list_section .List_Of_Action_Section .List_Section_Card .text_section p {
+    font-size: 16px;
+  }
+  .SettingPage_Main_Section .list_section .List_Of_Action_Section .List_Section_Card span {
+    display: block;
+    width: 30px;
+  }
+  .SettingPage_Main_Section .More_Detailed_Section {
+    width: 100%;
+  }
+  .SettingPage_Main_Section .More_Detailed_Section .change_password_main_section .change_password_inner_section .main_input_section h3 {
+    font-size: 18px;
+  }
+  .SettingPage_Main_Section .More_Detailed_Section .change_password_main_section .change_password_inner_section .main_input_section .fill_the_current_password_filed {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+  .SettingPage_Main_Section .More_Detailed_Section .change_password_main_section .change_password_inner_section .main_input_section .fill_the_current_password_filed .input_field {
+    width: 100%;
+    position: relative;
+  }
+  .SettingPage_Main_Section .More_Detailed_Section .change_password_main_section .change_password_inner_section .main_input_section .fill_the_current_password_filed .input_field button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 30px;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    color: var(--main-white-color);
+  }
+  .SettingPage_Main_Section .More_Detailed_Section .change_password_main_section .change_password_inner_section .main_input_section .Button_section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+  }
+  .SettingPage_Main_Section .More_Detailed_Section .Two_Step_Verification_Main_Section {
+    width: 100%;
+    margin: 30px auto 0 0;
+  }
+}
+@media only screen and (max-width: 767px) and (min-width: 1200px) {
+  .SettingPage_Main_Section .More_Detailed_Section .Two_Step_Verification_Main_Section {
+    width: calc(100% - 200px);
+  }
+}
+@media only screen and (max-width: 767px) {
+  .SettingPage_Main_Section .More_Detailed_Section .Two_Step_Verification_Main_Section .Two_Step_Verification_Inner_Section .Title_Main_Section h3 {
+    font-size: 18px;
   }
 }/*# sourceMappingURL=style.module.css.map */

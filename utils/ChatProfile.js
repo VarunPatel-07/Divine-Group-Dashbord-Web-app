@@ -14,6 +14,10 @@ function ChatProfile(props) {
     setShowGroupInfoModal,
     setActive_State,
     Find_ALL_Coman_Group,
+    Show_Chat_Section_On_Click,
+    setShow_Chat_Section_On_Click,
+    Not_Show_Current_Chat_Page,
+    setNot_Show_Current_Chat_Page,
   } = context;
   const { Chat_Info, LatestMessage, Search_Query } = props;
 
@@ -35,14 +39,17 @@ function ChatProfile(props) {
       _Group_Admin_Info: Chat_Info.GroupAdmin,
       _Users_ID: Single_User_ID,
     };
+
+    setShow_Chat_Section_On_Click(false);
     setShowGroupInfoModal(false);
     Message_Fetching_API_Controller_Function(AuthToken, NewInfoObj._ID);
     setSelected_Chat_Users_Data_To_Chat(NewInfoObj);
     if (!NewInfoObj._IS_GroupChat) {
       Find_ALL_Coman_Group(AuthToken, NewInfoObj._Users_ID);
     }
-
+    setNot_Show_Current_Chat_Page(false);
     setActive_State(true);
+    setShow_Chat_Section_On_Click(true);
   };
   return (
     <div className="w-100">

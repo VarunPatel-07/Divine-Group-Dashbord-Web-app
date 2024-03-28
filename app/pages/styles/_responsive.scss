@@ -553,7 +553,6 @@
   }
   // ? ------------- PROFILE PAGE SECTION ---------------------------
   .ProfilePageMainSection {
-    
     .TitleSection {
       .HeaderFlexSection {
         .ButtonGroupSec {
@@ -597,7 +596,7 @@
             .DefaultProfile {
               width: 100%;
               height: 100%;
-overflow: hidden;
+              overflow: hidden;
               .pera {
                 width: 100%;
                 height: 100%;
@@ -745,6 +744,1860 @@ overflow: hidden;
                 box-shadow: inset 0 0 20px 20px #23232329;
                 background: rgba(44, 35, 65, 0.8);
               }
+            }
+          }
+        }
+      }
+    }
+  }
+  // ? ------------- CHAT PAGE  SECTION ---------------------------
+  .ChatPageSectionMain {
+    .ChatPageSectionInnerDiv {
+      .ChatPageFlexSection {
+        .ChatUsersListPart {
+          width: 100%;
+          .ChatUsersListPartInnerSection {
+            .All_ChatIcons_Flex_Section {
+              .ChatProfile {
+                width: 100%;
+                cursor: pointer;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                &:hover {
+                  background-color: var(--secondry-bg-color);
+                }
+                .ChatProfileInner {
+                  display: flex;
+                  align-items: center;
+                  justify-content: flex-start;
+                  gap: 20px;
+                  padding: 15px 12px;
+                  .ProfilePhoto {
+                    width: 55px;
+                    height: 55px;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    img {
+                      width: 100%;
+                      height: 100%;
+                      object-fit: cover;
+                    }
+                    .DefaultProfile {
+                      width: 100%;
+                      height: 100%;
+                      background-color: lightcoral;
+
+                      .pera {
+                        width: 100%;
+                        height: 100%;
+
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        p {
+                          color: var(--main-white-color);
+                          font-family: Inter;
+                          font-size: 20px;
+                          font-style: normal;
+                          font-weight: 600;
+                          text-transform: uppercase;
+                          padding: 0;
+                          margin: 0;
+                        }
+                      }
+                    }
+                  }
+                  .ProfileText {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: flex-start;
+                    gap: 8px;
+                    height: 100%;
+                    h4 {
+                      color: var(--main-white-color);
+                      font-family: Inter;
+                      font-size: 17px;
+                      font-style: normal;
+                      font-weight: 500;
+                      line-height: 16px;
+                      text-transform: capitalize;
+                    }
+                    p {
+                      color: var(--non-hilighted-text);
+                      font-family: Inter;
+                      font-size: 14px;
+                      font-style: normal;
+                      font-weight: 400;
+                      line-height: 14px;
+                      text-transform: capitalize;
+                    }
+                  }
+                }
+              }
+            }
+
+            .No_Chat_Data_Exist_Info {
+              padding: 12px 12px;
+              p {
+                color: var(--main-white-color);
+                font-family: Inter;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 16px;
+                text-transform: capitalize;
+              }
+            }
+          }
+          .Create_Group_Chat_Modal {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transition: 0.35s ease-in;
+            background-color: var(--main-bg-color);
+            overflow: hidden;
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none;
+            & ::-webkit-scrollbar {
+              display: none;
+              width: 0;
+            }
+            .Create_Group_Chat_Modal_Inner_Section {
+              width: 100%;
+              height: 100%;
+              position: relative;
+              -ms-overflow-style: none;
+              display: flex;
+              align-items: flex-start;
+              flex-direction: column;
+              scrollbar-width: none;
+
+              .Group_Chat_Header_Section {
+                display: flex;
+                align-items: flex-end;
+                justify-content: flex-start;
+                width: 100%;
+                height: 150px;
+                background-color: var(--popup-bg-color);
+
+                .Header {
+                  display: flex;
+                  align-items: center;
+                  justify-content: flex-start;
+                  width: 100%;
+                  padding: 0 12px 15px 12px;
+                  gap: 24px;
+                  .Back_Button {
+                    button {
+                      background-color: transparent;
+                      border: 0;
+                      outline: 0;
+                      color: var(--main-white-color);
+
+                      svg {
+                        height: 100%;
+                        width: 26px;
+                      }
+                    }
+                  }
+                  .Header_Text {
+                    h3 {
+                      color: var(--main-white-color);
+                      font-family: Inter;
+                      font-size: 18px;
+                      font-style: normal;
+                      font-weight: 500;
+                      line-height: 20px;
+                      text-transform: capitalize;
+                    }
+                  }
+                }
+              }
+              .Group_Chat_SearchBar {
+                width: 100%;
+
+                background-color: var(--main-bg-color);
+
+                .Search {
+                  padding: 15px 20px;
+                  input {
+                    width: 100%;
+                    height: 40px;
+                    background-color: transparent;
+                    border: 0;
+                    outline: 0;
+                    color: var(--main-white-color);
+                    font-family: Inter;
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 20px;
+                    border-bottom: 1px solid rgb(255, 255, 255, 0.15);
+                    &::placeholder {
+                      text-transform: capitalize;
+                    }
+                  }
+                }
+                .SelectedUsers {
+                  display: flex;
+                  align-items: center;
+                  justify-content: flex-start;
+                  flex-wrap: wrap;
+                  width: 100%;
+                  max-height: 150px;
+                  overflow: auto;
+                  & ::-webkit-scrollbar {
+                    display: none;
+                    width: 0;
+                  }
+                  .SelectedUsersProfile {
+                    height: 100%;
+
+                    max-height: 50px;
+                    overflow: hidden;
+                    margin: 10px 10px;
+                    .SelectedUsersProfileInnerSec {
+                      width: 100%;
+                      height: 100%;
+                      display: flex;
+                      align-items: center;
+                      justify-content: flex-start;
+                      gap: 8px;
+                      .DefaultProfile {
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        overflow: hidden;
+                        background-color: lightcoral;
+                        img {
+                          width: 100%;
+                          height: 100%;
+                          object-fit: cover;
+                        }
+                        .pera {
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          font-size: 16px;
+                          font-family: Inter;
+                          font-weight: 500;
+                          text-transform: capitalize;
+                          color: var(--main-white-color);
+                          width: 100%;
+                          height: 100%;
+                        }
+                      }
+                      .SelectedUsersProfileName {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        p {
+                          color: var(--main-white-color);
+                          font-family: Inter;
+                          font-size: 12px;
+                          font-style: normal;
+                          font-weight: 400;
+                          text-transform: uppercase;
+                          padding: 0;
+                          margin: 0;
+                        }
+                        button {
+                          width: 25px;
+                          height: 25px;
+
+                          border-radius: 50%;
+                          background-color: transparent;
+                          color: var(--main-white-color);
+                          border: 0;
+                          outline: 0;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          svg {
+                            width: 100%;
+                            height: 100%;
+                          }
+                          &:hover {
+                            background-color: var(--main-white-color);
+                            color: #0e0e0e;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              .Group_Chat_All_Members {
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                -ms-overflow-style: none; /* IE and Edge */
+                scrollbar-width: none;
+                & ::-webkit-scrollbar {
+                  display: none;
+                  width: 0;
+                }
+                .Members_Profile {
+                  width: 100%;
+                  height: 70px;
+                  padding: 0 20px;
+                  overflow: hidden;
+                  cursor: pointer;
+                  border-bottom: 1px solid rgb(255, 255, 255, 0.15);
+                  &:hover {
+                    background-color: var(--secondry-bg-color);
+                  }
+                  .Profile_Inner_sec {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    gap: 20px;
+                    ._Profile_Photo {
+                      .DefaultProfile {
+                        width: 55px;
+                        height: 55px;
+                        border-radius: 50%;
+                        background-color: lightcoral;
+                        overflow: hidden;
+
+                        .pera {
+                          width: 100%;
+                          height: 100%;
+
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          p {
+                            color: var(--main-white-color);
+                            font-family: Inter;
+                            font-size: 22px;
+                            font-style: normal;
+                            font-weight: 600;
+                            text-transform: uppercase;
+                            padding: 0;
+                            margin: 0;
+                          }
+                        }
+                      }
+                    }
+                    .MembersName {
+                      width: 100%;
+                      ._InnerFlex {
+                        width: 100%;
+                        display: flex;
+                        align-items: flex-start;
+                        justify-content: flex-start;
+                        flex-direction: column;
+                        gap: 8px;
+                        h4 {
+                          color: var(--main-white-color);
+                          font-family: Inter;
+                          font-size: 16px;
+                          font-style: normal;
+                          font-weight: 400;
+                          line-height: 16px;
+                          text-transform: capitalize;
+                        }
+                        p {
+                          color: var(--main-white-color);
+                          font-family: Inter;
+                          font-size: 14px;
+                          font-style: normal;
+                          font-weight: 400;
+                          line-height: 14px;
+                          text-transform: capitalize;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              .Final_Create_Group_Chat_Button_Section {
+                width: 100%;
+                padding: 20px 20px;
+
+                .Final_Button {
+                  width: 100%;
+
+                  transition: 1s ease-in-out;
+                  width: 0;
+                  button {
+                    width: 100%;
+                    border: 0;
+                    outline: 0;
+                    background-color: var(--button-main-color);
+                    height: 50px;
+                    border-radius: 30px;
+                    color: var(--main-white-color);
+                    max-width: 350px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    overflow: hidden;
+                    margin: auto;
+                    svg {
+                      width: 70px;
+                      height: 35px;
+                      object-fit: cover;
+                      opacity: 0;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .Add_Group_Chat_ChatName_Modal {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transition: 0.35s ease-in;
+            background-color: var(--main-bg-color);
+            overflow: hidden;
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none;
+            & ::-webkit-scrollbar {
+              display: none;
+              width: 0;
+            }
+            .Add_Group_Chat_ChatName_Modal_InnerSection {
+              width: 100%;
+              height: 100%;
+              position: relative;
+              -ms-overflow-style: none;
+              display: flex;
+              align-items: flex-start;
+              flex-direction: column;
+              justify-content: space-between;
+              scrollbar-width: none;
+
+              .Group_Chat_Header_Section {
+                display: flex;
+                align-items: flex-end;
+                justify-content: flex-start;
+                width: 100%;
+                height: 150px;
+                background-color: var(--popup-bg-color);
+
+                .Header {
+                  display: flex;
+                  align-items: center;
+                  justify-content: flex-start;
+                  width: 100%;
+                  padding: 0 12px 15px 12px;
+                  gap: 24px;
+                  .Back_Button {
+                    button {
+                      background-color: transparent;
+                      border: 0;
+                      outline: 0;
+                      color: var(--main-white-color);
+                      svg {
+                        height: 100%;
+                        width: 26px;
+                      }
+                    }
+                  }
+                  .Header_Text {
+                    h3 {
+                      color: var(--main-white-color);
+                      font-family: Inter;
+                      font-size: 18px;
+                      font-style: normal;
+                      font-weight: 500;
+                      line-height: 20px;
+                      text-transform: capitalize;
+                    }
+                  }
+                }
+              }
+              .Group_Chat_Profile_Photo {
+                margin: 30px auto;
+                label {
+                  overflow: hidden;
+                  position: relative;
+                  width: 170px;
+                  height: 170px;
+                  border-radius: 50%;
+                  background-color: rgb(186, 186, 186, 0.3);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: rgb(255, 255, 255, 0.3);
+                  svg {
+                    width: 100px;
+                    height: 100px;
+                  }
+                  .Camera_Icon {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    background-color: rgba(0, 0, 0, 0.3);
+                    backdrop-filter: blur(1px);
+
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    align-items: center;
+                    justify-content: center;
+                    color: var(--main-white-color);
+                    -webkit-backdrop-filter: blur(1px);
+                    svg {
+                      width: 30px;
+                      height: 30px;
+                    }
+                    p {
+                      font-family: Inter;
+                      font-family: Inter;
+                      font-size: 15px;
+                      font-style: normal;
+                      font-weight: 500;
+                      max-width: 100px;
+                      text-align: center;
+                      line-height: 15px;
+                      text-transform: capitalize;
+                    }
+                  }
+                }
+              }
+              .Group_Chat_Add_ChatName_Input_Field {
+                width: 100%;
+                ._Input_Field {
+                  width: 100%;
+                  padding: 10px 12px;
+                  input {
+                    width: 100%;
+                    height: 45px;
+                    background-color: transparent;
+                    border: 0;
+                    outline: 0;
+                    color: var(--main-white-color);
+                    font-family: Inter;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 18px;
+                    text-transform: capitalize;
+                    border-bottom: 1px solid var(--border-color);
+                  }
+                }
+              }
+              .Final_Create_Group_Chat_Button_Section {
+                width: 100%;
+                padding: 20px 20px;
+
+                .Final_Button {
+                  width: 100%;
+
+                  transition: 1s ease-in-out;
+                  width: 0;
+                  button {
+                    width: 100%;
+                    border: 0;
+                    outline: 0;
+                    background-color: var(--button-main-color);
+                    height: 50px;
+                    border-radius: 30px;
+                    color: var(--main-white-color);
+                    max-width: 350px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    overflow: hidden;
+                    margin: auto;
+                    svg {
+                      width: 70px;
+                      height: 35px;
+                      object-fit: cover;
+                      opacity: 0;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        .CurrentChatPartPage {
+          width: 0%;
+          transform: translateX(100%);
+          overflow: hidden;
+          height: 0;
+          .Current_ChatPart_Page_Inner_Section {
+            width: 100%;
+            height: 100%;
+            position: relative;
+
+            .Send_Messages_UI_Main_Div {
+              .Send_Messages_Headers {
+                padding: 8px 15px;
+                .Send_Messages_Headers_Inner_Section {
+                  gap: 8px;
+                  .Respo_Back_Button {
+                    display: block;
+                  }
+                  .DefaultProfile {
+                    height: 35px;
+
+                    min-width: 35px;
+                    .pera {
+                      p {
+                        font-size: 14px;
+                      }
+                    }
+                  }
+                }
+              }
+              .Send_Messages_Text_Input_Field_For_Text {
+                width: 100%;
+                height: 100%;
+
+                padding: 10px 0;
+                position: relative;
+                .ScrollableSection {
+                  width: 100%;
+                  height: 100%;
+                  position: absolute;
+                  left: 0;
+                  bottom: 0px;
+
+                  .Flex__Section {
+                    padding: 20px 15px;
+                    width: 100%;
+                    height: 100%;
+                    overflow: auto;
+                    &::-webkit-scrollbar {
+                      display: none;
+                    }
+                    .Messages_Outre_Div {
+                      .Message_Inner {
+                        display: flex;
+                        align-items: flex-start;
+                        gap: 15px;
+                        .Message_Sender_Profile {
+                          .DefaultProfile {
+                            width: 35px;
+                            height: 35px;
+                            border-radius: 50%;
+                            background-color: lightcoral;
+                            overflow: hidden;
+
+                            .pera {
+                              width: 100%;
+                              height: 100%;
+
+                              display: flex;
+                              align-items: center;
+                              justify-content: center;
+                              p {
+                                color: var(--main-white-color);
+                                font-family: Inter;
+                                font-size: 16px;
+                                font-style: normal;
+                                font-weight: 400;
+                                text-transform: uppercase;
+                                padding: 0;
+                                margin: 0;
+                              }
+                            }
+                          }
+                        }
+                        .Message_content {
+                          color: #000;
+                          clear: both;
+
+                          position: relative;
+                          margin: 8px 0;
+                          max-width: 400px;
+                          border-radius: 8px;
+                          width: fit-content;
+                          // z-index: 1;
+                          background-color: rgb(170, 125, 89);
+                          .InnerSec {
+                            width: 100%;
+                            height: 100%;
+                            padding: 5px 15px;
+                            position: relative;
+                            overflow: hidden;
+                            p {
+                              color: var(--main-white-color);
+                              font-family: Inter;
+                              font-size: 16px;
+                              font-style: normal;
+                              font-weight: 400;
+                              text-transform: capitalize;
+                            }
+                          }
+                          .Edited_Message {
+                            position: absolute;
+                            right: 5px;
+                            bottom: -2px;
+                            span {
+                              color: var(--non-hilighted-text);
+                              font-family: Inter;
+                              font-size: 10px;
+                              font-style: normal;
+                              font-weight: 400;
+                              text-transform: capitalize;
+                            }
+                          }
+                          .DropDownArrowButton {
+                            position: absolute;
+                            top: -5px;
+                            right: 1%;
+                            color: var(--main-white-color);
+                            transition: 0.05s all;
+                            opacity: 1;
+                            z-index: 1;
+                            button {
+                              font-size: 12px !important;
+                            }
+                          }
+                        }
+                        .ChatImages_Array_Flex_Section {
+                          color: #000;
+                          clear: both;
+                          position: relative;
+                          margin: 8px 0;
+                          max-width: 600px;
+                          border-radius: 8px 0 8px 8px;
+                          width: fit-content;
+                          // z-index: 1;
+                          background-color: rgb(170, 125, 89);
+                          display: flex;
+                          flex-direction: column;
+                          align-items: flex-start;
+                          .InnerSec {
+                            width: 100%;
+                            height: 100%;
+                            padding: 8px 8px;
+                            position: relative;
+                            overflow: hidden;
+
+                            .Images {
+                              width: 100%;
+                              height: 100%;
+                              display: flex;
+                              align-items: stretch;
+                              gap: 8px;
+                              img {
+                                width: 150px;
+
+                                height: 150px;
+                                object-fit: cover;
+                                border-radius: 8px;
+                                position: relative;
+                                // z-index: 11;
+                              }
+                            }
+                            .Content {
+                              padding-top: 8px;
+                              p {
+                                color: var(--main-white-color);
+                                font-family: Inter;
+                                font-size: 16px;
+                                font-style: normal;
+                                font-weight: 400;
+                                text-transform: capitalize;
+                              }
+                            }
+                          }
+                          .Edited_Message {
+                            position: absolute;
+                            right: 5px;
+                            bottom: -2px;
+                            span {
+                              color: var(--non-hilighted-text);
+                              font-family: Inter;
+                              font-size: 10px;
+                              font-style: normal;
+                              font-weight: 400;
+                              text-transform: capitalize;
+                            }
+                          }
+                          .DropDownArrowButton {
+                            position: absolute;
+                            top: -2px;
+                            right: 0px;
+                            color: var(--main-white-color);
+                            transition: 0.05s all;
+                            opacity: 0;
+                            button {
+                              color: var(--main-white-color);
+                              font-family: Inter;
+                              font-size: 14px;
+                              font-style: normal;
+                              font-weight: 400;
+                              text-transform: capitalize;
+                            }
+                          }
+                          &:hover {
+                            .DropDownArrowButton {
+                              opacity: 1;
+                              right: 0;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              .Send_Messages_Footer_Input_Field {
+                width: 100%;
+                height: 100%;
+                max-height: 65px;
+                position: relative;
+                z-index: 11;
+                background-color: var(--popup-bg-color);
+                .Input_Filed_To_Enter_Message {
+                  width: 100%;
+                  height: 100%;
+                  padding: 8px 20px;
+                  form {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    gap: 20px;
+                    button {
+                      background-color: transparent;
+                      border: 0;
+                      outline: 0;
+                      color: var(--main-white-color);
+
+                      width: 40px;
+                      height: 40px;
+                      border-radius: 50%;
+                      &:hover {
+                        background-color: var(--main-bg-color);
+                      }
+                      svg {
+                        width: 20px;
+                        height: 20px;
+                      }
+                    }
+                  }
+                  input {
+                    width: 100%;
+                    height: 100%;
+                    background-color: var(--main-bg-color);
+                    border: 0;
+                    outline: 0;
+                    border-radius: 10px;
+                    color: var(--main-white-color);
+                    font-family: Inter;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 16px;
+                    text-transform: capitalize;
+                    padding: 0 20px;
+                  }
+                }
+                .MoreActionModalMainDiv {
+                  transition: 0.6s all;
+                  visibility: visible;
+                  opacity: 1;
+                  position: absolute;
+                  z-index: 111;
+                  top: -240%;
+                  left: 20px;
+                  width: 210px;
+                  padding: 8px 8px;
+                  background-color: var(--secondry-bg-color);
+                  border-radius: 10px;
+
+                  .MoreActionModalInnerDiv {
+                    width: 100%;
+                    height: 100%;
+                    ul {
+                      list-style: none;
+                      text-decoration: none;
+                      width: 100%;
+                      height: 100%;
+                      overflow: hidden;
+                      li {
+                        list-style: none;
+                        text-decoration: none;
+                        width: 100%;
+                        height: 100%;
+                        overflow: hidden;
+                        &:hover {
+                          background-color: var(--sidebar-bg-color);
+                          border-radius: 8px;
+                        }
+                        button {
+                          background-color: transparent;
+                          width: 100%;
+                          height: 100%;
+                          border: 0;
+                          outline: 0;
+                          text-align: start;
+                          padding: 8px 15px;
+                          display: flex;
+                          align-items: center;
+                          justify-content: flex-start;
+                          gap: 10px;
+                          overflow: hidden;
+                          .users {
+                            svg {
+                              height: 30px;
+                              width: 18px;
+                            }
+                          }
+                          span {
+                            width: 20%;
+                            svg {
+                              height: 30px;
+                              width: 25px;
+                            }
+                          }
+                          p {
+                            width: 80%;
+                            height: 100%;
+                            color: var(--main-white-color);
+                            font-family: Inter;
+                            font-size: 16px;
+                            font-style: normal;
+                            font-weight: 500;
+                            line-height: 16px;
+                            text-transform: capitalize;
+                            white-space: nowrap;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .SendImages_ALL_Action_Modal_Outer_DIV {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: var(--sidebar-bg-color);
+            z-index: 11;
+            transform: translateX(-200%);
+            .SendImages_ALL_Action_Modal_Inner_Section {
+              width: 100%;
+              height: 100%;
+
+              .Display_Flex__Section {
+                width: 100%;
+
+                form {
+                  padding: 35px 16px;
+                  justify-content: flex-end;
+                  .ADD_Images_Input {
+                    width: 100%;
+
+                    label {
+                      width: 100%;
+                      height: 150px;
+                    }
+                  }
+                  .ADD_Message_Input {
+                    width: 100%;
+                    padding: 0 0 20px 0;
+                    border-bottom: 1px solid var(--border-color);
+                  }
+                  .Sumbit_Button {
+                    width: 100%;
+                    button {
+                      margin-left: auto;
+                      width: 150px;
+                      height: 40px;
+                      font-size: 16px;
+
+                      svg {
+                        width: 30px;
+                        height: 30px;
+                        position: relative;
+                        z-index: 11;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .GroupChatInformation {
+            width: 100%;
+
+            overflow: auto;
+            &::-webkit-scrollbar {
+              display: none;
+            }
+            border-left: 1px solid rgb(255, 255, 255, 0.3);
+            background-color: var(--main-black-color);
+            .GroupChatInformation_Inner_Sec {
+              width: 100%;
+
+              .GroupInfoTitle {
+                width: 100%;
+                padding: 10px 20px;
+                background-color: var(--popup-bg-color);
+                height: 65px;
+
+                position: sticky;
+                top: 0;
+                right: 0;
+                z-index: 11;
+                .TitleInnerSec {
+                  display: flex;
+                  align-items: center;
+                  justify-content: flex-start;
+                  gap: 20px;
+                  height: 100%;
+                  .CloseButton {
+                    button {
+                      border: 0;
+                      outline: 0;
+                      background-color: transparent;
+                      color: var(--main-white-color);
+                      svg {
+                        width: 26px;
+                        height: 100%;
+                      }
+                    }
+                  }
+                  .ChatName_Title {
+                    p {
+                      height: 100%;
+                      color: var(--main-white-color);
+                      font-family: Inter;
+                      font-size: 18px;
+                      font-style: normal;
+                      font-weight: 400;
+                      line-height: 18px;
+                      text-transform: capitalize;
+                    }
+                  }
+                  .Edit_Group_Name_Button {
+                    margin-left: auto;
+                    button {
+                      background-color: transparent;
+                      color: var(--main-white-color);
+                      border: 0;
+                      outline: 0;
+                      font-size: 16px;
+                    }
+                  }
+                }
+              }
+              .GroupInformation_Info_Section {
+                width: 100%;
+                height: 100%;
+                padding-bottom: 20px;
+
+                .Profile_Photo_And_Name_section {
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  flex-direction: column;
+                  gap: 20px;
+                  background-color: var(--main-bg-color);
+                  padding: 40px 0;
+                  border-radius: 0 0 20px 20px;
+                  width: 100%;
+                  margin-bottom: 20px;
+                  .DefaultProfile {
+                    width: 200px;
+                    height: 200px;
+                    border-radius: 50%;
+                    background-color: lightcoral;
+                    overflow: hidden;
+                    position: relative;
+
+                    .pera {
+                      width: 100%;
+                      height: 100%;
+
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      p {
+                        color: var(--main-white-color);
+                        font-family: Inter;
+                        font-size: 60px;
+                        font-style: normal;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                        padding: 0;
+                        margin: 0;
+                      }
+                    }
+                    .AddGroupImageInput {
+                      position: absolute;
+                      bottom: 0;
+                      left: 0;
+                      width: 100%;
+                      background-color: rgba(0, 0, 0, 0.3);
+                      padding: 10px 20px;
+                      backdrop-filter: blur(5px);
+                      -webkit-backdrop-filter: blur(5px);
+                      transition: 0.2s all;
+                      label {
+                        font-size: 22px;
+                        color: var(--main-white-color);
+                        text-align: center;
+                        width: 100%;
+                      }
+                    }
+                  }
+                  .Group_And_Contact_Name {
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                    gap: 10px;
+                    position: relative;
+                    padding: 20px;
+                    width: 100%;
+                    textarea {
+                      color: var(--main-white-color);
+                      font-family: Inter;
+                      font-size: 18px;
+                      font-style: normal;
+                      font-weight: 600;
+                      text-transform: capitalize;
+                      padding: 0;
+                      margin: 0;
+                      text-align: center;
+                      overflow: hidden;
+                      line-break: anywhere;
+                      margin: auto;
+                      width: 100%;
+                      background-color: transparent;
+                      border: 0;
+                      outline: 0;
+                      resize: none;
+                      &:focus {
+                        border: 0;
+                        outline: 0;
+                        padding-bottom: 5px;
+                        border-bottom: 1px solid var(--border-color);
+                      }
+                      &::-webkit-input-placeholder {
+                        color: var(--main-white-color);
+                      }
+                    }
+                  }
+                }
+                .AllMemberList_Section {
+                  width: 100%;
+
+                  background-color: var(--main-bg-color);
+                  padding: 20px 0px;
+                  border-radius: 20px;
+                  margin-bottom: 20px;
+                  .Title {
+                    width: 100%;
+                    padding: 0 15px 15px 15px;
+
+                    h6 {
+                      color: var(--button-main-color);
+                      font-family: Inter;
+                      font-size: 18px;
+                      font-style: normal;
+                      font-weight: 400;
+                      line-height: 18px;
+                      text-transform: capitalize;
+                    }
+                  }
+                  .List_OF_All_Members {
+                    width: 100%;
+                    height: 100%;
+                    .MembersGroupProfile {
+                      width: 100%;
+
+                      cursor: pointer;
+                      &:hover {
+                        background-color: #64548c;
+                      }
+                      .MembersGroupProfile_Inner_Section {
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
+                        width: 100%;
+                        gap: 20px;
+                        padding: 15px 15px;
+                        .Profile_Photo {
+                          .DefaultProfile {
+                            width: 45px;
+                            height: 45px;
+                            border-radius: 50%;
+                            background-color: lightcoral;
+                            overflow: hidden;
+
+                            .pera {
+                              width: 100%;
+                              height: 100%;
+
+                              display: flex;
+                              align-items: center;
+                              justify-content: center;
+                              p {
+                                color: var(--main-white-color);
+                                font-family: Inter;
+                                font-size: 16px;
+                                font-style: normal;
+                                font-weight: 600;
+                                text-transform: uppercase;
+                                padding: 0;
+                                margin: 0;
+                              }
+                            }
+                          }
+                        }
+                        .User_Info {
+                          display: flex;
+                          align-items: center;
+                          justify-content: space-between;
+                          height: 100%;
+                          width: 100%;
+                          .Info {
+                            display: flex;
+                            align-items: flex-start;
+                            justify-content: flex-start;
+                            flex-direction: column;
+                            gap: 8px;
+                            h5 {
+                              color: var(--main-white-color);
+                              font-family: Inter;
+                              font-size: 16px;
+                              font-style: normal;
+                              font-weight: 400;
+                              line-height: 13px;
+                              text-transform: capitalize;
+                            }
+                            .userName {
+                              p {
+                                color: var(--main-white-color);
+                                font-family: Inter;
+                                font-size: 13px;
+                                font-style: normal;
+                                font-weight: 400;
+                                line-height: 13px;
+                                text-transform: capitalize;
+                              }
+                            }
+                            .Name {
+                              p {
+                                color: var(--main-white-color);
+                                font-family: Inter;
+                                font-size: 16px;
+                                font-style: normal;
+                                font-weight: 400;
+                                line-height: 16px;
+                                text-transform: capitalize;
+                              }
+                            }
+                            .Coman_title {
+                              p {
+                                color: var(--main-white-color);
+                                font-family: Inter;
+                                font-size: 15px;
+                                font-style: normal;
+                                font-weight: 400;
+                                line-height: 16px;
+                                text-transform: capitalize;
+                                span {
+                                  padding-left: 4px;
+                                }
+                              }
+                            }
+                          }
+                          .GroupAdmin {
+                            span {
+                              color: #f41884;
+                              font-family: Inter;
+                              font-size: 10px;
+                              font-style: normal;
+                              font-weight: 400;
+                              text-transform: capitalize;
+                              background-color: #463375;
+                              padding: 5px 8px;
+                              border-radius: 5px;
+                            }
+                          }
+                        }
+                      }
+                    }
+                    .GroupInfo_peraGraph {
+                      padding: 8px 15px;
+                      p {
+                        color: var(--non-hilighted-text);
+                        font-family: Inter;
+                        font-size: 14px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 18px;
+                        text-transform: capitalize;
+                      }
+                    }
+                  }
+                }
+                .CRUD_Operation_Section {
+                  margin-top: 20px;
+                  width: 100%;
+                  background-color: var(--main-bg-color);
+                  border-radius: 20px;
+                  padding: 15px 15px;
+
+                  ul {
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: flex-start;
+                    flex-direction: column;
+                    gap: 25px;
+                    li {
+                      button {
+                        background-color: transparent;
+                        border: 0;
+                        outline: 0;
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
+                        gap: 20px;
+                        span {
+                          color: rgba(255, 0, 0, 0.7);
+                          svg {
+                            width: 26px;
+                            height: 100%;
+                          }
+                        }
+                        p {
+                          color: rgba(255, 0, 0, 0.7);
+                          font-family: Inter;
+                          font-size: 18px;
+                          font-style: normal;
+                          font-weight: 400;
+                          line-height: 18px;
+                          text-transform: capitalize;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .NotActive_DefaultPage_main {
+            .NotActive_DefaultPage_Inner {
+              padding: 15px;
+              .Banner_Image {
+                img {
+                  object-fit: contain;
+                }
+              }
+              .Text_Section {
+                .Main_Text {
+                  max-width: 400px;
+                  h3 {
+                    font-size: 16px;
+                  }
+                }
+                .Secondary_Text {
+                  p {
+                    font-size: 12px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .deleteMessagePopup {
+    position: absolute;
+
+    .deleteMessagePopupInner {
+      width: 100%;
+      padding: 0 16px;
+      h5 {
+        color: var(--main-white-color);
+        font-family: Inter;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 600;
+        text-transform: capitalize;
+      }
+      p {
+        color: var(--main-white-color);
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        text-transform: capitalize;
+      }
+      button {
+        height: 45px;
+        width: 150px;
+        border-radius: 45px;
+        border: 1px solid var(--button-main-color);
+        color: var(--main-white-color);
+        font-family: Inter;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        text-transform: capitalize;
+      }
+    }
+  }
+  .AddNewUserToGroupForThatShowAllTheUser {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: 11111111111;
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: 0.3s all;
+    inset: 0;
+    .InnerSec {
+      width: 500px;
+      height: 100%;
+      max-height: 550px;
+      background-color: var(--secondry-bg-color);
+      overflow: auto;
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      & ::-webkit-scrollbar {
+        display: none;
+        width: 0;
+      }
+      .Group_Chat_SearchBar {
+        width: 100%;
+
+        background-color: var(--sidebar-bg-color);
+        position: sticky;
+        top: 0;
+
+        .Header {
+          background-color: var(--popup-bg-color);
+          .Flex_Sec {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 24px;
+            padding: 30px 12px 12px 12px;
+            button {
+              color: var(--main-white-color);
+              font-family: Inter;
+              font-size: 35px;
+              background-color: transparent;
+              border: 0;
+              outline: 0;
+            }
+            h5 {
+              color: var(--main-white-color);
+              font-family: Inter;
+              font-size: 20px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: 20px;
+              text-transform: capitalize;
+            }
+          }
+        }
+        .Search {
+          padding: 15px 20px;
+          input {
+            width: 100%;
+            height: 40px;
+            background-color: transparent;
+            border: 0;
+            outline: 0;
+            color: var(--main-white-color);
+            font-family: Inter;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 20px;
+            border-bottom: 1px solid rgb(255, 255, 255, 0.15);
+            &::placeholder {
+              text-transform: capitalize;
+            }
+          }
+        }
+        .SelectedUsers {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          flex-wrap: wrap;
+          width: 100%;
+          max-height: 150px;
+          overflow: auto;
+          & ::-webkit-scrollbar {
+            display: none;
+            width: 0;
+          }
+          .SelectedUsersProfile {
+            height: 100%;
+
+            max-height: 50px;
+            overflow: hidden;
+            margin: 10px 10px;
+            .SelectedUsersProfileInnerSec {
+              width: 100%;
+              height: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: flex-start;
+              gap: 8px;
+              .DefaultProfile {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                overflow: hidden;
+                background-color: lightcoral;
+                img {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                }
+                .pera {
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-size: 16px;
+                  font-family: Inter;
+                  font-weight: 500;
+                  text-transform: capitalize;
+                  color: var(--main-white-color);
+                  width: 100%;
+                  height: 100%;
+                }
+              }
+              .SelectedUsersProfileName {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                p {
+                  color: var(--main-white-color);
+                  font-family: Inter;
+                  font-size: 12px;
+                  font-style: normal;
+                  font-weight: 400;
+                  text-transform: uppercase;
+                  padding: 0;
+                  margin: 0;
+                }
+                button {
+                  width: 25px;
+                  height: 25px;
+
+                  border-radius: 50%;
+                  background-color: transparent;
+                  color: var(--main-white-color);
+                  border: 0;
+                  outline: 0;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  svg {
+                    width: 100%;
+                    height: 100%;
+                  }
+                  &:hover {
+                    background-color: var(--main-white-color);
+                    color: #0e0e0e;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .Group_Chat_All_Members {
+        width: 100%;
+        height: 100%;
+
+        .Members_Profile {
+          width: 100%;
+          height: 70px;
+          padding: 0 20px;
+          overflow: hidden;
+          cursor: pointer;
+          border-bottom: 1px solid rgb(255, 255, 255, 0.15);
+          &:hover {
+            background-color: #463375;
+          }
+          .Profile_Inner_sec {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 20px;
+            ._Profile_Photo {
+              .DefaultProfile {
+                width: 55px;
+                height: 55px;
+                border-radius: 50%;
+                background-color: lightcoral;
+                overflow: hidden;
+
+                .pera {
+                  width: 100%;
+                  height: 100%;
+
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  p {
+                    color: var(--main-white-color);
+                    font-family: Inter;
+                    font-size: 22px;
+                    font-style: normal;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    padding: 0;
+                    margin: 0;
+                  }
+                }
+              }
+            }
+            .MembersName {
+              width: 100%;
+              ._InnerFlex {
+                width: 100%;
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
+                flex-direction: column;
+                gap: 8px;
+                h4 {
+                  color: var(--main-white-color);
+                  font-family: Inter;
+                  font-size: 16px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: 16px;
+                  text-transform: capitalize;
+                }
+                p {
+                  color: var(--main-white-color);
+                  font-family: Inter;
+                  font-size: 14px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: 14px;
+                  text-transform: capitalize;
+                }
+              }
+            }
+          }
+        }
+      }
+      .Footer_Button {
+        position: sticky;
+        bottom: 8px;
+        display: flex;
+        align-self: flex-end;
+        padding-right: 12px;
+        button {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background-color: var(--button-main-color);
+          color: var(--main-white-color);
+          border: 0;
+          outline: 0;
+          margin-left: auto;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+  // ? ------------- Users PAGE SECTION ---------------------------
+  .Users_Page_Main_Section {
+    width: 100%;
+    height: 100%;
+    padding: 16px 16px;
+    overflow: hidden;
+    .Users_Page_Inner_Section {
+      width: 100%;
+      height: 100%;
+      .List_Of_Users {
+        margin: 10px 0 65px 0;
+        
+        .Button_Flex_Section {
+         padding: 15px 0;
+         width: 100%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         position: fixed;
+         bottom: 0;
+         margin: 0;
+         z-index: 111;
+         background-color:var(--main-bg-color);
+          button {
+            height: 35px;
+            margin: 0 10px;
+          }
+        }
+      }
+    }
+  }
+  // ? ------------- HelpCenter PAGE SECTION ---------------------------
+.HelpCenter_Main_Section {
+  
+  padding: 16px 0px;
+  .HelpCenter_Inner_section {
+    
+    .HelpCenter_Button_Section {
+      width: 100%;
+      padding: 0 16px;
+      .Title {
+        width: 100%;
+        margin-top: 20px;
+
+        h4 {
+          font-family: Inter;
+          font-size: 18px;
+      
+        }
+      }
+      ul {
+        
+        li {
+          button {
+           
+            padding: 16px 10px;
+
+            border-radius: 23px;
+            min-width: 90px;
+          }
+        }
+      }
+    }
+    .Faq_Section_Main {
+      width: 100%;
+      height: 100%;
+      background-color: #1a132b;
+      border-radius: 16px;
+      overflow: auto;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      position: relative;
+      .Fixed_Header_Title {
+        padding: 14px 20px;
+        position: sticky;
+        top: 0;
+        border-bottom: 1px solid var(--border-color);
+        z-index: 111;
+        background-color: #1a132b89;
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        h4 {
+          font-family: Inter;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 16px;
+          color: var(--main-white-color);
+          text-transform: capitalize;
+        }
+      }
+      .Faq_Part {
+        padding: 12px 12px;
+      }
+    }
+  }
+}
+  // ? ------------------ Setting Page Section ------------------------
+  .SettingPage_Main_Section {
+    flex-direction: column;
+    .list_section {
+      width: 100%;
+      .List_Of_Action_Section {
+        gap: 12px;
+        .List_Section_Card {
+          .text_section {
+            p {
+              font-size: 16px;
+            }
+          }
+          span {
+            display: block;
+            width: 30px;
+          }
+        }
+      }
+    }
+    .More_Detailed_Section {
+      width: 100%;
+      .change_password_main_section {
+        .change_password_inner_section {
+          .main_input_section {
+            h3 {
+              font-size: 18px;
+            }
+
+            .fill_the_current_password_filed {
+              width: 100%;
+              height: 100%;
+              display: flex;
+              align-items: flex-start;
+              justify-content: flex-start;
+              flex-direction: column;
+              width: 100%;
+              gap: 8px;
+
+              .input_field {
+                width: 100%;
+                position: relative;
+
+                button {
+                  position: absolute;
+                  top: 50%;
+                  transform: translateY(-50%);
+                  right: 30px;
+                  border: 0;
+                  outline: 0;
+                  background-color: transparent;
+                  color: var(--main-white-color);
+                }
+              }
+            }
+            .Button_section {
+              display: flex;
+              align-items: center;
+              justify-content: flex-end;
+              width: 100%;
+            }
+          }
+        }
+      }
+      .Two_Step_Verification_Main_Section {
+        @media only screen and (min-width: 1200px) {
+          width: calc(100% - 200px);
+        }
+
+        width: 100%;
+        // border-radius: 15px;
+        margin: 30px auto 0 0;
+        .Two_Step_Verification_Inner_Section {
+          .Title_Main_Section {
+            h3 {
+              font-size: 18px;
             }
           }
         }

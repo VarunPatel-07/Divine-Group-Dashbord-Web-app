@@ -27,6 +27,7 @@ function OTP() {
     if (value && index < length - 1 && inputRefs.current[index + 1]) {
       inputRefs.current[index + 1].focus();
     }
+    
   };
 
   const OnSumbit = (e) => {
@@ -41,7 +42,7 @@ function OTP() {
   const HandelClick = (index) => {
     inputRefs.current[index].setSelectionRange(1, 1);
     if (index > 0 && !OTPArray[index - 1]) {
-      inputRefs.current[OTPArray.indexOf("")].focus()
+      inputRefs.current[OTPArray.indexOf("")].focus();
     }
   };
   const HandelKeyDown = (index, e) => {

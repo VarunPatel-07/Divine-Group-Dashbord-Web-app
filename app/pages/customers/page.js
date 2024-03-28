@@ -282,7 +282,7 @@ function Customer() {
                   <div className={styles.Customer_List_Sec}>
                     {!Loding || !Customer_Info ? (
                       <div className="w-100">
-                        {Customer_Info?.map((Info) => (
+                        {Customer_Info?.data?.map((Info) => (
                           <div
                             className={`${
                               Info._id == Selected_Client_Container_State._id
