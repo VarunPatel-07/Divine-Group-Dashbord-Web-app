@@ -2435,18 +2435,18 @@
       height: 100%;
       .List_Of_Users {
         margin: 10px 0 65px 0;
-        
+
         .Button_Flex_Section {
-         padding: 15px 0;
-         width: 100%;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         position: fixed;
-         bottom: 0;
-         margin: 0;
-         z-index: 111;
-         background-color:var(--main-bg-color);
+          padding: 15px 0;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: fixed;
+          bottom: 0;
+          margin: 0;
+          z-index: 111;
+          background-color: var(--main-bg-color);
           button {
             height: 35px;
             margin: 0 10px;
@@ -2456,72 +2456,67 @@
     }
   }
   // ? ------------- HelpCenter PAGE SECTION ---------------------------
-.HelpCenter_Main_Section {
-  
-  padding: 16px 0px;
-  .HelpCenter_Inner_section {
-    
-    .HelpCenter_Button_Section {
-      width: 100%;
-      padding: 0 16px;
-      .Title {
+  .HelpCenter_Main_Section {
+    padding: 16px 0px;
+    .HelpCenter_Inner_section {
+      .HelpCenter_Button_Section {
         width: 100%;
-        margin-top: 20px;
+        padding: 0 16px;
+        .Title {
+          width: 100%;
+          margin-top: 20px;
 
-        h4 {
-          font-family: Inter;
-          font-size: 18px;
-      
+          h4 {
+            font-family: Inter;
+            font-size: 18px;
+          }
         }
-      }
-      ul {
-        
-        li {
-          button {
-           
-            padding: 16px 10px;
+        ul {
+          li {
+            button {
+              padding: 16px 10px;
 
-            border-radius: 23px;
-            min-width: 90px;
+              border-radius: 23px;
+              min-width: 90px;
+            }
           }
         }
       }
-    }
-    .Faq_Section_Main {
-      width: 100%;
-      height: 100%;
-      background-color: #1a132b;
-      border-radius: 16px;
-      overflow: auto;
-      &::-webkit-scrollbar {
-        display: none;
-      }
-      position: relative;
-      .Fixed_Header_Title {
-        padding: 14px 20px;
-        position: sticky;
-        top: 0;
-        border-bottom: 1px solid var(--border-color);
-        z-index: 111;
-        background-color: #1a132b89;
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-        h4 {
-          font-family: Inter;
-          font-size: 16px;
-          font-style: normal;
-          font-weight: 600;
-          line-height: 16px;
-          color: var(--main-white-color);
-          text-transform: capitalize;
+      .Faq_Section_Main {
+        width: 100%;
+        height: 100%;
+        background-color: #1a132b;
+        border-radius: 16px;
+        overflow: auto;
+        &::-webkit-scrollbar {
+          display: none;
         }
-      }
-      .Faq_Part {
-        padding: 12px 12px;
+        position: relative;
+        .Fixed_Header_Title {
+          padding: 14px 20px;
+          position: sticky;
+          top: 0;
+          border-bottom: 1px solid var(--border-color);
+          z-index: 111;
+          background-color: #1a132b89;
+          -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+          h4 {
+            font-family: Inter;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 16px;
+            color: var(--main-white-color);
+            text-transform: capitalize;
+          }
+        }
+        .Faq_Part {
+          padding: 12px 12px;
+        }
       }
     }
   }
-}
   // ? ------------------ Setting Page Section ------------------------
   .SettingPage_Main_Section {
     flex-direction: column;
@@ -2599,6 +2594,858 @@
             h3 {
               font-size: 18px;
             }
+          }
+        }
+      }
+    }
+  }
+  // ? ------------- Customer PAGE SECTION ---------------------------
+  .Customer_Main_Outer_Div_Section {
+    .Customer_Inner_Section {
+      .Flex_Section_Main {
+        .List_OF_Users_Section {
+          width: 100%;
+          border-right: 1px solid var(--border-color);
+          .List_Section {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            justify-content: flex-start;
+            overflow: auto;
+            &::-webkit-scrollbar {
+              display: none;
+            }
+
+            .Header_Section {
+              width: 100%;
+
+              position: sticky;
+              top: 0;
+              left: 0;
+              background-color: var(--main-bg-color);
+              padding: 20px 10px;
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+              justify-content: flex-start;
+              border-bottom: 1px solid var(--border-color);
+              gap: 30px;
+              z-index: 11;
+              .Head_Txt {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                p {
+                  font-family: Inter;
+                  font-size: 20px;
+                  font-style: normal;
+                  font-weight: 500;
+                  line-height: 16px;
+                  color: var(--main-white-color);
+                  text-transform: capitalize;
+                }
+              }
+              .Head_SearchBar {
+                width: 100%;
+
+                input {
+                  width: 100%;
+                  background-color: var(--secondry-bg-color);
+                  border: 0;
+                  outline: 0;
+                  border-radius: 15px;
+                  height: 40px;
+                  padding: 0 20px;
+                  font-family: Inter;
+                  font-size: 16px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: 16px;
+                  color: var(--main-white-color);
+                  text-transform: capitalize;
+                }
+              }
+            }
+            .Customer_List_Sec {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+        .Action_ON_User_Section {
+          width: 0%;
+          height: 100%;
+          .Customer_Info_Section {
+            .Inner_Section {
+              .Header_Section {
+                padding: 16px 0px;
+              }
+              .Message_OF_Client_Section {
+                padding: 20px 16px;
+                .InterestedIN {
+                  display: flex;
+                  align-items: flex-start;
+                  flex-direction: column;
+                  h4 {
+                    color: var(--button-main-color);
+                    font-family: Inter;
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 20px;
+                    text-transform: capitalize;
+                  }
+                  ul {
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: flex-start;
+                    gap: 20px;
+                    padding: 14px 45px;
+                    flex-direction: column;
+                    li {
+                      color: var(--main-white-color);
+                      list-style-type: decimal;
+
+                      p {
+                        color: var(--main-white-color);
+                        font-family: Inter;
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 26px;
+                        text-transform: capitalize;
+                      }
+                    }
+                  }
+                }
+                .Message {
+                  display: flex;
+                  align-items: flex-start;
+                  flex-direction: column;
+                  h4 {
+                    color: var(--button-main-color);
+                    font-family: Inter;
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 20px;
+                    text-transform: capitalize;
+                  }
+                  p {
+                    color: var(--main-white-color);
+                    font-family: Inter;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 26px;
+                    text-transform: capitalize;
+                    padding: 14px 12px;
+                  }
+                }
+              }
+            }
+          }
+          .sent_mail_inbox {
+            width: 100%;
+            height: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 25px;
+            padding-bottom: 25px;
+            .list_of_mail {
+              width: 100%;
+              height: 100%;
+              .inner_section {
+                width: 100%;
+                height: 100%;
+              }
+            }
+          }
+        }
+      }
+      .SelectedUsersProfile {
+        border-radius: 20px;
+        border: 1px solid var(--border-color);
+        overflow: hidden;
+        margin: 5px 5px;
+        padding: 2px;
+        .SelectedUsersProfileInnerSec {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          gap: 8px;
+          .DefaultProfile {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: lightcoral;
+            min-width: 25px;
+            min-height: 25px;
+            .pera {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 100%;
+              height: 100%;
+              p {
+                font-size: 12px;
+                font-family: Inter;
+                font-weight: 500;
+                text-transform: capitalize;
+                color: var(--main-white-color);
+              }
+            }
+          }
+          .SelectedUsersProfileName {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            p {
+              color: var(--main-white-color);
+              font-family: Inter;
+              font-size: 12px;
+              font-style: normal;
+              font-weight: 400;
+              text-transform: lowercase;
+              padding: 0;
+              margin: 0;
+            }
+            button {
+              width: 25px;
+              height: 25px;
+
+              border-radius: 50%;
+              background-color: transparent;
+              color: var(--main-white-color);
+              border: 0;
+              outline: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              svg {
+                width: 100%;
+                height: 100%;
+              }
+              &:hover {
+                background-color: var(--main-white-color);
+                color: #0e0e0e;
+              }
+            }
+          }
+        }
+      }
+      .send_mail_main_section_div {
+        position: absolute;
+        width: 50%;
+        height: 65vh;
+        background-color: var(--popup-bg-color);
+        border-radius: 10px;
+        border: 1px solid var(--border-color);
+        overflow: auto;
+        z-index: 111;
+        bottom: 20px;
+        right: 20px;
+        transform: translateX(150%) translateY(150%);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.25s ease-in-out;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        .send_mail_inner_section_div {
+          width: 100%;
+          height: 100%;
+
+          p {
+            font-family: Inter;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 16px;
+            color: var(--main-white-color);
+            text-transform: capitalize;
+          }
+          .inner_container {
+            padding: 8px 15px;
+          }
+        }
+        .send_mail_footer_bar_section {
+          width: 100%;
+          height: auto;
+
+          .insert_file_and_all_section {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 15px;
+            ul {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 20px;
+              list-style: none;
+              li {
+                button,
+                label {
+                  background-color: transparent;
+                  border: 0;
+                  outline: 0;
+                  color: var(--main-white-color);
+                  svg {
+                    font-size: 20px;
+                    font-weight: 600;
+                  }
+                }
+              }
+            }
+          }
+        }
+        .search_suggestion_result {
+          position: absolute;
+          // bottom: 0px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 60%;
+          background-color: var(--secondry-bg-color);
+          height: fit-content;
+          border-radius: 10px;
+          transition: 0.1s all;
+          overflow: auto;
+          max-height: 250px;
+          &::-webkit-scrollbar {
+            display: none;
+          }
+          .search_suggestion_result_inner_section {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+    .sending_mail_notification {
+      position: absolute;
+      top: -100px;
+      z-index: -1;
+      opacity: 0;
+      width: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--popup-bg-color);
+      border-radius: 10px;
+
+      overflow: hidden;
+      .sending_mail_notification_inner_sec {
+        width: 100%;
+        padding: 24px 20px;
+        .flex_sec {
+          display: flex;
+          align-items: center;
+          justify-content: start;
+          gap: 20px;
+          animation: FadeIn 0.4s linear 1;
+          .loader_Sec {
+            width: 24px;
+            height: 24px;
+            min-width: 24px;
+            min-height: 24px;
+          }
+          p {
+            font-family: Inter;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 16px;
+            color: var(--main-white-color);
+            text-transform: capitalize;
+          }
+        }
+      }
+    }
+  }
+  // ? ------------- FULL PROJECT PAGE  SECTION ---------------------------
+  .FullPageProject {
+    max-width: 900px;
+    margin: auto;
+    padding: 30px 15px;
+    .FullPageProjectsInnerSection {
+      
+      .InforMationSection {
+        .Project_Heading {
+          h1 {
+            color: var(--main-white-color);
+            font-family: Inter;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 36px;
+            text-transform: capitalize;
+            line-break: anywhere;
+          }
+        }
+        .ThumbnailImage {
+          padding-top: 32px;
+          img {
+            width: 100%;
+            max-width: 100%;
+            object-fit: cover;
+            min-height: 200px;
+            aspect-ratio: 2/1;
+          }
+        }
+        .ProjectInformation {
+          .Description {
+            padding-top: 32px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-direction: column;
+            gap: 22px;
+            h2 {
+              color: var(--button-main-color);
+              font-family: Inter;
+              font-size: 24px;
+              font-style: normal;
+              font-weight: 700;
+              line-height: 32px;
+              text-transform: capitalize;
+            }
+            p {
+              color: var(--main-white-color);
+              font-family: Inter;
+              font-size: 18px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 24px;
+              width: 100%;
+              line-break: anywhere;
+            }
+          }
+          .Project_Facilities {
+            padding-top: 32px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-direction: column;
+            gap: 22px;
+            h2 {
+              color: var(--button-main-color);
+              font-family: Inter;
+              font-size: 28px;
+              font-style: normal;
+              font-weight: 700;
+              line-height: 32px;
+              text-transform: capitalize;
+            }
+            .Amenities_flex_section {
+              width: 100%;
+              height: 100%;
+
+              .Amenities_card {
+                color: var(--main-white-color);
+                font-family: Inter;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                background-color: #0e0e0e;
+                aspect-ratio: 1/1;
+                border-radius: 10px;
+                // max-width: 200px;
+                max-height: 200px;
+              }
+            }
+          }
+        }
+        .PropertyImages {
+          overflow: hidden;
+          padding-top: 32px;
+          .Title {
+            padding-bottom: 22px;
+            h2 {
+              color: var(--button-main-color);
+              font-family: Inter;
+              font-size: 28px;
+              font-style: normal;
+              font-weight: 700;
+              line-height: 32px;
+              text-transform: capitalize;
+            }
+          }
+          img {
+            width: 100%;
+            max-width: 100%;
+            object-fit: cover;
+            min-height: 200px;
+            aspect-ratio: 900/500;
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width: 768px) and (max-width: 1200px) {
+  // ? ------------- Dashboard PAGE SECTION ---------------------------
+  .DashboardPage_Main_Section {
+    .Inner_Flex_Section {
+      .SeventyFive_Percent_Part {
+        width: 70%;
+
+        .Horizontal_Flex_Section {
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
+          flex-direction: column;
+          gap: 16px;
+          width: 100%;
+          height: 100%;
+          .Part_One {
+            .Flex_Part {
+              overflow: auto;
+              .Card_One {
+                width: 33.33%;
+                min-width: 260px;
+                height: 100%;
+              }
+            }
+          }
+          .Part_Two {
+            // background-color: #000;
+            border-radius: 15px;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            position: relative;
+            background-color: rgba(100, 85, 144, 0.2) !important;
+            &::-webkit-scrollbar {
+              display: none;
+            }
+            .Sticky_Header_Title {
+              background-color: rgba(100, 85, 144, 0.2) !important;
+              width: 100%;
+              padding: 12px 20px;
+              -webkit-backdrop-filter: blur(15px);
+              backdrop-filter: blur(15px);
+              position: sticky;
+              top: 0;
+              left: 0;
+              z-index: 111;
+              border-bottom: 1px solid var(--border-color);
+              h5 {
+                font-family: Inter;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                color: var(--main-white-color);
+                text-transform: capitalize;
+              }
+            }
+            .ProjectsSkullCardOuterMainSection {
+              width: 100%;
+              background-color: transparent;
+              cursor: pointer;
+
+              border-radius: 10px;
+              overflow: hidden;
+              .ProjectContentSkullInnerSection {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: stretch;
+                justify-content: flex-start;
+                gap: 18px;
+                overflow: hidden;
+                position: relative;
+                flex-direction: column;
+                border-radius: 10px;
+                .ProjectsSkullImageSection {
+                  width: 100%;
+
+                  img {
+                    width: 100%;
+                    height: 100%;
+                    max-height: 250px;
+                    object-fit: cover;
+
+                    aspect-ratio: 1;
+                    min-width: 250px;
+                    max-height: 290px;
+                  }
+                  span {
+                    width: 100%;
+                    height: 100%;
+                    max-height: 250px;
+                    object-fit: cover;
+                    border-radius: 10px;
+                    aspect-ratio: 1;
+                    min-width: 250px;
+                    max-height: 250px;
+                  }
+                }
+                .ProjectContentTextSection {
+                  width: 100%;
+
+                  position: absolute;
+                  left: 0;
+                  bottom: 0;
+                  background-color: rgba(57, 54, 54, 0.6);
+                  overflow: hidden;
+
+                  .FlexSection {
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: flex-start;
+                    flex-direction: column;
+                    gap: 10px;
+                    color: var(--main-white-color);
+                    padding: 12px 14px;
+                    -webkit-backdrop-filter: blur(15px);
+                    backdrop-filter: blur(15px);
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 0 0 10px 10px;
+                    h2 {
+                      font-family: Inter;
+                      font-size: 16px;
+                      font-style: normal;
+                      font-weight: 700;
+                      line-height: normal;
+                      line-break: anywhere;
+                      text-transform: capitalize;
+                      width: 100%;
+                      white-space: nowrap;
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                    }
+
+                    p {
+                      font-family: Inter;
+                      font-size: 12px;
+                      font-style: normal;
+                      font-weight: 500;
+                      line-height: normal;
+                      color: var(--non-hilighted-text);
+                      line-break: anywhere;
+                      text-transform: capitalize;
+                      width: 100%;
+                      white-space: nowrap;
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                    }
+                  }
+                }
+                .CardStatusIcon {
+                  position: absolute;
+                  top: 8px;
+                  right: 8px;
+                  font-family: Inter;
+                  font-size: 11px;
+                  font-style: normal;
+                  font-weight: 500;
+                  line-height: normal;
+                  color: var(--non-hilighted-text);
+                  line-break: anywhere;
+                  text-transform: capitalize;
+                  width: fit-content;
+                  padding: 3px 10px;
+                  border-radius: 20px;
+                  border: 1px solid var(--non-hilighted-text);
+
+                  background-color: rgb(0, 0, 0, 0.9);
+                }
+              }
+            }
+          }
+        }
+      }
+      .TwentyFive_Percent_Part {
+        width: 30%;
+        // background-color: #3f3a3a;
+        .Flex_section_Main {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          width: 100%;
+          height: 100%;
+          gap: 16px;
+
+          .New_Clients_Main_Section {
+            background-color: rgba(100, 85, 144, 0.2) !important;
+            border-radius: 15px;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: auto;
+            &::-webkit-scrollbar {
+              display: none;
+            }
+            .Sticky_Header_Section {
+              width: 100%;
+              padding: 12px 12px;
+              background-color: #64548c95;
+              -webkit-backdrop-filter: blur(5px) !important;
+              backdrop-filter: blur(5px) !important;
+              border-bottom: 1px solid rgb(255, 255, 255, 0.3);
+              position: sticky;
+              top: 0;
+              z-index: 111;
+
+              h5 {
+                font-family: Inter;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 16px;
+                color: var(--main-white-color);
+                text-transform: capitalize;
+              }
+            }
+            .Recent_Client_Inquire_Map_Section {
+              span {
+                width: 100%;
+                background-color: #64548c;
+                height: 50px;
+                display: block;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+   // ? ------------- FULL PROJECT PAGE  SECTION ---------------------------
+   .FullPageProject {
+    max-width: 900px;
+    margin: auto;
+    padding: 30px 15px;
+    .FullPageProjectsInnerSection {
+      
+      .InforMationSection {
+        .Project_Heading {
+          h1 {
+            color: var(--main-white-color);
+            font-family: Inter;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 36px;
+            text-transform: capitalize;
+            line-break: anywhere;
+          }
+        }
+        .ThumbnailImage {
+          padding-top: 32px;
+          img {
+            width: 100%;
+            max-width: 100%;
+            object-fit: cover;
+            min-height: 200px;
+            aspect-ratio: 2/1;
+          }
+        }
+        .ProjectInformation {
+          .Description {
+            padding-top: 32px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-direction: column;
+            gap: 22px;
+            h2 {
+              color: var(--button-main-color);
+              font-family: Inter;
+              font-size: 24px;
+              font-style: normal;
+              font-weight: 700;
+              line-height: 32px;
+              text-transform: capitalize;
+            }
+            p {
+              color: var(--main-white-color);
+              font-family: Inter;
+              font-size: 18px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 24px;
+              width: 100%;
+              line-break: anywhere;
+            }
+          }
+          .Project_Facilities {
+            padding-top: 32px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-direction: column;
+            gap: 22px;
+            h2 {
+              color: var(--button-main-color);
+              font-family: Inter;
+              font-size: 28px;
+              font-style: normal;
+              font-weight: 700;
+              line-height: 32px;
+              text-transform: capitalize;
+            }
+            .Amenities_flex_section {
+              width: 100%;
+              height: 100%;
+
+              .Amenities_card {
+                color: var(--main-white-color);
+                font-family: Inter;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                background-color: #0e0e0e;
+                aspect-ratio: 1/1;
+                border-radius: 10px;
+                // max-width: 200px;
+                max-height: 200px;
+              }
+            }
+          }
+        }
+        .PropertyImages {
+          overflow: hidden;
+          padding-top: 32px;
+          .Title {
+            padding-bottom: 22px;
+            h2 {
+              color: var(--button-main-color);
+              font-family: Inter;
+              font-size: 28px;
+              font-style: normal;
+              font-weight: 700;
+              line-height: 32px;
+              text-transform: capitalize;
+            }
+          }
+          img {
+            width: 100%;
+            max-width: 100%;
+            object-fit: cover;
+            min-height: 200px;
+            aspect-ratio: 900/500;
           }
         }
       }

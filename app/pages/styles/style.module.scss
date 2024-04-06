@@ -467,7 +467,7 @@
   .UserInformationSection {
     width: 100%;
     height: 100%;
-    padding-top: 50px;
+    padding-top: 40px;
     .UserInformationFlexSection {
       width: 100%;
       height: 100%;
@@ -645,10 +645,23 @@
 .FullPageProject {
   max-width: 900px;
   margin: auto;
+  padding: 30px 0;
   .FullPageProjectsInnerSection {
     .MainNavbarSection {
-      height: 100px;
       width: 100%;
+      padding-bottom: 25px;
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 4px;
+        background-color: var(--main-white-color);
+        color: var(--main-black-color);
+        padding: 8px 24px;
+        border: 0;
+        outline: 0;
+        border-radius: 30px;
+      }
     }
     .InforMationSection {
       .Project_Heading {
@@ -1492,7 +1505,7 @@
                 justify-content: flex-start;
                 gap: 16px;
                 cursor: pointer;
-                .Respo_Back_Button{
+                .Respo_Back_Button {
                   display: none;
                 }
                 .DefaultProfile {

@@ -20,8 +20,10 @@ import { FaRegEdit } from "react-icons/fa";
 import {
   IoIosArrowBack,
   IoIosArrowForward,
+  IoIosArrowRoundBack,
   IoIosClose,
   IoIosExpand,
+  IoMdArrowBack,
 } from "react-icons/io";
 import Head from "next/head";
 
@@ -55,6 +57,7 @@ function Customer() {
     Img: [],
     Email: [],
   });
+  const [Show_Full_View_In_Respo, setShow_Full_View_In_Respo] = useState(false);
 
   const {
     AuthToken,
@@ -76,6 +79,11 @@ function Customer() {
   const Client_Info_Adding = (Info) => {
     setIs_Sent_Mail_Clicked_OR_Fetching_Started(false);
     setSelected_Client_Container_State(Info);
+    setShow_Full_View_In_Respo(true);
+  };
+  const Respo_Back_Button = () => {
+    setShow_Full_View_In_Respo(false);
+    setSelected_Client_Container_State([]);
   };
   const SearchClientsInput = (e) => {
     setSearch_Val(e.target.value);
@@ -225,7 +233,11 @@ function Customer() {
         <div className={styles.Customer_Main_Outer_Div_Section}>
           <div className={styles.Customer_Inner_Section}>
             <div className={styles.Flex_Section_Main}>
-              <div className={styles.List_OF_Users_Section}>
+              <div
+                className={`${styles.List_OF_Users_Section} ${
+                  Show_Full_View_In_Respo ? "respo-w-0" : "respo-w-100"
+                } `}
+              >
                 <div className={styles.List_Section}>
                   <div className={styles.Header_Section}>
                     <div className={styles.Head_Txt}>
@@ -307,12 +319,21 @@ function Customer() {
                   </div>
                 </div>
               </div>
-              <div className={styles.Action_ON_User_Section}>
+              <div
+                className={`${styles.Action_ON_User_Section} ${
+                  Show_Full_View_In_Respo ? "respo-w-100" : "respo-w-0"
+                }`}
+              >
                 {Selected_Client_Container_State.length == 0 ? (
                   ""
                 ) : (
                   <div className={styles.Customer_Info_Section}>
                     <div className={styles.Inner_Section}>
+                      <div className="respo_back_button">
+                        <button onClick={Respo_Back_Button}>
+                          <IoIosArrowRoundBack />
+                        </button>
+                      </div>
                       <div className={styles.Header_Section}>
                         <div className={styles.Profile}>
                           <div className={styles.Client_Profile_Main_Section}>
@@ -575,10 +596,13 @@ function Customer() {
                           <div className="d-flex w-100 bg-flex-sec">
                             <p>new mali</p>
                             <div>
-                              <button onClick={Expand_Button}>
+                              <button type="button" onClick={Expand_Button}>
                                 <CgExpand />
                               </button>
-                              <button onClick={Close_Modal_Control_Btn}>
+                              <button
+                                type="button"
+                                onClick={Close_Modal_Control_Btn}
+                              >
                                 <IoClose />
                               </button>
                             </div>

@@ -457,7 +457,7 @@
 .ProfilePageMainSection .UserInformationSection {
   width: 100%;
   height: 100%;
-  padding-top: 50px;
+  padding-top: 40px;
 }
 .ProfilePageMainSection .UserInformationSection .UserInformationFlexSection {
   width: 100%;
@@ -633,10 +633,23 @@
 .FullPageProject {
   max-width: 900px;
   margin: auto;
+  padding: 30px 0;
 }
 .FullPageProject .FullPageProjectsInnerSection .MainNavbarSection {
-  height: 100px;
   width: 100%;
+  padding-bottom: 25px;
+}
+.FullPageProject .FullPageProjectsInnerSection .MainNavbarSection button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  background-color: var(--main-white-color);
+  color: var(--main-black-color);
+  padding: 8px 24px;
+  border: 0;
+  outline: 0;
+  border-radius: 30px;
 }
 .FullPageProject .FullPageProjectsInnerSection .InforMationSection .Project_Heading {
   color: var(--main-white-color);
@@ -6272,5 +6285,799 @@
 @media only screen and (max-width: 767px) {
   .SettingPage_Main_Section .More_Detailed_Section .Two_Step_Verification_Main_Section .Two_Step_Verification_Inner_Section .Title_Main_Section h3 {
     font-size: 18px;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .Flex_Section_Main .List_OF_Users_Section {
+    width: 100%;
+    border-right: 1px solid var(--border-color);
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .Flex_Section_Main .List_OF_Users_Section .List_Section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: auto;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .Flex_Section_Main .List_OF_Users_Section .List_Section::-webkit-scrollbar {
+    display: none;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .Flex_Section_Main .List_OF_Users_Section .List_Section .Header_Section {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: var(--main-bg-color);
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    border-bottom: 1px solid var(--border-color);
+    gap: 30px;
+    z-index: 11;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .Flex_Section_Main .List_OF_Users_Section .List_Section .Header_Section .Head_Txt {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .Flex_Section_Main .List_OF_Users_Section .List_Section .Header_Section .Head_Txt p {
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    color: var(--main-white-color);
+    text-transform: capitalize;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .Flex_Section_Main .List_OF_Users_Section .List_Section .Header_Section .Head_SearchBar {
+    width: 100%;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .Flex_Section_Main .List_OF_Users_Section .List_Section .Header_Section .Head_SearchBar input {
+    width: 100%;
+    background-color: var(--secondry-bg-color);
+    border: 0;
+    outline: 0;
+    border-radius: 15px;
+    height: 40px;
+    padding: 0 20px;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    color: var(--main-white-color);
+    text-transform: capitalize;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .Flex_Section_Main .List_OF_Users_Section .List_Section .Customer_List_Sec {
+    width: 100%;
+    height: 100%;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .Flex_Section_Main .Action_ON_User_Section {
+    width: 0%;
+    height: 100%;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .Flex_Section_Main .Action_ON_User_Section .Customer_Info_Section .Inner_Section .Header_Section {
+    padding: 16px 0px;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .Flex_Section_Main .Action_ON_User_Section .Customer_Info_Section .Inner_Section .Message_OF_Client_Section {
+    padding: 20px 16px;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .Flex_Section_Main .Action_ON_User_Section .Customer_Info_Section .Inner_Section .Message_OF_Client_Section .InterestedIN {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .Flex_Section_Main .Action_ON_User_Section .Customer_Info_Section .Inner_Section .Message_OF_Client_Section .InterestedIN h4 {
+    color: var(--button-main-color);
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    text-transform: capitalize;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .Flex_Section_Main .Action_ON_User_Section .Customer_Info_Section .Inner_Section .Message_OF_Client_Section .InterestedIN ul {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 14px 45px;
+    flex-direction: column;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .Flex_Section_Main .Action_ON_User_Section .Customer_Info_Section .Inner_Section .Message_OF_Client_Section .InterestedIN ul li {
+    color: var(--main-white-color);
+    list-style-type: decimal;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .Flex_Section_Main .Action_ON_User_Section .Customer_Info_Section .Inner_Section .Message_OF_Client_Section .InterestedIN ul li p {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    text-transform: capitalize;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .Flex_Section_Main .Action_ON_User_Section .Customer_Info_Section .Inner_Section .Message_OF_Client_Section .Message {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .Flex_Section_Main .Action_ON_User_Section .Customer_Info_Section .Inner_Section .Message_OF_Client_Section .Message h4 {
+    color: var(--button-main-color);
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    text-transform: capitalize;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .Flex_Section_Main .Action_ON_User_Section .Customer_Info_Section .Inner_Section .Message_OF_Client_Section .Message p {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    text-transform: capitalize;
+    padding: 14px 12px;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .Flex_Section_Main .Action_ON_User_Section .sent_mail_inbox {
+    width: 100%;
+    height: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .Flex_Section_Main .Action_ON_User_Section .sent_mail_inbox .list_of_mail {
+    width: 100%;
+    height: 100%;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .Flex_Section_Main .Action_ON_User_Section .sent_mail_inbox .list_of_mail .inner_section {
+    width: 100%;
+    height: 100%;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .SelectedUsersProfile {
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    margin: 5px 5px;
+    padding: 2px;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .SelectedUsersProfile .SelectedUsersProfileInnerSec {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .SelectedUsersProfile .SelectedUsersProfileInnerSec .DefaultProfile {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: lightcoral;
+    min-width: 25px;
+    min-height: 25px;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .SelectedUsersProfile .SelectedUsersProfileInnerSec .DefaultProfile .pera {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .SelectedUsersProfile .SelectedUsersProfileInnerSec .DefaultProfile .pera p {
+    font-size: 12px;
+    font-family: Inter;
+    font-weight: 500;
+    text-transform: capitalize;
+    color: var(--main-white-color);
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .SelectedUsersProfile .SelectedUsersProfileInnerSec .SelectedUsersProfileName {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .SelectedUsersProfile .SelectedUsersProfileInnerSec .SelectedUsersProfileName p {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    text-transform: lowercase;
+    padding: 0;
+    margin: 0;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .SelectedUsersProfile .SelectedUsersProfileInnerSec .SelectedUsersProfileName button {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: transparent;
+    color: var(--main-white-color);
+    border: 0;
+    outline: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .SelectedUsersProfile .SelectedUsersProfileInnerSec .SelectedUsersProfileName button svg {
+    width: 100%;
+    height: 100%;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .SelectedUsersProfile .SelectedUsersProfileInnerSec .SelectedUsersProfileName button:hover {
+    background-color: var(--main-white-color);
+    color: #0e0e0e;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .send_mail_main_section_div {
+    position: absolute;
+    width: 50%;
+    height: 65vh;
+    background-color: var(--popup-bg-color);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    overflow: auto;
+    z-index: 111;
+    bottom: 20px;
+    right: 20px;
+    transform: translateX(150%) translateY(150%);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.25s ease-in-out;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .send_mail_main_section_div::-webkit-scrollbar {
+    display: none;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .send_mail_main_section_div .send_mail_inner_section_div {
+    width: 100%;
+    height: 100%;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .send_mail_main_section_div .send_mail_inner_section_div p {
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    color: var(--main-white-color);
+    text-transform: capitalize;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .send_mail_main_section_div .send_mail_inner_section_div .inner_container {
+    padding: 8px 15px;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .send_mail_main_section_div .send_mail_footer_bar_section {
+    width: 100%;
+    height: auto;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .send_mail_main_section_div .send_mail_footer_bar_section .insert_file_and_all_section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .send_mail_main_section_div .send_mail_footer_bar_section .insert_file_and_all_section ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    list-style: none;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .send_mail_main_section_div .send_mail_footer_bar_section .insert_file_and_all_section ul li button,
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .send_mail_main_section_div .send_mail_footer_bar_section .insert_file_and_all_section ul li label {
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    color: var(--main-white-color);
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .send_mail_main_section_div .send_mail_footer_bar_section .insert_file_and_all_section ul li button svg,
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .send_mail_main_section_div .send_mail_footer_bar_section .insert_file_and_all_section ul li label svg {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .send_mail_main_section_div .search_suggestion_result {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    background-color: var(--secondry-bg-color);
+    height: -moz-fit-content;
+    height: fit-content;
+    border-radius: 10px;
+    transition: 0.1s all;
+    overflow: auto;
+    max-height: 250px;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .send_mail_main_section_div .search_suggestion_result::-webkit-scrollbar {
+    display: none;
+  }
+  .Customer_Main_Outer_Div_Section .Customer_Inner_Section .send_mail_main_section_div .search_suggestion_result .search_suggestion_result_inner_section {
+    width: 100%;
+    height: 100%;
+  }
+  .Customer_Main_Outer_Div_Section .sending_mail_notification {
+    position: absolute;
+    top: -100px;
+    z-index: -1;
+    opacity: 0;
+    width: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--popup-bg-color);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .Customer_Main_Outer_Div_Section .sending_mail_notification .sending_mail_notification_inner_sec {
+    width: 100%;
+    padding: 24px 20px;
+  }
+  .Customer_Main_Outer_Div_Section .sending_mail_notification .sending_mail_notification_inner_sec .flex_sec {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 20px;
+    animation: FadeIn 0.4s linear 1;
+  }
+  .Customer_Main_Outer_Div_Section .sending_mail_notification .sending_mail_notification_inner_sec .flex_sec .loader_Sec {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+  }
+  .Customer_Main_Outer_Div_Section .sending_mail_notification .sending_mail_notification_inner_sec .flex_sec p {
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    color: var(--main-white-color);
+    text-transform: capitalize;
+  }
+  .FullPageProject {
+    max-width: 900px;
+    margin: auto;
+    padding: 30px 15px;
+  }
+  .FullPageProject .FullPageProjectsInnerSection .InforMationSection .Project_Heading h1 {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px;
+    text-transform: capitalize;
+    line-break: anywhere;
+  }
+  .FullPageProject .FullPageProjectsInnerSection .InforMationSection .ThumbnailImage {
+    padding-top: 32px;
+  }
+  .FullPageProject .FullPageProjectsInnerSection .InforMationSection .ThumbnailImage img {
+    width: 100%;
+    max-width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    min-height: 200px;
+    aspect-ratio: 2/1;
+  }
+  .FullPageProject .FullPageProjectsInnerSection .InforMationSection .ProjectInformation .Description {
+    padding-top: 32px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .FullPageProject .FullPageProjectsInnerSection .InforMationSection .ProjectInformation .Description h2 {
+    color: var(--button-main-color);
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+    text-transform: capitalize;
+  }
+  .FullPageProject .FullPageProjectsInnerSection .InforMationSection .ProjectInformation .Description p {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    width: 100%;
+    line-break: anywhere;
+  }
+  .FullPageProject .FullPageProjectsInnerSection .InforMationSection .ProjectInformation .Project_Facilities {
+    padding-top: 32px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .FullPageProject .FullPageProjectsInnerSection .InforMationSection .ProjectInformation .Project_Facilities h2 {
+    color: var(--button-main-color);
+    font-family: Inter;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+    text-transform: capitalize;
+  }
+  .FullPageProject .FullPageProjectsInnerSection .InforMationSection .ProjectInformation .Project_Facilities .Amenities_flex_section {
+    width: 100%;
+    height: 100%;
+  }
+  .FullPageProject .FullPageProjectsInnerSection .InforMationSection .ProjectInformation .Project_Facilities .Amenities_flex_section .Amenities_card {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: #0e0e0e;
+    aspect-ratio: 1/1;
+    border-radius: 10px;
+    max-height: 200px;
+  }
+  .FullPageProject .FullPageProjectsInnerSection .InforMationSection .PropertyImages {
+    overflow: hidden;
+    padding-top: 32px;
+  }
+  .FullPageProject .FullPageProjectsInnerSection .InforMationSection .PropertyImages .Title {
+    padding-bottom: 22px;
+  }
+  .FullPageProject .FullPageProjectsInnerSection .InforMationSection .PropertyImages .Title h2 {
+    color: var(--button-main-color);
+    font-family: Inter;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+    text-transform: capitalize;
+  }
+  .FullPageProject .FullPageProjectsInnerSection .InforMationSection .PropertyImages img {
+    width: 100%;
+    max-width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    min-height: 200px;
+    aspect-ratio: 900/500;
+  }
+}
+@media (min-width: 768px) and (max-width: 1200px) {
+  .DashboardPage_Main_Section .Inner_Flex_Section .SeventyFive_Percent_Part {
+    width: 70%;
+  }
+  .DashboardPage_Main_Section .Inner_Flex_Section .SeventyFive_Percent_Part .Horizontal_Flex_Section {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    height: 100%;
+  }
+  .DashboardPage_Main_Section .Inner_Flex_Section .SeventyFive_Percent_Part .Horizontal_Flex_Section .Part_One .Flex_Part {
+    overflow: auto;
+  }
+  .DashboardPage_Main_Section .Inner_Flex_Section .SeventyFive_Percent_Part .Horizontal_Flex_Section .Part_One .Flex_Part .Card_One {
+    width: 33.33%;
+    min-width: 260px;
+    height: 100%;
+  }
+  .DashboardPage_Main_Section .Inner_Flex_Section .SeventyFive_Percent_Part .Horizontal_Flex_Section .Part_Two {
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    position: relative;
+    background-color: rgba(100, 85, 144, 0.2) !important;
+  }
+  .DashboardPage_Main_Section .Inner_Flex_Section .SeventyFive_Percent_Part .Horizontal_Flex_Section .Part_Two::-webkit-scrollbar {
+    display: none;
+  }
+  .DashboardPage_Main_Section .Inner_Flex_Section .SeventyFive_Percent_Part .Horizontal_Flex_Section .Part_Two .Sticky_Header_Title {
+    background-color: rgba(100, 85, 144, 0.2) !important;
+    width: 100%;
+    padding: 12px 20px;
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 111;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .DashboardPage_Main_Section .Inner_Flex_Section .SeventyFive_Percent_Part .Horizontal_Flex_Section .Part_Two .Sticky_Header_Title h5 {
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    color: var(--main-white-color);
+    text-transform: capitalize;
+  }
+  .DashboardPage_Main_Section .Inner_Flex_Section .SeventyFive_Percent_Part .Horizontal_Flex_Section .Part_Two .ProjectsSkullCardOuterMainSection {
+    width: 100%;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .DashboardPage_Main_Section .Inner_Flex_Section .SeventyFive_Percent_Part .Horizontal_Flex_Section .Part_Two .ProjectsSkullCardOuterMainSection .ProjectContentSkullInnerSection {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 18px;
+    overflow: hidden;
+    position: relative;
+    flex-direction: column;
+    border-radius: 10px;
+  }
+  .DashboardPage_Main_Section .Inner_Flex_Section .SeventyFive_Percent_Part .Horizontal_Flex_Section .Part_Two .ProjectsSkullCardOuterMainSection .ProjectContentSkullInnerSection .ProjectsSkullImageSection {
+    width: 100%;
+  }
+  .DashboardPage_Main_Section .Inner_Flex_Section .SeventyFive_Percent_Part .Horizontal_Flex_Section .Part_Two .ProjectsSkullCardOuterMainSection .ProjectContentSkullInnerSection .ProjectsSkullImageSection img {
+    width: 100%;
+    height: 100%;
+    max-height: 250px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    aspect-ratio: 1;
+    min-width: 250px;
+    max-height: 290px;
+  }
+  .DashboardPage_Main_Section .Inner_Flex_Section .SeventyFive_Percent_Part .Horizontal_Flex_Section .Part_Two .ProjectsSkullCardOuterMainSection .ProjectContentSkullInnerSection .ProjectsSkullImageSection span {
+    width: 100%;
+    height: 100%;
+    max-height: 250px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border-radius: 10px;
+    aspect-ratio: 1;
+    min-width: 250px;
+    max-height: 250px;
+  }
+  .DashboardPage_Main_Section .Inner_Flex_Section .SeventyFive_Percent_Part .Horizontal_Flex_Section .Part_Two .ProjectsSkullCardOuterMainSection .ProjectContentSkullInnerSection .ProjectContentTextSection {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(57, 54, 54, 0.6);
+    overflow: hidden;
+  }
+  .DashboardPage_Main_Section .Inner_Flex_Section .SeventyFive_Percent_Part .Horizontal_Flex_Section .Part_Two .ProjectsSkullCardOuterMainSection .ProjectContentSkullInnerSection .ProjectContentTextSection .FlexSection {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    color: var(--main-white-color);
+    padding: 12px 14px;
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    width: 100%;
+    height: 100%;
+    border-radius: 0 0 10px 10px;
+  }
+  .DashboardPage_Main_Section .Inner_Flex_Section .SeventyFive_Percent_Part .Horizontal_Flex_Section .Part_Two .ProjectsSkullCardOuterMainSection .ProjectContentSkullInnerSection .ProjectContentTextSection .FlexSection h2 {
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    line-break: anywhere;
+    text-transform: capitalize;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .DashboardPage_Main_Section .Inner_Flex_Section .SeventyFive_Percent_Part .Horizontal_Flex_Section .Part_Two .ProjectsSkullCardOuterMainSection .ProjectContentSkullInnerSection .ProjectContentTextSection .FlexSection p {
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--non-hilighted-text);
+    line-break: anywhere;
+    text-transform: capitalize;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .DashboardPage_Main_Section .Inner_Flex_Section .SeventyFive_Percent_Part .Horizontal_Flex_Section .Part_Two .ProjectsSkullCardOuterMainSection .ProjectContentSkullInnerSection .CardStatusIcon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-family: Inter;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    color: var(--non-hilighted-text);
+    line-break: anywhere;
+    text-transform: capitalize;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--non-hilighted-text);
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+  .DashboardPage_Main_Section .Inner_Flex_Section .TwentyFive_Percent_Part {
+    width: 30%;
+  }
+  .DashboardPage_Main_Section .Inner_Flex_Section .TwentyFive_Percent_Part .Flex_section_Main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    gap: 16px;
+  }
+  .DashboardPage_Main_Section .Inner_Flex_Section .TwentyFive_Percent_Part .Flex_section_Main .New_Clients_Main_Section {
+    background-color: rgba(100, 85, 144, 0.2) !important;
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: auto;
+  }
+  .DashboardPage_Main_Section .Inner_Flex_Section .TwentyFive_Percent_Part .Flex_section_Main .New_Clients_Main_Section::-webkit-scrollbar {
+    display: none;
+  }
+  .DashboardPage_Main_Section .Inner_Flex_Section .TwentyFive_Percent_Part .Flex_section_Main .New_Clients_Main_Section .Sticky_Header_Section {
+    width: 100%;
+    padding: 12px 12px;
+    background-color: rgba(100, 84, 140, 0.5843137255);
+    -webkit-backdrop-filter: blur(5px) !important;
+    backdrop-filter: blur(5px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 111;
+  }
+  .DashboardPage_Main_Section .Inner_Flex_Section .TwentyFive_Percent_Part .Flex_section_Main .New_Clients_Main_Section .Sticky_Header_Section h5 {
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    color: var(--main-white-color);
+    text-transform: capitalize;
+  }
+  .DashboardPage_Main_Section .Inner_Flex_Section .TwentyFive_Percent_Part .Flex_section_Main .New_Clients_Main_Section .Recent_Client_Inquire_Map_Section span {
+    width: 100%;
+    background-color: #64548c;
+    height: 50px;
+    display: block;
+  }
+  .FullPageProject {
+    max-width: 900px;
+    margin: auto;
+    padding: 30px 15px;
+  }
+  .FullPageProject .FullPageProjectsInnerSection .InforMationSection .Project_Heading h1 {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px;
+    text-transform: capitalize;
+    line-break: anywhere;
+  }
+  .FullPageProject .FullPageProjectsInnerSection .InforMationSection .ThumbnailImage {
+    padding-top: 32px;
+  }
+  .FullPageProject .FullPageProjectsInnerSection .InforMationSection .ThumbnailImage img {
+    width: 100%;
+    max-width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    min-height: 200px;
+    aspect-ratio: 2/1;
+  }
+  .FullPageProject .FullPageProjectsInnerSection .InforMationSection .ProjectInformation .Description {
+    padding-top: 32px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .FullPageProject .FullPageProjectsInnerSection .InforMationSection .ProjectInformation .Description h2 {
+    color: var(--button-main-color);
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+    text-transform: capitalize;
+  }
+  .FullPageProject .FullPageProjectsInnerSection .InforMationSection .ProjectInformation .Description p {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    width: 100%;
+    line-break: anywhere;
+  }
+  .FullPageProject .FullPageProjectsInnerSection .InforMationSection .ProjectInformation .Project_Facilities {
+    padding-top: 32px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .FullPageProject .FullPageProjectsInnerSection .InforMationSection .ProjectInformation .Project_Facilities h2 {
+    color: var(--button-main-color);
+    font-family: Inter;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+    text-transform: capitalize;
+  }
+  .FullPageProject .FullPageProjectsInnerSection .InforMationSection .ProjectInformation .Project_Facilities .Amenities_flex_section {
+    width: 100%;
+    height: 100%;
+  }
+  .FullPageProject .FullPageProjectsInnerSection .InforMationSection .ProjectInformation .Project_Facilities .Amenities_flex_section .Amenities_card {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: #0e0e0e;
+    aspect-ratio: 1/1;
+    border-radius: 10px;
+    max-height: 200px;
+  }
+  .FullPageProject .FullPageProjectsInnerSection .InforMationSection .PropertyImages {
+    overflow: hidden;
+    padding-top: 32px;
+  }
+  .FullPageProject .FullPageProjectsInnerSection .InforMationSection .PropertyImages .Title {
+    padding-bottom: 22px;
+  }
+  .FullPageProject .FullPageProjectsInnerSection .InforMationSection .PropertyImages .Title h2 {
+    color: var(--button-main-color);
+    font-family: Inter;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+    text-transform: capitalize;
+  }
+  .FullPageProject .FullPageProjectsInnerSection .InforMationSection .PropertyImages img {
+    width: 100%;
+    max-width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    min-height: 200px;
+    aspect-ratio: 900/500;
   }
 }/*# sourceMappingURL=style.module.css.map */

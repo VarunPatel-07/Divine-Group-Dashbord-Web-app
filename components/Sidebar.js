@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import styles from "./styles/style.module.css";
 import Link from "next/link";
 import { GoGraph } from "react-icons/go";
@@ -20,13 +20,21 @@ function Sidebar() {
   const { UserInfo, Responsive_Button_Click, Button_Clicked } = context;
   const [VerificationConsent, setVerificationConsent] = useState(false);
   const [CookiesConsent, setCookiesConsent] = useState(false);
-  if (!UserInfo.twoStepVerification) {
-    if (!cookie.get("Two_Step_Verification_Delay_48Hour")) {
-      setTimeout(() => {
-        setVerificationConsent(true);
-      }, 40000);
+  const User_Info = JSON.parse(sessionStorage.getItem("User_InforMation"));
+
+  useEffect(() => {
+    if (!User_Info?.twoStepVerification) {
+      if (!cookie.get("Two_Step_Verification_Delay_48Hour")) {
+        setTimeout(() => {
+          setVerificationConsent(true);
+        }, 4000);
+      } else {
+        setVerificationConsent(false);
+      }
+    } else {
+      setVerificationConsent(false);
     }
-  }
+  }, [User_Info?.twoStepVerification]);
 
   if (
     !localStorage.getItem("User_Accepted_CookiesConsent") &&
@@ -96,7 +104,10 @@ function Sidebar() {
                       Dashboard
                     </Link>
                   </li>
-                  <li className={pathname == "/pages/projects" ? "active" : ""}  onClick={Click_Button}>
+                  <li
+                    className={pathname == "/pages/projects" ? "active" : ""}
+                    onClick={Click_Button}
+                  >
                     <Link href="/pages/projects">
                       <span>
                         <BsFillBuildingsFill />
@@ -104,7 +115,10 @@ function Sidebar() {
                       projects
                     </Link>
                   </li>
-                  <li className={pathname == "/pages/chats" ? "active" : ""}  onClick={Click_Button}>
+                  <li
+                    className={pathname == "/pages/chats" ? "active" : ""}
+                    onClick={Click_Button}
+                  >
                     <Link href="/pages/chats">
                       <span>
                         <IoChatbubblesSharp />
@@ -115,7 +129,8 @@ function Sidebar() {
 
                   <li
                     className={pathname == "/pages/customers" ? "active" : ""}
-                    onClick={Click_Button}>
+                    onClick={Click_Button}
+                  >
                     <Link href="/pages/customers">
                       <span>
                         <PiUsersThreeFill />
@@ -124,7 +139,10 @@ function Sidebar() {
                     </Link>
                   </li>
                   {UserInfo.role === "Admin" ? (
-                    <li className={pathname == "/pages/users" ? "active" : ""}  onClick={Click_Button}>
+                    <li
+                      className={pathname == "/pages/users" ? "active" : ""}
+                      onClick={Click_Button}
+                    >
                       <Link href="/pages/users">
                         <span>
                           <LuUsers />
@@ -135,7 +153,10 @@ function Sidebar() {
                   ) : (
                     ""
                   )}
-                  <li className={pathname == "/pages/setting" ? "active" : ""}  onClick={Click_Button}>
+                  <li
+                    className={pathname == "/pages/setting" ? "active" : ""}
+                    onClick={Click_Button}
+                  >
                     <Link href="/pages/setting">
                       <span>
                         <IoMdSettings />
@@ -145,7 +166,8 @@ function Sidebar() {
                   </li>
                   <li
                     className={pathname == "/pages/HelpCenter" ? "active" : ""}
-                    onClick={Click_Button}>
+                    onClick={Click_Button}
+                  >
                     <Link href="/pages/HelpCenter">
                       <span>
                         <LuBadgeHelp />

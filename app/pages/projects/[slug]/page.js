@@ -1,13 +1,16 @@
 "use client";
 import React, { useEffect, useContext, useState } from "react";
+import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
 import styles from "../../styles/style.module.css";
 import noteContext from "@/context/noteContext";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
+import { IoArrowBack } from "react-icons/io5";
+
 function DetailedProject({ params }) {
   const context = useContext(noteContext);
-
+  const { push } = useRouter();
   const {
     FetchSpecificProject,
     AuthToken,
@@ -18,23 +21,32 @@ function DetailedProject({ params }) {
   const search = searchParams.get("id");
   const { TitleImage, GalleryImage, projectName, description } =
     SpecificProjectDetails;
-
+  const BackButton = () => {
+    push("/pages/projects");
+  };
   useEffect(() => {
     FetchSpecificProject(AuthToken, search);
   }, []);
   if (GlobalLoadingState.Single_Project_Loding) {
     return (
       <>
-        <div style={{ fontSize: "90px" , color:'wheat' }}>loding .........</div>
+        <div style={{ fontSize: "90px", color: "wheat" }}>loding .........</div>
       </>
     );
   } else {
     return (
       <>
-        <div className="container-main-sec pb-5">
+        <div className="container-main-sec pb-2">
           <div className={styles.FullPageProject}>
             <div className={styles.FullPageProjectsInnerSection}>
-              <div className={styles.MainNavbarSection}></div>
+              <div className={styles.MainNavbarSection}>
+                <button onClick={BackButton}>
+                  <span>
+                    <IoArrowBack />
+                  </span>
+                  <span>back</span>
+                </button>
+              </div>
               <div className={styles.InforMationSection}>
                 <div className={styles.Project_Heading}>
                   <h1>{projectName}</h1>

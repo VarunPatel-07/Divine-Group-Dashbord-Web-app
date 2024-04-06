@@ -402,6 +402,8 @@
 }
 .ProjectsSkullCardOuterMainSection .ProjectContentSkullInnerSection .ProjectsSkullImageSection {
   width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
 }
 .ProjectsSkullCardOuterMainSection .ProjectContentSkullInnerSection .ProjectsSkullImageSection img {
   width: 100%;
@@ -409,7 +411,6 @@
   max-height: 250px;
   -o-object-fit: cover;
      object-fit: cover;
-  border-radius: 10px;
   aspect-ratio: 1;
   min-width: 250px;
   max-height: 250px;
@@ -583,7 +584,7 @@
   overflow: hidden;
 }
 
-@media only screen and (max-width: 1199px) {
+@media only screen and (max-width: 1050px) {
   .navberMain {
     width: 100%;
   }
@@ -663,7 +664,7 @@
 .navberMain .nav .SearchBarSection .SearchFlexSection .SearchButton button svg {
   cursor: pointer;
 }
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 1050px) {
   .navberMain .nav .NavbarProfileSection_OUTER_Main_Sec {
     justify-content: space-between;
   }
@@ -739,7 +740,7 @@
   gap: 3px;
 }
 
-@media only screen and (max-width: 1199px) {
+@media only screen and (max-width: 1050px) {
   .sidebarMainSec {
     transform: translateX(-100%);
     width: 100%;
@@ -761,7 +762,7 @@
   gap: 30px;
   width: 100%;
 }
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 1050px) {
   .sidebarMainSec .SidebarInner .FlexSectionMain .respo_Btn {
     display: block;
     width: 100%;
@@ -842,4 +843,87 @@
 .sidebarMainSec .SidebarInner .FlexSectionMain .LinkSection .ul li a span {
   padding-right: 10px;
   font-size: 16px;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .Client_Profile_Main_Section .Inner_Section {
+    padding: 10px 8px;
+  }
+  .Client_Profile_Main_Section .Inner_Section .DefaultProfile {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+  }
+  .Client_Profile_Main_Section .Inner_Section .DefaultProfile .pera {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .Client_Profile_Main_Section .Inner_Section .DefaultProfile .pera p {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px;
+    text-transform: capitalize;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .Client_Profile_Main_Section .Inner_Section .Customer_Info_txt {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+  }
+  .Client_Profile_Main_Section .Inner_Section .Customer_Info_txt .FullName {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .Client_Profile_Main_Section .Inner_Section .Customer_Info_txt .FullName h5 {
+    color: var(--main-white-color);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 15px;
+    text-transform: capitalize;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .Client_Profile_Main_Section .Inner_Section .Customer_Info_txt .FullName h5 span {
+    height: 15px !important;
+    border-radius: 3px !important;
+    overflow: hidden;
+  }
+  .Client_Profile_Main_Section .Inner_Section .Customer_Info_txt .Email {
+    width: 100%;
+  }
+  .Client_Profile_Main_Section .Inner_Section .Customer_Info_txt .Email h6 {
+    color: var(--non-hilighted-text);
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 15px;
+    width: 100%;
+    line-break: anywhere;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .Client_Profile_Main_Section .Inner_Section .Customer_Info_txt .Email h6 span {
+    height: 15px !important;
+    border-radius: 3px !important;
+    overflow: hidden;
+  }
 }/*# sourceMappingURL=style.module.css.map */

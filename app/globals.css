@@ -86,7 +86,7 @@ a {
   padding: 70px 0 0 0;
   overflow-y: auto;
 }
-@media only screen and (max-width: 1199px) {
+@media only screen and (max-width: 1050px) {
   .container-main-sec {
     width: 100%;
     margin-left: auto;
@@ -630,7 +630,7 @@ input {
 } */
 .table p {
   font-family: Inter;
-  font-size: 16px;
+  font-size: 15px;
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
@@ -638,11 +638,15 @@ input {
   /* text-transform: capitalize; */
   width: 100%;
   height: 100%;
+  max-width: 250px;
+  padding: 0 8px;
+  text-align: start;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 0 8px;
-  text-align: center;
 }
 .table button {
   background-color: transparent;
@@ -872,7 +876,20 @@ input {
   height: 100vh;
   overflow: hidden;
 }
+.respo_back_button {
+  display: none;
+}
 @media only screen and (max-width: 767px) {
+  .respo_back_button {
+    display: block;
+    button {
+      background-color: transparent;
+      border: 0;
+      outline: 0;
+      color: #f5f3f4;
+      font-size: 30px;
+    }
+  }
   .container-main-sec {
     min-height: 100dvh;
   }
@@ -896,18 +913,24 @@ input {
     width: 100% !important;
     transition: ease-in-out 0.2s;
   }
-  .min_height_100_dvh{
+  .min_height_100_dvh {
     height: 100dvh !important;
   }
   .accordion-button {
-   
     font-size: 18px !important;
   }
   .accordion-body {
-    
     padding: 16px 24px !important;
-    ul{
+    ul {
       padding: 0 !important;
     }
+  }
+}
+@media only screen and (max-width: 767px) {
+  .respo-w-0 {
+    width: 0 !important;
+  }
+  .respo-w-100 {
+    width: 100% !important;
   }
 }
