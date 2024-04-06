@@ -16,13 +16,17 @@ function Projects() {
     PublicProjects,
     FetchAllPublicProjects,
     FetchAllYourProjects,
+    AddModalState,
+    setAddModalState,
+    Info_Container_To_Update_The_Project_Info,
+    setInfo_Container_To_Update_The_Project_Info,
     AuthToken,
     IsLogIn,
   } = context;
   const [IsLoading, setIsLoading] = useState(true);
   const [FetchAllProjects, setFetchAllProjects] = useState(true);
   const [UsersProjectContent, setUsersProjectContent] = useState();
-  const [AddModalState, setAddModalState] = useState(false);
+
   const AllProjects = () => {
     setFetchAllProjects(true);
     setIsLoading(false);
@@ -48,6 +52,11 @@ function Projects() {
       setIsLoading(false);
     }
   }, []);
+  useEffect(() => {
+    if (!FetchAllProjects) {
+      setUsersProjectContent(UsersProjects);
+    }
+  }, [UsersProjects]);
 
   return (
     <>
@@ -85,7 +94,9 @@ function Projects() {
               ) : (
                 <ProjectsSkull
                   OpenModalButton={OpenModalButton}
-                  Projects={FetchAllProjects ? PublicProjects : UsersProjectContent}
+                  Projects={
+                    FetchAllProjects ? PublicProjects : UsersProjectContent
+                  }
                   FetchAllProjects={FetchAllProjects}
                 />
               )}

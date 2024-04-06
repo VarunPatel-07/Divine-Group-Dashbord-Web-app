@@ -429,6 +429,18 @@
 .ProjectsSkullCardOuterMainSection .ProjectContentSkullInnerSection .ProjectContentTextSection {
   width: 100%;
   padding: 0 10px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.ProjectsSkullCardOuterMainSection .ProjectContentSkullInnerSection .ProjectContentTextSection button {
+  border: 0;
+  outline: 0;
+  padding: 0;
+  background-color: transparent;
+}
+.ProjectsSkullCardOuterMainSection .ProjectContentSkullInnerSection .ProjectContentTextSection button::after {
+  display: none;
 }
 .ProjectsSkullCardOuterMainSection .ProjectContentSkullInnerSection .ProjectContentTextSection .FlexSection {
   display: flex;
@@ -437,6 +449,7 @@
   flex-direction: column;
   gap: 10px;
   color: var(--main-white-color);
+  width: 90%;
 }
 .ProjectsSkullCardOuterMainSection .ProjectContentSkullInnerSection .ProjectContentTextSection .FlexSection h2 {
   font-family: Inter;

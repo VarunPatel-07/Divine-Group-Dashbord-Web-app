@@ -934,3 +934,9 @@ input {
     width: 100% !important;
   }
 }
+.btn-drop-down:hover{
+  background-color: var(--button-main-color) !important;
+}
+.min-w-10{
+  min-width: 10px;
+}

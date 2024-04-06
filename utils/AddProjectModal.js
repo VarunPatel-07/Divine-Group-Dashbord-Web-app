@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import styles from "./styles/style.module.css";
 import { BsImages } from "react-icons/bs";
@@ -7,7 +7,14 @@ import noteContext from "@/context/noteContext";
 import Form from "react-bootstrap/Form";
 function AddProjectModal(props) {
   const context = useContext(noteContext);
-  const { content, ControlAddProjects, AuthToken } = context;
+  const {
+    content,
+    ControlAddProjects,
+    ControlUpdateProjects,
+    AuthToken,
+    Info_Container_To_Update_The_Project_Info,
+    setInfo_Container_To_Update_The_Project_Info,
+  } = context;
   const { AddModalState, CloseModalBtn } = props;
   const [Private, setPrivate] = useState(false);
   const [ProjectInfo, setProjectInfo] = useState({
@@ -30,12 +37,13 @@ function AddProjectModal(props) {
     formdata.append("Pincode", ProjectInfo.Pincode);
     formdata.append("District", ProjectInfo.District);
     formdata.append("TitleImage", TitleImage);
-    formdata.append("private" , Private )
+    formdata.append("private", Private);
     for (const Image of GalleryImage) {
       formdata.append("GalleryImage", Image);
     }
     ControlAddProjects(formdata, AuthToken);
-    CloseModalBtn()
+    CloseModalBtn();
+    setProjectInfo([])
   };
   const OnChangeTxt = (e) => {
     setProjectInfo({ ...ProjectInfo, [e.target.name]: e.target.value });
@@ -53,6 +61,42 @@ function AddProjectModal(props) {
       setPrivate(true);
     }
   };
+  const Sumbit_Updated_Project = (e) => {
+    try {
+      console.log(ProjectInfo);
+      e.preventDefault();
+      const formdata = new FormData();
+      formdata.append("ProjectName", ProjectInfo.ProjectName);
+      formdata.append("MetaData", ProjectInfo.MetaData);
+      formdata.append("Description", ProjectInfo.Description);
+      formdata.append("Address", ProjectInfo.Address);
+      formdata.append("Pincode", ProjectInfo.Pincode);
+      formdata.append("District", ProjectInfo.District);
+      console.log("ok 2");
+      formdata.append("private", Private);
+      if (TitleImage != undefined) {
+        formdata.append("TitleImage", TitleImage);
+      }
+      if (GalleryImage != undefined) {
+        for (const Image of GalleryImage) {
+          formdata.append("GalleryImage", Image);
+        }
+      }
+      console.log("ok 3");
+      ControlUpdateProjects(
+        formdata,
+        AuthToken,
+        Info_Container_To_Update_The_Project_Info._id
+      );
+      console.log("ok 4");
+      // ControlAddProjects(formdata, AuthToken);
+      CloseModalBtn();
+      setProjectInfo([])
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div
       className={`${styles.AddProjectModalOuterDivMainSection} ${
@@ -73,7 +117,7 @@ function AddProjectModal(props) {
           </ul>
         </div>
         <div className={styles.AddInformationPart}>
-          <form onSubmit={ProjectSubmit}>
+          <form>
             <div className={styles.FormSectionInputFlex}>
               <div className={styles.ImageInputSec}>
                 <div className={styles.RowFlexSection}>
@@ -130,8 +174,12 @@ function AddProjectModal(props) {
                       type="text"
                       id="ProjectName"
                       name="ProjectName"
-                      placeholder="Add The Name Of The Project"
                       onChange={OnChangeTxt}
+                      placeholder={
+                        Info_Container_To_Update_The_Project_Info != undefined
+                          ? Info_Container_To_Update_The_Project_Info?.projectName
+                          : "Add The Name Of The Project"
+                      }
                     />
                   </div>
                 </div>
@@ -142,8 +190,12 @@ function AddProjectModal(props) {
                       type="text"
                       id="MetaData"
                       name="MetaData"
-                      placeholder="Add MetaData"
                       onChange={OnChangeTxt}
+                      placeholder={
+                        Info_Container_To_Update_The_Project_Info != undefined
+                          ? Info_Container_To_Update_The_Project_Info?.metadata
+                          : "Add MetaData"
+                      }
                     />
                   </div>
                 </div>
@@ -154,9 +206,13 @@ function AddProjectModal(props) {
                       type="text"
                       id="Description"
                       name="Description"
-                      rows="3"
-                      placeholder="Enter Description"
+                      rows="10"
                       onChange={OnChangeTxt}
+                      placeholder={
+                        Info_Container_To_Update_The_Project_Info != undefined
+                          ? Info_Container_To_Update_The_Project_Info?.description
+                          : "Enter Description"
+                      }
                     ></textarea>
                   </div>
                 </div>
@@ -168,8 +224,12 @@ function AddProjectModal(props) {
                       id="Address"
                       rows="3"
                       name="Address"
-                      placeholder="Add Address"
                       onChange={OnChangeTxt}
+                      placeholder={
+                        Info_Container_To_Update_The_Project_Info != undefined
+                          ? Info_Container_To_Update_The_Project_Info?.address
+                          : "Add Address"
+                      }
                     ></textarea>
                   </div>
                 </div>
@@ -180,9 +240,13 @@ function AddProjectModal(props) {
                       <input
                         type="text"
                         id="Pincode"
-                        placeholder="Add a Pincode"
                         name="Pincode"
                         onChange={OnChangeTxt}
+                        placeholder={
+                          Info_Container_To_Update_The_Project_Info != undefined
+                            ? Info_Container_To_Update_The_Project_Info?.pincode
+                            : "Add a Pincode"
+                        }
                       />
                     </div>
                   </div>
@@ -192,9 +256,13 @@ function AddProjectModal(props) {
                       <input
                         type="text"
                         id="District"
-                        placeholder="Add District"
                         name="District"
                         onChange={OnChangeTxt}
+                        placeholder={
+                          Info_Container_To_Update_The_Project_Info != undefined
+                            ? Info_Container_To_Update_The_Project_Info?.district
+                            : "Add District"
+                        }
                       />
                     </div>
                   </div>
@@ -214,7 +282,6 @@ function AddProjectModal(props) {
                     }}
                   >
                     <Form.Check
-                      
                       type="radio"
                       id="Public"
                       label="Public"
@@ -251,7 +318,6 @@ function AddProjectModal(props) {
                     }}
                   >
                     <Form.Check
-                      
                       type="radio"
                       id="Private"
                       label="Private"
@@ -270,10 +336,9 @@ function AddProjectModal(props) {
                       className="form-check p-0"
                     />
                     <p className="txt-pera-1">
-                      by choosing Private  your projects is only visible by you
+                      by choosing Private your projects is only visible by you
                     </p>
                   </div>
-                 
                 </div>
                 <div className="col-md-12">
                   <div className={styles.ButtonsFlexSection}>
@@ -284,9 +349,23 @@ function AddProjectModal(props) {
                     >
                       Cancel
                     </button>
-                    <button className="filled-btn" type="submit">
-                      Add
-                    </button>
+                    {Info_Container_To_Update_The_Project_Info != undefined ? (
+                      <button
+                        className="filled-btn"
+                        type="button"
+                        onClick={Sumbit_Updated_Project}
+                      >
+                        Update
+                      </button>
+                    ) : (
+                      <button
+                        className="filled-btn"
+                        type="button"
+                        onClick={ProjectSubmit}
+                      >
+                        Add
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>

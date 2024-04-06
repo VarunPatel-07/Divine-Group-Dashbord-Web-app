@@ -43,7 +43,10 @@ const ContextApi = ({ children }) => {
     useState(initialState);
   const [Active_State, setActive_State] = useState(false);
   const [ShowGroupInfoModal, setShowGroupInfoModal] = useState(false);
-
+  const [
+    Info_Container_To_Update_The_Project_Info,
+    setInfo_Container_To_Update_The_Project_Info,
+  ] = useState(initialState);
   const [
     Selected_Chat_Users_Data_To_Chat,
     setSelected_Chat_Users_Data_To_Chat,
@@ -52,6 +55,7 @@ const ContextApi = ({ children }) => {
   const [ComanGroupInfoContainer, setComanGroupInfoContainer] =
     useState(initialState);
   const [Weather_Info_State, setWeather_Info_State] = useState(initialState);
+  const [AddModalState, setAddModalState] = useState(false);
   const [Customer_Info, setCustomer_Info] = useState({
     total: [],
     data: [],
@@ -69,7 +73,7 @@ const ContextApi = ({ children }) => {
     useState(initialState);
   const [Show_Customer_Pagination_Btn, setShow_Customer_Pagination_Btn] =
     useState(false);
-    const [Not_Show_Current_Chat_Page, setNot_Show_Current_Chat_Page] =
+  const [Not_Show_Current_Chat_Page, setNot_Show_Current_Chat_Page] =
     useState(false);
   const [Responsive_Button_Click, setResponsive_Button_Click] = useState(false);
 
@@ -270,6 +274,47 @@ const ContextApi = ({ children }) => {
       console.log(error);
     }
   };
+  // this the function is used to add project
+  const ControlUpdateProjects = async (formdata, Token, _id) => {
+    try {
+      if (Token.length == 0) {
+      } else {
+        const response = await axios({
+          method: "put",
+          url: `${HOST}/app/api/project/updateProjectInfo/${_id}`,
+          data: formdata,
+          headers: {
+            authtoken: Token,
+            "Content-Type": `multipart/form-data`,
+          },
+        });
+        console.log(response);
+        FetchAllPublicProjects(Token);
+        FetchAllYourProjects(Token);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const Delete_Projects = async (Token, _id) => {
+    try {
+      if (Token.length == 0) {
+      } else {
+        const response = await axios({
+          method: "delete",
+          url: `${HOST}/app/api/project/DeleteProject/${_id}`,
+          headers: {
+            authtoken: Token,
+          },
+        });
+        console.log(response);
+        FetchAllPublicProjects(Token);
+        FetchAllYourProjects(Token);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   // this the function is used to fetch all the project which is added by the login user
   const FetchAllYourProjects = async (Token) => {
     try {
@@ -447,7 +492,7 @@ const ContextApi = ({ children }) => {
       console.log(error);
     }
   };
-  // todo ==>> complete this from frontend to backend
+
   const Fetch_ALL_Similar_Group = async (Token, ID) => {
     try {
       const response = axios.get(
@@ -1027,15 +1072,22 @@ const ContextApi = ({ children }) => {
     setShow_Btn,
     Client_search_result,
     ComparPassword_Result,
+    Info_Container_To_Update_The_Project_Info,
+    setInfo_Container_To_Update_The_Project_Info,
+    AddModalState,
+    setAddModalState,
     setComparPassword_Result,
     setClient_search_result,
+    Delete_Projects,
     ListOFUsers_Container_State,
     IS_Password_Changed_In_Settings,
     Two_step_verification_is_completed,
     Mail_Sent,
     Responsive_Button_Click,
-    Show_Chat_Section_On_Click, setShow_Chat_Section_On_Click,
-    Not_Show_Current_Chat_Page, setNot_Show_Current_Chat_Page,
+    Show_Chat_Section_On_Click,
+    setShow_Chat_Section_On_Click,
+    Not_Show_Current_Chat_Page,
+    setNot_Show_Current_Chat_Page,
     setResponsive_Button_Click,
     setTwo_step_verification_is_completed,
     setListOFUsers_Container_State,
@@ -1044,6 +1096,7 @@ const ContextApi = ({ children }) => {
     setMessageContent_Container_State,
     setActive_State,
     setSelected_Chat_Users_Data_To_Chat,
+    ControlUpdateProjects,
     VerifyOTP,
     setIsLogIn,
     FetchAllYourProjects,
