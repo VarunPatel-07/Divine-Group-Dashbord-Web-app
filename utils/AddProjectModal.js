@@ -349,7 +349,7 @@ function AddProjectModal(props) {
                     >
                       Cancel
                     </button>
-                    {Info_Container_To_Update_The_Project_Info != undefined ? (
+                    {Info_Container_To_Update_The_Project_Info == undefined ? (
                       <button
                         className="filled-btn"
                         type="button"

@@ -2,14 +2,7 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
 import Script from "next/script";
 import styles from "../styles/style.module.css";
-import {
-  FaPlus,
-  FaLock,
-  FaImages,
-  FaChevronDown,
-  FaPen,
-  FaRegSave,
-} from "react-icons/fa";
+import { FaPlus, FaLock, FaImages, FaChevronDown, FaPen, FaRegSave } from "react-icons/fa";
 import { IoIosClose } from "react-icons/io";
 import { IoArrowBack, IoDocumentText } from "react-icons/io5";
 import { useRouter } from "next/navigation";
@@ -28,14 +21,14 @@ import Image from "next/image";
 import Loader from "@/utils/Loader";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import ChatProfile from "@/utils/ChatProfile";
-import Banner from "../../../images/banner.png";
+import Banner from "../../../images/header-bg.png";
 import { AiOutlineClear, AiOutlineUserAdd } from "react-icons/ai";
 
 import io from "socket.io-client";
 
 // todo the error is in only this page find it
 function ChatPage() {
-  const HOST = "http://localHOST:500";
+  const HOST = "https://divinegroup-backend.onrender.com";
   socket = io(HOST);
   const initialState = [];
   const { push } = useRouter();
@@ -79,7 +72,8 @@ function ChatPage() {
     Delete_Chat_API_Caller_Function,
     Show_Chat_Section_On_Click,
     setShow_Chat_Section_On_Click,
-    Not_Show_Current_Chat_Page, setNot_Show_Current_Chat_Page,
+    Not_Show_Current_Chat_Page,
+    setNot_Show_Current_Chat_Page,
   } = context;
   const [ShowModal, setShowModal] = useState(false);
   const [ShowCreateGroupModal, setShowCreateGroupModal] = useState(false);
@@ -87,12 +81,10 @@ function ChatPage() {
   const [SelectedUsersArray, setSelectedUsersArray] = useState([]);
   const [Add_GroupName_Modal, setAdd_GroupName_Modal] = useState(false);
   const [GroupChat_ChatName, setGroupChat_ChatName] = useState(initialState);
-  const [Users_Id_Array_State_Handler, setUsers_Id_Array_State_Handler] =
-    useState(initialState);
+  const [Users_Id_Array_State_Handler, setUsers_Id_Array_State_Handler] = useState(initialState);
   const [ChatUsersLoding, setChatUsersLoding] = useState(false);
   const [SearchParaMeters, setSearchParaMeters] = useState(false);
-  const [GroupUsersInformation, setGroupUsersInformation] =
-    useState(initialState);
+  const [GroupUsersInformation, setGroupUsersInformation] = useState(initialState);
   const [InputMessage, setInputMessage] = useState(initialState);
   const [Search_Query, setSearch_Query] = useState(initialState);
   const [IS_Socket_Connected, setIS_Socket_Connected] = useState(false);
@@ -103,31 +95,26 @@ function ChatPage() {
   });
   const [ShowMoreActionModal, setShowMoreActionModal] = useState(false);
   const [SendImagesState, setSendImagesState] = useState(initialState);
-  const [Show_Send_Messages_Modal, setShow_Send_Messages_Modal] =
-    useState(false);
+  const [Show_Send_Messages_Modal, setShow_Send_Messages_Modal] = useState(false);
 
-  const [Is_Edited_Message_Container, setIs_Edited_Message_Container] =
-    useState({
-      Edited: false,
-      message: [],
-    });
+  const [Is_Edited_Message_Container, setIs_Edited_Message_Container] = useState({
+    Edited: false,
+    message: [],
+  });
 
   const [ShowDeleteMessagePopup, setShowDeleteMessagePopup] = useState({
     state: false,
     message: [],
   });
-  const [Add_New_Member_To_Group_Modal, setAdd_New_Member_To_Group_Modal] =
-    useState({ Show: false, Users_Info: [], _Group_ID: [] });
+  const [Add_New_Member_To_Group_Modal, setAdd_New_Member_To_Group_Modal] = useState({
+    Show: false,
+    Users_Info: [],
+    _Group_ID: [],
+  });
   const [EditableChatName, setEditableChatName] = useState(false);
-  
-  const [
-    RenameChatStateHandlerForChatName,
-    setRenameChatStateHandlerForChatName,
-  ] = useState(initialState);
-  const [
-    RenameChatStateHandlerForProfile_Image,
-    setRenameChatStateHandlerForProfile_Image,
-  ] = useState(initialState);
+
+  const [RenameChatStateHandlerForChatName, setRenameChatStateHandlerForChatName] = useState(initialState);
+  const [RenameChatStateHandlerForProfile_Image, setRenameChatStateHandlerForProfile_Image] = useState(initialState);
   var socket, selectedChatCompar;
   useEffect(() => {
     const _User_Info_ = JSON.parse(sessionStorage.getItem("User_InforMation"));
@@ -135,13 +122,9 @@ function ChatPage() {
     socket.on("connected", () => {
       setIS_Socket_Connected(true);
     });
-    socket.on("startTyping", (Room) =>
-      setIS_Typing({ _typing: true, _Sender_Info: Room })
-    );
+    socket.on("startTyping", (Room) => setIS_Typing({ _typing: true, _Sender_Info: Room }));
 
-    socket.on("stopTyping", () =>
-      setIS_Typing({ _typing: false, _Sender_Info: [] })
-    );
+    socket.on("stopTyping", () => setIS_Typing({ _typing: false, _Sender_Info: [] }));
 
     selectedChatCompar = Selected_Chat_Users_Data_To_Chat;
   }, []);
@@ -150,25 +133,16 @@ function ChatPage() {
     socket?.on("MessageReceived", (NewMessageReceived) => {
       //  todo notification
       if (NewMessageReceived) {
-        Message_Fetching_API_Controller_Function(
-          AuthToken,
-          NewMessageReceived.ChatId._id
-        );
+        Message_Fetching_API_Controller_Function(AuthToken, NewMessageReceived.ChatId._id);
         Fetch_All_Chats(AuthToken);
       }
     });
     socket?.on("MessageEdited", (EditedMessageReceived) => {
-      Message_Fetching_API_Controller_Function(
-        AuthToken,
-        EditedMessageReceived.ChatId._id
-      );
+      Message_Fetching_API_Controller_Function(AuthToken, EditedMessageReceived.ChatId._id);
       Fetch_All_Chats(AuthToken);
     });
     socket?.on("MessageDeleted", (DeletedMessageReceived) => {
-      Message_Fetching_API_Controller_Function(
-        AuthToken,
-        DeletedMessageReceived.ChatId
-      );
+      Message_Fetching_API_Controller_Function(AuthToken, DeletedMessageReceived.ChatId);
       Fetch_All_Chats(AuthToken);
     });
     socket?.on("NewChatCreated", () => {
@@ -277,9 +251,7 @@ function ChatPage() {
   };
 
   const Show_Add_ChatName_Modal = () => {
-    SelectedUsersArray.map((Info) =>
-      setUsers_Id_Array_State_Handler((Previous) => [...Previous, Info._id])
-    );
+    SelectedUsersArray.map((Info) => setUsers_Id_Array_State_Handler((Previous) => [...Previous, Info._id]));
     setAdd_GroupName_Modal(true);
   };
   const GroupChatName = (e) => {
@@ -321,7 +293,7 @@ function ChatPage() {
     if (_Chat_Information.length == []) {
     } else {
       setShowGroupInfoModal(true);
-      setNot_Show_Current_Chat_Page(true)
+      setNot_Show_Current_Chat_Page(true);
       console.log(_Chat_Information);
       setGroupUsersInformation(_Chat_Information);
       setRenameChatStateHandlerForChatName(_Chat_Information._Name);
@@ -329,7 +301,7 @@ function ChatPage() {
   };
   const Close_Modal_Button = () => {
     setShowGroupInfoModal(false);
-    setNot_Show_Current_Chat_Page(false)
+    setNot_Show_Current_Chat_Page(false);
   };
 
   const Call_MessageSending_API_On_Sumbit = (e) => {
@@ -342,11 +314,7 @@ function ChatPage() {
         const formdata = new FormData();
         formdata.append("chatId", Selected_Chat_Users_Data_To_Chat._ID);
         formdata.append("content", InputMessage);
-        Send_Messages_API_Controller_Function(
-          AuthToken,
-          formdata,
-          Selected_Chat_Users_Data_To_Chat._ID
-        );
+        Send_Messages_API_Controller_Function(AuthToken, formdata, Selected_Chat_Users_Data_To_Chat._ID);
         setInputMessage("");
       }
     } else {
@@ -356,11 +324,7 @@ function ChatPage() {
         e.preventDefault();
         const formdata = new FormData();
         formdata.append("content", InputMessage);
-        Edit_Message_API_Caller_Function(
-          AuthToken,
-          formdata,
-          Is_Edited_Message_Container.message._id
-        );
+        Edit_Message_API_Caller_Function(AuthToken, formdata, Is_Edited_Message_Container.message._id);
         setIs_Edited_Message_Container({
           Edited: false,
           message: [],
@@ -450,10 +414,7 @@ function ChatPage() {
     Clear_All_Chat_API_Caller(AuthToken, Selected_Chat_Users_Data_To_Chat._ID);
   };
   const SaveChatNameButton = (Id) => {
-    console.log(
-      RenameChatStateHandlerForProfile_Image,
-      RenameChatStateHandlerForChatName
-    );
+    console.log(RenameChatStateHandlerForProfile_Image, RenameChatStateHandlerForChatName);
     setEditableChatName(false);
     const formdata = new FormData();
     formdata.append("chatName", RenameChatStateHandlerForChatName);
@@ -486,9 +447,7 @@ function ChatPage() {
         Fetch_All_Users_For_Chat(AuthToken);
         setShowCreateGroupModal(true);
         // SelectedUsersArray
-        const isIdIncluded = SelectedUsersArray.some(
-          (item) => item._id === element._id
-        );
+        const isIdIncluded = SelectedUsersArray.some((item) => item._id === element._id);
         if (!isIdIncluded) {
           const InfoObj = {
             _id: element._id,
@@ -542,11 +501,7 @@ function ChatPage() {
           <div className={styles.ChatPageSectionInnerDiv}>
             <div className={styles.ChatPageFlexSection}>
               {/* this is the  section where all the chat is gonna listed */}
-              <div
-                className={`${styles.ChatUsersListPart} ${
-                  Show_Chat_Section_On_Click ? "not_show_chat_list" : ""
-                }`}
-              >
+              <div className={`${styles.ChatUsersListPart} ${Show_Chat_Section_On_Click ? "not_show_chat_list" : ""}`}>
                 <div className={styles.ChatUsersListPartInnerSection}>
                   <div className={styles.SearchBar}>
                     <div className={styles.Search}>
@@ -564,16 +519,10 @@ function ChatPage() {
                           <FaPlus />
                         </button>
                       </div>
-                      <div
-                        className={`${styles.Multiple_Option_Modal} ${
-                          ShowModal ? "Show_Modal" : "Hide_Modal"
-                        }`}
-                      >
+                      <div className={`${styles.Multiple_Option_Modal} ${ShowModal ? "Show_Modal" : "Hide_Modal"}`}>
                         <ul>
                           <li>
-                            <button onClick={CreateNewGroupButton}>
-                              New Group Chat
-                            </button>
+                            <button onClick={CreateNewGroupButton}>New Group Chat</button>
                           </li>
                           <li>
                             <button>setting</button>
@@ -602,10 +551,7 @@ function ChatPage() {
                       )}
                       {ChatData.map((chatinfo) => (
                         <div key={chatinfo._id}>
-                          <ChatProfile
-                            Chat_Info={chatinfo}
-                            Search_Query={Search_Query}
-                          />
+                          <ChatProfile Chat_Info={chatinfo} Search_Query={Search_Query} />
                         </div>
                       ))}
                     </div>
@@ -619,16 +565,11 @@ function ChatPage() {
                       {AllChatUsersInfo?.map((ChatInformation) => (
                         <div
                           className={`${styles.Chat_Icons_Div} ${
-                            Selected_Chat_Users_Data_To_Chat._userID ===
-                            ChatInformation._id
+                            Selected_Chat_Users_Data_To_Chat._userID === ChatInformation._id
                               ? "d-none w-0 visibility-hidden"
                               : ""
                           } ${
-                            ChatData.some((user) =>
-                              user.users.some(
-                                (info) => info._id == ChatInformation._id
-                              )
-                            )
+                            ChatData.some((user) => user.users.some((info) => info._id == ChatInformation._id))
                               ? "d-none"
                               : ""
                           } `}
@@ -639,18 +580,14 @@ function ChatPage() {
                               ChatInformation.ProfileImage,
                               ChatInformation.name
                             )
-                          }
-                        >
+                          }>
                           <div className={styles.ChatProfile}>
                             <div className={styles.ChatProfileInner}>
                               <div className={styles.ProfilePhoto}>
                                 <div className={styles.DefaultProfile}>
                                   {ChatInformation.ProfileImage ? (
                                     <picture>
-                                      <source
-                                        src={ChatInformation.ProfileImage}
-                                        type=""
-                                      />
+                                      <source src={ChatInformation.ProfileImage} type="" />
                                       <img
                                         src={ChatInformation.ProfileImage}
                                         alt=""
@@ -664,20 +601,8 @@ function ChatPage() {
                                     </picture>
                                   ) : (
                                     <div className={styles.pera}>
-                                      <p>
-                                        {
-                                          ChatInformation.name
-                                            ?.split(" ")[0]
-                                            .split("")[0]
-                                        }
-                                      </p>
-                                      <p>
-                                        {
-                                          ChatInformation.name
-                                            ?.split(" ")[1]
-                                            .split("")[0]
-                                        }
-                                      </p>
+                                      <p>{ChatInformation.name?.split(" ")[0].split("")[0]}</p>
+                                      <p>{ChatInformation.name?.split(" ")[1].split("")[0]}</p>
                                     </div>
                                   )}
                                 </div>
@@ -698,11 +623,8 @@ function ChatPage() {
                 {/* Create_Group_Chat_Modal */}
                 <div
                   className={`${styles.Create_Group_Chat_Modal} ${
-                    ShowCreateGroupModal
-                      ? "Show_Group_Chat_Modal"
-                      : "Hide_Group_Chat_Modal"
-                  }`}
-                >
+                    ShowCreateGroupModal ? "Show_Group_Chat_Modal" : "Hide_Group_Chat_Modal"
+                  }`}>
                   <div className={styles.Create_Group_Chat_Modal_Inner_Section}>
                     <div className={styles.Group_Chat_Header_Section}>
                       <div className={styles.Header}>
@@ -727,18 +649,10 @@ function ChatPage() {
                         />
                       </div>
                       <div
-                        className={`${styles.SelectedUsers} ${
-                          !SelectedUsersArray.length > 0 ? "" : "_Border_Bottom"
-                        }`}
-                      >
+                        className={`${styles.SelectedUsers} ${!SelectedUsersArray.length > 0 ? "" : "_Border_Bottom"}`}>
                         {SelectedUsersArray.map((Info) => (
-                          <div
-                            className={styles.SelectedUsersProfile}
-                            key={Info._id}
-                          >
-                            <div
-                              className={styles.SelectedUsersProfileInnerSec}
-                            >
+                          <div className={styles.SelectedUsersProfile} key={Info._id}>
+                            <div className={styles.SelectedUsersProfileInnerSec}>
                               <div className={styles.DefaultProfile}>
                                 {Info._Pic ? (
                                   <picture>
@@ -756,12 +670,8 @@ function ChatPage() {
                                   </picture>
                                 ) : (
                                   <div className={styles.pera}>
-                                    <p>
-                                      {Info._Name?.split(" ")[0].split("")[0]}
-                                    </p>
-                                    <p>
-                                      {Info._Name?.split(" ")[1].split("")[0]}
-                                    </p>
+                                    <p>{Info._Name?.split(" ")[0].split("")[0]}</p>
+                                    <p>{Info._Name?.split(" ")[1].split("")[0]}</p>
                                   </div>
                                 )}
                               </div>
@@ -783,30 +693,16 @@ function ChatPage() {
                         {AllChatUsersInfo.map((UserInfo) => (
                           <div
                             className={`${styles.Members_Profile} ${
-                              SelectedUsersArray.some(
-                                (item) => item._id === UserInfo._id
-                              )
-                                ? "_Selected_"
-                                : ""
+                              SelectedUsersArray.some((item) => item._id === UserInfo._id) ? "_Selected_" : ""
                             }`}
                             key={UserInfo._id}
-                            onClick={() =>
-                              AddInTheGroupChatArray(
-                                UserInfo._id,
-                                UserInfo.name,
-                                UserInfo.ProfileImage
-                              )
-                            }
-                          >
+                            onClick={() => AddInTheGroupChatArray(UserInfo._id, UserInfo.name, UserInfo.ProfileImage)}>
                             <div className={styles.Profile_Inner_sec}>
                               <div className={styles._Profile_Photo}>
                                 <div className={styles.DefaultProfile}>
                                   {UserInfo.ProfileImage ? (
                                     <picture>
-                                      <source
-                                        src={UserInfo.ProfileImage}
-                                        type=""
-                                      />
+                                      <source src={UserInfo.ProfileImage} type="" />
                                       <img
                                         src={UserInfo.ProfileImage}
                                         alt=""
@@ -820,20 +716,8 @@ function ChatPage() {
                                     </picture>
                                   ) : (
                                     <div className={styles.pera}>
-                                      <p>
-                                        {
-                                          UserInfo.name
-                                            ?.split(" ")[0]
-                                            .split("")[0]
-                                        }
-                                      </p>
-                                      <p>
-                                        {
-                                          UserInfo.name
-                                            ?.split(" ")[1]
-                                            .split("")[0]
-                                        }
-                                      </p>
+                                      <p>{UserInfo.name?.split(" ")[0].split("")[0]}</p>
+                                      <p>{UserInfo.name?.split(" ")[1].split("")[0]}</p>
                                     </div>
                                   )}
                                 </div>
@@ -850,17 +734,12 @@ function ChatPage() {
                         ))}
                       </div>
                     )}
-                    <div
-                      className={styles.Final_Create_Group_Chat_Button_Section}
-                    >
+                    <div className={styles.Final_Create_Group_Chat_Button_Section}>
                       {/* {SelectedUsersArray} */}
                       <div
                         className={`${styles.Final_Button} ${
-                          SelectedUsersArray.length >= 2
-                            ? "_Show_Continue_Btn"
-                            : ""
-                        }`}
-                      >
+                          SelectedUsersArray.length >= 2 ? "_Show_Continue_Btn" : ""
+                        }`}>
                         <button onClick={Show_Add_ChatName_Modal}>
                           <LuMoveRight />
                         </button>
@@ -871,16 +750,9 @@ function ChatPage() {
                 {/* Add_Group_Chat_ChatName_Modal */}
                 <div
                   className={`${styles.Add_Group_Chat_ChatName_Modal} ${
-                    Add_GroupName_Modal
-                      ? "Show_Group_Chat_Modal"
-                      : "Hide_Group_Chat_Modal"
-                  }`}
-                >
-                  <div
-                    className={
-                      styles.Add_Group_Chat_ChatName_Modal_InnerSection
-                    }
-                  >
+                    Add_GroupName_Modal ? "Show_Group_Chat_Modal" : "Hide_Group_Chat_Modal"
+                  }`}>
+                  <div className={styles.Add_Group_Chat_ChatName_Modal_InnerSection}>
                     <div className={styles.Group_Chat_Header_Section}>
                       <div className={styles.Header}>
                         <div className={styles.Back_Button}>
@@ -913,24 +785,14 @@ function ChatPage() {
                     </div>
                     <div className={styles.Group_Chat_Add_ChatName_Input_Field}>
                       <div className={styles._Input_Field}>
-                        <input
-                          type="text"
-                          name="ChatName"
-                          placeholder="Enter Group Name"
-                          onChange={GroupChatName}
-                        />
+                        <input type="text" name="ChatName" placeholder="Enter Group Name" onChange={GroupChatName} />
                       </div>
                     </div>
-                    <div
-                      className={styles.Final_Create_Group_Chat_Button_Section}
-                    >
+                    <div className={styles.Final_Create_Group_Chat_Button_Section}>
                       <div
                         className={`${styles.Final_Button} ${
-                          GroupChat_ChatName.length > 0
-                            ? "_Show_Continue_Btn"
-                            : ""
-                        }`}
-                      >
+                          GroupChat_ChatName.length > 0 ? "_Show_Continue_Btn" : ""
+                        }`}>
                         <button onClick={Create_Group_Chat_Button}>
                           <LuMoveRight />
                         </button>
@@ -940,18 +802,11 @@ function ChatPage() {
                 </div>
               </div>
               {/* this is a page where the chat of the users is gonna see */}
-              <div
-                className={`${styles.CurrentChatPartPage} ${
-                  Show_Chat_Section_On_Click ? "show_chat_class" : ""
-                }`}
-              >
+              <div className={`${styles.CurrentChatPartPage} ${Show_Chat_Section_On_Click ? "show_chat_class" : ""}`}>
                 <div
                   className={`${styles.Current_ChatPart_Page_Inner_Section} ${
-                    Not_Show_Current_Chat_Page
-                      ? "do_not_show_current_chat_page"
-                      : ""
-                  }`}
-                >
+                    Not_Show_Current_Chat_Page ? "do_not_show_current_chat_page" : ""
+                  }`}>
                   <div className={styles.Chat_BackGround_Image}>
                     <Image src={bg} alt="" width="100%" height="100%" />
                   </div>
@@ -960,34 +815,22 @@ function ChatPage() {
                     <div className={styles.Send_Messages_Headers}>
                       <div
                         className={styles.Send_Messages_Headers_Inner_Section}
-                        onClick={() =>
-                          ShowGroupInfoButton(Selected_Chat_Users_Data_To_Chat)
-                        }
-                      >
+                        onClick={() => ShowGroupInfoButton(Selected_Chat_Users_Data_To_Chat)}>
                         <div className={styles.Respo_Back_Button}>
                           <button
                             className="transperent-btn p-0 border-0 text-white "
                             style={{ fontSize: "16px" }}
-                            onClick={GoBackToTheChatsListPage}
-                          >
+                            onClick={GoBackToTheChatsListPage}>
                             <IoArrowBack />
                           </button>
                         </div>
                         {Selected_Chat_Users_Data_To_Chat._Name ? (
                           <div className={styles.DefaultProfile}>
-                            {Selected_Chat_Users_Data_To_Chat._Profile_Photo !==
-                            undefined ? (
+                            {Selected_Chat_Users_Data_To_Chat._Profile_Photo !== undefined ? (
                               <picture>
-                                <source
-                                  src={
-                                    Selected_Chat_Users_Data_To_Chat._Profile_Photo
-                                  }
-                                  type=""
-                                />
+                                <source src={Selected_Chat_Users_Data_To_Chat._Profile_Photo} type="" />
                                 <img
-                                  src={
-                                    Selected_Chat_Users_Data_To_Chat._Profile_Photo
-                                  }
+                                  src={Selected_Chat_Users_Data_To_Chat._Profile_Photo}
                                   alt=""
                                   style={{
                                     objectFit: "cover",
@@ -999,30 +842,14 @@ function ChatPage() {
                               </picture>
                             ) : (
                               <div className={styles.pera}>
-                                <p>
-                                  {
-                                    Selected_Chat_Users_Data_To_Chat._Name?.split(
-                                      ""
-                                    )[0]
-                                  }
-                                </p>
-                                <p>
-                                  {
-                                    Selected_Chat_Users_Data_To_Chat._Name
-                                      ?.split(" ")[1]
-                                      ?.split("")[0]
-                                  }
-                                </p>
+                                <p>{Selected_Chat_Users_Data_To_Chat._Name?.split("")[0]}</p>
+                                <p>{Selected_Chat_Users_Data_To_Chat._Name?.split(" ")[1]?.split("")[0]}</p>
                               </div>
                             )}
                           </div>
                         ) : (
                           <div>
-                            <Skeleton
-                              width="45px"
-                              height="45px"
-                              circle={true}
-                            />
+                            <Skeleton width="45px" height="45px" circle={true} />
                           </div>
                         )}
 
@@ -1035,8 +862,7 @@ function ChatPage() {
                             </h4>
                           )}
 
-                          {IS_Typing._Sender_Info._Sender?._id ==
-                          UserInfo._id ? (
+                          {IS_Typing._Sender_Info._Sender?._id == UserInfo._id ? (
                             <p>click hear for users Information info</p>
                           ) : (
                             <p>
@@ -1058,9 +884,7 @@ function ChatPage() {
                         </div>
                       </div>
                     </div>
-                    <div
-                      className={styles.Send_Messages_Text_Input_Field_For_Text}
-                    >
+                    <div className={styles.Send_Messages_Text_Input_Field_For_Text}>
                       <div className={styles.ScrollableSection}>
                         {MessageContent_Container_State.length == 0 ? (
                           <div style={{ width: "100%", height: "100px" }}>
@@ -1072,27 +896,17 @@ function ChatPage() {
                               <div
                                 key={message._id}
                                 className={`${styles.Messages_Outre_Div} ${
-                                  message.sender._id == UserInfo._id
-                                    ? "Message_Sent"
-                                    : "Message_Received"
-                                }`}
-                              >
-                                <div
-                                  className={`${styles.Message_Inner} Display_Flex`}
-                                >
+                                  message.sender._id == UserInfo._id ? "Message_Sent" : "Message_Received"
+                                }`}>
+                                <div className={`${styles.Message_Inner} Display_Flex`}>
                                   {message.sender._id == UserInfo._id ? (
                                     ""
                                   ) : (
-                                    <div
-                                      className={styles.Message_Sender_Profile}
-                                    >
+                                    <div className={styles.Message_Sender_Profile}>
                                       <div className={styles.DefaultProfile}>
                                         {message.sender.ProfileImage ? (
                                           <picture>
-                                            <source
-                                              src={message.sender.ProfileImage}
-                                              type=""
-                                            />
+                                            <source src={message.sender.ProfileImage} type="" />
                                             <img
                                               src={message.sender.ProfileImage}
                                               alt=""
@@ -1106,20 +920,8 @@ function ChatPage() {
                                           </picture>
                                         ) : (
                                           <div className={styles.pera}>
-                                            <p>
-                                              {
-                                                message.sender.name?.split(
-                                                  ""
-                                                )[0]
-                                              }
-                                            </p>
-                                            <p>
-                                              {
-                                                message.sender.name
-                                                  ?.split(" ")[1]
-                                                  ?.split("")[0]
-                                              }
-                                            </p>
+                                            <p>{message.sender.name?.split("")[0]}</p>
+                                            <p>{message.sender.name?.split(" ")[1]?.split("")[0]}</p>
                                           </div>
                                         )}
                                       </div>
@@ -1127,20 +929,14 @@ function ChatPage() {
                                   )}
 
                                   {message.ContentImage.length == 0 ? (
-                                    <div
-                                      className={`${styles.Message_content} Message_Arrow`}
-                                    >
+                                    <div className={`${styles.Message_content} Message_Arrow`}>
                                       <div className={styles.InnerSec}>
                                         <p>{message.Content}</p>
                                       </div>
                                       <div className={styles.Edited_Message}>
-                                        <span>
-                                          {message.Edited ? "Edited" : ""}
-                                        </span>
+                                        <span>{message.Edited ? "Edited" : ""}</span>
                                       </div>
-                                      <div
-                                        className={`${styles.DropDownArrowButton} downArrow`}
-                                      >
+                                      <div className={`${styles.DropDownArrowButton} downArrow`}>
                                         <div className="btn-group dropdown">
                                           <button
                                             type="button"
@@ -1153,8 +949,7 @@ function ChatPage() {
                                               color: "var(--main-white-color)",
                                             }}
                                             data-bs-toggle="dropdown"
-                                            aria-expanded="false"
-                                          >
+                                            aria-expanded="false">
                                             <BsThreeDotsVertical />
                                           </button>
 
@@ -1163,10 +958,7 @@ function ChatPage() {
                                               <button
                                                 className="dropdown-item"
                                                 href="#"
-                                                onClick={
-                                                  Copy_Message_Controller
-                                                }
-                                              >
+                                                onClick={Copy_Message_Controller}>
                                                 copy Message
                                               </button>
                                             </li>
@@ -1174,28 +966,18 @@ function ChatPage() {
                                               <button
                                                 className="dropdown-item"
                                                 href="#"
-                                                onClick={
-                                                  Replay_Button_Controller
-                                                }
-                                              >
+                                                onClick={Replay_Button_Controller}>
                                                 Replay
                                               </button>
                                             </li>
 
-                                            {message.sender._id ==
-                                            UserInfo._id ? (
+                                            {message.sender._id == UserInfo._id ? (
                                               <>
                                                 <li>
                                                   <button
                                                     className="dropdown-item"
                                                     href="#"
-                                                    onClick={(e) =>
-                                                      Edit_Message_Button(
-                                                        e,
-                                                        message
-                                                      )
-                                                    }
-                                                  >
+                                                    onClick={(e) => Edit_Message_Button(e, message)}>
                                                     Edit Message
                                                   </button>
                                                 </li>
@@ -1207,13 +989,7 @@ function ChatPage() {
                                               <button
                                                 className="dropdown-item"
                                                 href="#"
-                                                onClick={(e) =>
-                                                  Delete_Message_Button(
-                                                    e,
-                                                    message
-                                                  )
-                                                }
-                                              >
+                                                onClick={(e) => Delete_Message_Button(e, message)}>
                                                 Delete Message
                                               </button>
                                             </li>
@@ -1223,33 +999,26 @@ function ChatPage() {
                                     </div>
                                   ) : (
                                     <div
-                                      className={`${styles.ChatImages_Array_Flex_Section} Message_11  Message_Arrow `}
-                                    >
+                                      className={`${styles.ChatImages_Array_Flex_Section} Message_11  Message_Arrow `}>
                                       <div className={styles.InnerSec}>
                                         <div className={styles.Images}>
-                                          {message.ContentImage.map(
-                                            (Img, index) => {
-                                              return (
-                                                <picture key={index}>
-                                                  <source src={Img} type="" />
-                                                  <img src={Img} alt="" />
-                                                </picture>
-                                              );
-                                            }
-                                          )}
+                                          {message.ContentImage.map((Img, index) => {
+                                            return (
+                                              <picture key={index}>
+                                                <source src={Img} type="" />
+                                                <img src={Img} alt="" />
+                                              </picture>
+                                            );
+                                          })}
                                         </div>
                                         <div className={styles.Content}>
                                           <p>{message.Content}</p>
                                         </div>
                                       </div>
                                       <div className={styles.Edited_Message}>
-                                        <span>
-                                          {message.Edited ? "Edited" : ""}
-                                        </span>
+                                        <span>{message.Edited ? "Edited" : ""}</span>
                                       </div>
-                                      <div
-                                        className={`${styles.DropDownArrowButton} downArrow`}
-                                      >
+                                      <div className={`${styles.DropDownArrowButton} downArrow`}>
                                         <div className="btn-group dropdown">
                                           <button
                                             type="button"
@@ -1262,8 +1031,7 @@ function ChatPage() {
                                               color: "var(--main-white-color)",
                                             }}
                                             data-bs-toggle="dropdown"
-                                            aria-expanded="false"
-                                          >
+                                            aria-expanded="false">
                                             <BsThreeDotsVertical />
                                           </button>
 
@@ -1272,10 +1040,7 @@ function ChatPage() {
                                               <button
                                                 className="dropdown-item"
                                                 href="#"
-                                                onClick={
-                                                  Copy_Message_Controller
-                                                }
-                                              >
+                                                onClick={Copy_Message_Controller}>
                                                 copy Message
                                               </button>
                                             </li>
@@ -1283,26 +1048,16 @@ function ChatPage() {
                                               <button
                                                 className="dropdown-item"
                                                 href="#"
-                                                onClick={
-                                                  Replay_Button_Controller
-                                                }
-                                              >
+                                                onClick={Replay_Button_Controller}>
                                                 Replay
                                               </button>
                                             </li>
-                                            {message.sender._id ==
-                                            UserInfo._id ? (
+                                            {message.sender._id == UserInfo._id ? (
                                               <>
                                                 <li>
                                                   <button
                                                     className="dropdown-item"
-                                                    onClick={(e) =>
-                                                      Edit_Message_Button(
-                                                        e,
-                                                        message
-                                                      )
-                                                    }
-                                                  >
+                                                    onClick={(e) => Edit_Message_Button(e, message)}>
                                                     Edit Message
                                                   </button>
                                                 </li>
@@ -1314,13 +1069,7 @@ function ChatPage() {
                                               <button
                                                 className="dropdown-item"
                                                 href="#"
-                                                onClick={(e) =>
-                                                  Delete_Message_Button(
-                                                    e,
-                                                    message
-                                                  )
-                                                }
-                                              >
+                                                onClick={(e) => Delete_Message_Button(e, message)}>
                                                 Delete Message
                                               </button>
                                             </li>
@@ -1332,10 +1081,7 @@ function ChatPage() {
                                 </div>
                               </div>
                             ))}
-                            <div
-                              ref={CurrentMessageRef}
-                              style={{ width: "0", overflow: "hidden" }}
-                            />
+                            <div ref={CurrentMessageRef} style={{ width: "0", overflow: "hidden" }} />
                           </div>
                         )}
                       </div>
@@ -1346,10 +1092,7 @@ function ChatPage() {
                           <button
                             type="button"
                             onClick={ShowMoreActionModal_Button_Controller}
-                            className={
-                              ShowMoreActionModal ? "Rotate_button" : ""
-                            }
-                          >
+                            className={ShowMoreActionModal ? "Rotate_button" : ""}>
                             <FaPlus />
                           </button>
                           <input
@@ -1366,8 +1109,7 @@ function ChatPage() {
                       <div
                         className={`${styles.MoreActionModalMainDiv} ${
                           ShowMoreActionModal ? "" : "HideMoreActionModal"
-                        } `}
-                      >
+                        } `}>
                         <div className={styles.MoreActionModalInnerDiv}>
                           <ul>
                             <li>
@@ -1379,13 +1121,8 @@ function ChatPage() {
                               </button>
                             </li>
                             <li>
-                              <button
-                                type="button"
-                                onClick={SendPhotos_And_Video_Button_Controller}
-                              >
-                                <span
-                                  style={{ color: "rgba(244, 24, 132, 1)" }}
-                                >
+                              <button type="button" onClick={SendPhotos_And_Video_Button_Controller}>
+                                <span style={{ color: "rgba(244, 24, 132, 1)" }}>
                                   <FaImages />
                                 </span>
                                 <p>Photos & video </p>
@@ -1393,10 +1130,7 @@ function ChatPage() {
                             </li>
                             <li>
                               <button type="button">
-                                <span
-                                  className={styles.users}
-                                  style={{ color: "#009DE2" }}
-                                >
+                                <span className={styles.users} style={{ color: "#009DE2" }}>
                                   <FaUser />
                                 </span>
                                 <p>contact </p>
@@ -1411,17 +1145,12 @@ function ChatPage() {
                 <div
                   className={`${styles.SendImages_ALL_Action_Modal_Outer_DIV} ${
                     Show_Send_Messages_Modal ? "Hide_Send_Message_Modal" : ""
-                  }`}
-                >
-                  <div
-                    className={styles.SendImages_ALL_Action_Modal_Inner_Section}
-                  >
+                  }`}>
+                  <div className={styles.SendImages_ALL_Action_Modal_Inner_Section}>
                     <div className={styles.Display_Flex__Section}>
                       <form>
                         <div className={styles.Close_Button}>
-                          <button
-                            onClick={SendPhotos_And_Video_Button_Controller}
-                          >
+                          <button onClick={SendPhotos_And_Video_Button_Controller}>
                             <IoIosClose />
                           </button>
                         </div>
@@ -1447,11 +1176,7 @@ function ChatPage() {
                           />
                         </div>
                         <div className={styles.Sumbit_Button}>
-                          <button
-                            onClick={
-                              SendPhotos_And_Video_API_Controller_Function
-                            }
-                          >
+                          <button onClick={SendPhotos_And_Video_API_Controller_Function}>
                             <span className={styles.Span_BG}></span>
                             <span>send</span>
                             <MdKeyboardDoubleArrowRight />
@@ -1464,8 +1189,7 @@ function ChatPage() {
                 <div
                   className={`${styles.GroupChatInformation} ${
                     ShowGroupInfoModal ? "Show_Group_Info" : "Hide_Group_Info"
-                  }`}
-                >
+                  }`}>
                   <div className={styles.GroupChatInformation_Inner_Sec}>
                     <div className={styles.GroupInfoTitle}>
                       <div className={styles.TitleInnerSec}>
@@ -1476,21 +1200,13 @@ function ChatPage() {
                         </div>
                         <div className={styles.ChatName_Title}>
                           <div>
-                            <p>
-                              {GroupUsersInformation._IS_GroupChat
-                                ? "group info"
-                                : "contact info"}
-                            </p>
+                            <p>{GroupUsersInformation._IS_GroupChat ? "group info" : "contact info"}</p>
                           </div>
                         </div>
                         {GroupUsersInformation._IS_GroupChat ? (
                           <div className={styles.Edit_Group_Name_Button}>
                             {EditableChatName ? (
-                              <button
-                                onClick={() =>
-                                  SaveChatNameButton(GroupUsersInformation._ID)
-                                }
-                              >
+                              <button onClick={() => SaveChatNameButton(GroupUsersInformation._ID)}>
                                 <FaRegSave />
                               </button>
                             ) : (
@@ -1509,10 +1225,7 @@ function ChatPage() {
                         <div className={styles.DefaultProfile}>
                           {GroupUsersInformation._Profile_Photo ? (
                             <picture>
-                              <source
-                                src={GroupUsersInformation._Profile_Photo}
-                                type=""
-                              />
+                              <source src={GroupUsersInformation._Profile_Photo} type="" />
                               <img
                                 src={GroupUsersInformation._Profile_Photo}
                                 alt=""
@@ -1527,13 +1240,7 @@ function ChatPage() {
                           ) : (
                             <div className={styles.pera}>
                               <p>{GroupUsersInformation._Name?.split("")[0]}</p>
-                              <p>
-                                {
-                                  GroupUsersInformation._Name
-                                    ?.split(" ")[1]
-                                    ?.split("")[0]
-                                }
-                              </p>
+                              <p>{GroupUsersInformation._Name?.split(" ")[1]?.split("")[0]}</p>
                             </div>
                           )}
                           {EditableChatName ? (
@@ -1559,8 +1266,7 @@ function ChatPage() {
                             ref={Input_Ref}
                             onChange={ContentEditableInput}
                             value={RenameChatStateHandlerForChatName}
-                            cols="1"
-                          ></textarea>
+                            cols="1"></textarea>
 
                           {GroupUsersInformation._Group_Admin_Info ? (
                             <p className="Group_Admin_Name_Pera">
@@ -1580,8 +1286,7 @@ function ChatPage() {
                             <h6>members</h6>
                           </div>
                           <div className={styles.List_OF_All_Members}>
-                            {GroupUsersInformation._Group_Admin_Info?._id ==
-                            UserInfo._id ? (
+                            {GroupUsersInformation._Group_Admin_Info?._id == UserInfo._id ? (
                               <div
                                 className={styles.MembersGroupProfile}
                                 onClick={() =>
@@ -1589,13 +1294,8 @@ function ChatPage() {
                                     GroupUsersInformation._Users,
                                     GroupUsersInformation._ID
                                   )
-                                }
-                              >
-                                <div
-                                  className={
-                                    styles.MembersGroupProfile_Inner_Section
-                                  }
-                                >
+                                }>
+                                <div className={styles.MembersGroupProfile_Inner_Section}>
                                   <div className={styles.Profile_Photo}>
                                     <div className={styles.DefaultProfile}>
                                       <div className={styles.pera}>
@@ -1616,23 +1316,13 @@ function ChatPage() {
                               ""
                             )}
                             {GroupUsersInformation._Users?.map((info) => (
-                              <div
-                                className={styles.MembersGroupProfile}
-                                key={info._id}
-                              >
-                                <div
-                                  className={
-                                    styles.MembersGroupProfile_Inner_Section
-                                  }
-                                >
+                              <div className={styles.MembersGroupProfile} key={info._id}>
+                                <div className={styles.MembersGroupProfile_Inner_Section}>
                                   <div className={styles.Profile_Photo}>
                                     <div className={styles.DefaultProfile}>
                                       {info.ProfileImage ? (
                                         <picture>
-                                          <source
-                                            src={info.ProfileImage}
-                                            type=""
-                                          />
+                                          <source src={info.ProfileImage} type="" />
                                           <img
                                             src={info.ProfileImage}
                                             alt=""
@@ -1647,13 +1337,7 @@ function ChatPage() {
                                       ) : (
                                         <div className={styles.pera}>
                                           <p>{info.name?.split("")[0]}</p>
-                                          <p>
-                                            {
-                                              info.name
-                                                ?.split(" ")[1]
-                                                ?.split("")[0]
-                                            }
-                                          </p>
+                                          <p>{info.name?.split(" ")[1]?.split("")[0]}</p>
                                         </div>
                                       )}
                                     </div>
@@ -1661,19 +1345,13 @@ function ChatPage() {
                                   <div className={styles.User_Info}>
                                     <div className={styles.Info}>
                                       <div className={styles.Name}>
-                                        <p>
-                                          {info.name === UserInfo.name
-                                            ? `you`
-                                            : `${info.name}`}
-                                        </p>
+                                        <p>{info.name === UserInfo.name ? `you` : `${info.name}`}</p>
                                       </div>
                                       <div className={styles.userName}>
                                         <p>{info.username}</p>
                                       </div>
                                     </div>
-                                    {info._id ==
-                                    GroupUsersInformation._Group_Admin_Info
-                                      ._id ? (
+                                    {info._id == GroupUsersInformation._Group_Admin_Info._id ? (
                                       <div className={styles.GroupAdmin}>
                                         <span>group admin</span>
                                       </div>
@@ -1691,8 +1369,7 @@ function ChatPage() {
                                               color: "var(--main-white-color)",
                                             }}
                                             data-bs-toggle="dropdown"
-                                            aria-expanded="false"
-                                          >
+                                            aria-expanded="false">
                                             <BsThreeDotsVertical />
                                           </button>
 
@@ -1702,12 +1379,8 @@ function ChatPage() {
                                                 className="dropdown-item"
                                                 href="#"
                                                 onClick={() =>
-                                                  Remove_User_From_Group(
-                                                    GroupUsersInformation._ID,
-                                                    info._id
-                                                  )
-                                                }
-                                              >
+                                                  Remove_User_From_Group(GroupUsersInformation._ID, info._id)
+                                                }>
                                                 Remove User
                                               </button>
                                             </li>
@@ -1732,17 +1405,8 @@ function ChatPage() {
                           <div className={styles.List_OF_All_Members}>
                             <div
                               className={styles.MembersGroupProfile}
-                              onClick={() =>
-                                Create_Group_With_Clicked_User(
-                                  GroupUsersInformation._Users
-                                )
-                              }
-                            >
-                              <div
-                                className={
-                                  styles.MembersGroupProfile_Inner_Section
-                                }
-                              >
+                              onClick={() => Create_Group_With_Clicked_User(GroupUsersInformation._Users)}>
+                              <div className={styles.MembersGroupProfile_Inner_Section}>
                                 <div className={styles.Profile_Photo}>
                                   <div className={styles.DefaultProfile}>
                                     <div className={styles.pera}>
@@ -1757,9 +1421,7 @@ function ChatPage() {
                                     <div className={styles.Coman_title}>
                                       <p>
                                         create Group with
-                                        <span>
-                                          {RenameChatStateHandlerForChatName}
-                                        </span>
+                                        <span>{RenameChatStateHandlerForChatName}</span>
                                       </p>
                                     </div>
                                   </div>
@@ -1769,23 +1431,13 @@ function ChatPage() {
                             {ComanGroupInfoContainer.length > 0 ? (
                               <div className="w-100">
                                 {ComanGroupInfoContainer?.map((info) => (
-                                  <div
-                                    className={styles.MembersGroupProfile}
-                                    key={info._id}
-                                  >
-                                    <div
-                                      className={
-                                        styles.MembersGroupProfile_Inner_Section
-                                      }
-                                    >
+                                  <div className={styles.MembersGroupProfile} key={info._id}>
+                                    <div className={styles.MembersGroupProfile_Inner_Section}>
                                       <div className={styles.Profile_Photo}>
                                         <div className={styles.DefaultProfile}>
                                           {info.ProfileImage ? (
                                             <picture>
-                                              <source
-                                                src={info.ProfileImage}
-                                                type=""
-                                              />
+                                              <source src={info.ProfileImage} type="" />
                                               <img
                                                 src={info.ProfileImage}
                                                 alt=""
@@ -1800,13 +1452,7 @@ function ChatPage() {
                                           ) : (
                                             <div className={styles.pera}>
                                               <p>{info.name?.split("")[0]}</p>
-                                              <p>
-                                                {
-                                                  info.name
-                                                    ?.split(" ")[1]
-                                                    ?.split("")[0]
-                                                }
-                                              </p>
+                                              <p>{info.name?.split(" ")[1]?.split("")[0]}</p>
                                             </div>
                                           )}
                                         </div>
@@ -1834,11 +1480,7 @@ function ChatPage() {
                       <div className={styles.CRUD_Operation_Section}>
                         <ul>
                           <li>
-                            <button
-                              onClick={() =>
-                                Delete_Chat_Button(GroupUsersInformation._ID)
-                              }
-                            >
+                            <button onClick={() => Delete_Chat_Button(GroupUsersInformation._ID)}>
                               <span>
                                 <MdOutlineDeleteOutline />
                               </span>
@@ -1868,10 +1510,7 @@ function ChatPage() {
                       </div>
                       <div className={styles.Text_Section}>
                         <div className={styles.Main_Text}>
-                          <h3>
-                            Click on chats or search users to start a
-                            conversation easily and quickly.
-                          </h3>
+                          <h3>Click on chats or search users to start a conversation easily and quickly.</h3>
                         </div>
                         <div className={styles.Secondary_Text}>
                           <span>
@@ -1887,11 +1526,7 @@ function ChatPage() {
             </div>
           </div>
         </div>
-        <div
-          className={`${styles.deleteMessagePopup} ${
-            ShowDeleteMessagePopup.state ? "" : "d-none"
-          }`}
-        >
+        <div className={`${styles.deleteMessagePopup} ${ShowDeleteMessagePopup.state ? "" : "d-none"}`}>
           <div className={styles.deleteMessagePopupInner}>
             <div
               className="card"
@@ -1901,8 +1536,7 @@ function ChatPage() {
                 borderRadius: "20px",
                 width: "100%",
                 height: "100%",
-              }}
-            >
+              }}>
               <div
                 className="card-body"
                 style={{
@@ -1913,8 +1547,7 @@ function ChatPage() {
                   alignItems: "center",
                   justifyContent: "space-between",
                   padding: "0",
-                }}
-              >
+                }}>
                 <div className="w-100">
                   <h5 className="card-title">delete message</h5>
                   <p className="card-text" style={{ marginTop: "20px" }}>
@@ -1929,26 +1562,17 @@ function ChatPage() {
                     alignItems: "center",
                     justifyContent: "flex-end",
                     gap: "22px",
-                  }}
-                >
-                  <button
-                    className="btn "
-                    onClick={() => setShowDeleteMessagePopup({ state: false })}
-                  >
+                  }}>
+                  <button className="btn " onClick={() => setShowDeleteMessagePopup({ state: false })}>
                     cancel
                   </button>
                   <button
                     className="btn "
-                    onClick={() =>
-                      Delete_message_Final_Button_Controller(
-                        ShowDeleteMessagePopup.message
-                      )
-                    }
+                    onClick={() => Delete_message_Final_Button_Controller(ShowDeleteMessagePopup.message)}
                     style={{
                       border: "0",
                       backgroundColor: "rgba(244, 24, 132, 1)",
-                    }}
-                  >
+                    }}>
                     Delete
                   </button>
                 </div>
@@ -1959,8 +1583,7 @@ function ChatPage() {
         <div
           className={`${styles.AddNewUserToGroupForThatShowAllTheUser} ${
             Add_New_Member_To_Group_Modal.Show ? "" : "d-none"
-          }`}
-        >
+          }`}>
           <div className={styles.InnerSec}>
             <div className={styles.Group_Chat_SearchBar}>
               <div className={styles.Header}>
@@ -1972,27 +1595,16 @@ function ChatPage() {
                         Users_Info: [],
                         _Group_ID: [],
                       })
-                    }
-                  >
+                    }>
                     <IoIosClose />
                   </button>
                   <h5>Add member</h5>
                 </div>
               </div>
               <div className={styles.Search}>
-                <input
-                  type="search"
-                  name=""
-                  onChange={CreateGroupChatSearchBar}
-                  placeholder="search with name"
-                  id=""
-                />
+                <input type="search" name="" onChange={CreateGroupChatSearchBar} placeholder="search with name" id="" />
               </div>
-              <div
-                className={`${styles.SelectedUsers} ${
-                  !SelectedUsersArray.length > 0 ? "" : "_Border_Bottom"
-                }`}
-              >
+              <div className={`${styles.SelectedUsers} ${!SelectedUsersArray.length > 0 ? "" : "_Border_Bottom"}`}>
                 {SelectedUsersArray.map((Info) => (
                   <div className={styles.SelectedUsersProfile} key={Info._id}>
                     <div className={styles.SelectedUsersProfileInnerSec}>
@@ -2033,25 +1645,14 @@ function ChatPage() {
               {AllChatUsersInfo.map((UserInfo) => (
                 <div
                   className={`${styles.Members_Profile} ${
-                    SelectedUsersArray.some((item) => item._id === UserInfo._id)
-                      ? "_Selected_"
-                      : ""
+                    SelectedUsersArray.some((item) => item._id === UserInfo._id) ? "_Selected_" : ""
                   } ${
-                    Add_New_Member_To_Group_Modal.Users_Info?.some(
-                      (item) => item._id === UserInfo._id
-                    )
+                    Add_New_Member_To_Group_Modal.Users_Info?.some((item) => item._id === UserInfo._id)
                       ? "_Selected_"
                       : ""
                   }`}
                   key={UserInfo._id}
-                  onClick={() =>
-                    AddInTheGroupChatArray(
-                      UserInfo._id,
-                      UserInfo.name,
-                      UserInfo.ProfileImage
-                    )
-                  }
-                >
+                  onClick={() => AddInTheGroupChatArray(UserInfo._id, UserInfo.name, UserInfo.ProfileImage)}>
                   <div className={styles.Profile_Inner_sec}>
                     <div className={styles._Profile_Photo}>
                       <div className={styles.DefaultProfile}>
@@ -2092,12 +1693,8 @@ function ChatPage() {
               <div className={styles.Footer_Button}>
                 <button
                   onClick={() =>
-                    Add_Selected_User_To_The_Group(
-                      SelectedUsersArray,
-                      Add_New_Member_To_Group_Modal._Group_ID
-                    )
-                  }
-                >
+                    Add_Selected_User_To_The_Group(SelectedUsersArray, Add_New_Member_To_Group_Modal._Group_ID)
+                  }>
                   <LuMoveRight />
                 </button>
               </div>

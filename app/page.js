@@ -119,7 +119,7 @@ function Home() {
                         <div className={styles.Card}>
                           <div className={styles.Card_Inner_Section}>
                             <div className={styles.Number}>
-                              <h3>100+</h3>
+                              <h3>{PublicProjects?.length*21}+</h3>
                             </div>
                             <div className={styles.Title}>
                               <h4>happy family</h4>

@@ -67,61 +67,7 @@ function DetailedProject({ params }) {
                     <h2>Description</h2>
                     <p>{description}</p>
                   </div>
-                  <div className={styles.Project_Facilities}>
-                    <h2>Amenities</h2>
-                    <div className={styles.Amenities_flex_section}>
-                      <div className="row" style={{ padding: "0" }}>
-                        <div
-                          className="col-md-3"
-                          style={{ padding: "12px 12px" }}
-                        >
-                          <div className={styles.Amenities_card}>Amenities</div>
-                        </div>
-                        <div
-                          className="col-md-3"
-                          style={{ padding: "12px 12px" }}
-                        >
-                          <div className={styles.Amenities_card}>Amenities</div>
-                        </div>
-                        <div
-                          className="col-md-3"
-                          style={{ padding: "12px 12px" }}
-                        >
-                          <div className={styles.Amenities_card}>Amenities</div>
-                        </div>
-                        <div
-                          className="col-md-3"
-                          style={{ padding: "12px 12px" }}
-                        >
-                          <div className={styles.Amenities_card}>Amenities</div>
-                        </div>
-                        <div
-                          className="col-md-3"
-                          style={{ padding: "12px 12px" }}
-                        >
-                          <div className={styles.Amenities_card}>Amenities</div>
-                        </div>
-                        <div
-                          className="col-md-3"
-                          style={{ padding: "12px 12px" }}
-                        >
-                          <div className={styles.Amenities_card}>Amenities</div>
-                        </div>
-                        <div
-                          className="col-md-3"
-                          style={{ padding: "12px 12px" }}
-                        >
-                          <div className={styles.Amenities_card}>Amenities</div>
-                        </div>
-                        <div
-                          className="col-md-3"
-                          style={{ padding: "12px 12px" }}
-                        >
-                          <div className={styles.Amenities_card}>Amenities</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  
                 </div>
 
                 <div className={styles.PropertyImages}>

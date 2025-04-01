@@ -25,8 +25,8 @@ function ProjectsSkull(props) {
     setAddModalState(true);
   };
   const Delete_Project_Button = (_id) => {
-    console.log(_id);
-    const confirm_delete_Project = confirm("helllllo");
+    
+    const confirm_delete_Project = confirm("are you sure you want to delete this project?");
     if (confirm_delete_Project) {
       Delete_Projects(AuthToken, _id);
     }

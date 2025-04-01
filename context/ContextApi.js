@@ -16,7 +16,7 @@ const ContextApi = ({ children }) => {
     pbkdf2Iterations: 1000,
     saltLength: 10,
   });
-  const HOST = "http://localHOST:500";
+  const HOST = "https://divinegroup-backend.onrender.com";
   const WeatherAPI_Key = "9b860e2afc6486921d1350a0db0190d5";
   var socket = io(HOST);
   const initialState = [];
@@ -307,7 +307,7 @@ const ContextApi = ({ children }) => {
             authtoken: Token,
           },
         });
-        console.log(response);
+        
         FetchAllPublicProjects(Token);
         FetchAllYourProjects(Token);
       }
